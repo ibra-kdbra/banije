@@ -1,8 +1,8 @@
 **yeah** 
 
-yeah my `G` fuck this shit I'm out of the way
+yeah my `G` thanks for ALLAH
 
-# IDK what I'am doing actually...\
+# IDK SMH..\
 
 
 
