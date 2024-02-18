@@ -1,4 +1,3 @@
-# Repo for understanding concepts, workflows of github and version control commands
+# Repo for understanding concepts, workflows of GitHub, and other useful cmd commands.
 
-back to work, need to chang everyflow in the project...
-Lost all data saved on linux-profiles.
+this repo will have GitHub commands I use often and tools I will look into in the future, with some of the best tools I need to use daily or weekly with my projects or management
