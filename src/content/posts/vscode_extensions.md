@@ -1,5 +1,5 @@
 ---
-title: VS Code Extensions
+title: VS Code extensions
 published: 2024-01-17
 description: 'An extensive guide to VS Code extensions grouped by categories to enhance productivity and skill development.'
 image: ''

@@ -1,5 +1,5 @@
 ---
-title: Chrome Extensions for Designers & Audio Enthusiasts
+title: Chrome extensions for Designers & Audio Enthusiasts
 published: 2024-01-13
 description: 'Discover browser extensions that streamline design workflows and elevate music experiences.'
 image: ''
