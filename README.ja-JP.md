@@ -47,7 +47,7 @@ tags: [Foo, Bar]
 category: Front-end
 draft: false
 ---
-
+```
 
 ## 🧞 コマンド
 
@@ -62,3 +62,9 @@ draft: false
 | `pnpm new-post <filename>`          | 新しい投稿を作成                                    |
 | `pnpm astro ...`                    | `astro add`, `astro check` の様なコマンドを実行する際に使用 |
 | `pnpm astro --help`                 | Astro CLIのヘルプを表示                            |
+
+
+## 🙏 クレジット
+
+このプロジェクト「banije」は、[Fuwari](https://github.com/saicaca/fuwari)の優れた作品に触発されました。彼らの静的サイト生成におけるAstroの使用と、テンプレート作成における細部へのこだわりには感銘を受けました。
+
