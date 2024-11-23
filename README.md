@@ -47,6 +47,7 @@ category: Front-end
 draft: false
 lang: jp      # Set only if the post's language differs from the site's language in `config.ts`
 ---
+```
 
 
 ## 🧞 Commands
@@ -66,4 +67,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🙏 Credits
 
-This project, banije, is inspired by the excellent work on the [Fuwari repository](https://github.com/saicaca/fuwari). Their use of Astro for static site generation and attention to detail in crafting templates is truly commendable.
+This project, banije, is inspired by the excellent work on the [Fuwari](https://github.com/saicaca/fuwari). Their use of Astro for static site generation and attention to detail in crafting templates is truly commendable.
