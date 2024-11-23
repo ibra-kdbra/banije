@@ -14,7 +14,9 @@
 このプロジェクトは学びへの情熱を反映しており、知識を文書化し、洗練し、共有するためのプラットフォームとして機能します。
 
 （英語版もご覧ください：[英語版](./README.md)）
-![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/resource/main/banije/public/captured.png)
+
+![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/banije/main/public/captured.png)
+
 
 ## ✨ 特徴
 

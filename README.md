@@ -15,7 +15,7 @@ This project reflects a passion for learning and serves as a platform to documen
 
 (See also the Japanese version: [Japanese version](./README.ja-JP.md))
 
-![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/resource/main/banije/public/captured.png)
+![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/banije/main/public/captured.png)
 
 ## ✨ Features
 
