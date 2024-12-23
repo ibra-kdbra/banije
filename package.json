@@ -11,7 +11,8 @@
     "type-check": "tsc --noEmit --isolatedDeclarations",
     "new-post": "node scripts/new-post.js",
     "format": "biome format --write ./src",
-    "lint": "biome check --apply ./src"
+    "lint": "biome check --apply ./src",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -25,7 +26,6 @@
     "astro": "^4.15.9",
     "astro-compress": "^2.3.1",
     "astro-icon": "^1.1.1",
-    "colorjs.io": "^0.5.2",
     "hastscript": "^9.0.0",
     "markdown-it": "^14.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -39,6 +39,7 @@
     "remark-directive": "^3.0.0",
     "remark-directive-rehype": "^0.4.2",
     "remark-math": "^6.0.0",
+    "remark-sectionize": "^2.0.0",
     "sanitize-html": "^2.13.0",
     "sharp": "^0.33.5",
     "svelte": "^4.2.19",
@@ -59,9 +60,10 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.13.0",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.1",
     "photoswipe": "^5.4.4",
     "remark-github-admonitions-to-directives": "^1.0.5",
-    "sass": "^1.77.8",
     "stylus": "^0.63.0"
   },
   "pnpm": {
@@ -70,5 +72,5 @@
       "sharp": "^0.33.0"
     }
   },
-  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
+  "packageManager": "pnpm@9.14.4"
 }
