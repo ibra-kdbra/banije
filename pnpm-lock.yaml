@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  vite-imagetools: ^6.2.7
-  sharp: ^0.33.0
-
 importers:
 
   .:
@@ -118,7 +114,7 @@ importers:
         specifier: ^2.13.1
         version: 2.14.0
       sharp:
-        specifier: ^0.33.0
+        specifier: ^0.33.5
         version: 0.33.5
       stylus:
         specifier: ^0.63.0
@@ -137,7 +133,7 @@ importers:
         version: 5.0.0
     devDependencies:
       '@astrojs/ts-plugin':
-        specifier: ^1.10.2
+        specifier: ^1.10.4
         version: 1.10.4
       '@biomejs/biome':
         specifier: 1.8.3

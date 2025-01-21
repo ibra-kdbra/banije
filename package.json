@@ -58,29 +58,14 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "^1.10.2",
+    "@astrojs/ts-plugin": "^1.10.4",
     "@biomejs/biome": "1.8.3",
-    "@iconify-json/fa6-brands": "^1.1.22",
-    "@iconify-json/fa6-regular": "^1.1.22",
-    "@iconify-json/fa6-solid": "^1.1.24",
-    "@iconify-json/material-symbols": "^1.1.89",
-    "@iconify/svelte": "^4.0.2",
     "@rollup/plugin-yaml": "^4.1.2",
-    "@tailwindcss/typography": "^0.5.15",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.13.0",
-    "photoswipe": "^5.4.4",
     "postcss-import": "^16.1.0",
-    "postcss-nesting": "^13.0.1",
-    "remark-github-admonitions-to-directives": "^1.0.5",
-    "stylus": "^0.63.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite-imagetools": "^6.2.7",
-      "sharp": "^0.33.0"
-    }
+    "postcss-nesting": "^13.0.1"
   },
   "packageManager": "pnpm@9.14.4"
 }
