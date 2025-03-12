@@ -8,11 +8,13 @@ category: 'Guides'
 draft: false 
 ---
 
-## 🛠️ Web Development Tools
+# 🛠️ Web Development Tools
 
-As a web application engineer, I always look for tools that can help me improve my skills and productivity.
+As a web application engineer, I continually seek tools that enhance my skills and productivity. Below is an updated list of essential tools, incorporating recent advancements from 2024 and 2025.
 
 ---
+
+## Existing Tools
 
 ### 🛠️ Wappalyzer
 
@@ -114,7 +116,7 @@ Identify fonts on a webpage.
 
 ---
 
-### 🌍 What Runs
+### 🌍 WhatRuns
 
 :::important[Purpose]
 Discover technologies used by websites.
@@ -238,7 +240,47 @@ Git repository hosting.
 
 ---
 
-## Wrapping Up
+## New Tools Introduced in 2024-2025
 
-These tools bridge creativity, productivity, and technical development, ensuring that you can streamline both front-end and back-end development. Whether you're debugging, designing, or collaborating, these tools will boost your workflow. Explore them and enhance your web development skills! 🌟
-<!--  -->
+---
+
+### 🤖 OpenAI Responses API
+
+:::important[Purpose]
+Develop advanced AI agents.
+:::
+
+**Why Use It**: Enables developers to build AI agents capable of performing complex tasks without direct human intervention, enhancing automation and efficiency in applications. :contentReference[oaicite:0]{index=0}
+
+---
+
+### 🛠️ Project IDX
+
+:::important[Purpose]
+AI-enabled browser-based development environment.
+:::
+
+**Why Use It**: An online IDE developed by Google, based on Visual Studio Code, featuring a built-in generative AI assistant powered by Gemini, and iOS and Android emulators, streamlining the development process. :contentReference[oaicite:1]{index=1}
+
+---
+
+### 🌐 OpenSilver Framework
+
+:::important[Purpose]
+Develop rich internet applications using C# and XAML.
+:::
+
+**Why Use It**: An open-source framework that serves as a successor to Microsoft Silverlight, allowing developers to migrate existing Silverlight applications to the web without rewriting codebases, utilizing modern web standards like HTML5, CSS3, and WebAssembly. :contentReference[oaicite:2]{index=2}
+
+---
+
+### 🦀 Tauri
+
+:::important[Purpose]
+Create cross-platform desktop and mobile applications.
+:::
+
+**Why Use It**: An open-source framework that enables the development of lightweight, secure
+::contentReference[oaicite:3]{index=3}
+ 
+

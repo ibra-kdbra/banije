@@ -129,6 +129,8 @@ git config --global user.email "<youremail@example.com>"
 
 ---
 
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/mJ-qvsxPHpY" title="Git Tutorial For Dummies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen allowfullscreen></iframe>
+
 ## 11. Git Clone
 
 Clone an existing repository to your local machine.
@@ -396,3 +398,6 @@ git switch <branch>
 :::
 
 ---
+
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/K6Q31YkorUE" title="YouTube video player" frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen allowfullscreen></iframe>
