@@ -8,7 +8,7 @@ category: 'Advanced Programming'
 draft: false
 ---
 
-## Cpp against C - A Senior Developer’s Comparison
+## Cpp against C - A Humble Programmer Comparison
 
 C and C++ are both revered in the software development world for their power, efficiency, and deep control over system resources. However, each language brings its own set of strengths and weaknesses, making them more or less suitable depending on the use case. This comparison is crafted to reflect a nuanced, modern engineering perspective, providing insights into their capabilities for both legacy and contemporary development.
 
