@@ -1,5 +1,4 @@
 import { getCollection } from "astro:content";
-import type { BlogPostData } from "@/types/config";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 
@@ -68,9 +67,13 @@ export async function getCategoryList(): Promise<Category[]> {
       count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
       return;
     }
-    count[post.data.category] = count[post.data.category]
-      ? count[post.data.category] + 1
-      : 1;
+
+    const categoryName =
+      typeof post.data.category === "string"
+        ? post.data.category.trim()
+        : String(post.data.category).trim();
+
+    count[categoryName] = count[categoryName] ? count[categoryName] + 1 : 1;
   });
 
   const lst = Object.keys(count).sort((a, b) => {
