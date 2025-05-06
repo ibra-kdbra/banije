@@ -26,9 +26,9 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     tailwind(
-        {
-          nesting: true,
-        }
+      {
+        nesting: true,
+      }
     ),
     swup({
       theme: false,
