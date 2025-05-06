@@ -1,5 +1,6 @@
 ---
 import path from "node:path";
+import type { CollectionEntry } from "astro:content"
 import PostMetadata from "./PostMeta.astro";
 import ImageWrapper from "./misc/ImageWrapper.astro";
 import { Icon } from "astro-icon/components";
@@ -9,7 +10,7 @@ import { getDir } from "../utils/url-utils";
 
 interface Props {
   class?: string;
-  entry: any;
+  entry: CollectionEntry<"posts">;
   title: string;
   url: string;
   published: Date;
