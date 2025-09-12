@@ -2,7 +2,7 @@
 title: Basic Algorithm AI vs. Plain Model AI - A Comprehensive Comparison
 published: 2024-11-23
 description: 'In-depth comparison between traditional basic algorithmic AI and deep learning models, covering strengths, use cases, and differences.'
-image: './superior.jpg'
+image: '/posts/AI_vs_knowledge/superior.jpg'
 tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
 category: 'Artificial Intelligence'
 draft: false
