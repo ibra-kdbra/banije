@@ -4,7 +4,7 @@ published: 2021-08-23
 description: 'Learn the fundamentals of C++ programming language, its advantages and drawbacks.'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: 'Tutorials'
+category: Tutorial
 draft: false
 ---
 

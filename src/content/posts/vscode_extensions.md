@@ -4,7 +4,7 @@ published: 2024-01-17
 description: 'An extensive guide to VS Code extensions grouped by categories to enhance productivity and skill development.'
 image: ''
 tags: [VSCode, Extensions, Productivity, Development]
-category: 'Guides'
+category: Guide
 draft: false
 ---
 
@@ -353,4 +353,3 @@ Additional tools to make your development workflow smoother.
   Enhances markdown editing by providing features like preview, table of contents, and automatic formatting.
 
 ---
-

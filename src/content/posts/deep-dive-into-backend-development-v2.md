@@ -74,8 +74,10 @@ Two-Phase Commit is synchronous and unsuitable for microservices. The **Saga Pat
 **Implementation Styles:**
 
 :::note{title="Saga Implementation Approaches"}
-- **Choreography:** Services publish/subscribe to events with no central coordinator
-- **Orchestration:** Central orchestrator manages saga state and compensating transactions
+
+* **Choreography:** Services publish/subscribe to events with no central coordinator
+* **Orchestration:** Central orchestrator manages saga state and compensating transactions
+
 :::
 
 ### 2.3 Event Sourcing and CQRS
@@ -85,6 +87,7 @@ These patterns build highly scalable and auditable systems.
 * **Event Sourcing:** Store immutable events instead of current state. Current state is derived by replaying events.
 
 :::note{title="Event Sourcing Example"}
+
 ```json
 // Instead of storing balance: 80
 // Store event sequence:
@@ -95,14 +98,17 @@ These patterns build highly scalable and auditable systems.
 ]
 // Current balance = replay events
 ```
+
 :::
 
 * **CQRS (Command Query Responsibility Segregation):** Separates the write model from the read model.
 
 :::tip{title="CQRS Benefits"}
-- Different models optimized for writes vs reads
-- Independent scaling of command and query sides
-- Better domain modeling with separate contexts
+
+* Different models optimized for writes vs reads
+* Independent scaling of command and query sides
+* Better domain modeling with separate contexts
+
 :::
 
 ### 2.4 Database Internals for the Backend Engineer
@@ -110,25 +116,31 @@ These patterns build highly scalable and auditable systems.
 Understanding storage engines and replication strategies is crucial for performance and reliability.
 
 :::note{title="MySQL Storage Engines"}
-- **InnoDB:** Transactional, ACID-compliant, row-level locking for OLTP workloads
-- **MyISAM:** Fast for reads, table-level locking, no transactions (deprecated for new apps)
+
+* **InnoDB:** Transactional, ACID-compliant, row-level locking for OLTP workloads
+* **MyISAM:** Fast for reads, table-level locking, no transactions (deprecated for new apps)
+
 :::
 
 **Replication Strategies:**
 
 :::tip{title="Replication Models"}
-- **Leader-Follower:** All writes to leader, reads from replicas (most common)
-- **Multi-Leader:** Multiple nodes accept writes, replicate conflicts must be resolved
-- **Leaderless (Cassandra style):** Writes to multiple nodes simultaneously, quorum reads
+
+* **Leader-Follower:** All writes to leader, reads from replicas (most common)
+* **Multi-Leader:** Multiple nodes accept writes, replicate conflicts must be resolved
+* **Leaderless (Cassandra style):** Writes to multiple nodes simultaneously, quorum reads
+
 :::
 
 **Transaction Isolation Levels (SQL):**
 
 :::note{title="SQL Isolation Levels"}
+
 1. **Read Uncommitted:** Can read uncommitted changes (dirty reads)
 2. **Read Committed:** Only reads committed changes (non-repeatable reads possible)
 3. **Repeatable Read:** Row value consistent within transaction (phantom reads possible)
 4. **Serializable:** Full serial execution (highest consistency, lowest performance)
+
 :::
 
 ## 3.0 Resilient System Design Patterns
@@ -140,9 +152,11 @@ Resiliency is the ability to recover from failures and continue functioning; han
 The Circuit Breaker monitors failures and prevents cascading failures in distributed systems.
 
 :::note{title="Circuit Breaker States"}
-- **Closed:** Normal operation, requests flow through, monitoring failures
-- **Open:** Fail fast for downstream issues, timeout before retrying
-- **Half-Open:** Test downstream recovery with single probe request
+
+* **Closed:** Normal operation, requests flow through, monitoring failures
+* **Open:** Fail fast for downstream issues, timeout before retrying
+* **Half-Open:** Test downstream recovery with single probe request
+
 :::
 
 ### 3.2 The Bulkhead Pattern
@@ -158,9 +172,11 @@ Use separate thread/connection pools for each downstream service. A slow Service
 Essential for handling transient failures in distributed systems.
 
 :::caution{title="Retry Best Practices"}
-- **Timeouts:** Aggressive timeouts prevent resource exhaustion
-- **Exponential Backoff:** Increase retry intervals (1s, 2s, 4s, 8s)
-- **Jitter:** Add randomness to prevent thundering herd problems
+
+* **Timeouts:** Aggressive timeouts prevent resource exhaustion
+* **Exponential Backoff:** Increase retry intervals (1s, 2s, 4s, 8s)
+* **Jitter:** Add randomness to prevent thundering herd problems
+
 :::
 
 ### 3.4 Rate Limiting and Load Shedding
@@ -168,9 +184,11 @@ Essential for handling transient failures in distributed systems.
 Protect services from overload and implement graceful degradation.
 
 :::note{title="Rate Limiting Strategies"}
-- **Token Bucket:** Tokens accumulate for requests, removed on use
-- **Leaky Bucket:** Requests processed at fixed rate, excess discarded
-- **Load Shedding:** Reject low-priority requests under extreme load
+
+* **Token Bucket:** Tokens accumulate for requests, removed on use
+* **Leaky Bucket:** Requests processed at fixed rate, excess discarded
+* **Load Shedding:** Reject low-priority requests under extreme load
+
 :::
 
 ## 4.0 Advanced Asynchronous Communication
@@ -182,8 +200,10 @@ Asynchronous patterns are fundamental to resilient, loosely coupled distributed 
 Different approaches to messaging with distinct trade-offs.
 
 :::tip{title="Message Broker Characteristics"}
-- **RabbitMQ:** Smart routing, work queuing, message broker model
-- **Apache Kafka:** Event streaming, persistent logs, multiple consumers
+
+* **RabbitMQ:** Smart routing, work queuing, message broker model
+* **Apache Kafka:** Event streaming, persistent logs, multiple consumers
+
 :::
 
 ### 4.2 Idempotent Consumers
@@ -191,6 +211,7 @@ Different approaches to messaging with distinct trade-offs.
 Critical for handling "at-least-once" delivery in messaging systems.
 
 :::note{title="Idempotency Strategy"}
+
 ```pseudocode
 function processMessage(message) {
   if (processedMessages.contains(message.id)) {
@@ -204,6 +225,7 @@ function processMessage(message) {
   processedMessages.add(message.id);
 }
 ```
+
 :::
 
 ### 4.3 The Transactional Outbox Pattern
@@ -211,10 +233,12 @@ function processMessage(message) {
 Solve atomic database updates and event publishing in event-driven systems.
 
 :::tip{title="Transactional Outbox Flow"}
+
 1. Update business entity AND insert event into outbox in single local transaction
 2. Message relay asynchronously publishes events and marks as sent
 3. Guarantees atomicity without distributed transactions
 4. Provides "at-least-once" delivery semantics
+
 :::
 
 ## 5.0 Performance Engineering at Scale
@@ -226,10 +250,12 @@ Systematic discipline of identifying and eliminating bottlenecks.
 Advanced caching strategies beyond basic cache-aside.
 
 :::note{title="Caching Pattern Comparison"}
-- **Cache-Aside:** App code manages cache, lazy loading
-- **Read-Through:** Cache handles data loading from DB
-- **Write-Through:** Cache updates synchronously update DB
-- **Write-Back:** Cache updates asynchronously flush to DB
+
+* **Cache-Aside:** App code manages cache, lazy loading
+* **Read-Through:** Cache handles data loading from DB
+* **Write-Through:** Cache updates synchronously update DB
+* **Write-Back:** Cache updates asynchronously flush to DB
+
 :::
 
 **Thundering Herd Mitigation:**
@@ -243,8 +269,10 @@ When cached item expires, thousands of requests simultaneously miss cache and ov
 Fundamental concepts for performance optimization.
 
 :::tip{title="Workload Matching"}
-- **I/O-Bound Workloads:** Asynchronous models (Node.js, asyncio) handle many concurrent requests
-- **CPU-Bound Workloads:** Parallelism (Go, Java) leverages multiple cores
+
+* **I/O-Bound Workloads:** Asynchronous models (Node.js, asyncio) handle many concurrent requests
+* **CPU-Bound Workloads:** Parallelism (Go, Java) leverages multiple cores
+
 :::
 
 ### 5.3 Profiling and Performance Tuning
@@ -253,9 +281,11 @@ You cannot optimize what you cannot measure.
 
 :::note{title="Performance Profiling"}
 Use profilers to generate flame graphs identifying:
-- CPU hotspots in code execution paths
-- Memory allocation patterns and leaks
-- I/O bottlenecks and waiting time
+
+* CPU hotspots in code execution paths
+* Memory allocation patterns and leaks
+* I/O bottlenecks and waiting time
+
 :::
 
 ## 6.0 Advanced API and Security Architectures
@@ -267,11 +297,13 @@ Infrastructure-level solutions for managing complexity in distributed environmen
 Single entry point managing communication between clients and services.
 
 :::tip{title="API Gateway Responsibilities"}
-- **Routing:** Direct requests to appropriate microservices
-- **Authentication/Authorization:** Verify credentials at the edge
-- **Rate Limiting:** Enforce usage policies and throttling
-- **Request Transformation:** Adapt requests for downstream services
-- **Observability:** Centralized logging and monitoring
+
+* **Routing:** Direct requests to appropriate microservices
+* **Authentication/Authorization:** Verify credentials at the edge
+* **Rate Limiting:** Enforce usage policies and throttling
+* **Request Transformation:** Adapt requests for downstream services
+* **Observability:** Centralized logging and monitoring
+
 :::
 
 ### 6.2 Service Mesh
@@ -279,9 +311,11 @@ Single entry point managing communication between clients and services.
 Infrastructure layer for secure, fast, and reliable service-to-service communication.
 
 :::note{title="Service Mesh Components"}
-- **Sidecar Proxy:** (Envoy) handles all inbound/outbound traffic per service
-- **Control Plane:** (Istio, Linkerd) configures all sidecar proxies
-- **Features:** mTLS, traffic management, distributed tracing, observability
+
+* **Sidecar Proxy:** (Envoy) handles all inbound/outbound traffic per service
+* **Control Plane:** (Istio, Linkerd) configures all sidecar proxies
+* **Features:** mTLS, traffic management, distributed tracing, observability
+
 :::
 
 ### 6.3 Zero Trust Security
@@ -289,9 +323,11 @@ Infrastructure layer for secure, fast, and reliable service-to-service communica
 "Never trust, always verify" security model for distributed systems.
 
 :::caution{title="Zero Trust Principles"}
-- **Identity-Based Authentication:** Verify every request regardless of origin
-- **Least Privilege Access:** Grant minimum necessary permissions
-- **Assume Breach:** Design expecting internal compromise
+
+* **Identity-Based Authentication:** Verify every request regardless of origin
+* **Least Privilege Access:** Grant minimum necessary permissions
+* **Assume Breach:** Design expecting internal compromise
+
 :::
 
 ### 6.4 JWTs (In-Depth): Risks and Mitigation
@@ -299,10 +335,12 @@ Infrastructure layer for secure, fast, and reliable service-to-service communica
 Understanding JWT vulnerabilities and secure implementation.
 
 :::caution{title="JWT Security Issues"}
-- **Algorithm Confusion Attacks:** Trick server into weak algorithms
-  - *Mitigation:* Configure library to accept only strong algorithms (RS256)
-- **Token Revocation:** Stateless tokens can't be invalidated
-  - *Mitigation:* Maintain revocation denylist in fast cache
+
+* **Algorithm Confusion Attacks:** Trick server into weak algorithms
+  * *Mitigation:* Configure library to accept only strong algorithms (RS256)
+* **Token Revocation:** Stateless tokens can't be invalidated
+  * *Mitigation:* Maintain revocation denylist in fast cache
+
 :::
 
 ## 7.0 Conclusion: The Principled Engineer

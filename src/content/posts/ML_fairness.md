@@ -4,11 +4,9 @@ published: 2025-06-12
 description: "An explanation of why the three most prominent fairness metrics in machine learning are mutually incompatible, and a look at a causal approach to building fairer models."
 image: ''
 tags: [AI, Machine Learning, Fairness, Ethics]
-category: 'AI'
+category: Engineering
 draft: false
 ---
-
-# The AI Fairness Dilemma: Why We Can't Have It All
 
 Machine learning models are increasingly making critical decisions about our lives, from loan applications to job recommendations and even crime prediction. But there's a huge problem: these models learn from historical data, and that data is often packed with societal biases. An AI trained on biased data doesn't just learn these biases; it can amplify them.
 
@@ -36,15 +34,15 @@ The paper's key contribution is explaining this impossibility using **causal dia
 
 The causal relationship between `A`, `Y`, and `Ŷ` must be structured differently for each metric to hold:
 
-*   For **Demographic Parity** (`Ŷ` is independent of `A`), the path between the prediction and the sensitive attribute is naturally blocked when `Y` is a "collider".
+* For **Demographic Parity** (`Ŷ` is independent of `A`), the path between the prediction and the sensitive attribute is naturally blocked when `Y` is a "collider".
     :::note[Causal Diagram for Demographic Parity]
     `A -> Y <- Ŷ`
     :::
-*   For **Equalized Odds** (`Ŷ` is independent of `A` given `Y`), observing the true outcome `Y` blocks the path between `A` and `Ŷ`.
+* For **Equalized Odds** (`Ŷ` is independent of `A` given `Y`), observing the true outcome `Y` blocks the path between `A` and `Ŷ`.
     :::note[Causal Diagram for Equalized Odds]
     `A -> Y -> Ŷ`
     :::
-*   For **Predictive Parity** (`Y` is independent of `A` given `Ŷ`), observing the prediction `Ŷ` blocks the path.
+* For **Predictive Parity** (`Y` is independent of `A` given `Ŷ`), observing the prediction `Ŷ` blocks the path.
     :::note[Causal Diagram for Predictive Parity]
     `A -> Ŷ -> Y`
     :::
