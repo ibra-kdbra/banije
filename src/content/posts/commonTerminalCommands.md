@@ -292,7 +292,7 @@ history
 Run the 100th command in the history.
 
 ## Provided Guide for all the commands
+
 :::important
 :::
 I did add all the terminal commands that is known in this [TerCli](https://tercli.netlify.app/)
-
