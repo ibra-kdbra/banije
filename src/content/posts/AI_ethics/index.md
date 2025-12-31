@@ -4,7 +4,7 @@ published: 2025-07-10
 description: 'Deep dive in artificial intelligence ethics and morals.'
 image: '/images/posts/ethics-of-ai.png'
 tags: [AI, Machine Learning, Neural Networks, Design, Guide]
-category: 'Artificial Intelligence'
+category: Artificial Intelligence
 draft: false
 ---
 

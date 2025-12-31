@@ -3,15 +3,14 @@ title: Common Terminal Commands
 published: 2022-09-20
 description: 'Learn key terminal commands and their usage.'
 tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: 'Guides'
+category: Guide
 draft: false 
 ---
 
-# Common Terminal Commands
 
-:::note[Overview]
+## Overview
+
 This guide provides a comprehensive list of essential terminal commands, organized by categories like navigation, file management, and more. Perfect for beginners and advanced users alike.
-:::
 
 ## Key Commands & Navigation
 

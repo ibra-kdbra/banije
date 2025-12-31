@@ -3,12 +3,12 @@ title: Review of Web Development Tools
 published: 2024-01-08
 description: 'Discover browser extensions, tools that streamline web development, from front-end to back-end tools.'
 image: ''
-tags: [Web Development, Front-End, Back-End, Full-Stack, Tools, Extensions]
-category: 'Guides'
+tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
+category: Guide
 draft: false 
 ---
 
-# 🛠️ Web Development Tools
+## 🛠️ Web Development Tools
 
 As a web application engineer, I continually seek tools that enhance my skills and productivity. Below is an updated list of essential tools, incorporating recent advancements from 2024 and 2025.
 
@@ -282,5 +282,3 @@ Create cross-platform desktop and mobile applications.
 
 **Why Use It**: An open-source framework that enables the development of lightweight, secure
 ::contentReference[oaicite:3]{index=3}
- 
-

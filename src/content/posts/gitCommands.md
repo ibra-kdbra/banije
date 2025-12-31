@@ -4,7 +4,7 @@ published: 2024-02-18
 description: 'Learn about essential Git commands with examples to streamline your workflow.'
 image: ''
 tags: [Git, Commands, Examples, Guide]
-category: 'Version Control'
+category: Version Control
 draft: false
 ---
 
