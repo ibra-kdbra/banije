@@ -1,6 +1,7 @@
 # build output
 dist/
-
+rules/
+public/images/diagrams
 # generated types
 .astro/
 
