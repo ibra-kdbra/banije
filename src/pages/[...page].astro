@@ -1,18 +1,38 @@
 ---
-import type { GetStaticPaths } from "astro";
 import PostPage from "../components/PostPage.astro";
 import Pagination from "../components/control/Pagination.astro";
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@features/content";
+export const prerender = false;
 
-export const getStaticPaths = (async ({ paginate }) => {
-	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
-}) satisfies GetStaticPaths;
-// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
+const allBlogPosts = await getSortedPosts();
+const total = allBlogPosts.length;
+const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
+const param = Astro.params.page;
+const parsed = param ? Number.parseInt(param) : 1;
+const currentPage = Number.isNaN(parsed) ? 1 : parsed;
+const safePage = Math.min(Math.max(currentPage, 1), lastPage);
 
-const { page } = Astro.props;
+const start = (safePage - 1) * PAGE_SIZE;
+const end = Math.min(start + PAGE_SIZE, total);
+const data = allBlogPosts.slice(start, end);
+
+const page = {
+	data,
+	start,
+	end,
+	size: PAGE_SIZE,
+	total,
+	currentPage: safePage,
+	lastPage,
+	url: {
+		current: safePage === 1 ? "/" : `/${safePage}/`,
+		prev:
+			safePage > 1 ? (safePage - 1 === 1 ? "/" : `/${safePage - 1}/`) : undefined,
+		next: safePage < lastPage ? `/${safePage + 1}/` : undefined,
+	},
+};
 
 const len = page.data.length;
 ---

@@ -14,15 +14,15 @@ import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "@domain/date";
 
-export async function getStaticPaths() {
-	const blogEntries = await getSortedPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
-}
+export const prerender = false;
 
-const { entry } = Astro.props;
+const blogEntries = await getSortedPosts();
+const { slug } = Astro.params;
+const entry = blogEntries.find((item) => item.slug === slug);
+
+if (!entry) {
+    return Astro.redirect("/404");
+}
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();

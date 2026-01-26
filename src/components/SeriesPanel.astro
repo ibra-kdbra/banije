@@ -10,6 +10,13 @@ interface Props {
 }
 
 const { seriesList } = Astro.props;
+
+const toAnchor = (value: string) =>
+	value
+		.toLowerCase()
+		.trim()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-+|-+$/g, "");
 ---
 
 <div class="card-base px-8 py-6">
@@ -18,7 +25,7 @@ const { seriesList } = Astro.props;
 	)}
 
 	{seriesList.map((series) => (
-		<div class="mb-8 last:mb-0">
+		<div id={`series-${toAnchor(series.name)}`} class="mb-8 last:mb-0 scroll-mt-24">
 			<div class="flex items-center justify-between gap-3 mb-3">
 				<div class="font-bold text-xl text-90 break-words">
 					{series.name}

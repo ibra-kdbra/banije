@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+const languages = [
+	{ value: "en", label: "EN" },
+	{ value: "es", label: "ES" },
+	{ value: "ja", label: "JA" },
+	{ value: "ko", label: "KO" },
+	{ value: "tr", label: "TR" },
+	{ value: "zh_CN", label: "简体" },
+	{ value: "zh_TW", label: "繁體" },
+];
+---
+
+<div class="relative">
+	<select
+		id="lang-switch"
+		aria-label="Language"
+		class="btn-plain scale-animation rounded-lg h-11 min-w-[4.5rem] px-8 font-semibold text-sm appearance-none bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10 text-black/50 dark:text-white/70 text-center"
+	>
+		{languages.map((lang) => (
+			<option value={lang.value}>{lang.label}</option>
+		))}
+	</select>
+	<Icon
+		name="material-symbols:expand-more-rounded"
+		class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[1.25rem] text-black/40 dark:text-white/40"
+	/>
+</div>
+
+<script>
+	const normalize = (value) => value.replace("-", "_");
+	const getCookie = (name) => {
+		const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+		return match ? match[2] : null;
+	};
+	const select = document.getElementById("lang-switch");
+	if (select) {
+		const cookieLang = getCookie("lang");
+		const current = normalize(cookieLang || document.documentElement.lang || "en");
+		select.value = current;
+		select.addEventListener("change", (event) => {
+			const target = event.target;
+			if (!(target instanceof HTMLSelectElement)) return;
+			const lang = target.value;
+			document.cookie = `lang=${lang}; path=/; max-age=31536000`;
+			document.documentElement.lang = lang.replace("_", "-");
+			window.location.reload();
+		});
+	}
+</script>

@@ -35,6 +35,9 @@ export function getTranslation(lang: string): Translation {
 }
 
 export function i18n(key: I18nKey): string {
-	const lang = siteConfig.lang || "en";
-	return getTranslation(lang)[key];
+	const globalLang = (globalThis as { __lang?: string }).__lang;
+	const docLang =
+		typeof document !== "undefined" ? document.documentElement.lang : undefined;
+	const resolved = globalLang || docLang || siteConfig.lang || "en";
+	return getTranslation(resolved)[key];
 }
