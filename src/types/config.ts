@@ -44,7 +44,8 @@ export type Favicon = {
 export enum LinkPreset {
 	Home = 0,
 	Archive = 1,
-	About = 2,
+	Series = 2,
+	About = 3,
 }
 
 export type NavBarLink = {
@@ -88,6 +89,10 @@ export type BlogPostData = {
 	draft?: boolean;
 	image?: string;
 	category?: string;
+	series?: {
+		name: string;
+		order: number;
+	};
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

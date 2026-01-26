@@ -1,9 +1,16 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@domain/url";
 
+let cachedSortedPosts: CollectionEntry<"posts">[] | null = null;
+let cachedIsProd: boolean | null = null;
+
 export async function getSortedPosts() {
+	if (cachedSortedPosts && cachedIsProd === import.meta.env.PROD) {
+		return cachedSortedPosts;
+	}
+
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
@@ -23,7 +30,9 @@ export async function getSortedPosts() {
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
 	}
 
-	return sorted;
+	cachedSortedPosts = sorted;
+	cachedIsProd = import.meta.env.PROD;
+	return cachedSortedPosts;
 }
 
 export type Tag = {
@@ -32,9 +41,7 @@ export type Tag = {
 };
 
 export async function getTagList(): Promise<Tag[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts = await getSortedPosts();
 
 	const countMap: { [key: string]: number } = {};
 	allBlogPosts.map((post: { data: { tags: string[] } }) => {
@@ -58,10 +65,14 @@ export type Category = {
 	url: string;
 };
 
+export type SeriesItem = {
+	name: string;
+	count: number;
+	posts: CollectionEntry<"posts">[];
+};
+
 export async function getCategoryList(): Promise<Category[]> {
-	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
-		return import.meta.env.PROD ? data.draft !== true : true;
-	});
+	const allBlogPosts = await getSortedPosts();
 	const count: { [key: string]: number } = {};
 	allBlogPosts.map((post: { data: { category: string | null } }) => {
 		if (!post.data.category) {
@@ -91,4 +102,34 @@ export async function getCategoryList(): Promise<Category[]> {
 		});
 	}
 	return ret;
+}
+
+export async function getSeriesList(): Promise<SeriesItem[]> {
+	const allBlogPosts = await getSortedPosts();
+	const seriesMap: Record<string, CollectionEntry<"posts">[]> = {};
+
+	for (const post of allBlogPosts) {
+		const seriesName = post.data.series?.name?.trim();
+		if (!seriesName) continue;
+		if (!seriesMap[seriesName]) seriesMap[seriesName] = [];
+		seriesMap[seriesName].push(post);
+	}
+
+	const seriesList = Object.keys(seriesMap)
+		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+		.map((name) => {
+			const posts = seriesMap[name].sort((a, b) => {
+				const orderA = a.data.series?.order ?? Number.MAX_SAFE_INTEGER;
+				const orderB = b.data.series?.order ?? Number.MAX_SAFE_INTEGER;
+				if (orderA !== orderB) return orderA - orderB;
+				return b.data.published.getTime() - a.data.published.getTime();
+			});
+			return {
+				name,
+				count: posts.length,
+				posts,
+			};
+		});
+
+	return seriesList;
 }

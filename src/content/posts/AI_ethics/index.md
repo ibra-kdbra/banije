@@ -6,6 +6,9 @@ image: '/images/posts/ethics-of-ai.png'
 tags: [AI, Machine Learning, Neural Networks, Design, Guide]
 category: Artificial Intelligence
 draft: false
+series:
+  name: "AI Foundations"
+  order: 2
 ---
 
 ## 🌐 AI Ethics -- Principles, Challenges & The Future

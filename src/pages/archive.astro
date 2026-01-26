@@ -1,22 +1,14 @@
 ---
-import ArchivePanel from "@components/ArchivePanel.astro";
+import ArchivePanel from "@components/ArchivePanel.svelte";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@features/content";
 
 const sortedPosts = await getSortedPosts();
-const tags = Astro.url.searchParams.getAll("tag");
-const categories = Astro.url.searchParams.getAll("category");
-const uncategorized = Astro.url.searchParams.get("uncategorized") === "true";
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel
-        sortedPosts={sortedPosts}
-        tags={tags}
-        categories={categories}
-        uncategorized={uncategorized}
-    />
+    <ArchivePanel sortedPosts={sortedPosts} client:only="svelte" />
 </MainGridLayout>
 

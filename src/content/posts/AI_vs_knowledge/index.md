@@ -6,6 +6,9 @@ image: '/images/posts/superior.jpg'
 tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
 category: Artificial Intelligence
 draft: false
+series:
+  name: "AI Foundations"
+  order: 1
 ---
 
 ## Basic Algorithm AI vs. Plain Model AI - A Deep Dive Comparison

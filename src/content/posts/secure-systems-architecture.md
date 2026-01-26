@@ -6,6 +6,9 @@ image: ''
 tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
 category: Guide
 draft: false
+series:
+  name: "Security Architecture"
+  order: 1
 ---
 
 ## A Quick Look Inside

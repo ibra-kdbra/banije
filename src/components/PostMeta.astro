@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { formatDateToYYYYMMDD } from "@domain/date";
-import { getCategoryUrl, getTagUrl } from "@domain/url";
+import { getCategoryUrl, getTagUrl, url } from "@domain/url";
 
 interface Props {
 	class: string;
@@ -11,6 +11,7 @@ interface Props {
 	updated?: Date;
 	tags: string[];
 	category: string | null;
+    seriesName?: string;
 	hideTagsForMobile?: boolean;
 	hideUpdateDate?: boolean;
 }
@@ -19,6 +20,7 @@ const {
 	updated,
 	tags,
 	category,
+    seriesName,
 	hideTagsForMobile = false,
 	hideUpdateDate = false,
 } = Astro.props;
@@ -79,4 +81,22 @@ const className = Astro.props.class;
             {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
         </div>
     </div>
+
+    <!-- series -->
+    {seriesName && (
+        <div class="flex items-center">
+            <div class="meta-icon">
+                <Icon name="material-symbols:collections-bookmark-outline" class="text-xl"></Icon>
+            </div>
+            <div class="flex flex-row flex-nowrap items-center">
+                <a
+                    href={url("/series/")}
+                    aria-label={`View series ${seriesName}`}
+                    class="link-lg transition text-50 text-sm font-medium hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap"
+                >
+                    {seriesName}
+                </a>
+            </div>
+        </div>
+    )}
 </div>

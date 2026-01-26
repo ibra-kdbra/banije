@@ -10,6 +10,7 @@ interface Props {
 	loading?: "lazy" | "eager";
 	decoding?: "sync" | "async" | "auto";
 	fetchPriority?: "high" | "low" | "auto";
+	sizes?: string;
 }
 import { Image } from "astro:assets";
 import { url } from "@domain/url";
@@ -24,6 +25,7 @@ const {
 	loading = "lazy",
 	decoding = "async",
 	fetchPriority = "auto",
+	sizes,
 } = props;
 const className = Astro.props.class;
 
@@ -71,6 +73,7 @@ const imageStyle = `object-position: ${position}`;
 			loading={loading}
 			decoding={decoding}
 			fetchpriority={fetchPriority}
+			sizes={sizes}
 		/>
 	)}
 	{!isLocal && (
@@ -82,6 +85,7 @@ const imageStyle = `object-position: ${position}`;
 			loading={loading}
 			decoding={decoding}
 			fetchpriority={fetchPriority}
+			sizes={sizes}
 		/>
 	)}
 </div>

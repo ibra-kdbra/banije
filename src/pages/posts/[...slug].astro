@@ -89,6 +89,7 @@ const jsonLd = {
                         updated={entry.data.updated}
                         tags={entry.data.tags}
                         category={entry.data.category}
+                    seriesName={entry.data.series?.name}
                 ></PostMetadata>
                 {!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
             </div>
@@ -103,6 +104,7 @@ const jsonLd = {
                         class="mb-8 rounded-xl banner-container onload-animation"
                         loading="eager"
                         fetchPriority="high"
+                        sizes="100vw"
                 />
             }
 

@@ -6,6 +6,9 @@ image: '/images/posts/architect-ai.png'
 tags: [AI, Architecture, Future-Tech]
 category: Engineering
 draft: false 
+series:
+    name: "AI Foundations"
+    order: 4
 ---
 
 ## "From Co-Pilot to Co-Founder"
