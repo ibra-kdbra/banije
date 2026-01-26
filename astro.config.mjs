@@ -57,6 +57,9 @@ export default defineConfig({
 		}),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			languageAliases: {
+				pseudocode: "text",
+			},
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
