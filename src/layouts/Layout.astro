@@ -367,7 +367,11 @@ function init() {
 	// disableAnimation()()		// TODO
 	loadTheme();
 	loadHue();
-	initCustomScrollbar();
+	if ("requestIdleCallback" in window) {
+		window.requestIdleCallback(() => initCustomScrollbar());
+	} else {
+		setTimeout(() => initCustomScrollbar(), 0);
+	}
 	showBanner();
 }
 
