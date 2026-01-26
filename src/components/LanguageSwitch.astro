@@ -10,42 +10,76 @@ const languages = [
 	{ value: "zh_CN", label: "简体" },
 	{ value: "zh_TW", label: "繁體" },
 ];
+
+const currentLang = Astro.cookies.get("lang")?.value || "en";
+const currentLabel = languages.find((l) => l.value === currentLang)?.label || "EN";
 ---
 
-<div class="relative">
-	<select
-		id="lang-switch"
-		aria-label="Language"
-		class="btn-plain scale-animation rounded-lg h-11 min-w-[4.5rem] px-8 font-semibold text-sm appearance-none bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10 text-black/50 dark:text-white/70 text-center"
+<div class="relative group">
+	<button
+		id="lang-switch-btn"
+		aria-label="Change Language"
+		aria-haspopup="true"
+		aria-expanded="false"
+		class="btn-plain scale-animation rounded-lg h-11 min-w-[4.5rem] px-3 font-bold text-sm flex items-center justify-between gap-1
+			bg-black/[0.04] hover:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10
+			text-black/75 dark:text-white/75 transition-colors"
+	>
+		<span class="whitespace-nowrap">{currentLabel}</span>
+		<Icon name="material-symbols:expand-more-rounded" class="text-[1.25rem] opacity-75" />
+	</button>
+
+	<div
+		id="lang-dropdown"
+		class="absolute right-0 top-12 min-w-[8rem] p-1.5 rounded-xl border border-black/5 dark:border-white/5
+			bg-[var(--float-panel-bg)] shadow-xl invisible opacity-0 translate-y-2
+			transition-all duration-200 z-50 origin-top-right backdrop-blur-md"
 	>
 		{languages.map((lang) => (
-			<option value={lang.value}>{lang.label}</option>
+			<button
+				onclick={`changeLang('${lang.value}')`}
+				class={`w-full text-left px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
+					${currentLang === lang.value 
+						? 'bg-[var(--primary)] text-white' 
+						: 'hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-black/75 dark:text-white/75'}`}
+			>
+				{lang.label}
+			</button>
 		))}
-	</select>
-	<Icon
-		name="material-symbols:expand-more-rounded"
-		class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[1.25rem] text-black/40 dark:text-white/40"
-	/>
+	</div>
 </div>
 
-<script>
-	const normalize = (value) => value.replace("-", "_");
-	const getCookie = (name) => {
-		const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
-		return match ? match[2] : null;
-	};
-	const select = document.getElementById("lang-switch");
-	if (select) {
-		const cookieLang = getCookie("lang");
-		const current = normalize(cookieLang || document.documentElement.lang || "en");
-		select.value = current;
-		select.addEventListener("change", (event) => {
-			const target = event.target;
-			if (!(target instanceof HTMLSelectElement)) return;
-			const lang = target.value;
-			document.cookie = `lang=${lang}; path=/; max-age=31536000`;
-			document.documentElement.lang = lang.replace("_", "-");
-			window.location.reload();
-		});
+<script is:inline>
+	const btn = document.getElementById("lang-switch-btn");
+	const dropdown = document.getElementById("lang-dropdown");
+	let isOpen = false;
+
+	function toggleDropdown() {
+		isOpen = !isOpen;
+		if (isOpen) {
+			dropdown?.classList.remove("invisible", "opacity-0", "translate-y-2");
+			btn?.setAttribute("aria-expanded", "true");
+		} else {
+			dropdown?.classList.add("invisible", "opacity-0", "translate-y-2");
+			btn?.setAttribute("aria-expanded", "false");
+		}
 	}
+
+	btn?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		toggleDropdown();
+	});
+
+	document.addEventListener("click", () => {
+		if (isOpen) toggleDropdown();
+	});
+
+	dropdown?.addEventListener("click", (e) => {
+		e.stopPropagation();
+	});
+
+	window.changeLang = (lang) => {
+		document.cookie = `lang=${lang}; path=/; max-age=31536000`;
+		window.location.reload();
+	};
 </script>
