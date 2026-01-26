@@ -3,7 +3,7 @@ import WidgetLayout from "./WidgetLayout.astro";
 
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
-import { getCategoryList } from "../../utils/content-utils";
+import { getCategoryList } from "@features/content";
 import ButtonLink from "../control/ButtonLink.astro";
 
 const categories = await getCategoryList();

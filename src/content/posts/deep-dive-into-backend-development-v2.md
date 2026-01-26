@@ -212,7 +212,7 @@ Critical for handling "at-least-once" delivery in messaging systems.
 
 :::note{title="Idempotency Strategy"}
 
-```pseudocode
+```text
 function processMessage(message) {
   if (processedMessages.contains(message.id)) {
     return; // Skip duplicate

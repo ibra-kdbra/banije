@@ -8,9 +8,23 @@ const postsCollection = defineCollection({
     draft: z.boolean().optional().default(false),
     description: z.string().optional().default(""),
     image: z.string().optional().default(""),
-    tags: z.array(z.string()).optional().default([]),
-    category: z.string().optional().nullable().default(""),
+    tags: z
+      .array(z.string().trim().min(1))
+      .optional()
+      .default([]),
+    category: z
+      .string()
+      .trim()
+      .optional()
+      .nullable()
+      .default(""),
     lang: z.string().optional().default(""),
+    series: z
+      .object({
+        name: z.string().trim(),
+        order: z.number().int().min(1),
+      })
+      .optional(),
 
     /* For internal use */
     prevTitle: z.string().default(""),
