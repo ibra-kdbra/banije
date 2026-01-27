@@ -5,9 +5,66 @@ import { getCategoryUrl } from "@domain/url";
 
 let cachedSortedPosts: CollectionEntry<"posts">[] | null = null;
 let cachedIsProd: boolean | null = null;
+let cachedTranslations: Map<string, Map<string, CollectionEntry<"translations">>> | null = null;
 
-export async function getSortedPosts() {
-	if (cachedSortedPosts && cachedIsProd === import.meta.env.PROD) {
+/**
+ * Get all translations indexed by originalSlug and lang
+ */
+async function getTranslationsMap(): Promise<Map<string, Map<string, CollectionEntry<"translations">>>> {
+	if (cachedTranslations) {
+		return cachedTranslations;
+	}
+
+	const map = new Map<string, Map<string, CollectionEntry<"translations">>>();
+
+	try {
+		const translations = await getCollection("translations");
+		
+		for (const translation of translations) {
+			const originalSlug = translation.data.originalSlug;
+			const lang = translation.data.lang;
+			
+			if (!map.has(originalSlug)) {
+				map.set(originalSlug, new Map());
+			}
+			map.get(originalSlug)!.set(lang, translation);
+		}
+	} catch {
+		// Translations collection might not exist yet
+	}
+
+	cachedTranslations = map;
+	return map;
+}
+
+/**
+ * Get a translated version of a post if available
+ */
+export async function getTranslatedPost(
+	post: CollectionEntry<"posts">,
+	targetLang: string
+): Promise<CollectionEntry<"posts"> | CollectionEntry<"translations">> {
+	if (targetLang === "en") {
+		return post;
+	}
+
+	const translationsMap = await getTranslationsMap();
+	const postSlug = post.slug.replace(/\//g, "_");
+	const langTranslations = translationsMap.get(postSlug);
+
+	if (langTranslations?.has(targetLang)) {
+		return langTranslations.get(targetLang)!;
+	}
+
+	// No translation available, return original
+	return post;
+}
+
+/**
+ * Get sorted posts with translations applied for current language
+ */
+export async function getSortedPosts(lang?: string) {
+	if (cachedSortedPosts && cachedIsProd === import.meta.env.PROD && !lang) {
 		return cachedSortedPosts;
 	}
 
@@ -28,6 +85,28 @@ export async function getSortedPosts() {
 	for (let i = 0; i < sorted.length - 1; i++) {
 		sorted[i].data.prevSlug = sorted[i + 1].slug;
 		sorted[i].data.prevTitle = sorted[i + 1].data.title;
+	}
+
+	// If a specific language is requested, apply translations
+	if (lang && lang !== "en") {
+		const translatedPosts: CollectionEntry<"posts">[] = [];
+		
+		for (const post of sorted) {
+			const translated = await getTranslatedPost(post, lang);
+			// Merge translation data with original post structure
+			translatedPosts.push({
+				...post,
+				data: {
+					...post.data,
+					title: translated.data.title,
+					description: translated.data.description,
+				},
+				body: translated.body,
+				render: translated.render,
+			} as CollectionEntry<"posts">);
+		}
+		
+		return translatedPosts;
 	}
 
 	cachedSortedPosts = sorted;
