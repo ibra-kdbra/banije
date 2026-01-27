@@ -4,8 +4,10 @@ import Pagination from "../components/control/Pagination.astro";
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@features/content";
+import { getCachedTranslation } from "@utils/realtime-translation";
 export const prerender = false;
 
+const currentLang = Astro.cookies.get("lang")?.value || "en";
 const allBlogPosts = await getSortedPosts();
 const total = allBlogPosts.length;
 const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -16,7 +18,33 @@ const safePage = Math.min(Math.max(currentPage, 1), lastPage);
 
 const start = (safePage - 1) * PAGE_SIZE;
 const end = Math.min(start + PAGE_SIZE, total);
-const data = allBlogPosts.slice(start, end);
+let data = allBlogPosts.slice(start, end);
+
+// Apply cached translations for titles/descriptions if available
+if (currentLang !== "en") {
+	const translatedData = await Promise.all(
+		data.map(async (post) => {
+			// Use the same slug format as the build script
+			const cacheSlug = post.slug.replace(/\//g, "_");
+			console.log(`[Translation] Looking for cache: ${cacheSlug} (original slug: ${post.slug})`);
+			const cached = await getCachedTranslation(cacheSlug, currentLang);
+			if (cached) {
+				console.log(`[Translation] ✓ Found cached translation for ${cacheSlug}`);
+				return {
+					...post,
+					data: {
+						...post.data,
+						title: cached.translatedTitle,
+						description: cached.translatedDescription,
+					},
+				};
+			}
+			console.log(`[Translation] ✗ No cache for ${cacheSlug}`);
+			return post;
+		})
+	);
+	data = translatedData;
+}
 
 const page = {
 	data,
@@ -31,6 +59,8 @@ const page = {
 		prev:
 			safePage > 1 ? (safePage - 1 === 1 ? "/" : `/${safePage - 1}/`) : undefined,
 		next: safePage < lastPage ? `/${safePage + 1}/` : undefined,
+		first: "/",
+		last: lastPage === 1 ? "/" : `/${lastPage}/`,
 	},
 };
 

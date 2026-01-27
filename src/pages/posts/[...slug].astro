@@ -13,9 +13,12 @@ import PostMetadata from "../../components/PostMeta.astro";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "@domain/date";
+import { translatePostRealtime } from "@utils/realtime-translation";
+import TranslatedContent from "@components/misc/TranslatedContent.astro";
 
 export const prerender = false;
 
+const currentLang = Astro.cookies.get("lang")?.value || "en";
 const blogEntries = await getSortedPosts();
 const { slug } = Astro.params;
 const entry = blogEntries.find((item) => item.slug === slug);
@@ -23,15 +26,39 @@ const entry = blogEntries.find((item) => item.slug === slug);
 if (!entry) {
     return Astro.redirect("/404");
 }
-const { Content, headings } = await entry.render();
 
+// Get the rendered content for the original post
+const { Content, headings } = await entry.render();
 const { remarkPluginFrontmatter } = await entry.render();
+
+// Real-time translation if not English
+let displayTitle = entry.data.title;
+let displayDescription = entry.data.description;
+let translatedContent: string | null = null;
+let isTranslated = false;
+
+if (currentLang !== "en") {
+	const translation = await translatePostRealtime(
+		entry.slug,
+		entry.data.title,
+		entry.data.description || "",
+		entry.body || "",
+		currentLang
+	);
+	
+	if (translation) {
+		displayTitle = translation.translatedTitle;
+		displayDescription = translation.translatedDescription;
+		translatedContent = translation.translatedContent;
+		isTranslated = true;
+	}
+}
 
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "BlogPosting",
-	headline: entry.data.title,
-	description: entry.data.description || entry.data.title,
+	headline: displayTitle,
+	description: displayDescription || displayTitle,
 	keywords: entry.data.tags,
 	author: {
 		"@type": "Person",
@@ -39,13 +66,11 @@ const jsonLd = {
 		url: Astro.site,
 	},
 	datePublished: formatDateToYYYYMMDD(entry.data.published),
-	inLanguage: entry.data.lang
-		? entry.data.lang.replace("_", "-")
-		: siteConfig.lang.replace("_", "-"),
+	inLanguage: currentLang.replace("_", "-"),
 	// TODO include cover image here
 };
 ---
-<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
+<MainGridLayout banner={entry.data.image} title={displayTitle} description={displayDescription} lang={currentLang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
@@ -77,7 +102,7 @@ const jsonLd = {
                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]
                 ">
-                    {entry.data.title}
+                    {displayTitle}
                 </div>
             </div>
 
@@ -110,10 +135,14 @@ const jsonLd = {
 
 
             <Markdown class="mb-6 markdown-content onload-animation">
-                <Content />
+                {isTranslated && translatedContent ? (
+                    <TranslatedContent content={translatedContent} />
+                ) : (
+                    <Content />
+                )}
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License title={displayTitle} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
