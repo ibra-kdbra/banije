@@ -11,6 +11,8 @@
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
     "new-post": "node scripts/new-post.js",
+    "translate": "node scripts/translate-posts.mjs",
+    "translate:force": "node scripts/translate-posts.mjs --force",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "npx only-allow pnpm"
@@ -69,6 +71,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.16.0",
+    "dotenv": "^17.2.3",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2"
   },
