@@ -7,9 +7,10 @@ import type { SeriesItem } from "@features/content";
 
 interface Props {
 	seriesList: SeriesItem[];
+    lang?: string;
 }
 
-const { seriesList } = Astro.props;
+const { seriesList, lang } = Astro.props;
 
 const toAnchor = (value: string) =>
 	value
@@ -31,13 +32,13 @@ const toAnchor = (value: string) =>
 					{series.name}
 				</div>
 				<div class="text-sm text-50 shrink-0">
-					{series.count} {i18n(I18nKey.postsCount)}
+					{series.count} {i18n(I18nKey.postsCount, lang)}
 				</div>
 			</div>
 
 			{series.posts.map((post) => (
 				<a
-					href={getPostUrlBySlug(post.slug)}
+					href={getPostUrlBySlug(post.slug, lang)}
 					aria-label={post.data.title}
 					class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
 				>
