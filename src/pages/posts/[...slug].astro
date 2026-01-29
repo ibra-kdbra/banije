@@ -1,79 +1,57 @@
 ---
 import path from "node:path";
-import License from "@components/misc/License.astro";
-import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@features/content";
-import { getDir, getPostUrlBySlug } from "@domain/url";
+import License from "../../components/misc/License.astro";
+import Markdown from "../../components/misc/Markdown.astro";
+import I18nKey from "../../i18n/i18nKey";
+import { i18n } from "../../i18n/translation";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { getSortedPosts, normalizeSlug } from "../../utils/content-utils";
+import { getDir, getPostUrlBySlug } from "../../utils/url-utils";
 import { Icon } from "astro-icon/components";
-import { licenseConfig } from "src/config";
+import { licenseConfig, profileConfig } from "../../config";
 import PostMetadata from "../../components/PostMeta.astro";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
-import { profileConfig, siteConfig } from "../../config";
-import { formatDateToYYYYMMDD } from "@domain/date";
-import { translatePostRealtime } from "@utils/realtime-translation";
-import TranslatedContent from "@components/misc/TranslatedContent.astro";
+import { formatDateToYYYYMMDD } from "../../domain/date";
 
-export const prerender = false;
-
-const currentLang = Astro.cookies.get("lang")?.value || "en";
-const blogEntries = await getSortedPosts();
-const { slug } = Astro.params;
-const entry = blogEntries.find((item) => item.slug === slug);
-
-if (!entry) {
-    return Astro.redirect("/404");
+export async function getStaticPaths() {
+	const posts = await getSortedPosts("en");
+	return posts.map((post) => ({
+		params: { slug: normalizeSlug(post.slug) },
+		props: { post },
+	}));
 }
 
-// Get the rendered content for the original post
-const { Content, headings } = await entry.render();
-const { remarkPluginFrontmatter } = await entry.render();
+const { post } = Astro.props;
 
-// Real-time translation if not English
-let displayTitle = entry.data.title;
-let displayDescription = entry.data.description;
-let translatedContent: string | null = null;
-let isTranslated = false;
-
-if (currentLang !== "en") {
-	const translation = await translatePostRealtime(
-		entry.slug,
-		entry.data.title,
-		entry.data.description || "",
-		entry.body || "",
-		currentLang
-	);
-	
-	if (translation) {
-		displayTitle = translation.translatedTitle;
-		displayDescription = translation.translatedDescription;
-		translatedContent = translation.translatedContent;
-		isTranslated = true;
-	}
-}
+const { Content, headings } = await post.render();
+const { remarkPluginFrontmatter } = await post.render();
 
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "BlogPosting",
-	headline: displayTitle,
-	description: displayDescription || displayTitle,
-	keywords: entry.data.tags,
+	headline: post.data.title,
+	description: post.data.description || post.data.title,
+	keywords: post.data.tags,
 	author: {
 		"@type": "Person",
 		name: profileConfig.name,
 		url: Astro.site,
 	},
-	datePublished: formatDateToYYYYMMDD(entry.data.published),
-	inLanguage: currentLang.replace("_", "-"),
-	// TODO include cover image here
+	datePublished: formatDateToYYYYMMDD(post.data.published),
+	inLanguage: "en",
 };
+
+const postSlug = normalizeSlug(post.slug);
+
+// Resolve image path correctly. If it starts with / assume public, else content relative
+const imageSrc = post.data.image;
+const isInternalImage = imageSrc && !imageSrc.startsWith("/") && !imageSrc.startsWith("http");
+const imageBasePath = isInternalImage ? path.join("content/posts/", getDir(post.id)) : "";
 ---
-<MainGridLayout banner={entry.data.image} title={displayTitle} description={displayDescription} lang={currentLang} setOGTypeArticle={true} headings={headings}>
+<MainGridLayout banner={post.data.image} title={post.data.title} description={post.data.description} setOGTypeArticle={true} headings={headings} lang="en">
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
-        <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
+        <div id="post-container" data-slug={postSlug} class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
             <!-- word count and reading time -->
@@ -82,13 +60,13 @@ const jsonLd = {
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount)}</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount, "en")}</div>
                 </div>
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:schedule-outline-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount)}</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount, "en")}</div>
                 </div>
             </div>
 
@@ -102,7 +80,7 @@ const jsonLd = {
                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]
                 ">
-                    {displayTitle}
+                    {post.data.title}
                 </div>
             </div>
 
@@ -110,22 +88,21 @@ const jsonLd = {
             <div class="onload-animation">
                 <PostMetadata
                         class="mb-5"
-                        published={entry.data.published}
-                        updated={entry.data.updated}
-                        tags={entry.data.tags}
-                        category={entry.data.category}
-                    seriesName={entry.data.series?.name}
+                        published={post.data.published}
+                        updated={post.data.updated}
+                        tags={post.data.tags}
+                        category={post.data.category}
+                    seriesName={post.data.series?.name}
                 ></PostMetadata>
-                {!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
+                {!post.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
             </div>
 
             <!-- always show cover as long as it has one -->
 
-            {entry.data.image &&
+            {post.data.image &&
                 <ImageWrapper
-                        id="post-cover"
-                        src={entry.data.image}
-                        basePath={path.join("content/posts/", getDir(entry.id))}
+                        src={post.data.image}
+                        basePath={imageBasePath}
                         class="mb-8 rounded-xl banner-container onload-animation"
                         loading="eager"
                         fetchPriority="high"
@@ -135,34 +112,30 @@ const jsonLd = {
 
 
             <Markdown class="mb-6 markdown-content onload-animation">
-                {isTranslated && translatedContent ? (
-                    <TranslatedContent content={translatedContent} />
-                ) : (
-                    <Content />
-                )}
+                <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={displayTitle} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License title={post.data.title} slug={post.slug} pubDate={post.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
-        <a href={entry.data.nextSlug ? getPostUrlBySlug(entry.data.nextSlug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.nextSlug}]}>
-            {entry.data.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
+        <a href={post.data.nextSlug ? getPostUrlBySlug(post.data.nextSlug, "en") : "#"}
+           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !post.data.nextSlug}]}>
+            {post.data.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
                 <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.data.nextTitle}
+                    {post.data.nextTitle}
                 </div>
             </div>}
         </a>
 
-        <a href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
-           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.prevSlug}]}>
-            {entry.data.prevSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
+        <a href={post.data.prevSlug ? getPostUrlBySlug(post.data.prevSlug, "en") : "#"}
+           class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !post.data.prevSlug}]}>
+            {post.data.prevSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
-                    {entry.data.prevTitle}
+                    {post.data.prevTitle}
                 </div>
                 <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
             </div>}
