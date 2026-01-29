@@ -4,4 +4,6 @@ export {
 	getSortedPosts,
 	getSeriesList,
 	getTagList,
+	getTranslatedPost,
+	normalizeSlug,
 } from "../../utils/content-utils";
