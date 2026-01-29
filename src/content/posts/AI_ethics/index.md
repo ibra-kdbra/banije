@@ -31,7 +31,7 @@ As AI systems grow more capable and autonomous, concerns about **fairness**, **a
 
 These pillars form the foundation for **trustworthy AI**.
 
-![pillars-of-ai-ethics](./five_pillars.png)
+![pillars-of-ai-ethics](/images/posts/five_pillars.png)
 
 ### 1. Fairness & Non-Discrimination
 AI must assess based on relevant criteria, not race, gender, or location.
