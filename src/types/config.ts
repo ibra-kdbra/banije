@@ -44,13 +44,17 @@ export type Favicon = {
 export enum LinkPreset {
 	Home = 0,
 	Archive = 1,
-	About = 2,
+	Series = 2,
+	About = 3,
 }
+
+import type I18nKey from "@i18n/i18nKey";
 
 export type NavBarLink = {
 	name: string;
 	url: string;
 	external?: boolean;
+	i18nKey?: I18nKey;
 };
 
 export type NavBarConfig = {
@@ -88,6 +92,10 @@ export type BlogPostData = {
 	draft?: boolean;
 	image?: string;
 	category?: string;
+	series?: {
+		name: string;
+		order: number;
+	};
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

@@ -6,6 +6,9 @@ image: ''
 tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
 category: Backend Development
 draft: false
+series:
+  name: "Backend Engineering"
+  order: 2
 ---
 
 ## 1.0 Introduction: The Inescapable Laws of Distribution
@@ -212,7 +215,7 @@ Critical for handling "at-least-once" delivery in messaging systems.
 
 :::note{title="Idempotency Strategy"}
 
-```pseudocode
+```text
 function processMessage(message) {
   if (processedMessages.contains(message.id)) {
     return; // Skip duplicate

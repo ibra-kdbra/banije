@@ -6,6 +6,9 @@ image: ''
 tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
 category: Backend Development
 draft: false
+series:
+  name: "Backend Engineering"
+  order: 1
 ---
 
 ## 1.0 Introduction: Beyond the API Endpoint

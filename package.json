@@ -1,7 +1,7 @@
 {
   "name": "banije",
   "type": "module",
-  "version": "0.0.7",
+  "version": "1.1.5",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,6 +11,9 @@
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
     "new-post": "node scripts/new-post.js",
+    "translate": "node scripts/translate.js",
+    "translate:fix": "node scripts/fix-translations.js",
+    "translate:audit": "node scripts/audit.js",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "npx only-allow pnpm"
@@ -63,12 +66,15 @@
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.6",
+    "@astrojs/vercel": "^9.0.4",
     "@biomejs/biome": "2.2.5",
     "@rollup/plugin-yaml": "^4.1.2",
     "@types/hast": "^3.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.16.0",
+    "dotenv": "^17.2.3",
+    "google-translate-api-x": "^10.7.2",
     "postcss-import": "^16.1.1",
     "postcss-nesting": "^13.0.2"
   },

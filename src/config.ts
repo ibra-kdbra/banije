@@ -6,11 +6,12 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
+import I18nKey from "./i18n/i18nKey";
 
 export const siteConfig: SiteConfig = {
   title: "Banije",
   subtitle: "Daily Hacks",
-  lang: "en", // 'en', 'zh_CN', 'zh_TW', 'ja',
+  lang: "en", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'tr', 'es'
   themeColor: {
     hue: 145, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false, // Hide the theme color picker for visitors
@@ -41,9 +42,26 @@ export const siteConfig: SiteConfig = {
 
 export const navBarConfig: NavBarConfig = {
   links: [
-    LinkPreset.Home,
-    LinkPreset.Archive,
-    LinkPreset.About,
+    {
+      name: "Home",
+      url: "/",
+      i18nKey: I18nKey.home,
+    },
+    {
+      name: "Archive",
+      url: "/archive/",
+      i18nKey: I18nKey.archive,
+    },
+    {
+      name: "Series",
+      url: "/series/",
+      i18nKey: I18nKey.series,
+    },
+    {
+      name: "About",
+      url: "/about/",
+      i18nKey: I18nKey.about,
+    },
     {
       name: "GitHub",
       url: "https://github.com/ibra-kdbra/banije", // Internal links should not include the base path, as it is automatically added

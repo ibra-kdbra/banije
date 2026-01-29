@@ -1,0 +1,30 @@
+---
+/**
+ * TranslatedContent.astro
+ * Renders markdown content from a string (for translated posts)
+ */
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/jetbrains-mono/wght-italic.css";
+import MarkdownIt from "markdown-it";
+
+interface Props {
+	content: string;
+	class?: string;
+}
+
+const { content, class: className = "" } = Astro.props;
+
+// Initialize markdown-it with similar settings to your main config
+const md = new MarkdownIt({
+	html: true,
+	linkify: true,
+	typographer: true,
+});
+
+const renderedHtml = md.render(content);
+---
+<div 
+	data-pagefind-body 
+	class={`prose dark:prose-invert prose-base !max-w-none custom-md ${className}`}
+	set:html={renderedHtml}
+/>

@@ -1,0 +1,161 @@
+---
+import { Icon } from "astro-icon/components";
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from "../constants/constants";
+
+const languageLabels: Record<string, string> = {
+	en: "EN",
+	es: "ES",
+	ja: "JA",
+	ko: "KO",
+	tr: "TR",
+	zh_CN: "简体",
+	zh_TW: "繁體",
+};
+
+const languages = SUPPORTED_LANGUAGES.map((value) => ({
+	value,
+	label: languageLabels[value] || value.toUpperCase(),
+}));
+---
+
+<div class="relative group">
+	<button
+		id="lang-switch-btn"
+		aria-label="Change Language"
+		aria-haspopup="true"
+		aria-expanded="false"
+		class="btn-plain scale-animation rounded-lg h-11 min-w-[4.5rem] px-3 font-bold text-sm flex items-center justify-between gap-1
+			bg-black/[0.04] hover:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10
+			text-black/75 dark:text-white/75 transition-colors"
+	>
+		<span id="lang-label" class="whitespace-nowrap">EN</span>
+		<Icon name="material-symbols:expand-more-rounded" class="text-[1.25rem] opacity-75" />
+	</button>
+
+	<div
+		id="lang-dropdown"
+		class="absolute right-0 top-12 min-w-[8rem] p-1.5 rounded-xl border border-black/5 dark:border-white/5
+			bg-[var(--float-panel-bg)] shadow-xl invisible opacity-0 translate-y-2
+			transition-all duration-200 z-50 origin-top-right backdrop-blur-md"
+	>
+		{languages.map((lang) => (
+			<button
+				data-lang={lang.value}
+				data-label={lang.label}
+				class="lang-option w-full text-left px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
+					hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-black/75 dark:text-white/75"
+			>
+				{lang.label}
+			</button>
+		))}
+	</div>
+</div>
+
+<script is:inline>
+{
+	const btn = document.getElementById("lang-switch-btn");
+	const dropdown = document.getElementById("lang-dropdown");
+	const langLabel = document.getElementById("lang-label");
+	const langOptions = document.querySelectorAll(".lang-option");
+	let isOpen = false;
+
+	const langLabels = {
+		en: "EN", es: "ES", ja: "JA", ko: "KO", tr: "TR", zh_CN: "简体", zh_TW: "繁體"
+	};
+
+	function updateActiveState(currentLang) {
+		langOptions.forEach(opt => {
+			const lang = opt.getAttribute("data-lang");
+			if (lang === currentLang) {
+				opt.classList.add("bg-[var(--primary)]", "text-white");
+				opt.classList.remove("text-black/75", "dark:text-white/75");
+			} else {
+				opt.classList.remove("bg-[var(--primary)]", "text-white");
+				opt.classList.add("text-black/75", "dark:text-white/75");
+			}
+		});
+	}
+
+	// Initialize from localStorage and URL
+	function initLang() {
+		const stored = localStorage.getItem("preferredLang") || "en";
+		const currentPath = window.location.pathname;
+		let detected = "en";
+		const supportedLangs = ["es", "ja", "ko", "tr", "zh_CN", "zh_TW"];
+		for (const l of supportedLangs) {
+			if (currentPath.startsWith(`/${l}/`) || currentPath === `/${l}`) {
+				detected = l;
+				break;
+			}
+		}
+		
+		const activeLang = detected || stored;
+		if (langLabel) langLabel.textContent = langLabels[activeLang] || "EN";
+		updateActiveState(activeLang);
+	}
+
+	function toggleDropdown() {
+		isOpen = !isOpen;
+		if (isOpen) {
+			dropdown?.classList.remove("invisible", "opacity-0", "translate-y-2");
+			btn?.setAttribute("aria-expanded", "true");
+		} else {
+			dropdown?.classList.add("invisible", "opacity-0", "translate-y-2");
+			btn?.setAttribute("aria-expanded", "false");
+		}
+	}
+
+	btn?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		toggleDropdown();
+	});
+
+	document.addEventListener("click", () => {
+		if (isOpen) toggleDropdown();
+	});
+
+	dropdown?.addEventListener("click", (e) => {
+		e.stopPropagation();
+	});
+
+	langOptions.forEach(opt => {
+		opt.addEventListener("click", () => {
+			const lang = opt.getAttribute("data-lang");
+			if (lang) {
+				localStorage.setItem("preferredLang", lang);
+				
+				// Calculate new URL
+				const currentPath = window.location.pathname;
+				
+				// Remove current lang prefix if exists
+				let newPath = currentPath;
+				const supportedLangs = ["es", "ja", "ko", "tr", "zh_CN", "zh_TW"];
+				for (const l of supportedLangs) {
+					if (currentPath.startsWith(`/${l}/`)) {
+						newPath = currentPath.substring(l.length + 1);
+						break;
+					} else if (currentPath === `/${l}` || currentPath.endsWith(`/${l}`)) {
+						newPath = currentPath.substring(0, currentPath.lastIndexOf(`/${l}`)) || "/";
+						break;
+					}
+				}
+				
+				// Ensure newPath starts with /
+				if (!newPath.startsWith("/")) newPath = "/" + newPath;
+
+				// Add new lang prefix if not default (en)
+				if (lang !== "en") {
+					newPath = `/${lang}${newPath === "/" ? "/" : (newPath.startsWith("/") ? "" : "/") + newPath}`;
+				}
+				
+				// Clean up double slashes
+				newPath = newPath.replace(/\/+/g, "/");
+				
+				window.location.href = newPath;
+			}
+		});
+	});
+
+	initLang();
+}
+</script>

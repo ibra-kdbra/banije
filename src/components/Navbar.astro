@@ -1,19 +1,22 @@
 ---
 import { Icon } from "astro-icon/components";
 import { navBarConfig, siteConfig } from "../config";
-import { LinkPresets } from "../constants/link-presets";
+import { getLinkPresets } from "../constants/link-presets";
 import { LinkPreset, type NavBarLink } from "../types/config";
-import { url } from "../utils/url-utils";
+import { url } from "@domain/url";
+import { i18n } from "../i18n/translation";
 import LightDarkSwitch from "./LightDarkSwitch.svelte";
 import Search from "./Search.svelte";
+import LanguageSwitch from "./LanguageSwitch.astro";
 import DisplaySettings from "./widget/DisplaySettings.svelte";
 import NavMenuPanel from "./widget/NavMenuPanel.astro";
 const className = Astro.props.class;
 
+const linkPresets = getLinkPresets();
 let links: NavBarLink[] = navBarConfig.links.map(
 	(item: NavBarLink | LinkPreset): NavBarLink => {
 		if (typeof item === "number") {
-			return LinkPresets[item];
+            return linkPresets[item];
 		}
 		return item;
 	},
@@ -32,11 +35,12 @@ let links: NavBarLink[] = navBarConfig.links.map(
         </a>
         <div class="hidden md:flex">
             {links.map((l) => {
-                return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
+                const displayName = l.i18nKey ? i18n(l.i18nKey) : l.name;
+                return <a aria-label={displayName} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
                           class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
                 >
                     <div class="flex items-center">
-                        {l.name}
+                        {displayName}
                         {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>}
                     </div>
                 </a>;
@@ -44,19 +48,20 @@ let links: NavBarLink[] = navBarConfig.links.map(
         </div>
         <div class="flex">
             <!--<SearchPanel client:load>-->
-            <Search client:only="svelte"></Search>
+            <Search client:idle="svelte"></Search>
+            <LanguageSwitch />
             {!siteConfig.themeColor.fixed && (
                     <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
                         <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
                     </button>
             )}
-            <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
+            <LightDarkSwitch client:idle="svelte"></LightDarkSwitch>
             <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
         </div>
         <NavMenuPanel links={links}></NavMenuPanel>
-        <DisplaySettings client:only="svelte"></DisplaySettings>
+        <DisplaySettings client:idle="svelte"></DisplaySettings>
     </div>
 </div>
 
@@ -102,39 +107,3 @@ function loadButtonScript() {
 
 loadButtonScript();
 </script>
-
-{import.meta.env.PROD && <script is:inline define:vars={{scriptUrl: url('/pagefind/pagefind.js')}}>
-async function loadPagefind() {
-    try {
-        const response = await fetch(scriptUrl, { method: 'HEAD' });
-        if (!response.ok) {
-            throw new Error(`Pagefind script not found: ${response.status}`);
-        }
-
-        const pagefind = await import(scriptUrl);
-
-        await pagefind.options({
-            excerptLength: 20
-        });
-
-        window.pagefind = pagefind;
-
-        document.dispatchEvent(new CustomEvent('pagefindready'));
-        console.log('Pagefind loaded and initialized successfully, event dispatched.');
-    } catch (error) {
-        console.error('Failed to load Pagefind:', error);
-        window.pagefind = {
-            search: () => Promise.resolve({ results: [] }),
-            options: () => Promise.resolve(),
-        };
-        document.dispatchEvent(new CustomEvent('pagefindloaderror'));
-        console.log('Pagefind load error, event dispatched.');
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadPagefind);
-} else {
-    loadPagefind();
-}
-</script>}

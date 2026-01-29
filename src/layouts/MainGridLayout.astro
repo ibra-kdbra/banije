@@ -53,8 +53,15 @@ const mainPanelTop = siteConfig.banner.enable
 
 <!-- Banner -->
 {siteConfig.banner.enable && <div id="banner-wrapper" class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${BANNER_HEIGHT_EXTEND}vh`}>
-    <ImageWrapper id="banner" alt="Banner image of the blog" class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
-                  src={siteConfig.banner.src} position={siteConfig.banner.position}
+    <ImageWrapper
+            id="banner"
+            alt="Banner image of the blog"
+            class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
+            src={siteConfig.banner.src}
+            position={siteConfig.banner.position}
+            loading="eager"
+            fetchPriority="high"
+            sizes="100vw"
     >
     </ImageWrapper>
 </div>}
@@ -80,7 +87,7 @@ const mainPanelTop = siteConfig.banner.enable
             </a>}
 
 
-            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
+            <SideBar class="mb-4 row-start-2 row-end-3 col-span-2 lg:row-start-1 lg:row-end-2 lg:col-span-1 lg:max-w-[17.5rem] onload-animation" headings={headings} lang={lang}></SideBar>
 
             <main id="swup-container" class="transition-swup-fade col-span-2 lg:col-span-1 overflow-hidden">
                 <div id="content-wrapper" class="onload-animation">

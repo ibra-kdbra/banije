@@ -1,0 +1,259 @@
+---
+title: "一般的な端末コマンド"
+published: 2022-09-20
+description: "主要な端末コマンドとその使用法を学びます。"
+tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
+category: Guide
+draft: false 
+lang: "ja"
+originalSlug: "commonTerminalCommands"
+
+---
+
+## 概要
+
+ このガイドでは、ナビゲーション、ファイル管理などのカテゴリ別に整理された、重要なターミナル コマンドの包括的なリストを提供します。 初心者にも上級ユーザーにも最適です。 
+
+## キーコマンドとナビゲーション
+
+:::tip
+キーボード ショートカットを使用すると、端末のナビゲーションおよび使用の時間を節約できます。
+:::-`Up Arrow`: 最後のコマンドを表示します
+ -`Down Arrow`: 次のコマンドを表示します
+ -`Tab`: コマンドを自動補完します
+ -`Ctrl + L`：画面を消去します
+ -`Ctrl + C`：コマンドをキャンセルします
+ -`Ctrl + R`: コマンドを検索します
+ -`Ctrl + D`: ターミナルを終了します
+
+ ## 手動コマンド
+
+:::note
+[Using `man` Command]
+「man」コマンドは、Linux および MacOS 上のコマンドのマニュアルを表示します。 Git Bash で同様の機能を使用するには、「--help」を使用します。
+:::
+
+```bash
+man ls
+```
+
+```bash
+ls --help
+```
+
+:::important
+[Identify Current User]
+「whoami」コマンドは、現在ログインしているユーザーを表示します。
+:::
+
+```bash
+whoami
+```
+
+:::tip
+[Get Current Date & Time]
+`date` コマンドは現在の日付と時刻を表示します。
+:::
+
+```bash
+date
+```
+
+:::note
+[Essential Navigation Commands]
+ファイル システムのナビゲーションは端末の使用の基本です。
+:::| コマンド | 説明 |
+ | ----------------------------------- | ---------------------------------------------------------------------------------- |
+ | パスワード | 作業ディレクトリへのパスをリストします。 
+| ls | ディレクトリの内容をリストする |
+ | ls -a | 隠しファイルを含むコンテンツの一覧表示 (ドットで始まるファイル) |
+ | ls -l | 権限を含む詳細情報を含むコンテンツのリスト (長いリスト) |
+ | ls -r | リスト内容の逆順 |
+ | CD | ディレクトリをホーム | に変更します。 
+| cd [ディレクトリ名] | ディレクトリを特定のディレクトリに変更します |
+ | CD ~ | ホームディレクトリに移動 |
+ | CD .. | 親ディレクトリに変更 |
+ | CD - | 前のディレクトリに変更 |
+ | find [dirtosearch] -name [ファイル名] | プログラムの場所を見つける |
+
+ フラグを結合します。例:`ls -la`詳細ファイルと隠しファイルを表示します。 
+
+## フォルダーまたはファイルを開く
+
+:::note
+[Open Directories, Files, or URLs]
+ファイル、フォルダー、または URL を開くためのコマンドはオペレーティング システムによって異なります。
+:::- マック：`open [dirname]`- Windows:`start [dirname]`- Linux:`xdg-open [dirname]`
+
+```bash
+open https://example.com
+```
+
+:::important
+[File & Directory Management Commands]
+ファイルとディレクトリの作成、削除、移動、名前変更の方法を学びます。
+:::| コマンド | 説明 |
+ | ------------------------- | --------------------------------------------------- |
+ | mkdir [ディレクトリ名] | ディレクトリを作成する |
+ | [ファイル名] をタッチ | ファイルの作成 |
+ | rm [ファイル名] | ファイルを削除 |
+ | rm -i [ファイル名] | 確認付きでファイルを削除 |
+ | rm -r [ディレクトリ名] | ディレクトリを削除 |
+ | rm -rf [ディレクトリ名] | ディレクトリを強制的に削除 |
+ | rm ./\* | 現在のフォルダー内のすべてを削除します |
+ | cp [ファイル名] [ディレクトリ名] | ファイルをコピー |
+ | mv [ファイル名] [ディレクトリ名] | ファイルを移動 |
+ | mv [ファイル名] [ファイル名] | ファイルの名前を変更 |
+
+ ネストされたディレクトリを作成します。
+```bash
+mkdir -p ./home/{a,b}/{x,y,z}
+```
+
+```bash
+cd test2 && mkdir test3
+```
+
+:::tip
+[Redirect Output]
+コマンド出力をファイルにリダイレクトします。
+:::
+
+```bash
+> [filename]
+```
+
+##`cat`指示
+
+:::note
+[Concatenate Files]
+`cat` はファイルを表示または作成し、それらを結合します。
+:::
+
+```bash
+cat [filename]
+cat > [filename]
+cat >> [filename]
+```
+
+```bash
+cat -n [filename]
+```
+
+:::tip
+[View File Contents]
+「less」を使用してファイルをスクロールします。
+:::
+
+```bash
+less [filename]
+```
+
+##`echo`指示
+
+:::important
+[Display Text or Write to Files]
+テキストを端末またはファイルにエコーします。
+:::
+
+```bash
+echo "Hello World"
+echo "Hello World" > [filename]
+```
+
+:::note
+[Edit Text Files]
+`nano` は使いやすいテキストエディタです。
+:::
+
+```bash
+nano [filename]
+```
+
+##`head`そして`tail`コマンド
+
+:::tip
+[View File Parts]
+ファイルの先頭 (`head`) または末尾 (`tail`) を表示します。
+:::
+
+```bash
+head -n 5 [filename]
+tail -n 5 [filename]
+```
+
+:::note
+[Search File Content]
+ファイル内のテキスト パターンを検索します。
+:::
+
+```bash
+grep [searchterm] [filename]
+```
+
+:::important
+[Locate Files or Directories]
+名前、パターン、またはプロパティでファイルを検索します。
+:::
+
+```bash
+find [dirname] -name [filename]
+```
+
+```bash
+touch file-{001..100}.txt
+find . -empty
+```
+
+```bash
+find . -name "file-*" -delete
+```
+
+:::tip
+[Redirect Output]
+あるコマンドの出力を別のコマンドにパイプ処理します。
+:::
+
+```bash
+find . -name "file-0*" > output.txt
+cat output.txt
+```
+
+:::note
+[Create Shortcuts]
+ファイルへのシンボリック リンクを作成します。
+:::
+
+```bash
+ln -s [filename] [symlinkname]
+```
+
+```bash
+rm [symlinkname]
+```
+
+:::important
+[Manage Archives]
+`tar` を使用して tarball を作成し、解凍します。
+:::| コマンド | 説明 |
+ | ----------------------------------- | ------------------------ |
+ | tar czvf [ディレクトリ名].tar.gz [ディレクトリ名] | tarball を作成する |
+ | tar tzvf [ディレクトリ名] | tarball の内容を表示 |
+ | tar xzvf [ディレクトリ名].tar.gz | tarball を抽出する |
+
+ ##`history`指示
+
+:::note
+[Command History]
+過去のコマンドを表示して実行します。
+:::
+
+```bash
+history
+!100
+```
+
+## すべてのコマンドのガイドが提供されています
+
+:::important
+:::この中で知られているすべてのターミナルコマンドを追加しました[TerCli](https://tercli.netlify.app/)

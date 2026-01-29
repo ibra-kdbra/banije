@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config";
 import rss from "@astrojs/rss";
-import { url } from "@utils/url-utils";
-import { getSortedPosts } from "@utils/content-utils";
+import { url } from "@domain/url";
+import { getSortedPosts } from "@features/content";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";

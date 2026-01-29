@@ -1,0 +1,13 @@
+---
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSeriesList } from "@features/content";
+import SeriesPanel from "@components/SeriesPanel.astro";
+
+const seriesList = await getSeriesList("en");
+---
+
+<MainGridLayout title={i18n(I18nKey.series, "en")} lang="en">
+    <SeriesPanel seriesList={seriesList} lang="en"></SeriesPanel>
+</MainGridLayout>

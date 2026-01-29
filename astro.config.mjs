@@ -7,6 +7,7 @@ import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
@@ -26,6 +27,12 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
+	output: "static",
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
 	site: "https://banije.vercel.app/",
 	base: "/",
 	trailingSlash: "always",
@@ -57,6 +64,9 @@ export default defineConfig({
 		}),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			languageAliases: {
+				pseudocode: "text",
+			},
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),

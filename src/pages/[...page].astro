@@ -1,23 +1,54 @@
 ---
-import type { GetStaticPaths } from "astro";
 import PostPage from "../components/PostPage.astro";
 import Pagination from "../components/control/Pagination.astro";
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import { getSortedPosts } from "../utils/content-utils";
+import { getSortedPosts } from "@features/content";
 
-export const getStaticPaths = (async ({ paginate }) => {
-	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
-}) satisfies GetStaticPaths;
-// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
+export async function getStaticPaths() {
+	const allBlogPosts = await getSortedPosts("en");
+	const totalPages = Math.max(1, Math.ceil(allBlogPosts.length / PAGE_SIZE));
+	return Array.from({ length: totalPages }, (_, i) => {
+		const page = i + 1;
+		return {
+			params: { page: page === 1 ? undefined : page.toString() },
+			props: { currentPage: page },
+		};
+	});
+}
 
-const { page } = Astro.props;
+const { currentPage } = Astro.props;
+const allBlogPosts = await getSortedPosts("en");
+const total = allBlogPosts.length;
+const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
+const safePage = Math.min(Math.max(currentPage, 1), lastPage);
+
+const start = (safePage - 1) * PAGE_SIZE;
+const end = Math.min(start + PAGE_SIZE, total);
+const data = allBlogPosts.slice(start, end);
+
+const page = {
+	data,
+	start,
+	end,
+	size: PAGE_SIZE,
+	total,
+	currentPage: safePage,
+	lastPage,
+	url: {
+		current: safePage === 1 ? "/" : `/${safePage}/`,
+		prev:
+			safePage > 1 ? (safePage - 1 === 1 ? "/" : `/${safePage - 1}/`) : undefined,
+		next: safePage < lastPage ? `/${safePage + 1}/` : undefined,
+		first: "/",
+		last: lastPage === 1 ? "/" : `/${lastPage}/`,
+	},
+};
 
 const len = page.data.length;
 ---
 
-<MainGridLayout>
-    <PostPage page={page}></PostPage>
+<MainGridLayout lang="en">
+    <PostPage page={page} lang="en"></PostPage>
     <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
 </MainGridLayout>

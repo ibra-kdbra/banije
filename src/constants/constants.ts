@@ -5,6 +5,11 @@ export const LIGHT_MODE = "light",
 	AUTO_MODE = "auto";
 export const DEFAULT_THEME = AUTO_MODE;
 
+// Supported languages for i18n
+export const SUPPORTED_LANGUAGES = ["en", "es", "ja", "ko", "tr", "zh_CN", "zh_TW"] as const;
+export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number];
+export const DEFAULT_LANGUAGE: SupportedLanguage = "en";
+
 // Banner height unit: vh
 export const BANNER_HEIGHT = 35;
 export const BANNER_HEIGHT_EXTEND = 30;
