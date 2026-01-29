@@ -1,18 +1,21 @@
 ---
 import { Icon } from "astro-icon/components";
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from "../constants/constants";
 
-const languages = [
-	{ value: "en", label: "EN" },
-	{ value: "es", label: "ES" },
-	{ value: "ja", label: "JA" },
-	{ value: "ko", label: "KO" },
-	{ value: "tr", label: "TR" },
-	{ value: "zh_CN", label: "简体" },
-	{ value: "zh_TW", label: "繁體" },
-];
+const languageLabels: Record<string, string> = {
+	en: "EN",
+	es: "ES",
+	ja: "JA",
+	ko: "KO",
+	tr: "TR",
+	zh_CN: "简体",
+	zh_TW: "繁體",
+};
 
-const currentLang = Astro.cookies.get("lang")?.value || "en";
-const currentLabel = languages.find((l) => l.value === currentLang)?.label || "EN";
+const languages = SUPPORTED_LANGUAGES.map((value) => ({
+	value,
+	label: languageLabels[value] || value.toUpperCase(),
+}));
 ---
 
 <div class="relative group">
@@ -25,7 +28,7 @@ const currentLabel = languages.find((l) => l.value === currentLang)?.label || "E
 			bg-black/[0.04] hover:bg-black/[0.06] dark:bg-white/5 dark:hover:bg-white/10
 			text-black/75 dark:text-white/75 transition-colors"
 	>
-		<span class="whitespace-nowrap">{currentLabel}</span>
+		<span id="lang-label" class="whitespace-nowrap">EN</span>
 		<Icon name="material-symbols:expand-more-rounded" class="text-[1.25rem] opacity-75" />
 	</button>
 
@@ -37,11 +40,10 @@ const currentLabel = languages.find((l) => l.value === currentLang)?.label || "E
 	>
 		{languages.map((lang) => (
 			<button
-				onclick={`changeLang('${lang.value}')`}
-				class={`w-full text-left px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
-					${currentLang === lang.value 
-						? 'bg-[var(--primary)] text-white' 
-						: 'hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-black/75 dark:text-white/75'}`}
+				data-lang={lang.value}
+				data-label={lang.label}
+				class="lang-option w-full text-left px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
+					hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-black/75 dark:text-white/75"
 			>
 				{lang.label}
 			</button>
@@ -50,9 +52,47 @@ const currentLabel = languages.find((l) => l.value === currentLang)?.label || "E
 </div>
 
 <script is:inline>
+{
 	const btn = document.getElementById("lang-switch-btn");
 	const dropdown = document.getElementById("lang-dropdown");
+	const langLabel = document.getElementById("lang-label");
+	const langOptions = document.querySelectorAll(".lang-option");
 	let isOpen = false;
+
+	const langLabels = {
+		en: "EN", es: "ES", ja: "JA", ko: "KO", tr: "TR", zh_CN: "简体", zh_TW: "繁體"
+	};
+
+	function updateActiveState(currentLang) {
+		langOptions.forEach(opt => {
+			const lang = opt.getAttribute("data-lang");
+			if (lang === currentLang) {
+				opt.classList.add("bg-[var(--primary)]", "text-white");
+				opt.classList.remove("text-black/75", "dark:text-white/75");
+			} else {
+				opt.classList.remove("bg-[var(--primary)]", "text-white");
+				opt.classList.add("text-black/75", "dark:text-white/75");
+			}
+		});
+	}
+
+	// Initialize from localStorage and URL
+	function initLang() {
+		const stored = localStorage.getItem("preferredLang") || "en";
+		const currentPath = window.location.pathname;
+		let detected = "en";
+		const supportedLangs = ["es", "ja", "ko", "tr", "zh_CN", "zh_TW"];
+		for (const l of supportedLangs) {
+			if (currentPath.startsWith(`/${l}/`) || currentPath === `/${l}`) {
+				detected = l;
+				break;
+			}
+		}
+		
+		const activeLang = detected || stored;
+		if (langLabel) langLabel.textContent = langLabels[activeLang] || "EN";
+		updateActiveState(activeLang);
+	}
 
 	function toggleDropdown() {
 		isOpen = !isOpen;
@@ -78,8 +118,44 @@ const currentLabel = languages.find((l) => l.value === currentLang)?.label || "E
 		e.stopPropagation();
 	});
 
-	window.changeLang = (lang) => {
-		document.cookie = `lang=${lang}; path=/; max-age=31536000`;
-		window.location.reload();
-	};
+	langOptions.forEach(opt => {
+		opt.addEventListener("click", () => {
+			const lang = opt.getAttribute("data-lang");
+			if (lang) {
+				localStorage.setItem("preferredLang", lang);
+				
+				// Calculate new URL
+				const currentPath = window.location.pathname;
+				
+				// Remove current lang prefix if exists
+				let newPath = currentPath;
+				const supportedLangs = ["es", "ja", "ko", "tr", "zh_CN", "zh_TW"];
+				for (const l of supportedLangs) {
+					if (currentPath.startsWith(`/${l}/`)) {
+						newPath = currentPath.substring(l.length + 1);
+						break;
+					} else if (currentPath === `/${l}` || currentPath.endsWith(`/${l}`)) {
+						newPath = currentPath.substring(0, currentPath.lastIndexOf(`/${l}`)) || "/";
+						break;
+					}
+				}
+				
+				// Ensure newPath starts with /
+				if (!newPath.startsWith("/")) newPath = "/" + newPath;
+
+				// Add new lang prefix if not default (en)
+				if (lang !== "en") {
+					newPath = `/${lang}${newPath === "/" ? "/" : (newPath.startsWith("/") ? "" : "/") + newPath}`;
+				}
+				
+				// Clean up double slashes
+				newPath = newPath.replace(/\/+/g, "/");
+				
+				window.location.href = newPath;
+			}
+		});
+	});
+
+	initLang();
+}
 </script>
