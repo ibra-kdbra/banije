@@ -48,10 +48,13 @@ export enum LinkPreset {
 	About = 3,
 }
 
+import type I18nKey from "@i18n/i18nKey";
+
 export type NavBarLink = {
 	name: string;
 	url: string;
 	external?: boolean;
+	i18nKey?: I18nKey;
 };
 
 export type NavBarConfig = {
