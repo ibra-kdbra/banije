@@ -4,47 +4,28 @@ import Pagination from "../components/control/Pagination.astro";
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@features/content";
-import { getCachedTranslation } from "@utils/realtime-translation";
-export const prerender = false;
 
-const currentLang = Astro.cookies.get("lang")?.value || "en";
-const allBlogPosts = await getSortedPosts();
+export async function getStaticPaths() {
+	const allBlogPosts = await getSortedPosts("en");
+	const totalPages = Math.max(1, Math.ceil(allBlogPosts.length / PAGE_SIZE));
+	return Array.from({ length: totalPages }, (_, i) => {
+		const page = i + 1;
+		return {
+			params: { page: page === 1 ? undefined : page.toString() },
+			props: { currentPage: page },
+		};
+	});
+}
+
+const { currentPage } = Astro.props;
+const allBlogPosts = await getSortedPosts("en");
 const total = allBlogPosts.length;
 const lastPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
-const param = Astro.params.page;
-const parsed = param ? Number.parseInt(param) : 1;
-const currentPage = Number.isNaN(parsed) ? 1 : parsed;
 const safePage = Math.min(Math.max(currentPage, 1), lastPage);
 
 const start = (safePage - 1) * PAGE_SIZE;
 const end = Math.min(start + PAGE_SIZE, total);
-let data = allBlogPosts.slice(start, end);
-
-// Apply cached translations for titles/descriptions if available
-if (currentLang !== "en") {
-	const translatedData = await Promise.all(
-		data.map(async (post) => {
-			// Use the same slug format as the build script
-			const cacheSlug = post.slug.replace(/\//g, "_");
-			console.log(`[Translation] Looking for cache: ${cacheSlug} (original slug: ${post.slug})`);
-			const cached = await getCachedTranslation(cacheSlug, currentLang);
-			if (cached) {
-				console.log(`[Translation] ✓ Found cached translation for ${cacheSlug}`);
-				return {
-					...post,
-					data: {
-						...post.data,
-						title: cached.translatedTitle,
-						description: cached.translatedDescription,
-					},
-				};
-			}
-			console.log(`[Translation] ✗ No cache for ${cacheSlug}`);
-			return post;
-		})
-	);
-	data = translatedData;
-}
+const data = allBlogPosts.slice(start, end);
 
 const page = {
 	data,
@@ -67,7 +48,7 @@ const page = {
 const len = page.data.length;
 ---
 
-<MainGridLayout>
-    <PostPage page={page}></PostPage>
+<MainGridLayout lang="en">
+    <PostPage page={page} lang="en"></PostPage>
     <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
 </MainGridLayout>
