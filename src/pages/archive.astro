@@ -5,10 +5,9 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@features/content";
 
-const sortedPosts = await getSortedPosts();
+const sortedPosts = await getSortedPosts("en");
 ---
 
-<MainGridLayout title={i18n(I18nKey.archive)}>
+<MainGridLayout title={i18n(I18nKey.archive, "en")} lang="en">
     <ArchivePanel sortedPosts={sortedPosts} client:only="svelte" />
 </MainGridLayout>
-
