@@ -27,5 +27,4 @@ pnpm-debug.log*
 .vercel
 
 package-lock.json
-bun.lockb
-yarn.lock
+docs/
