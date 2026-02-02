@@ -14,6 +14,10 @@ export async function GET() {
 		category: post.data.category || "",
 		image: post.data.image || "",
 		url: url(`/posts/${post.slug}/`),
+		// Additional fields for portfolio compatibility
+		brief: post.data.description || "",
+		coverImage: post.data.image || null,
+		publishedAt: post.data.published.toISOString(),
 	}));
 
 	return new Response(JSON.stringify(postsData), {
