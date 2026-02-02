@@ -7,17 +7,13 @@ export async function GET() {
 	const postsData = posts.map((post) => ({
 		slug: post.slug,
 		title: post.data.title,
-		description: post.data.description || "",
-		published: post.data.published.toISOString(),
-		updated: post.data.updated?.toISOString() || null,
-		tags: post.data.tags || [],
-		category: post.data.category || "",
-		image: post.data.image || "",
-		url: url(`/posts/${post.slug}/`),
-		// Additional fields for portfolio compatibility
 		brief: post.data.description || "",
 		coverImage: post.data.image || null,
 		publishedAt: post.data.published.toISOString(),
+		updated: post.data.updated?.toISOString() || null,
+		tags: post.data.tags || [],
+		category: post.data.category || "",
+		url: url(`/posts/${post.slug}/`),
 	}));
 
 	return new Response(JSON.stringify(postsData), {
