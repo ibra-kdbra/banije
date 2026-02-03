@@ -6,12 +6,15 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 import Markdown from "@components/misc/Markdown.astro";
 import { DEFAULT_LANGUAGE } from "../constants/constants";
 
-const lang = DEFAULT_LANGUAGE;
+// For the root about page, always use the default language
+const currentLang = DEFAULT_LANGUAGE;
+
+// Get the default about content
 const aboutPost = await getEntry("spec", "about");
 const { Content } = aboutPost ? await aboutPost.render() : { Content: null };
 ---
 
-<MainGridLayout title={i18n(I18nKey.about, lang)} lang={lang}>
+<MainGridLayout title={i18n(I18nKey.about, currentLang)} lang={currentLang}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
             <div class="text-75">
