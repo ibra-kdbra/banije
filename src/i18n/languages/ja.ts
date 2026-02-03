@@ -3,7 +3,7 @@ import type { Translation } from "../translation";
 
 export const ja: Translation = {
 	[Key.home]: "ホーム",
-	[Key.about]: "概要",
+	[Key.about]: "私について",
 	[Key.archive]: "アーカイブ",
 	[Key.search]: "検索",
 
@@ -31,9 +31,10 @@ export const ja: Translation = {
 	[Key.darkMode]: "ダーク",
 	[Key.systemMode]: "システム",
 
-	[Key.more]: "もっと",
+	[Key.more]: "もっと見る",
 
-	[Key.author]: "作者",
+	[Key.author]: "著者",
 	[Key.publishedAt]: "公開日",
 	[Key.license]: "ライセンス",
+	[Key.bio]: "ソフトウェア、ハードウェア、そしてその間のすべてを知ること。",
 };
