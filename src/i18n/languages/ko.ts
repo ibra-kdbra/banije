@@ -22,18 +22,19 @@ export const ko: Translation = {
 	[Key.wordsCount]: "단어",
 	[Key.minuteCount]: "분",
 	[Key.minutesCount]: "분",
-	[Key.postCount]: "게시물",
-	[Key.postsCount]: "게시물",
+	[Key.postCount]: "개의 게시물",
+	[Key.postsCount]: "개의 게시물",
 
 	[Key.themeColor]: "테마 색상",
 
-	[Key.lightMode]: "밝은 모드",
-	[Key.darkMode]: "어두운 모드",
-	[Key.systemMode]: "시스템 모드",
+	[Key.lightMode]: "라이트 모드",
+	[Key.darkMode]: "다크 모드",
+	[Key.systemMode]: "시스템 설정",
 
 	[Key.more]: "더 보기",
 
-	[Key.author]: "저자",
+	[Key.author]: "작성자",
 	[Key.publishedAt]: "게시일",
 	[Key.license]: "라이선스",
+	[Key.bio]: "소프트웨어, 하드웨어 및 그 사이의 모든 것을 알아가는 중.",
 };

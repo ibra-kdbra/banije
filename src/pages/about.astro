@@ -4,12 +4,21 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import { DEFAULT_LANGUAGE } from "../constants/constants";
 
-const aboutPost = await getEntry("spec", "about");
+// For the root about page, always use the default language
+const currentLang = DEFAULT_LANGUAGE;
+
+// Direct fetching by specific IDs
+let aboutPost = await getEntry("spec", "about");
+if (!aboutPost) {
+    aboutPost = await getEntry("spec", "about-en");
+}
+
 const { Content } = aboutPost ? await aboutPost.render() : { Content: null };
 ---
 
-<MainGridLayout title={i18n(I18nKey.about, "en")} lang="en">
+<MainGridLayout title={i18n(I18nKey.about, currentLang)} lang={currentLang}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
             <div class="text-75">

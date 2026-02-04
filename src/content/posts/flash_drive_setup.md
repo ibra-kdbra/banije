@@ -13,7 +13,7 @@ This document provides a step-by-step guide to checking, recovering, and formatt
 
 ---
 
-## **Step 1: Verify Disk Information**
+## Step 1: Verify Disk Information
 
 List all connected drives to identify the correct device:
 
@@ -26,7 +26,7 @@ sudo fdisk -l
 
 ---
 
-## **Step 2: Check for Errors**
+## Step 2: Check for Errors
 
 Install and use `smartctl` to perform a health check:
 
@@ -52,7 +52,7 @@ Install and use `smartctl` to perform a health check:
 
 ---
 
-## **Step 3: Wipe the Disk**
+## Step 3: Wipe the Disk
 
 To erase all data, including the partition table:
 
@@ -68,7 +68,7 @@ sudo dd if=/dev/zero of=/dev/sdb bs=1M count=10
 
 ---
 
-## **Step 4: Create a New Partition Table**
+## Step 4: Create a New Partition Table
 
 Launch `fdisk` to create a new partition layout:
 
@@ -104,7 +104,7 @@ sudo fdisk -l /dev/sdb
 
 ---
 
-## **Step 5: Format the Partition**
+## Step 5: Format the Partition
 
 Format the newly created partition with your desired file system:
 
@@ -122,7 +122,7 @@ Format the newly created partition with your desired file system:
 
 ---
 
-## **Step 6: Mount the Partition**
+## Step 6: Mount the Partition**
 
 1. Create a mount point:
 
@@ -144,7 +144,7 @@ Format the newly created partition with your desired file system:
 
 ---
 
-## **Optional: Test Flash Drive for Counterfeiting**
+## Optional: Test Flash Drive for Counterfeiting
 
 If the drive shows incorrect capacity, use `f3` to verify its true size:
 
@@ -162,6 +162,6 @@ If the drive shows incorrect capacity, use `f3` to verify its true size:
 
 ---
 
-## **Conclusion**
+## Conclusion
 
 By following these steps, you can recover and set up a flash drive, ensuring its capacity and functionality are restored. For additional automation, you can add the partition to `/etc/fstab` for persistent mounting.

@@ -14,6 +14,7 @@ interface Props {
     seriesName?: string;
 	hideTagsForMobile?: boolean;
 	hideUpdateDate?: boolean;
+    lang?: string;
 }
 const {
 	published,
@@ -23,6 +24,7 @@ const {
     seriesName,
 	hideTagsForMobile = false,
 	hideUpdateDate = false,
+    lang,
 } = Astro.props;
 const className = Astro.props.class;
 
@@ -62,10 +64,10 @@ const toAnchor = (value: string) =>
             <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
         </div>
         <div class="flex flex-row flex-nowrap items-center">
-            <a href={getCategoryUrl(category)} aria-label={`View all posts in the ${category} category`}
+            <a href={getCategoryUrl(category, lang)} aria-label={`View all posts in the ${category} category`}
                class="link-lg transition text-50 text-sm font-medium
                             hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                {category || i18n(I18nKey.uncategorized)}
+                {category || i18n(I18nKey.uncategorized, lang)}
             </a>
         </div>
     </div>
@@ -79,13 +81,13 @@ const toAnchor = (value: string) =>
         <div class="flex flex-row flex-nowrap items-center">
             {(tags && tags.length > 0) && tags.map((tag, i) => (
                 <div class:list={[{"hidden": i == 0}, "mx-1.5 text-[var(--meta-divider)] text-sm"]}>/</div>
-                <a href={getTagUrl(tag)} aria-label={`View all posts with the ${tag.trim()} tag`}
+                <a href={getTagUrl(tag, lang)} aria-label={`View all posts with the ${tag.trim()} tag`}
                    class="link-lg transition text-50 text-sm font-medium
                                 hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
                     {tag.trim()}
                 </a>
             ))}
-            {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
+            {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags, lang)}</div>}
         </div>
     </div>
 
@@ -97,7 +99,7 @@ const toAnchor = (value: string) =>
             </div>
             <div class="flex flex-row flex-nowrap items-center">
                 <a
-                    href={url(`/series/#series-${toAnchor(seriesName)}`)}
+                    href={url(`/series/#series-${toAnchor(seriesName)}`, lang)}
                     aria-label={`View series ${seriesName}`}
                     class="link-lg transition text-50 text-sm font-medium hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap"
                 >

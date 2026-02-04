@@ -16,7 +16,19 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.props;
-const aboutPost = await getEntry("spec", "about");
+
+// Normalizing language codes for lookup
+const langSlug = lang.toLowerCase().replace('_', '-');
+
+// Direct fetching by normalized ID
+let aboutPost = await getEntry("spec", `about-${langSlug}`);
+if (!aboutPost) {
+    aboutPost = await getEntry("spec", `about.${lang}`);
+}
+if (!aboutPost) {
+    aboutPost = await getEntry("spec", "about");
+}
+
 const { Content } = aboutPost ? await aboutPost.render() : { Content: null };
 ---
 

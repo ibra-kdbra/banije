@@ -4,7 +4,7 @@ import type { Translation } from "../translation";
 export const zh_TW: Translation = {
 	[Key.home]: "首頁",
 	[Key.about]: "關於",
-	[Key.archive]: "彙整",
+	[Key.archive]: "封存",
 	[Key.search]: "搜尋",
 
 	[Key.tags]: "標籤",
@@ -34,6 +34,7 @@ export const zh_TW: Translation = {
 	[Key.more]: "更多",
 
 	[Key.author]: "作者",
-	[Key.publishedAt]: "發佈於",
+	[Key.publishedAt]: "發布於",
 	[Key.license]: "許可協議",
+	[Key.bio]: "了解軟體、硬體以及介於兩者之間的一切。",
 };

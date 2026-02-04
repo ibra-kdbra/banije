@@ -21,7 +21,7 @@ From a software engineering standpoint, the backend as a collection of first pri
 
 A modern backend is rarely a single, monolithic application. It is more accurately described as a **system of systems**, comprising multiple services, databases, caches, message queues, and third-party integrations. The backend engineer's role is to design, build, and orchestrate these components into a cohesive, resilient, and performant whole. This involves:
 
-:::tip{title="Core Backend Responsibilities"}
+:::tip[Core Backend Responsibilities]
 
 - **Data Modeling and Persistence:** Designing the schemas and selecting the appropriate storage technologies to represent the application's data.
 - **Business Logic Implementation:** Translating business rules and processes into robust, testable, and maintainable code.
@@ -57,7 +57,7 @@ Before we can construct complex architectures, we must master the fundamental ma
 
 At its core, a backend is a program (or set of programs) that runs on a computer, referred to as a server. The evolution of server technology reflects a continuous drive towards greater abstraction, efficiency, and manageability.
 
-:::note{title="Evolution of Server Technology"}
+:::note[Evolution of Server Technology]
 
 - **Bare Metal Servers:** Physical machines dedicated to tasks. Maximum performance, but expensive and hard to scale.
 - **Virtual Machines (VMs):** Virtualization allows multiple isolated systems on one physical machine (e.g., EC2, Compute Engine).
@@ -95,7 +95,7 @@ The Hypertext Transfer Protocol (HTTP) is the application-layer protocol that po
 
 When the frontend and backend communicate, they must agree on a format for structuring the data they exchange. This process is called serialization.
 
-:::note{title="JSON Example"}
+:::note[JSON Example]
 
 ```json {1,4-7}
 {
@@ -121,7 +121,7 @@ The high-level structure of a backend system is its architecture. Choosing the r
 
 A monolithic architecture builds an application as a single, unified unit. All business logic, data access, and UI-serving components are contained within a single codebase and deployed as a single artifact.
 
-:::caution{title="Monolith Disadvantages"}
+:::caution[Monolith Disadvantages]
 
 - **Scalability Challenges:** Scale the entire application even if only one component is a bottleneck.
 - **Technology Lock-in:** Locked to chosen stack from outset.
@@ -133,7 +133,7 @@ A monolithic architecture builds an application as a single, unified unit. All b
 
 A microservice architecture structures an application as a collection of small, autonomous services, each organized around a specific business capability.
 
-:::tip{title="Microservices Advantages"}
+:::tip[Microservices Advantages]
 
 - **Independent Scaling:** Services scale based on specific needs.
 - **Technology Freedom:** Choose best tools for each service.
@@ -145,7 +145,7 @@ A microservice architecture structures an application as a collection of small, 
 
 Serverless is a cloud execution model where the cloud provider dynamically manages the allocation and provisioning of servers. A developer writes code in the form of functions, and the cloud provider runs them in response to events.
 
-:::note{title="Serverless Characteristics"}
+:::note[Serverless Characteristics]
 
 - No server management required.
 - Event-driven execution.
@@ -168,7 +168,7 @@ A technology stack is the collection of software components used to build an app
 
 The choice of programming language has a profound impact on performance, developer productivity, and the types of problems a system is well-suited to solve.
 
-:::tip{title="Language Comparison"}
+:::tip[Language Comparison]
 
 - **Node.js (JavaScript/TypeScript):** Excellent for I/O-intensive applications due to non-blocking event loop.
 - **Python:** Simple and readable, with vast ecosystem for data science and rapid development.
@@ -194,7 +194,7 @@ The database is arguably the most critical component of the backend. It is the p
 
 Relational databases, which use Structured Query Language (SQL), have been the industry standard for decades. They store data in tables with predefined schemas.
 
-:::note{title="ACID Properties"}
+:::note[ACID Properties]
 
 - **Atomicity:** All operations succeed or fail completely.
 - **Consistency:** Transactions bring database from one valid state to another.
@@ -217,7 +217,7 @@ NoSQL databases emerged to address the limitations of relational databases, part
   - **Column-Family Stores (e.g., Cassandra, HBase):** Store data in columns rather than rows. Optimized for high-write throughput and queries over large datasets.
   - **Graph Databases (e.g., Neo4j, Amazon Neptune):** Designed to store and query data with complex relationships (e.g., social networks, recommendation engines).
 
-:::caution{title="CAP Theorem"}
+:::caution[CAP Theorem]
 A distributed data store can only provide two of: **C**onsistency, **A**vailability, and **P**artition Tolerance. Since network partitions are inevitable, the trade-off is between consistency and availability.
 :::
 
@@ -241,7 +241,7 @@ The API is the contract that defines how different software components interact.
 
 ### 5.1 API Design Principles
 
-:::tip{title="API Best Practices"}
+:::tip[API Best Practices]
 
 - **Resource-Oriented Design:** Structure around resources (nouns), use HTTP methods to operate on them.
 - **Statelessness:** Server maintains no client state between requests.
@@ -263,7 +263,7 @@ GraphQL is a query language for APIs developed by Facebook. It provides a more e
   - **Under-fetching:** The client needs to make multiple requests to different endpoints to get all the data it requires.
 - **The GraphQL Solution:** A GraphQL API exposes a single endpoint. The client sends a query specifying exactly the data it needs, and the server returns a JSON object with precisely that data, nothing more and nothing less. This empowers frontend developers to get the data they need in a single round trip.
 
-:::note{title="GraphQL Query Example"}
+:::note[GraphQL Query Example]
 
 ```graphql
 query GetUser($id: ID!) {
@@ -292,7 +292,7 @@ Building a system that works is one thing. Building a system that works reliably
 
 Scalability is the ability of a system to handle a growing amount of work by adding resources.
 
-:::tip{title="Scaling Strategies"}
+:::tip[Scaling Strategies]
 
 - **Vertical Scaling:** Increase resources of single server (CPU, RAM) - simple but limited.
 - **Horizontal Scaling:** Add more servers to pool of resources - complex but virtually limitless.
@@ -310,7 +310,7 @@ Performance is a feature. A slow application is a broken application.
   - **Content Delivery Network (CDN):** A geographically distributed network of proxy servers that cache static assets (images, CSS, JS) close to end-users, dramatically reducing latency.
   - **Database Caching:** Most databases have internal caching mechanisms to speed up query execution.
 
-:::note{title="Asynchronous Processing"}
+:::note[Asynchronous Processing]
 
 - **Message Queues (e.g., RabbitMQ, SQS):** Decouple services and improve responsiveness.
 - **Streaming Platforms (e.g., Apache Kafka):** High-throughput, real-time data processing.
@@ -321,7 +321,7 @@ Performance is a feature. A slow application is a broken application.
 
 Systems fail. Networks partition. Servers crash. Reliability is about designing systems that can withstand these failures and continue to operate.
 
-:::caution{title="Fault Tolerance Patterns"}
+:::caution[Fault Tolerance Patterns]
 
 - **Redundancy and High Availability:** Avoid single points of failure by running multiple instances across different locations.
 - **Circuit Breaker Pattern:** Monitor failures and fail fast to prevent cascades.
@@ -342,7 +342,7 @@ Security is not a feature to be added at the end; it is a fundamental property t
   - **OpenID Connect (OIDC):** A simple identity layer built on top of OAuth 2.0. It provides a standard way to perform authentication.
   - **JSON Web Tokens (JWT):** A compact, URL-safe means of representing claims to be transferred between two parties. A JWT is a signed, stateless token that can contain user identity and permissions. It is commonly used to maintain user sessions in a stateless API.
 
-:::caution{title="OWASP Top Security Concerns for Backend"}
+:::caution[OWASP Top Security Concerns for Backend]
 
 - Prevent injection with parameterized queries
 - Encrypt data in transit (HTTPS) and at rest
@@ -357,7 +357,7 @@ Security is not a feature to be added at the end; it is a fundamental property t
 
 DevOps is a set of practices that combines software development (Dev) and IT operations (Ops). It aims to shorten the systems development life cycle and provide continuous delivery with high software quality.
 
-:::note{title="DevOps Core Components"}
+:::note[DevOps Core Components]
 
 - **Version Control:** Git for code and configuration management.
 - **Containerization:** Docker for portable, consistent environments.
@@ -377,7 +377,7 @@ A comprehensive testing strategy is essential for building reliable backend syst
 
 A model for structuring your testing efforts.
 
-:::tip{title="Testing Pyramid Structure"}
+:::tip[Testing Pyramid Structure]
 
 - **Unit Tests (Base):** Test individual functions/classes in isolation. Fast, cheap, majority of tests.
 - **Integration Tests (Middle):** Test multiple components together (e.g., with real database).
@@ -387,7 +387,7 @@ A model for structuring your testing efforts.
 
 ### 8.2 Testing Best Practices
 
-:::note{title="Additional Testing Strategies"}
+:::note[Additional Testing Strategies]
 
 - **Mocking/Stubbing:** Replace external dependencies to isolate code under test.
 - **Contract Testing:** Ensure API consumers/providers adhere to shared understanding.

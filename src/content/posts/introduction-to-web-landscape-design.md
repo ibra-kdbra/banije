@@ -30,7 +30,7 @@ User Interface design is the discipline of designing the visual and interactive 
 
 * **Core Principles:** UI design is guided by established HCI principles aimed at reducing cognitive load and enhancing usability. These include:
 
-:::tip{title="Key UI Principles"}
+:::tip[Key UI Principles]
 
 * **Clarity:** The interface should be unambiguous. Icons, labels, and layouts must clearly communicate their purpose and function.
 * **Consistency:** A consistent design language (e.g., button styles, navigation patterns) across the application allows users to transfer knowledge from one part of the system to another, accelerating learning.
@@ -65,7 +65,7 @@ The frontend is the client-side of the application—the code that runs in the u
   * **CSS (Cascading Style Sheets):** Specifies the presentation, styling, and layout of the HTML content.
   * **JavaScript:** Provides interactivity, enabling dynamic content updates, event handling, and communication with the server.
 
-:::note{title="Example: Basic HTML Structure"}
+:::note[Example: Basic HTML Structure]
 
 ```html title="index.html"
 <!DOCTYPE html>
@@ -107,7 +107,7 @@ Web application security is the practice of protecting websites and web services
 
 * **Common Vulnerabilities:** The **OWASP (Open Web Application Security Project) Top 10** provides a list of the most critical web security risks.
 
-:::caution{title="Critical Security Risks"}
+:::caution[Critical Security Risks]
 
 * **Injection Attacks (e.g., SQL Injection):** Malicious data is sent to an interpreter as part of a command or query, leading to unintended execution.
 * **Cross-Site Scripting (XSS):** Malicious scripts are injected into trusted websites and run on the victim's browser.
@@ -127,7 +127,7 @@ Web performance refers to the objective measurement and perceived user experienc
   * **Cumulative Layout Shift (CLS):** Measures visual stability.
 * **Optimization Techniques:** Performance is engineered through a combination of frontend and backend strategies:
 
-:::tip{title="Performance Best Practices"}
+:::tip[Performance Best Practices]
 
 * **Asset Optimization:** Minifying CSS/JavaScript, compressing images, and using modern formats (e.g., WebP).
 * **Caching:** Leveraging browser caching and **Content Delivery Networks (CDNs)** to store assets closer to the user.
