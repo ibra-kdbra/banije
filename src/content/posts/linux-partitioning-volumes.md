@@ -56,7 +56,7 @@ Linux partitioning follows the Filesystem Hierarchy Standard (FHS), prescribing 
 
 ### 2.1 Primary Partition Categories
 
-:::tip{title="Core Partition Responsibilities"}
+:::tip[Core Partition Responsibilities]
 
 - **`/boot`**: Contains kernel images, initramfs, and bootloader files. Immutable after OS installation.
 - **`/` (root)**: Base filesystem containing startup scripts, basic binaries, device files, and system configuration.
@@ -68,7 +68,7 @@ Linux partitioning follows the Filesystem Hierarchy Standard (FHS), prescribing 
 
 ### 2.2 Specialized Partitions
 
-:::note{title="Advanced Volumes"}
+:::note[Advanced Volumes]
 
 - **`/usr`**: Static binaries and data libraries; separates mutable `/var` from immutable core.
 - **`/tmp`**: Temporary file storage; often tmpfs-backed on desktops for performance.
@@ -91,7 +91,7 @@ The filesystem selection is arguably the most consequential partitioning decisio
 
 EXT4 remains the default for most Linux distributions due to its stability and feature maturity.
 
-:::tip{title="EXT4 Characteristics"}
+:::tip[EXT4 Characteristics]
 
 - **Performance Metrics**: Up to 8x faster writes than predecessors; excels in large-file operations (benchmark: 1.2GB/s sequential read, 950MB/s write on NVMe).
 - **Strengths**: Robust journaling, extents for reduced fragmentation, online defragmentation.
@@ -104,7 +104,7 @@ EXT4 remains the default for most Linux distributions due to its stability and f
 
 Btrfs positions itself as the next-generation filesystem with advanced copy-on-write and snapshot features.
 
-:::note{title="Btrfs Enhancements"}
+:::note[Btrfs Enhancements]
 
 - **Advanced Features**: Built-in RAID, subvolumes, and compressed subvolumes reduce space by 20-50%.
 - **Performance Trade-offs**: SATA SSDs show 15% slower random I/O due to COW overhead.
@@ -116,7 +116,7 @@ Btrfs positions itself as the next-generation filesystem with advanced copy-on-w
 
 Originating from Solaris, ZFS offers unparalleled data integrity and storage pooling.
 
-:::caution{title="ZFS Considerations"}
+:::caution[ZFS Considerations]
 
 - **Data Integrity**: End-to-end checksums; no silent data corruption (contrasted with EXT4's 0.1% undetected error rate).
 - **Complexity Cost**: Higher RAM requirements (1GB per TB); steeper learning curve.
@@ -128,7 +128,7 @@ Originating from Solaris, ZFS offers unparalleled data integrity and storage poo
 
 Designed for high-throughput environments like video streaming and scientific computing.
 
-:::tip{title="XFS Benchmarks"}
+:::tip[XFS Benchmarks]
 
 - Large file performance: 2.1GB/s sequential on HDDs.
 - Dynamic inode allocation prevents allocation failures.
@@ -142,7 +142,7 @@ Designed for high-throughput environments like video streaming and scientific co
 
 Flash-Friendly File System developed by Samsung for NAND flash memory.
 
-:::note{title="F2FS Advantages"}
+:::note[F2FS Advantages]
 
 - Reduces wear leveling overhead by 20%; extends SSD lifespan.
 - Best for laptops/desktops with SSD storage.
@@ -153,7 +153,7 @@ Flash-Friendly File System developed by Samsung for NAND flash memory.
 
 Provides built-in versioning for all changes via continuous snapshots.
 
-:::caution{title="NILFS Limitations"}
+:::caution[NILFS Limitations]
 
 - Doubles storage usage for snapshots; high overhead.
 - Niche applicability: Archival systems with frequent file modifications.
@@ -177,7 +177,7 @@ Optimal partition sizes balance current needs against growth projections and fai
 
 ### 4.1 Fixed-Size Partitions
 
-:::tip{title="Minimal Allocations"}
+:::tip[Minimal Allocations]
 
 - **`/boot`**: 500MB-1GB (sufficient for 5-10 kernels; growth: 20MB/year)
 - **Swap**: 1-2x RAM for desktops; 0.5-1x for servers with ample RAM (>32GB)
@@ -192,7 +192,7 @@ Volume sizing uses growth modeling:
 - **`/var`**: 3-5x daily log volume (e.g., 50GB for high-traffic servers)
 - **`/home`**: User storage + 50% buffer (minimum 20GB/user)
 
-:::note{title="Capacity Planning Formula"}
+:::note[Capacity Planning Formula]
 Estimated Growth = Current Usage × (1 + Growth Rate)^Periods
 Where Growth Rate = 0.15 for logs, 0.20 for user data
 :::
@@ -211,7 +211,7 @@ Where Growth Rate = 0.15 for logs, 0.20 for user data
 
 SWE environments prioritize development velocity, toolchains, and build artifacts.
 
-:::tip{title="SWE Partitioning Blueprint"}
+:::tip[SWE Partitioning Blueprint]
 
 - **`/home`**: 100-200GB per engineer; accommodates IDE caches, Git repos, and build artifacts.
 - **`/var`**: 50-100GB; handles container logs from Docker/Kubernetes development.
@@ -224,7 +224,7 @@ SWE environments prioritize development velocity, toolchains, and build artifact
 
 NWE workloads emphasize monitoring, configuration, and network data.
 
-:::note{title="NWE Configuration"}
+:::note[NWE Configuration]
 
 - **`/var`**: 100-200GB; stores NetFlow data, syslog archives, and SNMP caches.
 - **`/home`**: 50GB; configuration templates and scripts.
@@ -237,7 +237,7 @@ NWE workloads emphasize monitoring, configuration, and network data.
 
 Minimalist setups for individual workstations.
 
-:::tip{title="Simple Dev Strategy"}
+:::tip[Simple Dev Strategy]
 
 - **Unified `/home` + `/` + `/var`**: Total 50-100GB; leverages container isolation.
 - **Swap**: 8GB tmpfs-backed for memory-constrained systems.
@@ -249,7 +249,7 @@ Minimalist setups for individual workstations.
 
 Heavy emphasis on dependency management and version control.
 
-:::caution{title="Programmer Considerations"}
+:::caution[Programmer Considerations]
 
 - **`/usr`**: Expanded 20GB+ for language runtimes (Node.js, Python, Go).
 - **`/opt`**: 100GB for package managers and virtual environments.
@@ -265,7 +265,7 @@ Heavy emphasis on dependency management and version control.
 
 LVM abstracts physical storage into logical volumes, enabling dynamic allocation and management that transcends traditional partitioning rigidity. Pioneered in the Linux kernel, LVM solves the static allocation problem by introducing a layered architecture: physical volumes (PVs) form volume groups (VGs), which are then subdivided into logical volumes (LVs).
 
-:::tip{title="LVM Core Benefits"}
+:::tip[LVM Core Benefits]
 
 - **Dynamic Resizing**: Online expansion/contraction of volumes without unmounting (e.g., `lvextend` and `lvreduce` commands)
 - **RAID Integration**: Software RAID at the volume level, allowing mixed redundancy policies within a VG
@@ -278,7 +278,7 @@ LVM abstracts physical storage into logical volumes, enabling dynamic allocation
 
 LVM employs device mapper kernel functionality to create virtual block devices. PVs are initialized on partitions or entire disks, then assembled into VGs. LVs within VGs act as regular partitions but offer unprecedented flexibility.
 
-:::note{title="Practical LVM Commands"}
+:::note[Practical LVM Commands]
 
 - **Initialize PV**: `pvcreate /dev/sda2 /dev/sda3`
 - **Create VG**: `vgcreate my_vg /dev/sda2 /dev/sda3` (pools 2 disks)
@@ -294,7 +294,7 @@ Performance studies (Smith et al., 2024)[^3] indicate LVM imposes negligible ove
 
 LUKS (Linux Unified Key Setup) provides transparent disk encryption at the block level, protecting data at rest with strong cryptography. Unlike file-level encryption, LUKS operates below the filesystem layer, securing the entire volume regardless of mount state.
 
-:::caution{title="LUKS Cryptographic Foundations"}
+:::caution[LUKS Cryptographic Foundations]
 
 - **Standard**: LUKS2 (default in modern systems) uses PBKDF2 for key derivation, AES-XTS cipher suite with 256-bit keys
 - **Header Protection**: Encrypted master key stored in a metadata header with multiple key slots for password/complex auth
@@ -305,7 +305,7 @@ LUKS (Linux Unified Key Setup) provides transparent disk encryption at the block
 
 #### 6.2.1 Implementation Strategies
 
-:::note{title="Encryption Approaches"}
+:::note[Encryption Approaches]
 
 - **Full-Disk Encryption**: LUKS container encompassing entire partition (e.g., for laptops); unlocks via passphrase or keyfile
 - **Partition-Specific**: Encrypt sensitive volumes like `/home` or `/var` while leaving `/boot` unencrypted for bootloading
@@ -326,7 +326,7 @@ RAID (Redundant Array of Independent Disks) distributes data across multiple dri
 
 #### 6.3.1 RAID Level Analysis
 
-:::tip{title="RAID Performance Matrix"}
+:::tip[RAID Performance Matrix]
 
 | Level | Redundancy | Read Performance | Write Performance | Capacity Cost | Ideal Use Case |
 |-------|------------|------------------|-------------------|---------------|----------------|
@@ -366,7 +366,7 @@ Partitioning demands precision tools that manipulate disk geometry with surgical
 
 #### 7.1.1 Command-Line Partitioning Suite
 
-:::tip{title="Core Tools Matrix"}
+:::tip[Core Tools Matrix]
 
 | Tool      | Purpose                          | Automation Support | GPT Support | Strengths                     |
 |-----------|----------------------------------|--------------------|-------------|-------------------------------|
@@ -388,7 +388,7 @@ Filesystem instantiation requires parameter tuning for optimal performance:
 - **mkfs.btrfs**: `--mixed` (single data/metadata for small volumes), `--compress=zstd` (CPU-efficient compression)
 - **mkfs.xfs**: `--crc=1` (metadata checksums), `--bigtimemtime=1` (year 2038+ timestamps)
 
-:::note{title="Tuning Commands"}
+:::note[Tuning Commands]
 
 ```bash
 # EXT4 with performance optimizations
@@ -411,7 +411,7 @@ Proactive maintenance prevents partitioning catastrophes through continuous obse
 
 #### 7.2.1 Usage Monitoring and Alerting
 
-:::caution{title="Operational Surveillance"}
+:::caution[Operational Surveillance]
 
 - `df -hT`: Display human-readable usage with filesystem types
 - `df -i`: Inode usage monitoring (critical for EXT4 metadata exhaustion)
@@ -439,7 +439,7 @@ Filesystem health demands regular scrutiny to prevent silent degradation:
 - **fsck**: Quarterly offline consistency checks (EXT4/Btrfs self-healing reduces frequency)
 - **smartctl**: S.M.A.R.T. monitoring for predictive drive failure (e.g., `smartd` daemon)
 
-:::note{title="Predictive Maintenance Script"}
+:::note[Predictive Maintenance Script]
 
 ```bash
 #!/bin/bash
@@ -471,7 +471,7 @@ Automation transforms partitioning from error-prone manual processes into reliab
 
 Ansible's declarative syntax excels in infrastructure-as-code partitioning:
 
-:::tip{title="Comprehensive Ansible Playbook"}
+:::tip[Comprehensive Ansible Playbook]
 
 ```yaml
 ---
@@ -556,7 +556,7 @@ Cloud platforms leverage partitioning automation in image templates:
 - **Terraform**: Infrastructure definitions including storage allocation scripts
 - **Ignition (CoreOS)**: YAML-driven disk configuration for containers
 
-:::note{title="Container-Optimized Partitioning"}
+:::note[Container-Optimized Partitioning]
 
 ```bash
 # Ignition config for CoreOS partitioning
@@ -623,7 +623,7 @@ These methodologies transform partitioning from art into science, enabling the r
 
 ### 8.1 Allocation Errors
 
-:::caution{title="Avoid These Traps"}
+:::caution[Avoid These Traps]
 
 - Under-sizing `/var`: Monitor with logrotate; resize via LVM.
 - Ignoring swap: Calculate based on peak memory usage.

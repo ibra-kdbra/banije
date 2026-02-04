@@ -21,7 +21,7 @@ The transition from a single-machine system to a distributed one is not a linear
 
 In the 1990s, L. Peter Deutsch and others at Sun Microsystems compiled a list of fallacies; assumptions that programmers new to distributed applications invariably make, to their peril.
 
-:::caution{title="Eight Fallacies of Distributed Computing"}
+:::caution[Eight Fallacies of Distributed Computing]
 
 1. **The network is reliable.** (It is not.)
 2. **Latency is zero.** (It is not.)
@@ -54,7 +54,7 @@ In a single-server application with one database, data consistency is largely so
 
 The CAP theorem describes behavior during network partitions, but the **PACELC theorem** provides a more complete picture:
 
-:::note{title="PACELC Theorem"}
+:::note[PACELC Theorem]
 **"If there is a Partition (P), a distributed system must choose between Availability (A) and Consistency (C). Else (E), when the system is running normally, it must choose between Latency (L) and Consistency (C)."**
 :::
 
@@ -64,7 +64,7 @@ This forces nuanced architectural discussion. A system might sacrifice consisten
 
 Two-Phase Commit is synchronous and unsuitable for microservices. The **Saga Pattern** manages data consistency across services through local transactions and compensating actions.
 
-:::tip{title="Saga Pattern Example: E-commerce Order"}
+:::tip[Saga Pattern Example: E-commerce Order]
 
 1. `Order Service`: Creates order in `PENDING` state, publishes `ORDER_CREATED` event
 2. `Payment Service`: Processes payment, publishes `PAYMENT_PROCESSED` on success
@@ -76,7 +76,7 @@ Two-Phase Commit is synchronous and unsuitable for microservices. The **Saga Pat
 
 **Implementation Styles:**
 
-:::note{title="Saga Implementation Approaches"}
+:::note[Saga Implementation Approaches]
 
 * **Choreography:** Services publish/subscribe to events with no central coordinator
 * **Orchestration:** Central orchestrator manages saga state and compensating transactions
@@ -89,7 +89,7 @@ These patterns build highly scalable and auditable systems.
 
 * **Event Sourcing:** Store immutable events instead of current state. Current state is derived by replaying events.
 
-:::note{title="Event Sourcing Example"}
+:::note[Event Sourcing Example]
 
 ```json
 // Instead of storing balance: 80
@@ -106,7 +106,7 @@ These patterns build highly scalable and auditable systems.
 
 * **CQRS (Command Query Responsibility Segregation):** Separates the write model from the read model.
 
-:::tip{title="CQRS Benefits"}
+:::tip[CQRS Benefits]
 
 * Different models optimized for writes vs reads
 * Independent scaling of command and query sides
@@ -118,7 +118,7 @@ These patterns build highly scalable and auditable systems.
 
 Understanding storage engines and replication strategies is crucial for performance and reliability.
 
-:::note{title="MySQL Storage Engines"}
+:::note[MySQL Storage Engines]
 
 * **InnoDB:** Transactional, ACID-compliant, row-level locking for OLTP workloads
 * **MyISAM:** Fast for reads, table-level locking, no transactions (deprecated for new apps)
@@ -127,7 +127,7 @@ Understanding storage engines and replication strategies is crucial for performa
 
 **Replication Strategies:**
 
-:::tip{title="Replication Models"}
+:::tip[Replication Models]
 
 * **Leader-Follower:** All writes to leader, reads from replicas (most common)
 * **Multi-Leader:** Multiple nodes accept writes, replicate conflicts must be resolved
@@ -137,7 +137,7 @@ Understanding storage engines and replication strategies is crucial for performa
 
 **Transaction Isolation Levels (SQL):**
 
-:::note{title="SQL Isolation Levels"}
+:::note[SQL Isolation Levels]
 
 1. **Read Uncommitted:** Can read uncommitted changes (dirty reads)
 2. **Read Committed:** Only reads committed changes (non-repeatable reads possible)
@@ -154,7 +154,7 @@ Resiliency is the ability to recover from failures and continue functioning; han
 
 The Circuit Breaker monitors failures and prevents cascading failures in distributed systems.
 
-:::note{title="Circuit Breaker States"}
+:::note[Circuit Breaker States]
 
 * **Closed:** Normal operation, requests flow through, monitoring failures
 * **Open:** Fail fast for downstream issues, timeout before retrying
@@ -166,7 +166,7 @@ The Circuit Breaker monitors failures and prevents cascading failures in distrib
 
 Isolate application components into pools to prevent single failures from affecting the entire system.
 
-:::tip{title="Bulkhead Implementation"}
+:::tip[Bulkhead Implementation]
 Use separate thread/connection pools for each downstream service. A slow Service A won't impact Service B's pool, preventing complete system failure.
 :::
 
@@ -174,7 +174,7 @@ Use separate thread/connection pools for each downstream service. A slow Service
 
 Essential for handling transient failures in distributed systems.
 
-:::caution{title="Retry Best Practices"}
+:::caution[Retry Best Practices]
 
 * **Timeouts:** Aggressive timeouts prevent resource exhaustion
 * **Exponential Backoff:** Increase retry intervals (1s, 2s, 4s, 8s)
@@ -186,7 +186,7 @@ Essential for handling transient failures in distributed systems.
 
 Protect services from overload and implement graceful degradation.
 
-:::note{title="Rate Limiting Strategies"}
+:::note[Rate Limiting Strategies]
 
 * **Token Bucket:** Tokens accumulate for requests, removed on use
 * **Leaky Bucket:** Requests processed at fixed rate, excess discarded
@@ -202,7 +202,7 @@ Asynchronous patterns are fundamental to resilient, loosely coupled distributed 
 
 Different approaches to messaging with distinct trade-offs.
 
-:::tip{title="Message Broker Characteristics"}
+:::tip[Message Broker Characteristics]
 
 * **RabbitMQ:** Smart routing, work queuing, message broker model
 * **Apache Kafka:** Event streaming, persistent logs, multiple consumers
@@ -213,7 +213,7 @@ Different approaches to messaging with distinct trade-offs.
 
 Critical for handling "at-least-once" delivery in messaging systems.
 
-:::note{title="Idempotency Strategy"}
+:::note[Idempotency Strategy]
 
 ```text
 function processMessage(message) {
@@ -235,7 +235,7 @@ function processMessage(message) {
 
 Solve atomic database updates and event publishing in event-driven systems.
 
-:::tip{title="Transactional Outbox Flow"}
+:::tip[Transactional Outbox Flow]
 
 1. Update business entity AND insert event into outbox in single local transaction
 2. Message relay asynchronously publishes events and marks as sent
@@ -252,7 +252,7 @@ Systematic discipline of identifying and eliminating bottlenecks.
 
 Advanced caching strategies beyond basic cache-aside.
 
-:::note{title="Caching Pattern Comparison"}
+:::note[Caching Pattern Comparison]
 
 * **Cache-Aside:** App code manages cache, lazy loading
 * **Read-Through:** Cache handles data loading from DB
@@ -263,7 +263,7 @@ Advanced caching strategies beyond basic cache-aside.
 
 **Thundering Herd Mitigation:**
 
-:::caution{title="Thundering Herd Problem"}
+:::caution[Thundering Herd Problem]
 When cached item expires, thousands of requests simultaneously miss cache and overwhelm DB. Solution: lock-based re-fetching where only first request loads data while others wait.
 :::
 
@@ -271,7 +271,7 @@ When cached item expires, thousands of requests simultaneously miss cache and ov
 
 Fundamental concepts for performance optimization.
 
-:::tip{title="Workload Matching"}
+:::tip[Workload Matching]
 
 * **I/O-Bound Workloads:** Asynchronous models (Node.js, asyncio) handle many concurrent requests
 * **CPU-Bound Workloads:** Parallelism (Go, Java) leverages multiple cores
@@ -282,7 +282,7 @@ Fundamental concepts for performance optimization.
 
 You cannot optimize what you cannot measure.
 
-:::note{title="Performance Profiling"}
+:::note[Performance Profiling]
 Use profilers to generate flame graphs identifying:
 
 * CPU hotspots in code execution paths
@@ -299,7 +299,7 @@ Infrastructure-level solutions for managing complexity in distributed environmen
 
 Single entry point managing communication between clients and services.
 
-:::tip{title="API Gateway Responsibilities"}
+:::tip[API Gateway Responsibilities]
 
 * **Routing:** Direct requests to appropriate microservices
 * **Authentication/Authorization:** Verify credentials at the edge
@@ -313,7 +313,7 @@ Single entry point managing communication between clients and services.
 
 Infrastructure layer for secure, fast, and reliable service-to-service communication.
 
-:::note{title="Service Mesh Components"}
+:::note[Service Mesh Components]
 
 * **Sidecar Proxy:** (Envoy) handles all inbound/outbound traffic per service
 * **Control Plane:** (Istio, Linkerd) configures all sidecar proxies
@@ -325,7 +325,7 @@ Infrastructure layer for secure, fast, and reliable service-to-service communica
 
 "Never trust, always verify" security model for distributed systems.
 
-:::caution{title="Zero Trust Principles"}
+:::caution[Zero Trust Principles]
 
 * **Identity-Based Authentication:** Verify every request regardless of origin
 * **Least Privilege Access:** Grant minimum necessary permissions
@@ -337,7 +337,7 @@ Infrastructure layer for secure, fast, and reliable service-to-service communica
 
 Understanding JWT vulnerabilities and secure implementation.
 
-:::caution{title="JWT Security Issues"}
+:::caution[JWT Security Issues]
 
 * **Algorithm Confusion Attacks:** Trick server into weak algorithms
   * *Mitigation:* Configure library to accept only strong algorithms (RS256)
