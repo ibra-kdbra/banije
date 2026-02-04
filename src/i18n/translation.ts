@@ -35,7 +35,7 @@ export function getTranslation(lang: string): Translation {
 }
 
 export function i18n(key: I18nKey, langOverride?: string): string {
-	const globalLang = (globalThis as { __lang?: string }).__lang;
+	const globalLang = typeof (globalThis as any) !== "undefined" ? (globalThis as any).__lang : undefined;
 	const docLang =
 		typeof document !== "undefined" ? document.documentElement.lang : undefined;
 	const resolved = langOverride || globalLang || docLang || siteConfig.lang || "en";

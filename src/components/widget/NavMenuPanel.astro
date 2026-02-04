@@ -6,15 +6,16 @@ import { i18n } from "../../i18n/translation";
 
 interface Props {
 	links: NavBarLink[];
+    lang?: string;
 }
 
-const { links } = Astro.props;
+const { links, lang } = Astro.props;
 ---
 <div id="nav-menu-panel" class:list={["float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"]}>
     {links.map((link) => {
-        const displayName = link.i18nKey ? i18n(link.i18nKey) : link.name;
+        const displayName = link.i18nKey ? i18n(link.i18nKey, lang) : link.name;
         return (
-            <a href={link.external ? link.url : url(link.url)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            <a href={link.external ? link.url : url(link.url, lang)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
                 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
             "
                target={link.external ? "_blank" : null}

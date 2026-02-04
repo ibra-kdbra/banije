@@ -1,39 +1,33 @@
-import { getSortedPosts } from "@features/content";
-import { url } from "@domain/url";
+import type { APIRoute } from 'astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
-export async function GET() {
-	const posts = await getSortedPosts();
+export const GET: APIRoute = async () => {
+// 1. Fetch posts from your content collection
+	const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts', ({ data }) => {
+    return data.draft !== true; // Filter out drafts
+  });
 
-	const postsData = posts.map((post) => ({
-		slug: post.slug,
-		title: post.data.title,
-		brief: post.data.description || "",
-		coverImage: post.data.image || null,
-		publishedAt: post.data.published.toISOString(),
-		updated: post.data.updated?.toISOString() || null,
-		tags: post.data.tags || [],
-		category: post.data.category || "",
-		url: url(`/posts/${post.slug}/`),
-	}));
+// 2. Sort posts by date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+    new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
+);
 
-	return new Response(JSON.stringify(postsData), {
-		status: 200,
-		headers: {
-			"Content-Type": "application/json",
-			"Access-Control-Allow-Origin": "*",
-			"Access-Control-Allow-Methods": "GET, OPTIONS",
-			"Access-Control-Allow-Headers": "Content-Type",
-		},
-	});
-}
+// 3. Format the data to match your frontmatter
+const formattedPosts = sortedPosts.map(post => ({
+title: post.data.title,
+brief: post.data.description, // Matches your 'description' field
+coverImage: post.data.image,    // ✅ CHANGED from coverImage to 'image'
+slug: post.slug,
+publishedAt: post.data.published.toISOString(), // ✅ CHANGED from pubDate to 'published'
+}));
 
-export async function OPTIONS() {
-	return new Response(null, {
-		status: 204,
-		headers: {
-			"Access-Control-Allow-Origin": "*",
-			"Access-Control-Allow-Methods": "GET, OPTIONS",
-			"Access-Control-Allow-Headers": "Content-Type",
-		},
-	});
+// 4. Return the data as a JSON response
+return new Response(
+JSON.stringify(formattedPosts), {
+status: 200,
+headers: {
+	"Content-Type": "application/json"
+      }
+    }
+  );
 }

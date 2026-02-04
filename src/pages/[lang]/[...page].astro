@@ -53,7 +53,7 @@ const page = {
 			safePage > 1 ? (safePage - 1 === 1 ? `/${lang}/` : `/${lang}/${safePage - 1}/`) : undefined,
 		next: safePage < lastPage ? `/${lang}/${safePage + 1}/` : undefined,
 		first: `/${lang}/`,
-		last: lastPage === 1 ? `/${lang}/` : `/${lang}/${lastPage}/`,
+		last: lastPage === 1 ? "/" : `/${lastPage}/`,
 	},
 };
 
@@ -61,6 +61,6 @@ const len = page.data.length;
 ---
 
 <MainGridLayout lang={lang}>
-    <PostPage page={page}></PostPage>
+    <PostPage page={page} lang={lang}></PostPage>
     <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
 </MainGridLayout>

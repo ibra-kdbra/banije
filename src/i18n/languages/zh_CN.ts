@@ -36,4 +36,5 @@ export const zh_CN: Translation = {
 	[Key.author]: "作者",
 	[Key.publishedAt]: "发布于",
 	[Key.license]: "许可协议",
+	[Key.bio]: "了解软件、硬件以及介于两者之间的一切。",
 };

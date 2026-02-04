@@ -36,4 +36,5 @@ export const es: Translation = {
 	[Key.author]: "Autor",
 	[Key.publishedAt]: "Publicado el",
 	[Key.license]: "Licencia",
+	[Key.bio]: "Conociendo el software, el hardware y todo lo que hay en medio.",
 };

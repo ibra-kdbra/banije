@@ -68,10 +68,6 @@ if (!lang) {
 }
 const siteLang = lang.replace("_", "-");
 
-if (typeof (globalThis as any).__lang === "undefined" || (globalThis as any).__lang !== lang) {
-	(globalThis as { __lang?: string }).__lang = lang;
-}
-
 const bannerOffsetByPosition = {
 	top: `${BANNER_HEIGHT_EXTEND}vh`,
 	center: `${BANNER_HEIGHT_EXTEND / 2}vh`,

@@ -12,9 +12,10 @@ import { licenseConfig, profileConfig } from "../../config";
 import PostMetadata from "../../components/PostMeta.astro";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import { formatDateToYYYYMMDD } from "../../domain/date";
+import { DEFAULT_LANGUAGE } from "../../constants/constants";
 
 export async function getStaticPaths() {
-	const posts = await getSortedPosts("en");
+	const posts = await getSortedPosts(DEFAULT_LANGUAGE);
 	return posts.map((post) => ({
 		params: { slug: normalizeSlug(post.slug) },
 		props: { post },
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const lang = DEFAULT_LANGUAGE;
 
 const { Content, headings } = await post.render();
 const { remarkPluginFrontmatter } = await post.render();
@@ -38,7 +40,7 @@ const jsonLd = {
 		url: Astro.site,
 	},
 	datePublished: formatDateToYYYYMMDD(post.data.published),
-	inLanguage: "en",
+	inLanguage: lang,
 };
 
 const postSlug = normalizeSlug(post.slug);
@@ -48,7 +50,7 @@ const imageSrc = post.data.image;
 const isInternalImage = imageSrc && !imageSrc.startsWith("/") && !imageSrc.startsWith("http");
 const imageBasePath = isInternalImage ? path.join("content/posts/", getDir(post.id)) : "";
 ---
-<MainGridLayout banner={post.data.image} title={post.data.title} description={post.data.description} setOGTypeArticle={true} headings={headings} lang="en">
+<MainGridLayout banner={post.data.image} title={post.data.title} description={post.data.description} setOGTypeArticle={true} headings={headings} lang={lang}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" data-slug={postSlug} class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
@@ -60,13 +62,13 @@ const imageBasePath = isInternalImage ? path.join("content/posts/", getDir(post.
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount, "en")}</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.words} {" " + i18n(I18nKey.wordsCount, lang)}</div>
                 </div>
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:schedule-outline-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount, "en")}</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {" " + i18n(I18nKey.minutesCount, lang)}</div>
                 </div>
             </div>
 
@@ -121,7 +123,7 @@ const imageBasePath = isInternalImage ? path.join("content/posts/", getDir(post.
     </div>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
-        <a href={post.data.nextSlug ? getPostUrlBySlug(post.data.nextSlug, "en") : "#"}
+        <a href={post.data.nextSlug ? getPostUrlBySlug(post.data.nextSlug, lang) : "#"}
            class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !post.data.nextSlug}]}>
             {post.data.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
                 <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
@@ -131,7 +133,7 @@ const imageBasePath = isInternalImage ? path.join("content/posts/", getDir(post.
             </div>}
         </a>
 
-        <a href={post.data.prevSlug ? getPostUrlBySlug(post.data.prevSlug, "en") : "#"}
+        <a href={post.data.prevSlug ? getPostUrlBySlug(post.data.prevSlug, lang) : "#"}
            class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !post.data.prevSlug}]}>
             {post.data.prevSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4">
                 <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
