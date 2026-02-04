@@ -17,21 +17,14 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.props;
 
-// Explicitly look for the localized file first
-let aboutPost;
-try {
-    // Astro content collections use the filename as the slug/id
-    // So we look for 'about.es', 'about.tr', etc.
-    aboutPost = await getEntry("spec", `about.${lang}`);
-    if (!aboutPost) {
-        // If the localized version doesn't exist, try with .md extension
-        aboutPost = await getEntry("spec", `about.${lang}.md`);
-    }
-} catch (e) {
-    console.error(`Failed to load about.${lang}:`, e);
-}
+// Normalizing language codes for lookup
+const langSlug = lang.toLowerCase().replace('_', '-');
 
-// Fallback to default 'about' if localized entry is not found
+// Direct fetching by normalized ID
+let aboutPost = await getEntry("spec", `about-${langSlug}`);
+if (!aboutPost) {
+    aboutPost = await getEntry("spec", `about.${lang}`);
+}
 if (!aboutPost) {
     aboutPost = await getEntry("spec", "about");
 }

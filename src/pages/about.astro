@@ -9,8 +9,12 @@ import { DEFAULT_LANGUAGE } from "../constants/constants";
 // For the root about page, always use the default language
 const currentLang = DEFAULT_LANGUAGE;
 
-// Get the default about content
-const aboutPost = await getEntry("spec", "about");
+// Direct fetching by specific IDs
+let aboutPost = await getEntry("spec", "about");
+if (!aboutPost) {
+    aboutPost = await getEntry("spec", "about-en");
+}
+
 const { Content } = aboutPost ? await aboutPost.render() : { Content: null };
 ---
 
