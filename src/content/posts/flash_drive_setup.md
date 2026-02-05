@@ -89,8 +89,7 @@ sudo fdisk /dev/sdb
      n
      ```
 
-  3. Accept defaults for partition number, start, and end sectors to use the entire disk.
-  4. Write changes to disk:
+  3. Write changes to disk:
 
      ```bash
      w

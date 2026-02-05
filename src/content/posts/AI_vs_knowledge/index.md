@@ -41,6 +41,7 @@ Basic algorithm AI is rooted in hand-crafted rules and heuristics. These systems
 > "Rule-based systems are great for tasks where domain knowledge is well understood and can be explicitly programmed. The rules are clear and reliable." – Senior AI Developer in Finance
 
 Examples of basic algorithm AI include:
+
 - **Expert Systems**: Systems that emulate the decision-making ability of a human expert based on predefined rules.
 - **Search Algorithms**: Techniques like depth-first search (DFS), breadth-first search (BFS), or A* for pathfinding and optimization problems.
 - **Sorting and Searching Algorithms**: Algorithms like quicksort, binary search, etc.
@@ -68,6 +69,7 @@ Driven by machine learning (ML) and deep learning (DL), is a data-driven approac
 > "Machine learning allows us to build systems that learn from data, adapting to new conditions without needing to be reprogrammed entirely." – Data Scientist in AI Research
 
 Key techniques include:
+
 - **Neural Networks**: Inspired by biological neurons, these networks can model complex relationships and solve problems like image and speech recognition.
 - **Deep Learning**: A subset of ML that uses large neural networks with many layers (deep networks) to model complex, high-dimensional data.
 
@@ -78,6 +80,7 @@ The power of plain model AI lies in its ability to learn patterns from large amo
 > "Deep learning has revolutionized fields like computer vision and natural language processing, where the complexity of the data demands a model that can understand intricate patterns." – Senior Machine Learning Engineer
 
 This ability to recognize patterns makes deep learning particularly useful for:
+
 - **Image Classification**: Identifying objects or scenes in images.
 - **Natural Language Processing (NLP)**: Understanding and generating human language.
 - **Autonomous Systems**: Allowing cars, drones, and robots to make decisions based on sensory inputs.
@@ -97,6 +100,7 @@ The primary advantage of plain model AI is its **ability to generalize**. With t
 ### 4. Use Cases for Plain Model AI
 
 It is best suited for situations where the data is too large or complex for rule-based systems to handle effectively. Key areas where plain model AI outperforms basic algorithm AI include:
+
 - **Image and Speech Recognition**
 - **Autonomous Vehicles**
 - **Natural Language Understanding**
@@ -136,7 +140,7 @@ Ultimately, the choice between **basic algorithm AI** and **plain model AI** hin
 
 > "Choosing between basic algorithmic AI and machine learning depends on your **data**, **resources**, and **application complexity**. There’s no one-size-fits-all solution." – Senior AI Researcher
 
-> "AI success isn't about using the latest model—it's about choosing the right approach for the problem." 
+> "AI success isn't about using the latest model—it's about choosing the right approach for the problem."
 – Senior AI Researcher
 
 Both approaches have their place in modern AI development, and understanding their strengths and limitations will allow engineers to make the best decision for each use case.
@@ -147,4 +151,3 @@ Both approaches have their place in modern AI development, and understanding the
 - [AI: A Modern Approach by Stuart Russell and Peter Norvig](http://aima.cs.berkeley.edu/)
 - [Machine Learning Mastery](https://machinelearningmastery.com/)
 - [Basic Algorithms in AI](https://medium.com/@AlexanderObregon/basic-ai-algorithms-explained-c517a049acc7)
-

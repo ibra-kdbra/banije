@@ -227,5 +227,5 @@ This command will show the route that a packet takes to reach <www.example.com>.
 ## Provided Guide for all the commands
 
 :::important
-:::
 I did add all the CMD commands that is known in this [TerCli](https://tercli.netlify.app/)
+:::
