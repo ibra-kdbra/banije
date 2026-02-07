@@ -21,7 +21,9 @@ git merge <branch>
 
 :::tip
 「git merge」を使用して、あるブランチから別のブランチ (通常はメイン ブランチ) に変更を統合します。
-:::---
+:::
+
+---
 
 ## 2. Git の差分
 
@@ -41,7 +43,9 @@ git log
 
 :::note
 `--oneline` や `--graph` などのオプションを使用して、ログを簡略化または視覚化します。
-:::---
+:::
+
+---
 
 ## 4. Git ショー
 
@@ -69,7 +73,9 @@ git branch
 
 :::tip
 ブランチを削除するには、`git Branch -d <branch>` を使用します。
-:::---
+:::
+
+---
 
 ## 7. Git プッシュ
 
@@ -160,7 +166,9 @@ git tag
 
 :::tip
 注釈付きタグを作成するには、`git tag -a <tag>` を使用します。
-:::---
+:::
+
+---
 
 ## 16. Git アーカイブ
 
@@ -332,7 +340,9 @@ git switch <branch>
 
 :::note
 「git switch」は、ブランチ切り替えのための「git checkout」の最新の代替手段です。
-:::---
+:::
+
+---
 
 <iframe width="100%" height="468" src="https://www.youtube.com/embed/K6Q31YkorUE" title="YouTube video player" frameborder="0"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen allowfullscreen></iframe>
