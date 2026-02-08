@@ -218,7 +218,8 @@ NoSQL databases emerged to address the limitations of relational databases, part
   - **Graph Databases (e.g., Neo4j, Amazon Neptune):** Designed to store and query data with complex relationships (e.g., social networks, recommendation engines).
 
 :::caution[CAP Theorem]
-A distributed data store can only provide two of: **C**onsistency, **A**vailability, and **P**artition Tolerance. Since network partitions are inevitable, the trade-off is between consistency and availability.
+A distributed data store can only provide two of:
+**C**onsistency, **A**vailability, and **P**artition Tolerance. Since network partitions are inevitable, the trade-off is between consistency and availability.
 :::
 
 #### 4.3.3 ORMs vs. Raw SQL: The Abstraction Debate

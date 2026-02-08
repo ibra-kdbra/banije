@@ -13,8 +13,7 @@ originalSlug: "cmd_commands"
 
 ## ASSOC
 
-:::note
-[Purpose]
+:::note[Purpose]
 assoc コマンドは、ファイル拡張子の関連付けを表示または変更するために使用します。
 :::
 
@@ -24,8 +23,7 @@ assoc
 
 ## CHKDSK (チェックディスク)
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 ディスクのエラーをチェックし、要求に応じてエラーを修正します。
 :::
 
@@ -35,8 +33,7 @@ chkdsk C:
 
 ## 暗号
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 NTFS パーティション上のファイル/ディレクトリを暗号化または復号化します。
 :::
 
@@ -46,8 +43,7 @@ cipher /E
 
 ## CLS
 
-:::note
-[Purpose]
+:::note[Purpose]
 以前に入力したすべてのコマンドとその他のテキストを画面から消去します。
 :::
 
@@ -57,8 +53,7 @@ cls
 
 ## DISKPART
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 ハードドライブのパーティションを管理します。
 :::
 
@@ -68,8 +63,7 @@ diskpart
 
 ## ドライバークエリ
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 インストールされているデバイスドライバーとそのプロパティのリストを表示します。
 :::
 
@@ -79,8 +73,7 @@ driverquery
 
 ## GPUPDATE
 
-:::note
-[Purpose]
+:::note[Purpose]
 グループ ポリシー設定を更新します。
 :::
 
@@ -90,8 +83,7 @@ gpupdate /force
 
 ## IPCONFIG
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 すべてのネットワーク インターフェイスの IP 構成を表示します。
 :::
 
@@ -101,8 +93,7 @@ ipconfig /all
 
 ## ネット統計
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 アクティブな TCP 接続とさまざまなネットワーク統計を表示します。
 :::
 
@@ -112,8 +103,7 @@ netstat -a
 
 ## NSLOOKUP
 
-:::note
-[Purpose]
+:::note[Purpose]
 DNS にクエリを実行して、ドメイン名または IP アドレスのマッピングを取得します。
 :::
 
@@ -123,8 +113,7 @@ nslookup <www.example.com>
 
 ## パスピング
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 中間ホップでのネットワーク遅延と損失情報を提供します。
 :::
 
@@ -134,8 +123,7 @@ pathping <www.example.com>
 
 ## ピン
 
-:::note
-[Purpose]
+:::note[Purpose]
 ソース コンピューターが指定された宛先コンピューターに到達できるかどうかをテストします。
 :::
 
@@ -145,8 +133,7 @@ ping <www.example.com>
 
 ## パワーCFG
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 電源設定と構成を制御します。
 :::
 
@@ -156,8 +143,7 @@ powercfg /hibernate on
 
 ## SFC (システム ファイル チェッカー)
 
-:::note
-[Purpose]
+:::note[Purpose]
 重要なシステム ファイルをスキャンして修復します。
 :::
 
@@ -167,8 +153,7 @@ sfc /scannow
 
 ## シャットダウン
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 コンピューターまたはリモート コンピューターをシャットダウン、再起動、またはログオフします。
 :::
 
@@ -178,8 +163,7 @@ shutdown /s /t 0
 
 ## システムフォ
 
-:::note
-[Purpose]
+:::note[Purpose]
 コンピュータとそのオペレーティング システムに関する詳細な構成情報を表示します。
 :::
 
@@ -189,8 +173,7 @@ systeminfo
 
 ## タスクリスト
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 実行中のタスク、サービス、プロセスのリストを表示します。
 :::
 
@@ -200,8 +183,7 @@ tasklist
 
 ## トレース
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 パケットが宛先に到達するまでにかかるルートとホップを表示します。
 :::
 
@@ -212,4 +194,5 @@ tracert <www.example.com>
 ## すべてのコマンドのガイドが提供されています
 
 :::important
-:::この記事で知られているすべての CMD コマンドを追加しました。[TerCli](https://tercli.netlify.app/)
+この記事で知られているすべての CMD コマンドを追加しました。[TerCli](https://tercli.netlify.app/)
+:::
