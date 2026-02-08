@@ -95,6 +95,5 @@ Despite its drawbacks, C++ remains a critical language in many technical fields 
 ## References
 
 1. Stroustrup, B. (2013). *The C++ Programming Language* (4th ed.). Addison-Wesley.
-2. Bjarne Stroustrup. (2024). *C++: A Comprehensive Introduction*. Retrieved from [C++ Programming Resources](https://www.stroustrup.com/).
-3. Cplusplus.com. (2024). *C++ Reference*. Retrieved from [cplusplus.com](http://www.cplusplus.com/).
-
+2. [Bjarne Stroustrup (2024) - C++: A Comprehensive Introduction](https://www.stroustrup.com/)
+3. [Cplusplus.com (2024) - C++ Reference](http://www.cplusplus.com/)
