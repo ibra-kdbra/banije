@@ -25,7 +25,7 @@ series:
 20 世紀 90 年代，L. Peter Deutsch 和 Sun Microsystems 的其他人編制了一系列謬誤；剛剛接觸分佈式應用程序的程序員總是會做出這樣的假設，這會給他們帶來危險。
 
 :::caution
-{title="Eight Fallacies of Distributed Computing"}
+[Eight Fallacies of Distributed Computing]
 1. **網絡可靠。 **（事實並非如此。）
 2. **延遲為零。 **（事實並非如此。）
 3. **帶寬是無限的。 **（事實並非如此。）
@@ -55,7 +55,7 @@ series:
 CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了更完整的情況：
 
 :::note
-{title="PACELC Theorem"}
+[PACELC Theorem]
 **“如果存在分區（P），分佈式系統必須在可用性（A）和一致性（C）之間進行選擇。否則（E），當系統正常運行時，必須在延遲（L）和一致性（C）之間進行選擇。”**
 :::這迫使人們進行細緻入微的架構討論。 系統在故障期間可能會為了可用性而犧牲一致性，但在正常操作期間優先考慮一致性而不是延遲。 
 
@@ -64,7 +64,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 兩階段提交是同步的，不適合微服務。 **Saga 模式**通過本地事務和補償操作來管理跨服務的數據一致性。
 
 :::tip
-{title="Saga Pattern Example: E-commerce Order"}
+[Saga Pattern Example: E-commerce Order]
 1. `Order Service`：創建處於`PENDING`狀態的訂單，發布`ORDER_CREATED`事件
 2. `Payment Service`：處理付款，成功時發布`PAYMENT_PROCESSED`
 3. `Inventory Service`：更新庫存，成功後發布`INVENTORY_UPDATED`
@@ -74,7 +74,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 :::**實施風格：**
 
 :::note
-{title="Saga Implementation Approaches"}
+[Saga Implementation Approaches]
 * **編排：** 服務發布/訂閱事件，無需中央協調員
 * **編排：** 中央編排器管理 saga 狀態和補償事務
 :::
@@ -86,7 +86,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 * **事件溯源：** 存儲不可變事件而不是當前狀態。 當前狀態是通過重播事件得出的。
 
 :::note
-{title="Event Sourcing Example"}
+[Event Sourcing Example]
 ```json
 // 而不是存儲餘額：80
 // 存儲事件序列：
@@ -100,7 +100,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 :::* **CQRS（命令查詢職責分離）：** 將寫入模型與讀取模型分開。
 
 :::tip
-{title="CQRS Benefits"}
+[CQRS Benefits]
 *針對寫入與讀取進行優化的不同模型
 * 命令和查詢端的獨立縮放
 * 具有獨立上下文的更好的領域建模
@@ -111,20 +111,20 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 了解存儲引擎和復制策略對於性能和可靠性至關重要。
 
 :::note
-{title="MySQL Storage Engines"}
+[MySQL Storage Engines]
 * **InnoDB：** 適用於 OLTP 工作負載的事務性、符合 ACID 的行級鎖定
 * **MyISAM：** 讀取速度快，表級鎖定，無事務（新應用程序已棄用）
 :::**複製策略：**
 
 :::tip
-{title="Replication Models"}
+[Replication Models]
 * **Leader-Follower：** 所有寫入領導者，從副本讀取（最常見）
 * **Multi-Leader：** 多個節點接受寫入，必須解決複製衝突
 * **Leaderless（Cassandra 風格）：** 同時寫入多個節點，仲裁讀取
 :::**事務隔離級別 (SQL)：**
 
 :::note
-{title="SQL Isolation Levels"}
+[SQL Isolation Levels]
 1. **讀取未提交：** 可以讀取未提交的更改（臟讀）
 2. **讀已提交：** 只讀取已提交的更改（可能不可重複讀取）
 3. **可重複讀取：** 事務內行值一致（可能存在幻讀）
@@ -140,7 +140,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 斷路器監視故障並防止分佈式系統中的級聯故障。
 
 :::note
-{title="Circuit Breaker States"}
+[Circuit Breaker States]
 * **關閉：** 正常運行，請求流經，監控失敗
 * **開放：** 下游問題快速失敗，重試前超時
 * **半開放：** 使用單個探測請求測試下游恢復
@@ -151,7 +151,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 將應用程序組件隔離到池中，以防止單一故障影響整個系統。
 
 :::tip
-{title="Bulkhead Implementation"}
+[Bulkhead Implementation]
 為每個下游服務使用單獨的線程/連接池。 緩慢的服務 A 不會影響服務 B 的池，從而防止系統完全故障。
 :::
 
@@ -160,7 +160,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 對於處理分佈式系統中的瞬態故障至關重要。
 
 :::caution
-{title="Retry Best Practices"}
+[Retry Best Practices]
 * **超時：** 積極的超時可防止資源耗盡
 * **指數退避：** 增加重試間隔（1s、2s、4s、8s）
 * **抖動：** 添加隨機性以防止雷群問題
@@ -171,7 +171,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 保護服務免於過載並實現優雅降級。
 
 :::note
-{title="Rate Limiting Strategies"}
+[Rate Limiting Strategies]
 * **令牌桶：** 請求時累積令牌，使用時刪除
 * **漏桶：** 以固定速率處理請求，多餘的被丟棄
 * **甩負載：** 在極端負載下拒絕低優先級請求
@@ -186,7 +186,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 不同的消息傳遞方法具有不同的權衡。
 
 :::tip
-{title="Message Broker Characteristics"}
+[Message Broker Characteristics]
 * **RabbitMQ：** 智能路由、工作隊列、消息代理模型
 * **Apache Kafka：** 事件流、持久日誌、多個消費者
 :::
@@ -196,7 +196,7 @@ CAP 定理描述了網絡分區期間的行為，但 **PACELC 定理** 提供了
 對於處理消息傳遞系統中的“至少一次”傳遞至關重要。
 
 :::note
-{title="Idempotency Strategy"}
+[Idempotency Strategy]
 ```text
 函數處理消息（消息）{
 if (processedMessages.contains(message.id)) {
@@ -217,7 +217,7 @@ processedMessages.add(message.id);
 解決事件驅動系統中的原子數據庫更新和事件發布。
 
 :::tip
-{title="Transactional Outbox Flow"}
+[Transactional Outbox Flow]
 1. 更新業務實體並將事件插入單個本地事務中的發件箱
 2.消息中繼異步發布事件並標記為已發送
 3. 保證原子性，無需分佈式事務
@@ -233,7 +233,7 @@ processedMessages.add(message.id);
 超越基本緩存的高級緩存策略。
 
 :::note
-{title="Caching Pattern Comparison"}
+[Caching Pattern Comparison]
 * **Cache-Aside：** 應用程序代碼管理緩存、延遲加載
 * **Read-Through：** 緩存處理從數據庫加載的數據
 * **Write-Through：** 緩存更新同步更新DB
@@ -241,7 +241,7 @@ processedMessages.add(message.id);
 :::**雷群緩解：**
 
 :::caution
-{title="Thundering Herd Problem"}
+[Thundering Herd Problem]
 當緩存的項目過期時，數千個請求會同時錯過緩存並淹沒數據庫。 解決方案：基於鎖的重新獲取，其中只有第一個請求加載數據，而其他請求則等待。
 :::
 
@@ -250,7 +250,7 @@ processedMessages.add(message.id);
 性能優化的基本概念。
 
 :::tip
-{title="Workload Matching"}
+[Workload Matching]
 * **I/O 密集型工作負載：** 異步模型（Node.js、asyncio）處理許多並發請求
 * **受 CPU 限制的工作負載：** 並行性（Go、Java）利用多個核心
 :::
@@ -260,7 +260,7 @@ processedMessages.add(message.id);
 你無法優化無法衡量的東西。
 
 :::note
-{title="Performance Profiling"}
+[Performance Profiling]
 使用分析器生成火焰圖來識別：
 
 * 代碼執行路徑中的CPU熱點
@@ -277,7 +277,7 @@ processedMessages.add(message.id);
 管理客戶端和服務之間通信的單一入口點。
 
 :::tip
-{title="API Gateway Responsibilities"}
+[API Gateway Responsibilities]
 * **路由：** 將請求直接發送到適當的微服務
 * **身份驗證/授權：** 在邊緣驗證憑據
 * **速率限制：** 強制執行使用策略和限制
@@ -290,7 +290,7 @@ processedMessages.add(message.id);
 用於安全、快速、可靠的服務間通信的基礎設施層。
 
 :::note
-{title="Service Mesh Components"}
+[Service Mesh Components]
 * **Sidecar 代理：** (Envoy) 處理每個服務的所有入站/出站流量
 * **控制平面：**（Istio、Linkerd）配置所有 sidecar 代理
 * **功能：** mTLS、流量管理、分佈式跟踪、可觀察性
@@ -301,7 +301,7 @@ processedMessages.add(message.id);
 分佈式系統的“從不信任，總是驗證”安全模型。
 
 :::caution
-{title="Zero Trust Principles"}
+[Zero Trust Principles]
 * **基於身份的身份驗證：** 驗證每個請求，無論來源如何
 * **最低權限訪問：** 授予最低必要權限
 * **假設違規：** 設計預期內部妥協
@@ -312,7 +312,7 @@ processedMessages.add(message.id);
 了解 JWT 漏洞和安全實施。
 
 :::caution
-{title="JWT Security Issues"}
+[JWT Security Issues]
 * **算法混淆攻擊：** 欺騙服務器採用弱算法
 * *緩解：* 配置庫僅接受強算法 (RS256)
 * **令牌撤銷：** 無狀態令牌無法失效

@@ -34,7 +34,7 @@ originalSlug: "introduction-to-web-landscape-design"
 * **核心原则：** UI 设计以既定的 HCI 原则为指导，旨在减少认知负荷并增强可用性。 这些包括：
 
 :::tip
-{title="Key UI Principles"}
+[Key UI Principles]
 * **清晰度：** 界面应该明确。 图标、标签和布局必须清楚地传达其目的和功能。 
 * **一致性：** 整个应用程序中一致的设计语言（例如按钮样式、导航模式）允许用户将知识从系统的一个部分转移到另一个部分，从而加速学习。 
 * **反馈：** 系统必须为用户操作提供即时且清晰的反馈（例如，异步请求的加载旋转器、表单提交时的成功消息）。 
@@ -66,7 +66,7 @@ originalSlug: "introduction-to-web-landscape-design"
 * **JavaScript：** 提供交互性，实现动态内容更新、事件处理以及与服务器的通信。
 
 :::note
-{title="Example: Basic HTML Structure"}
+[Example: Basic HTML Structure]
 ```html title="index.html"
  <!DOCTYPE html>
  <html lan g="en">
@@ -105,7 +105,7 @@ originalSlug: "introduction-to-web-landscape-design"
 * **常见漏洞：** **OWASP（开放 Web 应用程序安全项目）前 10 个**提供了最关键的 Web 安全风险列表。
 
 :::caution
-{title="Critical Security Risks"}
+[Critical Security Risks]
 * **注入攻击（例如 SQL 注入）：** 恶意数据作为命令或查询的一部分发送到解释器，导致意外执行。 
 * **跨站脚本（XSS）：** 恶意脚本被注入受信任的网站并在受害者的浏览器上运行。 
 * **损坏的身份验证：** 身份验证或会话管理逻辑中的缺陷允许攻击者危害用户帐户。
@@ -122,7 +122,7 @@ originalSlug: "introduction-to-web-landscape-design"
 * **优化技术：** 性能是通过前端和后端策略的组合来设计的：
 
 :::tip
-{title="Performance Best Practices"}
+[Performance Best Practices]
 * **资产优化：** 缩小 CSS/JavaScript、压缩图像并使用现代格式（例如 WebP）。 
 * **缓存：** 利用浏览器缓存和 **内容交付网络 (CDN)** 将资产存储在离用户更近的地方。 
 * **代码优化：** 实现离屏资源的延迟加载等技术，并降低长时间运行的 JavaScript 任务的复杂性。 

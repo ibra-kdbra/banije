@@ -40,23 +40,20 @@ La contribución clave del artículo es explicar esta imposibilidad utilizando *
 La relación causal entre`A`,`Y`, y`Ŷ`debe estructurarse de manera diferente para que cada métrica cumpla:
 
 * Para **Paridad demográfica** (`Ŷ`es independiente de`A`), el camino entre la predicción y el atributo sensible se bloquea naturalmente cuando`Y`es un "colisionador".
+    :::note[Causal Diagram for Demographic Parity]
+    `A -> Y <- Ŷ`
 
-:::note[Causal Diagram for Demographic Parity]
-`A -> Y <- Ŷ`
-
-:::
+    :::
 
 * Para **Probabilidades igualadas** (`Ŷ` es independiente de `A` dado `Y`), observar el resultado verdadero `Y` bloquea el camino entre `A` y `Ŷ`.
-
-:::note[Causal Diagram for Equalized Odds]
-`A -> Y -> Ŷ`
-:::
+    :::note[Causal Diagram for Equalized Odds]
+    `A -> Y -> Ŷ`
+    :::
 
 * Para **Paridad predictiva** (`Y` es independiente de `A` dado `Ŷ`), observar la predicción `Ŷ` bloquea el camino.
-
-:::note[Causal Diagram for Predictive Parity]
-`A -> Ŷ -> Y`
-:::
+    :::note[Causal Diagram for Predictive Parity]
+    `A -> Ŷ -> Y`
+    :::
 
 De estos diagramas se desprende claramente que la estructura fundamental de los datos necesarios para cada métrica es diferente y mutuamente excluyente. Simplemente no se puede tener un único proceso de generación de datos que los satisfaga a todos simultáneamente. El problema no es el algoritmo de aprendizaje; es una restricción fundamental de los datos mismos.
 

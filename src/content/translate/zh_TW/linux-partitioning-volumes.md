@@ -60,7 +60,7 @@ Linux 分區遵循文件系統層次結構標準 (FHS)，規定標準安裝點�
 ### 2.1 主分區類別
 
 :::tip
-{title="Core Partition Responsibilities"}
+[Core Partition Responsibilities]
 - **`/boot`**: Contains kernel images, initramfs, and bootloader files. Immutable after OS installation.
 - **`/` (root)**: Base filesystem containing startup scripts, basic binaries, device files, and system configuration.
 - **`/home`**: User data isolation point, encompassing personal files, configurations, and application data.
@@ -71,7 +71,7 @@ Linux 分區遵循文件系統層次結構標準 (FHS)，規定標準安裝點�
 ### 2.2 專用分區
 
 :::note
-{title="Advanced Volumes"}
+[Advanced Volumes]
 - **`/usr`**：靜態二進製文件和數據庫；將可變的“/var”與不可變的核心分開。 
 - **`/tmp`**：臨時文件存儲；通常在桌面上支持 tmpfs 以提高性能。 
 - **`/srv`**：服務器的站點特定數據（Web、FTP）。 
@@ -91,7 +91,7 @@ Linux 分區遵循文件系統層次結構標準 (FHS)，規定標準安裝點�
 由於其穩定性和功能成熟度，EXT4 仍然是大多數 Linux 發行版的默認設置。
 
 :::tip
-{title="EXT4 Characteristics"}
+[EXT4 Characteristics]
 - **性能指標**：寫入速度比前代產品快 8 倍；擅長大文件操作（基準測試：NVMe 上 1.2GB/s 順序讀取，950MB/s 寫入）。 
 - **優點**：強大的日誌記錄、減少碎片的程度、在線碎片整理。 
 - **弱點**：快照功能有限；小文件上的元數據開銷。 
@@ -103,7 +103,7 @@ Linux 分區遵循文件系統層次結構標準 (FHS)，規定標準安裝點�
 Btrfs 將自己定位為具有高級寫時復制和快照功能的下一代文件系統。
 
 :::note
-{title="Btrfs Enhancements"}
+[Btrfs Enhancements]
 - **高級功能**：內置 RAID、子捲和壓縮子卷可減少 20-50% 的空間。 
 - **性能權衡**：由於 COW 開銷，SATA SSD 的隨機 I/O 速度慢了 15%。 
 - **用例**：非常適合需要頻繁快照（例如係統狀態恢復）的開發人員。
@@ -114,7 +114,7 @@ Btrfs 將自己定位為具有高級寫時復制和快照功能的下一代文�
 ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 
 :::caution
-{title="ZFS Considerations"}
+[ZFS Considerations]
 - **數據完整性**：端到端校驗和；無靜默數據損壞（與 EXT4 的 0.1% 未檢測錯誤率相比）。 
 - **複雜性成本**：更高的 RAM 要求（每 TB 1GB）；更陡峭的學習曲線。 
 - **性能**：在多磁盤設置上表現出色；波默羅伊等人。 (2023) 報告重建速度比 EXT4 快 40%。 [^2]
@@ -125,7 +125,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 專為視頻流和科學計算等高吞吐量環境而設計。
 
 :::tip
-{title="XFS Benchmarks"}
+[XFS Benchmarks]
 - 大文件性能：HDD 上連續 2.1GB/s。 
 - 動態索引節點分配可防止分配失敗。 
 - 缺點：沒有內置壓縮；頻繁刪除時產生碎片。
@@ -138,7 +138,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 三星為 NAND 閃存開發的閃存友好文件系統。
 
 :::note
-{title="F2FS Advantages"}
+[F2FS Advantages]
 - 磨損均衡開銷減少 20%；延長 SSD 的使用壽命。 
 - 最適合配備 SSD 存儲的筆記本電腦/台式機。
 :::
@@ -148,7 +148,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 通過連續快照為所有更改提供內置版本控制。
 
 :::caution
-{title="NILFS Limitations"}
+[NILFS Limitations]
 - 使快照的存儲使用量加倍；高開銷。 
 - 利基適用性：文件修改頻繁的檔案系統。
 :::
@@ -171,7 +171,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 ### 4.1 固定大小分區
 
 :::tip
-{title="Minimal Allocations"}
+[Minimal Allocations]
 - **`/boot`**：500MB-1GB（足以容納 5-10 個內核；增長：20MB/年）
 - **交換**：台式機的 1-2x RAM；對於具有充足 RAM (>32GB) 的服務器，為 0.5-1 倍
 - **`/usr`**：基本系統5-10GB；隨著軟件包安裝的擴展
@@ -185,7 +185,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 - **`/home`**：用戶存儲 + 50% 緩衝區（最少 20GB/用戶）
 
 :::note
-{title="Capacity Planning Formula"}
+[Capacity Planning Formula]
 預計增長 = 當前使用量 × (1 + 增長率)^週期
 其中日誌增長率 = 0.15，用戶數據增長率 = 0.20
 :::
@@ -205,7 +205,7 @@ ZFS 源自 Solaris，提供無與倫比的數據完整性和存儲池。
 SWE 環境優先考慮開發速度、工具鍊和構建工件。
 
 :::tip
-{title="SWE Partitioning Blueprint"}
+[SWE Partitioning Blueprint]
 - **`/home`**：每位工程師 100-200GB；容納 IDE 緩存、Git 存儲庫和構建工件。 
 - **`/var`**：50-100GB；處理來自 Docker/Kubernetes 開發的容器日誌。 
 - **文件系統**：用於隔離開發環境的子卷的 Btrfs。 [^7]
@@ -217,7 +217,7 @@ SWE 環境優先考慮開發速度、工具鍊和構建工件。
 NWE 工作負載強調監控、配置和網絡數據。
 
 :::note
-{title="NWE Configuration"}
+[NWE Configuration]
 - **`/var`**：100-200GB；存儲 NetFlow 數據、系統日誌存檔和 SNMP 緩存。 
 - **`/home`**：50GB；配置模板和腳本。 
 - **性能焦點**：低延遲文件系統，例如用於數據包捕獲分析的 XFS。 
@@ -229,7 +229,7 @@ NWE 工作負載強調監控、配置和網絡數據。
 個人工作站的簡約設置。
 
 :::tip
-{title="Simple Dev Strategy"}
+[Simple Dev Strategy]
 - **統一 `/home` + `/` + `/var`**：總計 50-100GB；利用容器隔離。 
 - **交換**：8GB tmpfs 支持，適用於內存受限的系統。 
 - **文件系統**：EXT4，對 SSD 效率進行微調支持。
@@ -240,7 +240,7 @@ NWE 工作負載強調監控、配置和網絡數據。
 高度重視依賴管理和版本控制。
 
 :::caution
-{title="Programmer Considerations"}
+[Programmer Considerations]
 - **`/usr`**：為語言運行時（Node.js、Python、Go）擴展了 20GB 以上。 
 - **`/opt`**：100GB 用於包管理器和虛擬環境。 
 - **備份策略**：用於代碼版本控制冗餘的 Btrfs 快照。
@@ -253,7 +253,7 @@ NWE 工作負載強調監控、配置和網絡數據。
 LVM 將物理存儲抽象為邏輯卷，從而實現超越傳統分區剛性的動態分配和管理。 LVM 在 Linux 內核中首創，通過引入分層架構來解決靜態分配問題：物理卷 (PV) 形成捲組 (VG)，然後將捲組細分為邏輯卷 (LV)。
 
 :::tip
-{title="LVM Core Benefits"}
+[LVM Core Benefits]
 - **動態調整大小**：無需卸載即可在線擴展/收縮卷（例如，“lvextend”和“lvreduce”命令）
 - **RAID 集成**：卷級別的軟件 RAID，允許 VG 內的混合冗餘策略
 - **快照功能**：亞秒級創建備份時間點副本，對於數據庫和用戶數據至關重要
@@ -265,7 +265,7 @@ LVM 將物理存儲抽象為邏輯卷，從而實現超越傳統分區剛性的�
 LVM 使用設備映射器內核功能來創建虛擬塊設備。 PV 在分區或整個磁盤上初始化，然後組裝成 VG。 VG 中的 LV 充當常規分區，但提供前所未有的靈活性。
 
 :::note
-{title="Practical LVM Commands"}
+[Practical LVM Commands]
 - **初始化PV**：`pvcreate /dev/sda2 /dev/sda3`
 - **創建 VG**：`vgcreate my_vg /dev/sda2 /dev/sda3`（池 2 個磁盤）
 - **創建LV**：`lvcreate -L 100GB -n data my_vg`（100GB數據量）
@@ -278,7 +278,7 @@ LVM 使用設備映射器內核功能來創建虛擬塊設備。 PV 在分區或
 LUKS（Linux 統一密鑰設置）提供塊級別的透明磁盤加密，通過強大的加密技術保護靜態數據。 與文件級加密不同，LUKS 在文件系統層下方運行，無論安裝狀態如何，都能保護整個卷。
 
 :::caution
-{title="LUKS Cryptographic Foundations"}
+[LUKS Cryptographic Foundations]
 - **標準**：LUKS2（現代系統中的默認值）使用 PBKDF2 進行密鑰派生，具有 256 位密鑰的 AES-XTS 密碼套件
 - **標頭保護**：加密的主密鑰存儲在元數據標頭中，具有多個用於密碼/複雜身份驗證的密鑰槽
 - **完整性模式**：可選的身份驗證加密 (AEAD)，用於通過 dm-integrity 模塊進行篡改檢測
@@ -288,7 +288,7 @@ LUKS（Linux 統一密鑰設置）提供塊級別的透明磁盤加密，通過�
 #### 6.2.1 實施策略
 
 :::note
-{title="Encryption Approaches"}
+[Encryption Approaches]
 - **全磁盤加密**：包含整個分區的 LUKS 容器（例如，對於筆記本電腦）；通過密碼或密鑰文件解鎖
 - **特定於分區**：加密敏感卷，如“/home”或“/var”，同時保持“/boot”未加密以進行引導加載
 - **混合**：在 Btrfs 子卷中使用 LUKS 進行容器化加密以進行精細控制
@@ -306,7 +306,7 @@ RAID（獨立磁盤冗餘陣列）將數據分佈在多個驅動器上，以實�
 #### 6.3.1 RAID級別分析
 
 :::tip
-{title="RAID Performance Matrix"}
+[RAID Performance Matrix]
 
 | Level | Redundancy | Read Performance | Write Performance | Capacity Cost | Ideal Use Case |
 |-------|------------|------------------|-------------------|---------------|----------------|
@@ -345,7 +345,7 @@ RAID（獨立磁盤冗餘陣列）將數據分佈在多個驅動器上，以實�
 #### 7.1.1 命令行分區套件
 
 :::tip
-{title="Core Tools Matrix"}
+[Core Tools Matrix]
 
 | Tool      | Purpose                          | Automation Support | GPT Support | Strengths                     |
 |-----------|----------------------------------|--------------------|-------------|-------------------------------|
@@ -366,7 +366,7 @@ RAID（獨立磁盤冗餘陣列）將數據分佈在多個驅動器上，以實�
 - **mkfs.xfs**：`--cr c=1`（元數據校驗和），`--bigtimemtim e=1`（2038 年+ 時間戳）
 
 :::note
-{title="Tuning Commands"}
+[Tuning Commands]
 ```bash
 # 具有性能優化的 EXT4
 mkfs.ext4 -O 範圍，uninit_bg，dir_index，ext_attr -Elazy_itable_ini t=0，packed_group s=1 /dev/sda1
@@ -386,7 +386,7 @@ mkfs.xfs -l 版本=2,大小=32m -i att r=2,maxpc t=5 /dev/sda3
 #### 7.2.1 使用情況監控和警報
 
 :::caution
-{title="Operational Surveillance"}
+[Operational Surveillance]
 - `df -hT`：顯示文件系統類型的人類可讀用法
 - `df -i`：inode 使用情況監控（對於 EXT4 元數據耗盡至關重要）
 - `du --max-dept h=1 -h`：用於`/var`日誌審核的分層目錄大小
@@ -408,7 +408,7 @@ fi
 - **smartctl**：S.M.A.R.T。 監控預測性驅動器故障（例如，`smartd`守護進程）
 
 :::note
-{title="Predictive Maintenance Script"}
+[Predictive Maintenance Script]
 ```bash
 #!/bin/bash
 # 聰明健康檢查和警報
@@ -439,7 +439,7 @@ I/O 分析可識別分區瓶頸：
 Ansible 的聲明性語法在基礎設施即代碼分區方面表現出色：
 
 :::tip
-{title="Comprehensive Ansible Playbook"}
+[Comprehensive Ansible Playbook]
 
 ```yaml
 
@@ -525,7 +525,7 @@ Ansible 的聲明性語法在基礎設施即代碼分區方面表現出色：
 - **Ignition (CoreOS)**：YAML 驅動的容器磁盤配置
 
 :::note
-{title="Container-Optimized Partitioning"}
+[Container-Optimized Partitioning]
 ```bash
 # CoreOS 分區的啟動配置
 存儲：
@@ -589,7 +589,7 @@ Linux 存儲、文件系統和內存管理峰會 (LSFMM) 的研究強調，這�
 ### 8.1 分配錯誤
 
 :::caution
-{title="Avoid These Traps"}
+[Avoid These Traps]
 - `/var` 大小不足：使用 logrotate 進行監控；通過 LVM 調整大小。 
 - 忽略交換：根據峰值內存使用情況進行計算。 
 - 整體根：單獨的易失性目錄。

@@ -25,7 +25,7 @@ series:
  20 世纪 90 年代，L. Peter Deutsch 和 Sun Microsystems 的其他人编制了一系列谬误； 刚刚接触分布式应用程序的程序员总是会做出这样的假设，这会给他们带来危险。
 
 :::caution
-{title="Eight Fallacies of Distributed Computing"}
+[Eight Fallacies of Distributed Computing]
 1. **网络可靠。**（事实并非如此。）
  2. **延迟为零。**（事实并非如此。）
  3. **带宽是无限的。**（事实并非如此。）
@@ -55,7 +55,7 @@ series:
  CAP 定理描述了网络分区期间的行为，但 **PACELC 定理** 提供了更完整的情况：
 
 :::note
-{title="PACELC Theorem"}
+[PACELC Theorem]
 **“如果存在分区（P），分布式系统必须在可用性（A）和一致性（C）之间进行选择。否则（E），当系统正常运行时，必须在延迟（L）和一致性（C）之间进行选择。”**
 :::这迫使人们进行细致入微的架构讨论。 系统在故障期间可能会为了可用性而牺牲一致性，但在正常操作期间优先考虑一致性而不是延迟。 
 
@@ -64,7 +64,7 @@ series:
  两阶段提交是同步的，不适合微服务。 **Saga 模式**通过本地事务和补偿操作来管理跨服务的数据一致性。
 
 :::tip
-{title="Saga Pattern Example: E-commerce Order"}
+[Saga Pattern Example: E-commerce Order]
 1. `Order Service`：创建处于`PENDING`状态的订单，发布`ORDER_CREATED`事件
  2. `Payment Service`：处理付款，成功时发布`PAYMENT_PROCESSED`
  3. `Inventory Service`：更新库存，成功后发布`INVENTORY_UPDATED`
@@ -74,7 +74,7 @@ series:
 :::**实施风格：**
 
 :::note
-{title="Saga Implementation Approaches"}
+[Saga Implementation Approaches]
 * **编排：** 服务发布/订阅事件，无需中央协调员
  * **编排：** 中央编排器管理 saga 状态和补偿事务
 :::
@@ -86,7 +86,7 @@ series:
 * **事件溯源：** 存储不可变事件而不是当前状态。 当前状态是通过重播事件得出的。
 
 :::note
-{title="Event Sourcing Example"}
+[Event Sourcing Example]
 ```json
  // 而不是存储余额：80
  // 存储事件序列：
@@ -100,7 +100,7 @@ series:
 :::* **CQRS（命令查询职责分离）：** 将写入模型与读取模型分开。
 
 :::tip
-{title="CQRS Benefits"}
+[CQRS Benefits]
 *针对写入与读取进行优化的不同模型
  * 命令和查询端的独立缩放
  * 具有独立上下文的更好的领域建模
@@ -111,20 +111,20 @@ series:
  了解存储引擎和复制策略对于性能和可靠性至关重要。
 
 :::note
-{title="MySQL Storage Engines"}
+[MySQL Storage Engines]
 * **InnoDB：** 适用于 OLTP 工作负载的事务性、符合 ACID 的行级锁定
  * **MyISAM：** 读取速度快，表级锁定，无事务（新应用程序已弃用）
 :::**复制策略：**
 
 :::tip
-{title="Replication Models"}
+[Replication Models]
 * **Leader-Follower：** 所有写入领导者，从副本读取（最常见）
  * **Multi-Leader：** 多个节点接受写入，必须解决复制冲突
  * **Leaderless（Cassandra 风格）：** 同时写入多个节点，仲裁读取
 :::**事务隔离级别 (SQL)：**
 
 :::note
-{title="SQL Isolation Levels"}
+[SQL Isolation Levels]
 1. **读取未提交：** 可以读取未提交的更改（脏读）
  2. **读已提交：** 只读取已提交的更改（可能不可重复读取）
  3. **可重复读取：** 事务内行值一致（可能存在幻读）
@@ -140,7 +140,7 @@ series:
  断路器监视故障并防止分布式系统中的级联故障。
 
 :::note
-{title="Circuit Breaker States"}
+[Circuit Breaker States]
 * **关闭：** 正常运行，请求流经，监控失败
  * **开放：** 下游问题快速失败，重试前超时
  * **半开放：** 使用单个探测请求测试下游恢复
@@ -151,7 +151,7 @@ series:
  将应用程序组件隔离到池中，以防止单一故障影响整个系统。
 
 :::tip
-{title="Bulkhead Implementation"}
+[Bulkhead Implementation]
 为每个下游服务使用单独的线程/连接池。 缓慢的服务 A 不会影响服务 B 的池，从而防止系统完全故障。
 :::
 
@@ -160,7 +160,7 @@ series:
  对于处理分布式系统中的瞬态故障至关重要。
 
 :::caution
-{title="Retry Best Practices"}
+[Retry Best Practices]
 * **超时：** 积极的超时可防止资源耗尽
  * **指数退避：** 增加重试间隔（1s、2s、4s、8s）
  * **抖动：** 添加随机性以防止雷群问题
@@ -171,7 +171,7 @@ series:
  保护服务免于过载并实现优雅降级。
 
 :::note
-{title="Rate Limiting Strategies"}
+[Rate Limiting Strategies]
 * **令牌桶：** 请求时累积令牌，使用时删除
  * **漏桶：** 以固定速率处理请求，多余的被丢弃
  * **甩负载：** 在极端负载下拒绝低优先级请求
@@ -186,7 +186,7 @@ series:
  不同的消息传递方法具有不同的权衡。
 
 :::tip
-{title="Message Broker Characteristics"}
+[Message Broker Characteristics]
 * **RabbitMQ：** 智能路由、工作队列、消息代理模型
  * **Apache Kafka：** 事件流、持久日志、多个消费者
 :::
@@ -196,7 +196,7 @@ series:
  对于处理消息传递系统中的“至少一次”传递至关重要。
 
 :::note
-{title="Idempotency Strategy"}
+[Idempotency Strategy]
 ```text
  函数处理消息（消息）{
  if (processedMessages.contains(message.id)) {
@@ -217,7 +217,7 @@ series:
  解决事件驱动系统中的原子数据库更新和事件发布。
 
 :::tip
-{title="Transactional Outbox Flow"}
+[Transactional Outbox Flow]
 1. 更新业务实体并将事件插入单个本地事务中的发件箱
  2.消息中继异步发布事件并标记为已发送
  3. 保证原子性，无需分布式事务
@@ -233,7 +233,7 @@ series:
  超越基本缓存的高级缓存策略。
 
 :::note
-{title="Caching Pattern Comparison"}
+[Caching Pattern Comparison]
 * **Cache-Aside：** 应用程序代码管理缓存、延迟加载
  * **Read-Through：** 缓存处理从数据库加载的数据
  * **Write-Through：** 缓存更新同步更新DB
@@ -241,7 +241,7 @@ series:
 :::**雷群缓解：**
 
 :::caution
-{title="Thundering Herd Problem"}
+[Thundering Herd Problem]
 当缓存的项目过期时，数千个请求会同时错过缓存并淹没数据库。 解决方案：基于锁的重新获取，其中只有第一个请求加载数据，而其他请求则等待。
 :::
 
@@ -250,7 +250,7 @@ series:
  性能优化的基本概念。
 
 :::tip
-{title="Workload Matching"}
+[Workload Matching]
 * **I/O 密集型工作负载：** 异步模型（Node.js、asyncio）处理许多并发请求
  * **受 CPU 限制的工作负载：** 并行性（Go、Java）利用多个核心
 :::
@@ -260,7 +260,7 @@ series:
  你无法优化无法衡量的东西。
 
 :::note
-{title="Performance Profiling"}
+[Performance Profiling]
 使用分析器生成火焰图来识别：
 
  * 代码执行路径中的CPU热点
@@ -277,7 +277,7 @@ series:
  管理客户端和服务之间通信的单一入口点。
 
 :::tip
-{title="API Gateway Responsibilities"}
+[API Gateway Responsibilities]
 * **路由：** 将请求直接发送到适当的微服务
  * **身份验证/授权：** 在边缘验证凭据
  * **速率限制：** 强制执行使用策略和限制
@@ -290,7 +290,7 @@ series:
  用于安全、快速、可靠的服务间通信的基础设施层。
 
 :::note
-{title="Service Mesh Components"}
+[Service Mesh Components]
 * **Sidecar 代理：** (Envoy) 处理每个服务的所有入站/出站流量
  * **控制平面：**（Istio、Linkerd）配置所有 sidecar 代理
  * **功能：** mTLS、流量管理、分布式跟踪、可观察性
@@ -301,7 +301,7 @@ series:
  分布式系统的“从不信任，总是验证”安全模型。
 
 :::caution
-{title="Zero Trust Principles"}
+[Zero Trust Principles]
 * **基于身份的身份验证：** 验证每个请求，无论来源如何
  * **最低权限访问：** 授予最低必要权限
  * **假设违规：** 设计预期内部妥协
@@ -312,7 +312,7 @@ series:
  了解 JWT 漏洞和安全实施。
 
 :::caution
-{title="JWT Security Issues"}
+[JWT Security Issues]
 * **算法混淆攻击：** 欺骗服务器采用弱算法
  * *缓解：* 配置库仅接受强算法 (RS256)
  * **令牌撤销：** 无状态令牌无法失效

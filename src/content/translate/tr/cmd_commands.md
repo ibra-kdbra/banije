@@ -13,8 +13,7 @@ originalSlug: "cmd_commands"
 
 ## DOÇ
 
-:::note
-[Purpose]
+:::note[Purpose]
 Assoc komutu, dosya uzantıları ilişkilerini görüntülemek veya değiştirmek için kullanılır.
 :::
 
@@ -24,8 +23,7 @@ assoc
 
 ## CHKDSK (Diski Kontrol Et)
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Diski hatalara karşı kontrol eder ve istenirse hataları düzeltir.
 :::
 
@@ -35,8 +33,7 @@ chkdsk C:
 
 ## ŞİFRE
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 NTFS bölümlerindeki dosyaları/dizinleri şifreleyin veya şifresini çözün.
 :::
 
@@ -46,8 +43,7 @@ cipher /E
 
 ## CLS
 
-:::note
-[Purpose]
+:::note[Purpose]
 Daha önce girilen tüm komutların ve diğer metinlerin ekranını temizler.
 :::
 
@@ -57,8 +53,7 @@ cls
 
 ## DİSKPART
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Sabit sürücü bölümlerini yönetin.
 :::
 
@@ -68,8 +63,7 @@ diskpart
 
 ## SÜRÜCÜSORGU
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 Yüklü aygıt sürücülerinin ve özelliklerinin bir listesini görüntüleyin.
 :::
 
@@ -79,8 +73,7 @@ driverquery
 
 ## GPUPDATE
 
-:::note
-[Purpose]
+:::note[Purpose]
 Grup İlkesi ayarlarını günceller.
 :::
 
@@ -90,8 +83,7 @@ gpupdate /force
 
 ## IPCONFIG
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Tüm ağ arayüzleri için IP yapılandırmasını görüntüler.
 :::
 
@@ -99,10 +91,9 @@ Tüm ağ arayüzleri için IP yapılandırmasını görüntüler.
 ipconfig /all
 ```
 
-##NETSTAT
+## NETSTAT
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 Etkin TCP bağlantılarını ve çeşitli ağ istatistiklerini görüntüler.
 :::
 
@@ -112,8 +103,7 @@ netstat -a
 
 ## GÖRÜNTÜLEME
 
-:::note
-[Purpose]
+:::note[Purpose]
 Etki alanı adı veya IP adresi eşlemesini elde etmek için DNS'yi sorgular.
 :::
 
@@ -123,8 +113,7 @@ nslookup <www.example.com>
 
 ## YOL BULMA
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Ara atlama noktalarında ağ gecikmesi ve kayıp bilgileri sağlar.
 :::
 
@@ -134,8 +123,7 @@ pathping <www.example.com>
 
 ## PING
 
-:::note
-[Purpose]
+:::note[Purpose]
 Kaynak bilgisayarın belirtilen hedef bilgisayara ulaşma yeteneğini test eder.
 :::
 
@@ -145,8 +133,7 @@ ping <www.example.com>
 
 ## POWERCFG
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 Güç ayarlarını ve yapılandırmalarını kontrol eder.
 :::
 
@@ -156,8 +143,7 @@ powercfg /hibernate on
 
 ## SFC (Sistem Dosyası Denetleyicisi)
 
-:::note
-[Purpose]
+:::note[Purpose]
 Önemli sistem dosyalarını tarar ve onarır.
 :::
 
@@ -167,8 +153,7 @@ sfc /scannow
 
 ## KAPAT
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Bir bilgisayarı veya uzaktaki bilgisayarı kapatır, yeniden başlatır veya oturumunu kapatır.
 :::
 
@@ -178,8 +163,7 @@ shutdown /s /t 0
 
 ## SİSTEM BİLGİSİ
 
-:::note
-[Purpose]
+:::note[Purpose]
 Bir bilgisayar ve işletim sistemi hakkında ayrıntılı yapılandırma bilgilerini görüntüler.
 :::
 
@@ -189,8 +173,7 @@ systeminfo
 
 ## GÖREV LİSTESİ
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 Çalışan görevlerin, hizmetlerin ve işlemlerin bir listesini görüntüler.
 :::
 
@@ -200,8 +183,7 @@ tasklist
 
 ## İZLEYİCİ
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 Bir paketin hedefine ulaşmak için izlediği rotayı ve atlamaları gösterir.
 :::
 
@@ -212,4 +194,5 @@ tracert <www.example.com>
 ## Tüm komutlar için Sağlanan Kılavuz
 
 :::important
-:::Bunda bilinen tüm CMD komutlarını ekledim[TerCli](https://tercli.netlify.app/)
+Bunda bilinen tüm CMD komutlarını ekledim[TerCli](https://tercli.netlify.app/)
+:::

@@ -60,7 +60,7 @@ originalSlug: "linux-partitioning-volumes"
 ### 2.1 主分区类别
 
 :::tip
-{title="Core Partition Responsibilities"}
+[Core Partition Responsibilities]
 - **`/boot`**：包含内核映像、initramfs 和引导加载程序文件。 操作系统安装后不可变。 
 - **`/` (root)**：包含启动脚本、基本二进制文件、设备文件和系统配置的基本文件系统。 
 - **`/home`**：用户数据隔离点，包括个人文件、配置和应用程序数据。 
@@ -71,7 +71,7 @@ originalSlug: "linux-partitioning-volumes"
 ### 2.2 专用分区
 
 :::note
-{title="Advanced Volumes"}
+[Advanced Volumes]
 - **`/usr`**：静态二进制文件和数据库； 将可变的“/var”与不可变的核心分开。 
 - **`/tmp`**：临时文件存储； 通常在桌面上支持 tmpfs 以提高性能。 
 - **`/srv`**：服务器的站点特定数据（Web、FTP）。 
@@ -91,7 +91,7 @@ originalSlug: "linux-partitioning-volumes"
  由于其稳定性和功能成熟度，EXT4 仍然是大多数 Linux 发行版的默认设置。
 
 :::tip
-{title="EXT4 Characteristics"}
+[EXT4 Characteristics]
 - **性能指标**：写入速度比前代产品快 8 倍； 擅长大文件操作（基准测试：NVMe 上 1.2GB/s 顺序读取，950MB/s 写入）。 
 - **优点**：强大的日志记录、减少碎片的程度、在线碎片整理。 
 - **弱点**：快照功能有限； 小文件上的元数据开销。 
@@ -103,7 +103,7 @@ originalSlug: "linux-partitioning-volumes"
  Btrfs 将自己定位为具有高级写时复制和快照功能的下一代文件系统。
 
 :::note
-{title="Btrfs Enhancements"}
+[Btrfs Enhancements]
 - **高级功能**：内置 RAID、子卷和压缩子卷可减少 20-50% 的空间。 
 - **性能权衡**：由于 COW 开销，SATA SSD 的随机 I/O 速度慢了 15%。 
 - **用例**：非常适合需要频繁快照（例如系统状态恢复）的开发人员。
@@ -114,7 +114,7 @@ originalSlug: "linux-partitioning-volumes"
  ZFS 源自 Solaris，提供无与伦比的数据完整性和存储池。
 
 :::caution
-{title="ZFS Considerations"}
+[ZFS Considerations]
 - **数据完整性**：端到端校验和； 无静默数据损坏（与 EXT4 的 0.1% 未检测错误率相比）。 
 - **复杂性成本**：更高的 RAM 要求（每 TB 1GB）； 更陡峭的学习曲线。 
 - **性能**：在多磁盘设置上表现出色； 波默罗伊等人。 (2023) 报告重建速度比 EXT4 快 40%。[^2]
@@ -125,7 +125,7 @@ originalSlug: "linux-partitioning-volumes"
  专为视频流和科学计算等高吞吐量环境而设计。
 
 :::tip
-{title="XFS Benchmarks"}
+[XFS Benchmarks]
 - 大文件性能：HDD 上连续 2.1GB/s。 
 - 动态索引节点分配可防止分配失败。 
 - 缺点：没有内置压缩； 频繁删除时产生碎片。
@@ -138,7 +138,7 @@ originalSlug: "linux-partitioning-volumes"
  三星为 NAND 闪存开发的闪存友好文件系统。
 
 :::note
-{title="F2FS Advantages"}
+[F2FS Advantages]
 - 磨损均衡开销减少 20%； 延长 SSD 的使用寿命。 
 - 最适合配备 SSD 存储的笔记本电脑/台式机。
 :::
@@ -148,7 +148,7 @@ originalSlug: "linux-partitioning-volumes"
  通过连续快照为所有更改提供内置版本控制。
 
 :::caution
-{title="NILFS Limitations"}
+[NILFS Limitations]
 - 使快照的存储使用量加倍； 高开销。 
 - 利基适用性：文件修改频繁的档案系统。
 :::
@@ -171,7 +171,7 @@ originalSlug: "linux-partitioning-volumes"
 ### 4.1 固定大小分区
 
 :::tip
-{title="Minimal Allocations"}
+[Minimal Allocations]
 - **`/boot`**：500MB-1GB（足以容纳 5-10 个内核；增长：20MB/年）
  - **交换**：台式机的 1-2x RAM； 对于具有充足 RAM (>32GB) 的服务器，为 0.5-1 倍
  - **`/usr`**：基本系统5-10GB； 随着软件包安装的扩展
@@ -185,7 +185,7 @@ originalSlug: "linux-partitioning-volumes"
  - **`/home`**：用户存储 + 50% 缓冲区（最少 20GB/用户）
 
 :::note
-{title="Capacity Planning Formula"}
+[Capacity Planning Formula]
 预计增长 = 当前使用量 × (1 + 增长率)^周期
  其中日志增长率 = 0.15，用户数据增长率 = 0.20
 :::
@@ -205,7 +205,7 @@ originalSlug: "linux-partitioning-volumes"
  SWE 环境优先考虑开发速度、工具链和构建工件。
 
 :::tip
-{title="SWE Partitioning Blueprint"}
+[SWE Partitioning Blueprint]
 - **`/home`**：每位工程师 100-200GB； 容纳 IDE 缓存、Git 存储库和构建工件。 
 - **`/var`**：50-100GB； 处理来自 Docker/Kubernetes 开发的容器日志。 
 - **文件系统**：用于隔离开发环境的子卷的 Btrfs。[^7]
@@ -217,7 +217,7 @@ originalSlug: "linux-partitioning-volumes"
  NWE 工作负载强调监控、配置和网络数据。
 
 :::note
-{title="NWE Configuration"}
+[NWE Configuration]
 - **`/var`**：100-200GB； 存储 NetFlow 数据、系统日志存档和 SNMP 缓存。 
 - **`/home`**：50GB； 配置模板和脚本。 
 - **性能焦点**：低延迟文件系统，例如用于数据包捕获分析的 XFS。 
@@ -229,7 +229,7 @@ originalSlug: "linux-partitioning-volumes"
  个人工作站的简约设置。
 
 :::tip
-{title="Simple Dev Strategy"}
+[Simple Dev Strategy]
 - **统一 `/home` + `/` + `/var`**：总计 50-100GB； 利用容器隔离。 
 - **交换**：8GB tmpfs 支持，适用于内存受限的系统。 
 - **文件系统**：EXT4，对 SSD 效率进行微调支持。
@@ -240,7 +240,7 @@ originalSlug: "linux-partitioning-volumes"
  高度重视依赖管理和版本控制。
 
 :::caution
-{title="Programmer Considerations"}
+[Programmer Considerations]
 - **`/usr`**：为语言运行时（Node.js、Python、Go）扩展了 20GB 以上。 
 - **`/opt`**：100GB 用于包管理器和虚拟环境。 
 - **备份策略**：用于代码版本控制冗余的 Btrfs 快照。
@@ -253,7 +253,7 @@ originalSlug: "linux-partitioning-volumes"
  LVM 将物理存储抽象为逻辑卷，从而实现超越传统分区刚性的动态分配和管理。 LVM 在 Linux 内核中首创，通过引入分层架构来解决静态分配问题：物理卷 (PV) 形成卷组 (VG)，然后将卷组细分为逻辑卷 (LV)。
 
 :::tip
-{title="LVM Core Benefits"}
+[LVM Core Benefits]
 - **动态调整大小**：无需卸载即可在线扩展/收缩卷（例如，“lvextend”和“lvreduce”命令）
  - **RAID 集成**：卷级别的软件 RAID，允许 VG 内的混合冗余策略
  - **快照功能**：亚秒级创建备份时间点副本，对于数据库和用户数据至关重要
@@ -265,7 +265,7 @@ originalSlug: "linux-partitioning-volumes"
  LVM 使用设备映射器内核功能来创建虚拟块设备。 PV 在分区或整个磁盘上初始化，然后组装成 VG。 VG 中的 LV 充当常规分区，但提供前所未有的灵活性。
 
 :::note
-{title="Practical LVM Commands"}
+[Practical LVM Commands]
 - **初始化PV**：`pvcreate /dev/sda2 /dev/sda3`
  - **创建 VG**：`vgcreate my_vg /dev/sda2 /dev/sda3`（池 2 个磁盘）
  - **创建LV**：`lvcreate -L 100GB -n data my_vg`（100GB数据量）
@@ -278,7 +278,7 @@ originalSlug: "linux-partitioning-volumes"
  LUKS（Linux 统一密钥设置）提供块级别的透明磁盘加密，通过强大的加密技术保护静态数据。 与文件级加密不同，LUKS 在文件系统层下方运行，无论安装状态如何，都能保护整个卷。
 
 :::caution
-{title="LUKS Cryptographic Foundations"}
+[LUKS Cryptographic Foundations]
 - **标准**：LUKS2（现代系统中的默认值）使用 PBKDF2 进行密钥派生，具有 256 位密钥的 AES-XTS 密码套件
  - **标头保护**：加密的主密钥存储在元数据标头中，具有多个用于密码/复杂身份验证的密钥槽
  - **完整性模式**：可选的身份验证加密 (AEAD)，用于通过 dm-integrity 模块进行篡改检测
@@ -288,7 +288,7 @@ originalSlug: "linux-partitioning-volumes"
 #### 6.2.1 实施策略
 
 :::note
-{title="Encryption Approaches"}
+[Encryption Approaches]
 - **全磁盘加密**：包含整个分区的 LUKS 容器（例如，对于笔记本电脑）； 通过密码或密钥文件解锁
  - **特定于分区**：加密敏感卷，如“/home”或“/var”，同时保持“/boot”未加密以进行引导加载
  - **混合**：在 Btrfs 子卷中使用 LUKS 进行容器化加密以进行精细控制
@@ -306,7 +306,7 @@ originalSlug: "linux-partitioning-volumes"
 #### 6.3.1 RAID级别分析
 
 :::tip
-{title="RAID Performance Matrix"}
+[RAID Performance Matrix]
 
 | Level | Redundancy | Read Performance | Write Performance | Capacity Cost | Ideal Use Case |
 |-------|------------|------------------|-------------------|---------------|----------------|
@@ -345,7 +345,7 @@ originalSlug: "linux-partitioning-volumes"
 #### 7.1.1 命令行分区套件
 
 :::tip
-{title="Core Tools Matrix"}
+[Core Tools Matrix]
 
 | Tool      | Purpose                          | Automation Support | GPT Support | Strengths                     |
 |-----------|----------------------------------|--------------------|-------------|-------------------------------|
@@ -366,7 +366,7 @@ originalSlug: "linux-partitioning-volumes"
  - **mkfs.xfs**：`--cr c=1`（元数据校验和），`--bigtimemtim e=1`（2038 年+ 时间戳）
 
 :::note
-{title="Tuning Commands"}
+[Tuning Commands]
 ```bash
  # 具有性能优化的 EXT4
  mkfs.ext4 -O 范围，uninit_bg，dir_index，ext_attr -Elazy_itable_ini t=0，packed_group s=1 /dev/sda1
@@ -386,7 +386,7 @@ originalSlug: "linux-partitioning-volumes"
 #### 7.2.1 使用情况监控和警报
 
 :::caution
-{title="Operational Surveillance"}
+[Operational Surveillance]
 - `df -hT`：显示文件系统类型的人类可读用法
  - `df -i`：inode 使用情况监控（对于 EXT4 元数据耗尽至关重要）
  - `du --max-dept h=1 -h`：用于`/var`日志审核的分层目录大小
@@ -408,7 +408,7 @@ fi
  - **smartctl**：S.M.A.R.T。 监控预测性驱动器故障（例如，`smartd`守护进程）
 
 :::note
-{title="Predictive Maintenance Script"}
+[Predictive Maintenance Script]
 ```bash
  #!/bin/bash
  # 聪明 健康检查和警报
@@ -439,7 +439,7 @@ fi
  Ansible 的声明性语法在基础设施即代码分区方面表现出色：
 
 :::tip
-{title="Comprehensive Ansible Playbook"}
+[Comprehensive Ansible Playbook]
 
 ```yaml
 
@@ -525,7 +525,7 @@ fi
  - **Ignition (CoreOS)**：YAML 驱动的容器磁盘配置
 
 :::note
-{title="Container-Optimized Partitioning"}
+[Container-Optimized Partitioning]
 ```bash
  # CoreOS 分区的启动配置
  存储：
@@ -589,7 +589,7 @@ fi
  ### 8.1 分配错误
 
 :::caution
-{title="Avoid These Traps"}
+[Avoid These Traps]
 - `/var` 大小不足：使用 logrotate 进行监控； 通过 LVM 调整大小。 
 - 忽略交换：根据峰值内存使用情况进行计算。 
 - 整体根：单独的易失性目录。
