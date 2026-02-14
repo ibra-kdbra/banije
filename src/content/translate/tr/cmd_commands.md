@@ -11,10 +11,9 @@ originalSlug: "cmd_commands"
 
 ---
 
-## DOÇ
+## ASSOC
 
-:::note
-[Purpose]
+:::note[Amaç]
 Assoc komutu, dosya uzantıları ilişkilerini görüntülemek veya değiştirmek için kullanılır.
 :::
 
@@ -22,10 +21,11 @@ Assoc komutu, dosya uzantıları ilişkilerini görüntülemek veya değiştirme
 assoc
 ```
 
+Bu komut mevcut dosya ilişkilerini görüntüleyecektir.
+
 ## CHKDSK (Diski Kontrol Et)
 
-:::tip
-[Purpose]
+:::tip[Amaç]
 Diski hatalara karşı kontrol eder ve istenirse hataları düzeltir.
 :::
 
@@ -33,10 +33,11 @@ Diski hatalara karşı kontrol eder ve istenirse hataları düzeltir.
 chkdsk C:
 ```
 
-## ŞİFRE
+Bu komut C: diskini hatalara karşı kontrol edecektir.
 
-:::warning
-[Purpose]
+## CIPHER
+
+:::warning[Amaç]
 NTFS bölümlerindeki dosyaları/dizinleri şifreleyin veya şifresini çözün.
 :::
 
@@ -44,10 +45,11 @@ NTFS bölümlerindeki dosyaları/dizinleri şifreleyin veya şifresini çözün.
 cipher /E
 ```
 
+Bu komut belirtilen dizini şifreleyecektir.
+
 ## CLS
 
-:::note
-[Purpose]
+:::note[Amaç]
 Daha önce girilen tüm komutların ve diğer metinlerin ekranını temizler.
 :::
 
@@ -55,10 +57,11 @@ Daha önce girilen tüm komutların ve diğer metinlerin ekranını temizler.
 cls
 ```
 
-## DİSKPART
+Bu komut komut istemi ekranını temizleyecektir.
 
-:::tip
-[Purpose]
+## DISKPART
+
+:::tip[Amaç]
 Sabit sürücü bölümlerini yönetin.
 :::
 
@@ -66,10 +69,11 @@ Sabit sürücü bölümlerini yönetin.
 diskpart
 ```
 
-## SÜRÜCÜSORGU
+Bu komut DiskPart komut yorumlayıcısını başlatacaktır.
 
-:::warning
-[Purpose]
+## DRIVERQUERY
+
+:::warning[Amaç]
 Yüklü aygıt sürücülerinin ve özelliklerinin bir listesini görüntüleyin.
 :::
 
@@ -77,10 +81,11 @@ Yüklü aygıt sürücülerinin ve özelliklerinin bir listesini görüntüleyin
 driverquery
 ```
 
+Bu komut yüklü tüm aygıt sürücülerinin bir listesini görüntüleyecektir.
+
 ## GPUPDATE
 
-:::note
-[Purpose]
+:::note[Amaç]
 Grup İlkesi ayarlarını günceller.
 :::
 
@@ -88,10 +93,11 @@ Grup İlkesi ayarlarını günceller.
 gpupdate /force
 ```
 
+Bu komut Grup İlkesi ayarlarının hemen güncellenmesini sağlayacaktır.
+
 ## IPCONFIG
 
-:::tip
-[Purpose]
+:::tip[Amaç]
 Tüm ağ arayüzleri için IP yapılandırmasını görüntüler.
 :::
 
@@ -99,10 +105,11 @@ Tüm ağ arayüzleri için IP yapılandırmasını görüntüler.
 ipconfig /all
 ```
 
-##NETSTAT
+Bu komut tüm ağ arayüzleri için ayrıntılı IP yapılandırma verilerini görüntüleyecektir.
 
-:::warning
-[Purpose]
+## NETSTAT
+
+:::warning[Amaç]
 Etkin TCP bağlantılarını ve çeşitli ağ istatistiklerini görüntüler.
 :::
 
@@ -110,10 +117,11 @@ Etkin TCP bağlantılarını ve çeşitli ağ istatistiklerini görüntüler.
 netstat -a
 ```
 
-## GÖRÜNTÜLEME
+Bu komut tüm etkin TCP bağlantılarını ve bilgisayarın dinlediği TCP ve UDP bağlantı noktalarını görüntüleyecektir.
 
-:::note
-[Purpose]
+## NSLOOKUP
+
+:::note[Amaç]
 Etki alanı adı veya IP adresi eşlemesini elde etmek için DNS'yi sorgular.
 :::
 
@@ -121,10 +129,11 @@ Etki alanı adı veya IP adresi eşlemesini elde etmek için DNS'yi sorgular.
 nslookup <www.example.com>
 ```
 
-## YOL BULMA
+Bu komut <www.example.com> adresinin IP adresini döndürecektir.
 
-:::tip
-[Purpose]
+## PATHPING
+
+:::tip[Amaç]
 Ara atlama noktalarında ağ gecikmesi ve kayıp bilgileri sağlar.
 :::
 
@@ -132,10 +141,11 @@ Ara atlama noktalarında ağ gecikmesi ve kayıp bilgileri sağlar.
 pathping <www.example.com>
 ```
 
+Bu komut <www.example.com> adresine ulaşmak için her ağ atlaması için gecikme ve kayıp bilgisi sağlayacaktır.
+
 ## PING
 
-:::note
-[Purpose]
+:::note[Amaç]
 Kaynak bilgisayarın belirtilen hedef bilgisayara ulaşma yeteneğini test eder.
 :::
 
@@ -143,10 +153,11 @@ Kaynak bilgisayarın belirtilen hedef bilgisayara ulaşma yeteneğini test eder.
 ping <www.example.com>
 ```
 
+Bu komut <www.example.com> adresine bir ağ isteği gönderecek ve bir yanıt bekleyecektir.
+
 ## POWERCFG
 
-:::warning
-[Purpose]
+:::warning[Amaç]
 Güç ayarlarını ve yapılandırmalarını kontrol eder.
 :::
 
@@ -154,10 +165,11 @@ Güç ayarlarını ve yapılandırmalarını kontrol eder.
 powercfg /hibernate on
 ```
 
+Bu komut hazırda bekletme modunu etkinleştirecektir.
+
 ## SFC (Sistem Dosyası Denetleyicisi)
 
-:::note
-[Purpose]
+:::note[Amaç]
 Önemli sistem dosyalarını tarar ve onarır.
 :::
 
@@ -165,10 +177,11 @@ powercfg /hibernate on
 sfc /scannow
 ```
 
-## KAPAT
+Bu komut tüm korumalı sistem dosyalarını hemen tarayacaktır.
 
-:::tip
-[Purpose]
+## SHUTDOWN
+
+:::tip[Amaç]
 Bir bilgisayarı veya uzaktaki bilgisayarı kapatır, yeniden başlatır veya oturumunu kapatır.
 :::
 
@@ -176,10 +189,11 @@ Bir bilgisayarı veya uzaktaki bilgisayarı kapatır, yeniden başlatır veya ot
 shutdown /s /t 0
 ```
 
-## SİSTEM BİLGİSİ
+Bu komut bilgisayarınızı hemen kapatacaktır.
 
-:::note
-[Purpose]
+## SYSTEMINFO
+
+:::note[Amaç]
 Bir bilgisayar ve işletim sistemi hakkında ayrıntılı yapılandırma bilgilerini görüntüler.
 :::
 
@@ -187,21 +201,23 @@ Bir bilgisayar ve işletim sistemi hakkında ayrıntılı yapılandırma bilgile
 systeminfo
 ```
 
+Bu komut ayrıntılı sistem bilgilerini görüntüleyecektir.
+
 ## GÖREV LİSTESİ
 
-:::tip
-[Purpose]
-Çalışan görevlerin, hizmetlerin ve işlemlerin bir listesini görüntüler.
+:::tip[Amaç]
+Çalışan görevlerin, hizmetlerin ve işlemlerin bir listesini görüntüleyin.
 :::
 
 ```sh
 tasklist
 ```
 
-## İZLEYİCİ
+Bu komut o anda çalışan görevlerin bir listesini görüntüleyecektir.
 
-:::warning
-[Purpose]
+## TRACERT
+
+:::warning[Amaç]
 Bir paketin hedefine ulaşmak için izlediği rotayı ve atlamaları gösterir.
 :::
 
@@ -209,7 +225,10 @@ Bir paketin hedefine ulaşmak için izlediği rotayı ve atlamaları gösterir.
 tracert <www.example.com>
 ```
 
+Bu komut bir paketin <www.example.com> adresine ulaşmak için izlediği yolu gösterecektir.
+
 ## Tüm komutlar için Sağlanan Kılavuz
 
 :::important
-:::Bunda bilinen tüm CMD komutlarını ekledim[TerCli](https://tercli.netlify.app/)
+Bunda bilinen tüm CMD komutlarını ekledim [TerCli](https://tercli.netlify.app/)
+:::
