@@ -3,7 +3,7 @@ title: "Web Peyzaj Tasarımına Giriş"
 published: 2025-04-05
 description: "UI/UX temellerini, yazılım mühendisliği ilkelerini, güvenliği ve performans optimizasyonunu kapsayan, yazılım mühendisliği perspektifinden modern web tasarımı."
 image: ''
-tags:[Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
+tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
 category: Software Development
 draft: false
 lang: "tr"
