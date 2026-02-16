@@ -22,6 +22,7 @@ Yazılım mühendisliği açısından bakıldığında web tasarımı, web taban
 * **İşlevsel Olmayan Zorunluluklar:** Sistem bütünlüğünü ve kullanılabilirliğini sağlayan güvenlik ve performansa ilişkin kritik hususlar.
 
 Bu alanları parçalara ayırarak modern web tasarımının gerektirdiği daha doğru ve sağlam bir modeli oluşturabiliriz.
+Bu alanları parçalara ayırarak modern web tasarımı için gereken daha doğru ve sağlam bir modeli oluşturabiliriz.
 
 ## 2.0 Kullanıcı Odaklı Çekirdek: UI ve UX Tasarımı
 
@@ -33,11 +34,11 @@ Kullanıcı Arayüzü tasarımı, bir web uygulamasının görsel ve etkileşiml
 
 * **Temel İlkeler:** Kullanıcı arayüzü tasarımı, bilişsel yükü azaltmayı ve kullanılabilirliği artırmayı amaçlayan yerleşik HCI ilkelerine göre yönlendirilir. Bunlar şunları içerir:
 
-:::tip[Key UI Principles]
+:::tip[Temel UI İlkeleri]
 
 * **Açıklık:** Arayüz net olmalıdır. Simgeler, etiketler ve düzenler amaçlarını ve işlevlerini açıkça belirtmelidir.
 * **Tutarlılık:** Uygulama genelinde tutarlı bir tasarım dili (ör. düğme stilleri, gezinme modelleri), kullanıcıların bilgiyi sistemin bir bölümünden diğerine aktarmasına olanak tanıyarak öğrenmeyi hızlandırır.
-* **Geri bildirim:** Sistem, kullanıcı eylemleri için anında ve net geri bildirim sağlamalıdır (ör. eşzamansız bir istek için yükleme döndürücü, form gönderimi üzerine bir başarı mesajı).
+* **Geri bildirim:** Sistem, kullanıcı eylemleri için anında ve net geri bildirim sağlamalıdır (ör. eşzamansız bir istek için yükleme simgesi, form gönderimi üzerine bir başarı mesajı).
 * **Görsel Hiyerarşi:** Öğelerin düzeni ve stili, kullanıcının dikkatini sayfadaki en önemli bilgilere ve eylemlere yönlendirmelidir.
 
 :::
@@ -68,24 +69,27 @@ UI/UX tasarımlarının işleyen bir uygulamaya dönüştürülmesi, kendisi de 
 * **Temel Teknolojiler:** Web'in temeli üç dil üzerine kurulmuştur:
 * **HTML (HyperText Markup Language):** Web sayfasının anlamsal yapısını ve içeriğini tanımlar.
 * **CSS (Basamaklı Stil Sayfaları):** HTML içeriğinin sunumunu, stilini ve düzenini belirtir.
+* **Temel Teknolojiler:** Web'in temeli üç dil üzerine kurulmuştur:
+* **HTML (HyperText Markup Language):** Web sayfasının anlamsal yapısını ve içeriğini tanımlar.
+* **CSS (Cascading Style Sheets):** HTML içeriğinin sunumunu, stilini ve düzenini belirtir.
 * **JavaScript:** Etkileşim sağlar, dinamik içerik güncellemelerini etkinleştirir, olay işlemeyi ve sunucuyla iletişimi sağlar.
 
-:::note[Example: Basic HTML Structure]
+:::note[Örnek: Temel HTML Yapısı]
 
 ```html title="index.html"
-<!DOCTYPEhtml> 
-<html lan g=tr"> 
-<kafa> 
-<meta karakter kümesi = "UTF-8"> 
-<title>Web Tasarım Örneği</title> 
-<link rel = "stylesheet" href = "styles.css"> 
-</head> 
-<gövde> 
-<h1>Merhaba, Web Tasarımı!</h1> 
-<p>Bu basit bir web sayfası yapısıdır.</p> 
-<script sr c="script.js"></script> 
-</body> 
-</html> 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Tasarım Örneği</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Merhaba, Web Tasarımı!</h1>
+    <p>Bu basit bir web sayfası yapısıdır.</p>
+    <script src="script.js"></script>
+</body>
+</html>
 ```
 
 :::
@@ -112,7 +116,7 @@ Web uygulaması güvenliği, web sitelerini ve web hizmetlerini kötü niyetli s
 
 * **Yaygın Güvenlik Açıkları:** **OWASP (Açık Web Uygulama Güvenliği Projesi) İlk 10**, en kritik web güvenliği risklerinin bir listesini sağlar.
 
-:::caution[Critical Security Risks]
+:::caution[Kritik Güvenlik Riskleri]
 
 * **Enjeksiyon Saldırıları (örn. SQL Enjeksiyonu):** Kötü amaçlı veriler, bir komutun veya sorgunun parçası olarak yorumlayıcıya gönderilerek istenmeyen yürütmeye yol açar.
 * **Siteler Arası Komut Dosyası Çalıştırma (XSS):** Kötü amaçlı komut dosyaları güvenilir web sitelerine enjekte edilir ve kurbanın tarayıcısında çalıştırılır.
@@ -132,7 +136,7 @@ Web performansı, bir web sitesinin hızının ve yanıt verebilirliğinin nesne
 * **Kümülatif Düzen Kayması (CLS):** Görsel stabiliteyi ölçer.
 * **Optimizasyon Teknikleri:** Performans, ön uç ve arka uç stratejilerinin birleşimi yoluyla tasarlanmıştır:
 
-:::tip[Performance Best Practices]
+:::tip[Performans En İyi Uygulamaları]
 
 * **Varlık Optimizasyonu:** CSS/JavaScript'in küçültülmesi, görüntülerin sıkıştırılması ve modern biçimlerin (ör. WebP) kullanılması.
 * **Önbelleğe Alma:** Varlıkları kullanıcıya daha yakın depolamak için tarayıcı önbelleğe alma ve **İçerik Dağıtım Ağlarından (CDN'ler)** yararlanılır.

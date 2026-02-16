@@ -24,7 +24,7 @@ Yazılım mühendisliği açısından bakıldığında, arka uç, teknolojilerde
 
 Modern bir arka uç nadiren tek ve yekpare bir uygulamadır. Birden fazla hizmet, veri tabanı, önbellek, mesaj kuyruğu ve üçüncü taraf entegrasyonlarından oluşan bir **sistemler sistemi** olarak daha doğru bir şekilde tanımlanır. Arka uç mühendisinin rolü, bu bileşenleri uyumlu, dayanıklı ve performanslı bir bütün halinde tasarlamak, oluşturmak ve düzenlemektir. Bu şunları içerir:
 
-:::tip[Core Backend Responsibilities]
+:::tip[Temel Arka Uç Sorumlulukları]
 
 - **Veri Modelleme ve Kalıcılık:** Şemaların tasarlanması ve uygulamanın verilerini temsil edecek uygun depolama teknolojilerinin seçilmesi.
 - **İş Mantığı Uygulaması:** İş kurallarını ve süreçlerini sağlam, test edilebilir ve bakımı yapılabilir koda dönüştürmek.
@@ -60,7 +60,7 @@ Karmaşık mimariler inşa etmeden önce temel malzemelere hakim olmalıyız. Ar
 
 Özünde arka uç, bilgisayarda çalışan ve sunucu olarak adlandırılan bir programdır (veya programlar kümesidir). Sunucu teknolojisinin gelişimi, daha fazla soyutlamaya, verimliliğe ve yönetilebilirliğe yönelik sürekli bir çabayı yansıtıyor.
 
-:::note[Evolution of Server Technology]
+:::note[Sunucu Teknolojisinin Evrimi]
 
 - **Bare Metal Sunucular:** Görevlere ayrılmış fiziksel makineler. Maksimum performans, ancak pahalıdır ve ölçeklendirilmesi zordur.
 - **Sanal Makineler (VM'ler):** Sanallaştırma, tek bir fiziksel makinede (ör. EC2, Compute Engine) birden fazla yalıtılmış sisteme olanak tanır.
@@ -93,12 +93,33 @@ Köprü Metni Aktarım Protokolü (HTTP), World Wide Web'e güç veren uygulama 
 - **Başlıklar:** Yanıtla ilgili meta verileri içeren anahtar/değer çiftleri (ör.`Content-Type`,`Cache-Control`).
 - **Gövde:** İstenen kaynağı veya hata bilgilerini içeren isteğe bağlı bir veri.
 - **Durumsuzluk:** HTTP'nin temel ilkesi, durumsuz olmasıdır. İstemciden sunucuya gönderilen her istek, isteği anlamak ve işlemek için gereken tüm bilgileri içermelidir. Sunucu, istekler arasında istemciye ilişkin herhangi bir durumu saklamaz. Bu tasarım web'in ölçeklenebilirliği açısından temeldir. Durum genellikle istemcide yönetilir veya her istekle birlikte bir belirteç (JWT gibi) iletilir.
+- **İstek-Yanıt Modeli:** HTTP basit bir model üzerinde çalışır. İstemci sunucuya bir istek gönderir ve sunucu yanıt verir. Bir arka ucun birincil işi bu istekleri işlemek ve uygun yanıtları formüle etmektir.
+- **HTTP İsteğinin Anatomisi:**
+- **Yöntem (Fiil):** Bir kaynak üzerinde gerçekleştirilmesi istenen eylemi belirtir. Yaygın yöntemler şunları içerir:
+- `GET`: Bir kaynağı alın. Güvenli ve bağımsız olmalı.
+- `POST`: Yeni bir kaynak oluşturun. İdempotent değil.
+- `PUT`: Mevcut bir kaynağı tamamen değiştirin. İdempotent olmalı.
+- `PATCH`: Mevcut bir kaynağı kısmen güncelleyin. Mutlaka idempotent olması gerekmez.
+- `DELETE`: Bir kaynağı silin. İdempotent olmalı.
+- **URI (Tekdüzen Kaynak Tanımlayıcı):** İsteğin hedeflediği kaynağı belirtir (ör. `/api/v1/users/123`).
+- **Başlıklar:** İstekle ilgili meta verileri içeren anahtar/değer çiftleri (ör. `Content-Type`, `Authorization`, `Accept`).
+- **Gövde:** Genellikle veri içeren isteğe bağlı bir veri `POST`, `PUT`, ve `PATCH` istekler.
+- **HTTP Yanıtının Anatomisi:**
+- **Durum Kodu:** Talebin sonucunu belirten üç haneli kod. Bunlar sınıflara ayrılmıştır:
+- `1xx`: Bilgilendirici
+- `2xx`: Başarı (ör. `200 OK`, `201 Created`)
+- `3xx`: Yönlendirme (ör. `301 Moved Permanently`)
+- `4xx`: İstemci Hatası (ör. `400 Bad Request`, `401 Unauthorized`, `404 Not Found`)
+- `5xx`: Sunucu Hatası (ör. `500 Internal Server Error`, `503 Service Unavailable`)
+- **Başlıklar:** Yanıtla ilgili meta verileri içeren anahtar/değer çiftleri (ör. `Content-Type`, `Cache-Control`).
+- **Gövde:** İstenen kaynağı veya hata bilgilerini içeren isteğe bağlı bir veri.
+- **Durumsuzluk:** HTTP'nin temel ilkesi, durumsuz olmasıdır. İstemciden sunucuya gönderilen her istek, isteği anlamak ve işlemek için gereken tüm bilgileri içermelidir. Sunucu, istekler arasında istemciye ilişkin herhangi bir durumu saklamaz. Bu tasarım web'in ölçeklenebilirliği açısından temeldir. Durum genellikle istemcide yönetilir veya her istekle birlikte bir belirteç (JWT gibi) iletilir.
 
 ### 2.3 Veri Serileştirme Formatları
 
 Ön uç ve arka uç iletişim kurduğunda, değiş tokuş ettikleri verileri yapılandırmak için bir format üzerinde anlaşmaları gerekir. Bu işleme serileştirme denir.
 
-:::note[JSON Example]
+:::note[JSON Örneği]
 
 ```json {1,4-7}
 {
@@ -112,8 +133,7 @@ Köprü Metni Aktarım Protokolü (HTTP), World Wide Web'e güç veren uygulama 
 :::
 
 - **XML (Genişletilebilir İşaretleme Dili):** JSON'dan önce gelir. JSON'dan daha ayrıntılıdır ve insanlar tarafından daha az okunabilirdir. Yeni web API'leri için yerini büyük ölçüde JSON almış olsa da, eski kurumsal sistemlerde, SOAP API'lerinde ve belirli yapılandırma dosyalarında hala yaygındır.
-
-- **Protokol Tamponları (Protobuf):** Google tarafından geliştirilen ikili serileştirme biçimi. İnsan tarafından okunamaz. Başlıca avantajları performans ve verimliliktir. Protobuf mesajları JSON'a göre daha küçüktür ve serileştirilmesi/seri durumdan çıkarılması daha hızlıdır. Önceden tanımlanmış bir şema kullanır (`.proto`hizmetler arasında sıkı bir veri sözleşmesi uygulayan dosya). Bu, verimliliğin çok önemli olduğu yüksek performanslı, dahili mikro hizmet iletişimi için onu mükemmel bir seçim haline getirir.
+- **Protokol Tamponları (Protobuf):** Google tarafından geliştirilen ikili serileştirme biçimi. İnsan tarafından okunamaz. Başlıca avantajları performans ve verimliliktir. Protobuf mesajları JSON'a göre daha küçüktür ve serileştirilmesi/seri durumdan çıkarılması daha hızlıdır. Önceden tanımlanmış bir şema kullanır (`.proto` hizmetler arasında sıkı bir veri sözleşmesi uygulayan dosya). Bu, verimliliğin çok önemli olduğu yüksek performanslı, dahili mikro hizmet iletişimi için onu mükemmel bir seçim haline getirir.
 
 ---
 
@@ -125,7 +145,7 @@ Bir arka uç sisteminin üst düzey yapısı, mimarisidir. Doğru mimariyi seçm
 
 Monolitik mimari, bir uygulamayı tek ve birleşik bir birim olarak oluşturur. Tüm iş mantığı, veri erişimi ve kullanıcı arayüzü hizmeti bileşenleri tek bir kod tabanında bulunur ve tek bir yapı olarak dağıtılır.
 
-:::caution[Monolith Disadvantages]
+:::caution[Monolith'in Dezavantajları]
 
 - **Ölçeklenebilirlik Zorlukları:** Yalnızca tek bir bileşen darboğaz oluştursa bile uygulamanın tamamını ölçeklendirin.
 - **Teknolojiye Kilitlenme:** Başlangıçtan itibaren seçilen yığına kilitlendi.
@@ -137,7 +157,7 @@ Monolitik mimari, bir uygulamayı tek ve birleşik bir birim olarak oluşturur. 
 
 Mikro hizmet mimarisi, bir uygulamayı, her biri belirli bir iş yeteneği etrafında organize edilen küçük, özerk hizmetlerin bir koleksiyonu olarak yapılandırır.
 
-:::tip[Microservices Advantages]
+:::tip[Mikro Hizmetlerin Avantajları]
 
 - **Bağımsız Ölçeklendirme:** Hizmetler belirli ihtiyaçlara göre ölçeklenir.
 - **Teknoloji Özgürlüğü:** Her hizmet için en iyi araçları seçin.
@@ -149,7 +169,7 @@ Mikro hizmet mimarisi, bir uygulamayı, her biri belirli bir iş yeteneği etraf
 
 Sunucusuz, bulut sağlayıcının sunucuların tahsisini ve sağlanmasını dinamik olarak yönettiği bir bulut yürütme modelidir. Bir geliştirici, işlevleri biçiminde kod yazar ve bulut sağlayıcısı, olaylara yanıt olarak bunları çalıştırır.
 
-:::note[Serverless Characteristics]
+:::note[Sunucusuz Özellikleri]
 
 - Sunucu yönetimi gerekmez.
 - Olay odaklı yürütme.
@@ -172,7 +192,7 @@ Teknoloji yığını, bir uygulamayı oluşturmak için kullanılan yazılım bi
 
 Programlama dili seçiminin performans, geliştirici üretkenliği ve sistemin çözmeye çok uygun olduğu sorun türleri üzerinde derin bir etkisi vardır.
 
-:::tip[Language Comparison]
+:::tip[Dil Karşılaştırması]
 
 - **Node.js (JavaScript/TypeScript):** Engellemeyen olay döngüsü nedeniyle yoğun G/Ç gerektiren uygulamalar için mükemmeldir.
 - **Python:** Veri bilimi ve hızlı gelişim için geniş ekosisteme sahip, basit ve okunabilir.
@@ -189,6 +209,9 @@ Bir web çerçevesi, ortak arka uç görevlerini (örn. yönlendirme, istek işl
 - **Fikri olan ve fikri olmayan:**
 - **Fikir sahibi (ör. Django, Ruby on Rails, Spring Boot):** Bu çerçeveler sizin için birçok karar verir ve uygulama oluşturmanın belirli bir yolunu belirler. Yüksek üretkenlik sunarlar ("piller dahil") ancak alışılmışın dışına çıkmanız gerekirse kısıtlayıcı olabilirler.
 - **Görüşsüz (ör. Flask, Express.js):** Bu çerçeveler minimal bir çekirdek sağlar ve kararların çoğunu (ör. veritabanı katmanı, şablon oluşturma motoru) geliştiriciye bırakır. Maksimum esneklik sunarlar ancak daha fazla kurulum ve karar verme süreci gerektirirler.
+- **Fikri olan ve fikri olmayan:**
+- **Fikir sahibi (ör. Django, Ruby on Rails, Spring Boot):** Bu çerçeveler sizin için many kararlar verir ve uygulama oluşturmanın belirli bir yolunu belirler. Yüksek üretkenlik sunarlar ("piller dahil") ancak alışılmışın dışına çıkmanız gerekirse kısıtlayıcı olabilirler.
+- **Görüşsüz (ör. Flask, Express.js):** Bu çerçeveler minimal bir çekirdek sağlar ve kararların çoğunu (ör. veritabanı katmanı, şablon oluşturma motoru) geliştiriciye bırakır. Maksimum esneklik sunarlar ancak daha fazla kurulum ve karar verme süreci gerektirirler.
 
 ### 4.3 Veritabanı: Sistemin Belleği
 
@@ -198,9 +221,9 @@ Veritabanı tartışmasız arka ucun en kritik bileşenidir. Uygulamanın kalıc
 
 Yapılandırılmış Sorgu Dili'ni (SQL) kullanan ilişkisel veritabanları onlarca yıldır endüstri standardı olmuştur. Verileri önceden tanımlanmış şemalara sahip tablolarda saklarlar.
 
-:::note[ACID Properties]
+:::note[ACID Özellikleri]
 
-- **Atomity:** Tüm işlemler tamamen başarılı veya başarısız olur.
+- **Atomicity:** Tüm işlemler tamamen başarılı veya başarısız olur.
 - **Tutarlılık:** İşlemler, veritabanını geçerli bir durumdan diğerine getirir.
 - **İzolasyon:** Eşzamanlı işlemler müdahale etmez.
 - **Dayanıklılık:** Gerçekleştirilen değişiklikler başarısızlıklardan kurtulur.
@@ -221,8 +244,9 @@ NoSQL veritabanları, özellikle büyük ölçekli, yüksek hızlı veriler ("B�
 - **Sütun Ailesi Depoları (ör. Cassandra, HBase):** Verileri satırlar yerine sütunlarda depolayın. Büyük veri kümeleri üzerinde yüksek yazma verimi ve sorgular için optimize edilmiştir.
 - **Grafik Veritabanları (ör. Neo4j, Amazon Neptune):** Karmaşık ilişkilere sahip verileri (ör. sosyal ağlar, öneri motorları) depolamak ve sorgulamak için tasarlanmıştır.
 
-:::caution[CAP Theorem]
-Dağıtılmış bir veri deposu yalnızca şu ikisini sağlayabilir: **C**tutarlılığı, **A**kullanılabilirliği ve **P**bölüm Toleransı. Ağ bölümleri kaçınılmaz olduğundan, tutarlılık ve kullanılabilirlik arasında bir denge kurulur.
+:::caution[CAP Teoremi]
+Dağıtılmış bir veri deposu yalnızca şu ikisini sağlayabilir:
+**C**tutarlılığı, **A**kullanılabilirliği ve **P**bölüm Toleransı. Ağ bölümleri kaçınılmaz olduğundan, tutarlılık ve kullanılabilirlik arasında bir denge kurulur.
 :::
 
 #### 4.3.3 ORM'ler ve Ham SQL: Soyutlama Tartışması
@@ -245,8 +269,7 @@ API, farklı yazılım bileşenlerinin nasıl etkileşimde bulunduğunu tanımla
 
 ### 5.1 API Tasarım İlkeleri
 
-:::tip
-[API Best Practices]
+:::tip[API En İyi Uygulamaları]
 
 - **Kaynak Odaklı Tasarım:** Kaynaklar (isimler) etrafındaki yapı, bunlar üzerinde çalışmak için HTTP yöntemlerini kullanın.
 - **Durumsuzluk:** Sunucu, istekler arasında istemci durumunu korumaz.
@@ -268,8 +291,7 @@ GraphQL, Facebook tarafından geliştirilen API'ler için bir sorgulama dilidir.
 - **Yetersiz getiriliyor:** İstemcinin ihtiyaç duyduğu tüm verileri elde etmek için farklı uç noktalara birden fazla istekte bulunması gerekir.
 - **GraphQL Çözümü:** GraphQL API, tek bir uç noktayı kullanıma sunar. İstemci tam olarak ihtiyaç duyduğu verileri belirten bir sorgu gönderir ve sunucu tam olarak bu verileri içeren bir JSON nesnesi döndürür; ne eksik ne fazla. Bu, ön uç geliştiricilerin ihtiyaç duydukları verileri tek bir gidiş-dönüş yolculuğunda almalarına olanak tanır.
 
-:::note
-[GraphQL Query Example]
+:::note[GraphQL Sorgu Örneği]
 
 ```graphql
 query GetUser($id: ID!) {
@@ -298,7 +320,7 @@ query GetUser($id: ID!) {
 
 Ölçeklenebilirlik, bir sistemin kaynak ekleyerek artan miktardaki işi yönetebilme yeteneğidir.
 
-:::tip[Scaling Strategies]
+:::tip[Ölçeklendirme Stratejileri]
 
 - **Dikey Ölçeklendirme:** Tek sunucunun (CPU, RAM) kaynaklarını artırın - basit ama sınırlıdır.
 - **Yatay Ölçeklendirme:** Kaynak havuzuna daha fazla sunucu ekleyin; karmaşık ama neredeyse sınırsız.
@@ -316,23 +338,23 @@ Performans bir özelliktir. Yavaş bir uygulama bozuk bir uygulamadır.
 - **İçerik Dağıtım Ağı (CDN):** Son kullanıcılara yakın statik varlıkları (resimler, CSS, JS) önbelleğe alan ve gecikmeyi önemli ölçüde azaltan, coğrafi olarak dağıtılmış proxy sunuculardan oluşan bir ağ.
 - **Veritabanı Önbelleğe Alma:** Çoğu veritabanında, sorgu yürütmeyi hızlandırmak için dahili önbelleğe alma mekanizmaları bulunur.
 
-:::note[Asynchronous Processing]
+:::note[Asenkron İşleme]
 
 - **Mesaj Kuyrukları (ör. RabbitMQ, SQS):** Hizmetleri ayırın ve yanıt verme hızını artırın.
-- **Yayın Platformları (ör. Apache Kafka):** Yüksek verimli, gerçek zamanlı veri işleme.
+- **Akış Platformları (ör. Apache Kafka):** Yüksek verimli, gerçek zamanlı veri işleme.
 
 :::
 
 ### 6.3 Güvenilirlik ve Hata Toleransı
 
-Sistemler başarısız olur. Ağlar bölümü. Sunucular çöküyor. Güvenilirlik, bu arızalara dayanabilecek ve çalışmaya devam edebilecek sistemler tasarlamakla ilgilidir.
+Sistemler başarısız olur. Ağlar bölünür. Sunucular çöküyor. Güvenilirlik, bu arızalara dayanabilecek ve çalışmaya devam edebilecek sistemler tasarlamakla ilgilidir.
 
-:::caution[Fault Tolerance Patterns]
+:::caution[Hata Tolerans Kalıpları]
 
 - **Yedeklilik ve Yüksek Kullanılabilirlik:** Farklı konumlarda birden çok örneği çalıştırarak tek hata noktalarından kaçının.
 - **Devre Kesici Modeli:** Art arda gelen olayları önlemek için arızaları izleyin ve hızlı bir şekilde arıza yapın.
 - **Durum Denetimleri:** Sağlıksız örnekleri tespit etmek için periyodik ping'ler.
-- **Önemli Bozulma:** Bileşenler arızalandığında işlevselliğin azalmasını sağlar.
+- **Kademeli Bozulma:** Bileşenler arızalandığında sınırlı işlevsellik sağlar.
 
 :::
 
@@ -348,7 +370,7 @@ Güvenlik en sonunda eklenecek bir özellik değil; ilk günden itibaren sisteme
 - **OpenID Connect (OIDC):** OAuth 2.0'ın üzerine inşa edilmiş basit bir kimlik katmanı. Kimlik doğrulamayı gerçekleştirmek için standart bir yol sağlar.
 - **JSON Web Belirteçleri (JWT):** İki taraf arasında aktarılacak talepleri temsil etmenin kompakt, URL açısından güvenli bir yolu. JWT, kullanıcı kimliğini ve izinlerini içerebilen imzalı, durum bilgisi olmayan bir belirteçtir. Durum bilgisi olmayan bir API'de kullanıcı oturumlarını sürdürmek için yaygın olarak kullanılır.
 
-:::caution[OWASP Top Security Concerns for Backend]
+:::caution[Arka Uç İçin OWASP Temel Güvenlik Konuları]
 
 - Parametreli sorgularla enjeksiyonu önleyin
 - Aktarım halindeki (HTTPS) ve beklemedeki verileri şifreleyin
@@ -363,7 +385,7 @@ Güvenlik en sonunda eklenecek bir özellik değil; ilk günden itibaren sisteme
 
 DevOps, yazılım geliştirmeyi (Dev) ve BT operasyonlarını (Ops) birleştiren bir dizi uygulamadır. Sistem geliştirme yaşam döngüsünü kısaltmayı ve yüksek yazılım kalitesiyle sürekli teslimat sağlamayı amaçlamaktadır.
 
-:::note[DevOps Core Components]
+:::note[DevOps Temel Bileşenleri]
 
 - **Sürüm Kontrolü:** Kod ve yapılandırma yönetimi için Git.
 - **Konteynerleştirme:** Taşınabilir, tutarlı ortamlar için Docker.
@@ -383,8 +405,7 @@ Güvenilir arka uç sistemleri oluşturmak için kapsamlı bir test stratejisi g
 
 Test çalışmalarınızı yapılandırmaya yönelik bir model.
 
-:::tip
-[Testing Pyramid Structure]
+:::tip[Test Piramidi Yapısı]
 
 - **Birim Testleri (Temel):** Bireysel işlevleri/sınıfları ayrı ayrı test edin. Hızlı, ucuz, testlerin çoğunluğu.
 - **Entegrasyon Testleri (Orta):** Birden fazla bileşeni birlikte test edin (ör. gerçek veritabanıyla).
@@ -392,11 +413,11 @@ Test çalışmalarınızı yapılandırmaya yönelik bir model.
 
 :::
 
-### 8.2 En İyi Uygulamaların Test Edilmesi
+### 8.2 Test 모범 사례
 
-:::note[Additional Testing Strategies]
+:::note[Ek Test Stratejileri]
 
-- **Alay Etme/İndirme:** Test edilen kodu yalıtmak için harici bağımlılıkları değiştirin.
+- **Mocking/Stubbing:** Test edilen kodu yalıtmak için harici bağımlılıkları değiştirin.
 - **Sözleşme Testi:** API tüketicilerinin/sağlayıcılarının ortak anlayışa bağlı kalmasını sağlayın.
 - **Performans/Yük Testi:** Yüksek trafiği simüle etmek için k6 veya JMeter gibi araçları kullanın.
 
@@ -409,3 +430,5 @@ Test çalışmalarınızı yapılandırmaya yönelik bir model.
 Arka uçtaki yolculuk bizi ağ protokollerinin temel bit ve baytlarından bulutta yerel mimarinin soyut yüksekliklerine götürdü. Arka uç geliştirmenin yalnızca kod yazmakla ilgili olmadığını, karmaşık sistemleri tasarlamak, oluşturmak ve yönetmekle ilgili olduğunu gördük. Bu bir ödünleşme disiplinidir: tutarlılık vs kullanılabilirlik, performans vs maliyet, geliştirme hızı vs operasyonel istikrar.
 
 Günümüzün arka uç mühendisi bir sistem düşünürü, bir problem çözücü ve yaşam boyu öğrenendir. Teknolojiler gelişmeye devam edecek; sunucusuz olgunlaşacak, AI/ML modelleri entegre edilecek başka bir bileşen haline gelecek ve yeni mimari modeller ortaya çıkacak. Ancak ilk ele aldığımız ilkeler; sağlam mimari, işlevsel olmayan gereksinimlere odaklanma, sağlam testler ve otomatik dağıtım; güvenilir ve ölçeklenebilir sistemlerin üzerine inşa edildiği kalıcı temel olarak kalacaktır. Nihai amaç, belirli bir çerçeveye hakim olmak değil, dijital dünyanın karmaşık ve sürekli değişen zorluklarına yönelik doğru araçları seçmek ve kullanmak için gereken mühendislik muhakemesini geliştirmektir.
+
+Günümüzün arka uç mühendisi bir sistem düşünürü, bir problem çözücü ve yaşam boyu öğrenendir. Teknolojiler gelişmeye devam edecek; sunucusuz olgunlaşacak, AI/ML modelleri entegre edilecek başka bir bileşen haline gelecek ve yeni mimari modeller ortaya çıkacak. Ancak ilk ele aldığımız ilkeler; sağlam mimari, işlevsel olmayan gereksinimlere odaklanma, sağlam testler ve otomatik dağıtım; güvenilir ve ölçeklenebilir sistemlerin üzerine inşa olduğu kalıcı temel olarak kalacaktır. Nihai amaç, belirli bir çerçeveye hakim olmak değil, dijital dünyanın karmaşık ve sürekli değişen zorluklarına yönelik doğru araçları seçmek ve kullanmak için gereken mühendislik muhakemesini geliştirmektir.

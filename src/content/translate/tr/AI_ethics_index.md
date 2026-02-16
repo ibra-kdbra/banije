@@ -11,7 +11,6 @@ originalSlug: "AI_ethics_index"
 series:
   name: "AI Foundations"
   order: 2
-
 ---
 
 ## 🌐 Yapay Zeka Etiği - İlkeler, Zorluklar ve Gelecek
@@ -32,7 +31,12 @@ Yapay zeka sistemleri daha yetenekli ve özerk hale geldikçe **adillik**, **sor
 
 ## 🏛 Yapay Zeka Etiğinin 5 Temeli
 
-Bu sütunlar **güvenilir yapay zeka** için temel oluşturur.![pillars-of-ai-ethics](/images/posts/five_pillars.png)### 1. Adil Olma ve Ayrımcılık Yapmama
+Bu sütunlar **güvenilir yapay zeka** için temel oluşturur.
+
+![pillars-of-ai-ethics](/images/posts/five_pillars.png)
+
+### 1. Adil Olma ve Ayrımcılık Yapmama
+
 Yapay zeka, ırk, cinsiyet veya konuma göre değil, ilgili kriterlere göre değerlendirme yapmalıdır.
 
 - **Zorluklar**: Önyargılı eğitim verileri sistematik ayrımcılığa yol açabilir.
@@ -43,7 +47,7 @@ Yapay zeka, ırk, cinsiyet veya konuma göre değil, ilgili kriterlere göre de�
 Yapay zekanın sonuçlara nasıl ulaştığını anlamalıyız.
 
 - **Zorluklar**: Derin sinir ağları gibi karmaşık modeller, opak "kara kutular" olarak çalışır.
-- **Çözümler**: **Açıklanabilir yapay zeka (XAI)**, görsel karar ağaçları ve faktör ilişkilendirme yöntemlerine yatırım yapın.
+- **Çözümler**: **Açıklanabilir Yapay Zeka (XAI)**, görsel karar ağaçları ve faktör ilişkilendirme yöntemlerine yatırım yapın.
 
 ### 3. Veri Koruma
 
@@ -101,7 +105,7 @@ Yapay zeka insanın karar verme sürecine **yardımcı olmalıdır**, yerini alm
 ## Daha Etik Yapay Zekaya Doğru Adımlar
 
 1. Açık etik kuralları belirleyin.
-2. Dağıtımdan önce veri kümelerini ve algoritmalarını debiaslayın.
+2. Dağıtımdan önce veri kümelerini ve algoritmalarını önyargılardan arındırın.
 3. Bilgilendirilmiş rızaya ve kullanıcı veri haklarına saygı gösterin.
 4. Etik düşünceyi fikir aşamasından dağıtım sonrası izlemeye kadar entegre edin.
 5. Karar verme süreçleri için denetim izleri oluşturun.
@@ -119,4 +123,6 @@ Yapay zeka insanın karar verme sürecine **yardımcı olmalıdır**, yerini alm
 > **Etik yapay zeka güven ile ilgilidir.**
 > Adilliği, şeffaflığı, hesap verebilirliği ve güvenliği yapay zeka sistemlerine yerleştirerek teknolojinin yalnızca ayrıcalıklı bir azınlığa değil herkese hizmet etmesini sağlayabiliriz.
 
-### Referanslar[AI_ethics_Wikipedia](https://en.wikipedia.org/wiki/Ethics_of_artificial_intelligence)
+### Referanslar
+
+[AI_ethics_Wikipedia](https://en.wikipedia.org/wiki/Ethics_of_artificial_intelligence)

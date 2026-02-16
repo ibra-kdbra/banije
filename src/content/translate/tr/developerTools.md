@@ -5,7 +5,7 @@ description: "Ön uçtan arka uç araçlara kadar web geliştirmeyi kolaylaştı
 image: ''
 tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
 category: Guide
-draft: false 
+draft: false
 lang: "tr"
 originalSlug: "developerTools"
 
@@ -21,7 +21,7 @@ Bir web uygulaması mühendisi olarak sürekli olarak becerilerimi ve üretkenli
 
 ### 🛠️ Wappalyzer
 
-:::important[Purpose]
+:::important[Amaç]
 Web sitelerinde kullanılan teknolojileri tanımlar.
 :::
 
@@ -29,9 +29,9 @@ Web sitelerinde kullanılan teknolojileri tanımlar.
 
 ---
 
-### 🎨 Kalem
+### 🎨 Stylus
 
-:::important[Purpose]
+:::important[Amaç]
 Web sitesinin görünümünü özelleştirin.
 :::
 
@@ -41,7 +41,7 @@ Web sitesinin görünümünü özelleştirin.
 
 ### 🧑‍💻 JSON Görünümü
 
-:::important[Purpose]
+:::important[Amaç]
 JSON verilerini biçimlendirin ve doğrulayın.
 :::
 
@@ -51,7 +51,7 @@ JSON verilerini biçimlendirin ve doğrulayın.
 
 ### 📜 HTML Doğrulayıcı
 
-:::important[Purpose]
+:::important[Amaç]
 Hatalar için HTML kodunu kontrol edin.
 :::
 
@@ -61,7 +61,7 @@ Hatalar için HTML kodunu kontrol edin.
 
 ### 📏 Ölç
 
-:::important[Purpose]
+:::important[Amaç]
 Bir web sayfasındaki öğeleri ölçün.
 :::
 
@@ -71,7 +71,7 @@ Bir web sayfasındaki öğeleri ölçün.
 
 ### 🌐 REST İstemcisi
 
-:::important[Purpose]
+:::important[Amaç]
 API'leri test edin ve hata ayıklayın.
 :::
 
@@ -81,7 +81,7 @@ API'leri test edin ve hata ayıklayın.
 
 ### 🎨 ColorZilla
 
-:::important[Purpose]
+:::important[Amaç]
 Renkleri seçin ve analiz edin.
 :::
 
@@ -91,7 +91,7 @@ Renkleri seçin ve analiz edin.
 
 ### 🧪 Selenyum IDE
 
-:::important[Purpose]
+:::important[Amaç]
 Web testini otomatikleştirin.
 :::
 
@@ -101,7 +101,7 @@ Web testini otomatikleştirin.
 
 ### 🛠️ Web Geliştiricisi
 
-:::important[Purpose]
+:::important[Amaç]
 Web sitelerini yönetin ve inceleyin.
 :::
 
@@ -111,7 +111,7 @@ Web sitelerini yönetin ve inceleyin.
 
 ### 🔤 WhatFont
 
-:::important[Purpose]
+:::important[Amaç]
 Bir web sayfasındaki yazı tiplerini tanımlayın.
 :::
 
@@ -121,7 +121,7 @@ Bir web sayfasındaki yazı tiplerini tanımlayın.
 
 ### 🌍 WhatRuns
 
-:::important[Purpose]
+:::important[Amaç]
 Web sitelerinin kullandığı teknolojileri keşfedin.
 :::
 
@@ -135,7 +135,7 @@ Web sitelerinin kullandığı teknolojileri keşfedin.
 
 ### 📱 React Geliştirici Araçları
 
-:::important[Purpose]
+:::important[Amaç]
 React uygulamalarında hata ayıklayın.
 :::
 
@@ -145,7 +145,7 @@ React uygulamalarında hata ayıklayın.
 
 ### 🖥️ Redux Geliştirici Araçları
 
-:::important[Purpose]
+:::important[Amaç]
 Redux durumu değişikliklerinde hata ayıklama.
 :::
 
@@ -155,7 +155,7 @@ Redux durumu değişikliklerinde hata ayıklama.
 
 ### 🧑‍💻 Vue.js Geliştirme Araçları
 
-:::important[Purpose]
+:::important[Amaç]
 Vue.js uygulamalarında hata ayıklayın.
 :::
 
@@ -165,7 +165,7 @@ Vue.js uygulamalarında hata ayıklayın.
 
 ### 🐍 Postacı
 
-:::important[Purpose]
+:::important[Amaç]
 API geliştirme ve test etme.
 :::
 
@@ -175,7 +175,7 @@ API geliştirme ve test etme.
 
 ### 🖧 Canlı Sunucu
 
-:::important[Purpose]
+:::important[Amaç]
 Yerel bir geliştirme sunucusu başlatın.
 :::
 
@@ -185,7 +185,7 @@ Yerel bir geliştirme sunucusu başlatın.
 
 ### 🌐 GitHub
 
-:::important[Purpose]
+:::important[Amaç]
 GitHub iş akışını geliştirin.
 :::
 
@@ -195,7 +195,7 @@ GitHub iş akışını geliştirin.
 
 ### ⚙️ Gitpod
 
-:::important[Purpose]
+:::important[Amaç]
 Bulutta bir geliştirme ortamı başlatın.
 :::
 
@@ -205,7 +205,7 @@ Bulutta bir geliştirme ortamı başlatın.
 
 ### 📑 JSON Biçimlendirici
 
-:::important[Purpose]
+:::important[Amaç]
 JSON verilerini biçimlendirin ve güzelleştirin.
 :::
 
@@ -213,9 +213,9 @@ JSON verilerini biçimlendirin ve güzelleştirin.
 
 ---
 
-### 🖥️ Uykusuzluk
+### 🖥️ Insomnia
 
-:::important[Purpose]
+:::important[Amaç]
 API tasarımı ve testi.
 :::
 
@@ -225,7 +225,7 @@ API tasarımı ve testi.
 
 ### 🌍 GitLab
 
-:::important[Purpose]
+:::important[Amaç]
 Kod depoları üzerinde işbirliği yapın.
 :::
 
@@ -235,7 +235,7 @@ Kod depoları üzerinde işbirliği yapın.
 
 ### 🔧 Codeberg
 
-:::important[Purpose]
+:::important[Amaç]
 Git deposu barındırma.
 :::
 
@@ -249,39 +249,39 @@ Git deposu barındırma.
 
 ### 🤖 OpenAI Yanıtlar API'sı
 
-:::important[Purpose]
+:::important[Amaç]
 Gelişmiş yapay zeka aracıları geliştirin.
 :::
 
-**Neden Kullanmalı**: Geliştiricilerin, karmaşık görevleri doğrudan insan müdahalesi olmadan gerçekleştirebilen yapay zeka aracıları oluşturmasına olanak tanıyarak uygulamalarda otomasyonu ve verimliliği artırır. :contentReference[oaicite:0]{inde x=0}
+**Neden Kullanmalı**: Geliştiricilerin, karmaşık görevleri doğrudan insan müdahalesi olmadan gerçekleştirebilen yapay zeka aracıları oluşturmasına olanak tanıyarak uygulamalarda otomasyonu ve verimliliği artırır. :contentReference[oaicite:0]{index=0}
 
 ---
 
 ### 🛠️ Project IDX
 
-:::important[Purpose]
+:::important[Amaç]
 Yapay zeka destekli tarayıcı tabanlı geliştirme ortamı.
 :::
 
-**Neden Kullanmalı**: Google tarafından geliştirilen, Visual Studio Code'u temel alan, Gemini tarafından desteklenen yerleşik bir üretken yapay zeka asistanına ve iOS ve Android emülatörlerine sahip olan ve geliştirme sürecini kolaylaştıran çevrimiçi bir IDE. :contentReference[oaicite:1]{inde x=1}
+**Neden Kullanmalı**: Google tarafından geliştirilen, Visual Studio Code'u temel alan, Gemini tarafından desteklenen yerleşik bir üretken yapay zeka asistanına ve iOS ve Android emülatörlerine sahip olan ve geliştirme sürecini kolaylaştıran çevrimiçi bir IDE. :contentReference[oaicite:1]{index=1}
 
 ---
 
-### 🌐 OpenSilver Çerçevesi
+### 🌐 OpenSilver Framework
 
-:::important[Purpose]
+:::important[Amaç]
 C# ve XAML kullanarak zengin internet uygulamaları geliştirin.
 :::
 
-**Neden Kullanmalı**: Microsoft Silverlight'ın halefi olarak hizmet veren, HTML5, CSS3 ve WebAssembly gibi modern web standartlarını kullanarak geliştiricilerin kod tabanlarını yeniden yazmaya gerek kalmadan mevcut Silverlight uygulamalarını web'e taşımasına olanak tanıyan açık kaynaklı bir çerçeve. :contentReference[oaicite:2]{inde x=2}
+**Neden Kullanmalı**: Microsoft Silverlight'ın halefi olarak hizmet veren, HTML5, CSS3 ve WebAssembly gibi modern web standartlarını kullanarak geliştiricilerin kod tabanlarını yeniden yazmaya gerek kalmadan mevcut Silverlight uygulamalarını web'e taşımasına olanak tanıyan açık kaynaklı bir çerçeve. :contentReference[oaicite:2]{index=2}
 
 ---
 
 ### 🦀 Tauri
 
-:::important[Purpose]
+:::important[Amaç]
 Platformlar arası masaüstü ve mobil uygulamalar oluşturun.
 :::
 
-**Neden Kullanmalı**: Hafif, güvenli uygulamaların geliştirilmesine olanak tanıyan açık kaynaklı bir çerçeve
-::contentReference[oaicite:3]{inde x=3}
+**Neden Kullanmalı**: Hafif, güvenli uygulamaların geliştirilmesine olanak tanıyan açık kaynaklı bir çerçeve.
+::contentReference[oaicite:3]{index=3}
