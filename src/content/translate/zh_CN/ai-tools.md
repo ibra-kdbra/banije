@@ -74,7 +74,7 @@ series:
 * **“执行”层：** 在生成任何未来代码之前，模型会遍历图表。 如果生成的令牌违反了约束节点（例如，生成`new Date()`而不是`moment.utc()`），在令牌发出之前，logits 会被抑制。
 
 :::tip
-{title="Architectural Impact"}
+[Architectural Impact]
 这允许**“零射击入门”。**新的聊天会话不是从零开始；而是从零开始。 它从项目知识图的确切状态开始。
 :::
 

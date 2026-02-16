@@ -174,7 +174,7 @@ Cline es el héroe del mundo del código abierto. Es una extensión de VS Code q
     3. Edite el archivo.
     4. `npm test`(Pase)
     5. `git commit`
-* **Integración MCP:** Cline es el cliente MCP más avanzado. Puede encadenar herramientas: "Use **GitHub MCP** para encontrar el problema, use **Postgres MCP** para verificar los datos y luego escriba la solución".*
+* **Integración MCP:** Cline es el cliente MCP más avanzado. Puede encadenar herramientas: *"Use **GitHub MCP** para encontrar el problema, use **Postgres MCP** para verificar los datos y luego escriba la solución".*
 
 ---
 

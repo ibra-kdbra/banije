@@ -34,6 +34,7 @@ Tek makineli bir sistemden dağıtılmış bir sisteme geçiş, karmaşıklığ�
 6. **Bir yönetici var.** (Birçok yönetici var.)
 7. **Nakliye maliyeti sıfırdır.** (Değildir.)
 8. **Ağ homojendir.** (Değildir.)
+:::Bu ciltte tartışılan her model, protokol ve mimari, bir bakıma bu yanılgıların sonuçlarını hafifletmeye yönelik bir stratejidir.
 
 :::
 
@@ -63,6 +64,7 @@ CAP teoremi ağ bölümleri sırasındaki davranışı açıklar, ancak **PACELC
 
 Bu, incelikli mimari tartışmayı zorlar. Bir sistem, arızalar sırasında kullanılabilirlik için tutarlılıktan fedakarlık edebilir, ancak normal çalışma sırasında gecikme yerine tutarlılığa öncelik verebilir.
 
+### 2.2 Dağıtılmış İşlemler: Destan Modeli
 ### 2.2 Dağıtılmış İşlemler: Saga Modeli
 
 İki Aşamalı Taahhüt eşzamanlıdır ve mikro hizmetler için uygun değildir. **Saga Modeli**, yerel işlemler ve telafi edici eylemler yoluyla hizmetler genelinde veri tutarlılığını yönetir.
@@ -165,6 +167,7 @@ Devre Kesici arızaları izler ve dağıtılmış sistemlerdeki ardışık arız
 
 :::
 
+### 3.2 Bölme Modeli
 ### 3.2 Bölme (Bulkhead) Modeli
 
 Tek arızaların tüm sistemi etkilemesini önlemek için uygulama bileşenlerini havuzlara ayırın.
@@ -234,6 +237,7 @@ function processMessage(message) {
 
 :::
 
+### 4.3 İşlemsel Giden Kutusu Modeli
 ### 4.3 İşlemsel Giden Kutusu (Transactional Outbox) Modeli
 
 Olay odaklı sistemlerde atomik veritabanı güncellemelerini ve olay yayınlamayı çözün.
@@ -312,6 +316,7 @@ Dağıtılmış ortamlarda karmaşıklığın yönetilmesine yönelik altyapı d
 
 :::
 
+### 6.2 Hizmet Ağı
 ### 6.2 Hizmet Ağı (Service Mesh)
 
 Güvenli, hızlı ve güvenilir hizmetten hizmete iletişim için altyapı katmanı.
@@ -351,6 +356,9 @@ JWT güvenlik açıklarını anlama ve güvenli uygulama.
 
 ## 7.0 Sonuç: İlkeli Mühendis
 
+Sürüm 2.0, dağıtılmış sistem mühendisliğine doğru yolculuğa çıktı. Dayanıklı, ölçeklenebilir arka uç sistemleri oluşturmak, temel ödünleşimlerin derinlemesine anlaşılmasını gerektirir: gecikmeye karşı tutarlılık, kullanılabilirliğe karşı doğruluk, hıza karşı güvenlik.
 Sürüm 2.0, dağıtılmış sistem mühendisliğine doğru yolculuğa çıktı. Dayanıklı, ölçeklenebilir arka uç sistemleri oluşturmak, temel ödünleşimlerin derinlemesine anlaşılmasını gerektirir: Gecikmeye karşı tutarlılık, kullanılabilirliğe karşı doğruluk, hıza karşı güvenlik.
 
 Gelişmiş arka uç mühendisi başarısızlık için tasarım yapar, ağ düşmanlığını varsayar ve Saga, Olay Kaynağı, Devre Kesiciler ve Hizmet Ağları gibi modelleri uygular. Nihai beceri, karmaşıklık hakkında akıl yürütmektir; uygun azaltma stratejilerini uygulamak için başarısızlık noktalarının, darboğazların ve güvenlik açıklarının belirlenmesi.
+
+Gelişmiş arka uç mühendisi başarısızlık için tasarım yapar, ağ düşmanlığını üstlenir ve Sagas, Olay Kaynak Kullanımı, Devre Kesiciler ve Hizmet Ağları gibi modelleri uygular. Nihai beceri, karmaşıklık hakkında akıl yürütmektir; Uygun azaltma stratejilerini uygulamak için başarısızlık noktalarının, darboğazların ve güvenlik açıklarının belirlenmesi.

@@ -21,6 +21,7 @@ Yazılım mühendisliği açısından bakıldığında web tasarımı, web taban
 * **Mühendislik Vakfı:** Web uygulamasını oluşturmak için kullanılan yazılım mühendisliği uygulamaları ve teknolojileri.
 * **İşlevsel Olmayan Zorunluluklar:** Sistem bütünlüğünü ve kullanılabilirliğini sağlayan güvenlik ve performansa ilişkin kritik hususlar.
 
+Bu alanları parçalara ayırarak modern web tasarımının gerektirdiği daha doğru ve sağlam bir modeli oluşturabiliriz.
 Bu alanları parçalara ayırarak modern web tasarımı için gereken daha doğru ve sağlam bir modeli oluşturabiliriz.
 
 ## 2.0 Kullanıcı Odaklı Çekirdek: UI ve UX Tasarımı
@@ -65,6 +66,9 @@ UI/UX tasarımlarının işleyen bir uygulamaya dönüştürülmesi, kendisi de 
 
 Ön uç, uygulamanın istemci tarafıdır; yani kullanıcının web tarayıcısında çalışan koddur. Birincil sorumluluğu kullanıcı arayüzünü oluşturmak ve kullanıcı etkileşimlerini yönetmektir.
 
+* **Temel Teknolojiler:** Web'in temeli üç dil üzerine kurulmuştur:
+* **HTML (HyperText Markup Language):** Web sayfasının anlamsal yapısını ve içeriğini tanımlar.
+* **CSS (Basamaklı Stil Sayfaları):** HTML içeriğinin sunumunu, stilini ve düzenini belirtir.
 * **Temel Teknolojiler:** Web'in temeli üç dil üzerine kurulmuştur:
 * **HTML (HyperText Markup Language):** Web sayfasının anlamsal yapısını ve içeriğini tanımlar.
 * **CSS (Cascading Style Sheets):** HTML içeriğinin sunumunu, stilini ve düzenini belirtir.

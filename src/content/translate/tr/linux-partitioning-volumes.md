@@ -13,10 +13,12 @@ originalSlug: "linux-partitioning-volumes"
 
 ## 1.0 Giriş: Keyfi Bölünmenin Ötesinde
 
+In the engineering landscape of Linux systems, disk partitioning is a foundational decision that directly impacts system performance, maintainability, reliability, and administrative efficiency. Ancak çoğu kişi için süreç bir onay kutusu alıştırması olarak kalıyor: İşletim sistemini varsayılan ayarlarla yükleyin ve devam edin. Bu yaklaşım, amaca uygun olmakla birlikte, seçimlerin bölümlendirilmesinin sistemin operasyonel mükemmelliği üzerindeki derin etkilerini gözden kaçırmaktadır.
 Linux sistemlerinin mühendislik ortamında, disk bölümleme; sistem performansını, bakımı yapılabilirliği, güvenilirliği ve idari verimliliği doğrudan etkileyen temel bir karardır. Ancak çoğu kişi için süreç bir onay kutusu alıştırması olarak kalıyor: İşletim sistemini varsayılan ayarlarla yükleyin ve devam edin. Bu yaklaşım, amaca uygun olmakla birlikte, seçimlerin bölümlendirilmesinin sistemin operasyonel mükemmelliği üzerindeki derin etkilerini gözden kaçırmaktadır.
 
 Mühendislik açısından bakıldığında bölümleme yalnızca disk geometrisiyle ilgili değildir; kullanım kalıplarına, hata izolasyonuna ve ölçeklenebilirlik gereksinimlerine uyum sağlamak için depolama kaynaklarının kasıtlı olarak tasarlanmasıdır. "En iyi" bölüm birimleri evrensel sabitler değil; dosya sistemi davranışı, kurumsal dağıtım kalıpları ve iş yüküne özgü optimizasyonlara yönelik ampirik araştırmalardan türetilen ilkeli tahsislerdir.
 
+ Bu ayrıntılı inceleme standart eğitimlerin ötesine geçiyor:
 Bu ayrıntılı inceleme standart eğitimlerin ötesine geçiyor:
 
 - Yedi ana dosya sistemi mimarisinin niceliksel performans ölçümleri yoluyla analiz edilmesi
@@ -24,26 +26,38 @@ Bu ayrıntılı inceleme standart eğitimlerin ötesine geçiyor:
 - Özel mühendislik rolleri için bölümleme stratejilerinin uyarlanması (SWE, NWE, geliştiriciler)
 - Okuyucuları kanıta dayalı bölümleme kararları vermeleri için analitik çerçeveyle donatmak
 
+My perspective is that of systems architects and administrators: we trade absolute simplicity for strategic optimization, velocity for resilience, and convention for customization. 21. yüzyıl veri merkezi ve iş istasyonu için mühendislik depolama çözümlerinde amaç, ezberlemek değil, ilkeli karar vermektir.
 Benim bakış açım sistem mimarları ve yöneticilerinin bakış açısıdır: Stratejik optimizasyon için mutlak basitlikten, dayanıklılık için hızdan ve özelleştirme için geleneklerden ödün veririz. 21. yüzyıl veri merkezi ve iş istasyonu için mühendislik depolama çözümlerinde amaç, ezberlemek değil, ilkeli karar vermektir.
 
 ### 1.1 Bölünmenin Stratejik Zorunluluğu
 
 Kötü bölümlenmiş bir disk, ortaya çıkmayı bekleyen bir sistem darboğazıdır. Yaygın arıza modları şunları içerir:
 
+- Büyük boy`/var`Günlükleri tüketen ve izlemeyi engelleyen bölümler
+- Yük altında yetersiz bellek toplamalara neden olan dişli takas alanları
+- Monolitik`/`Tek bir hizmet hatasının sistem genelinde kararsızlığa neden olduğu bölümler
 - Büyük boy `/var` günlükleri tüketen ve izlemeyi engelleyen bölümler
 - Yük altında yetersiz bellek toplamalara neden olan yetersiz takas alanları
 - Monolitik `/` tek bir hizmet hatasının sistem genelinde kararsızlığa neden olduğu bölümler
 
 Tersine, dikkatlice bölümlendirilmiş sistemler üstün operasyonel özellikler sergiler:
 
+- Tek bileşenli arızaların tüm diski bozmasını önleyen granüler hata izolasyonu
+- Erişim düzenleriyle dosya sistemi hizalaması yoluyla optimize edilmiş performans
+- Yedeklemeler, anlık görüntüler ve kurtarma için ayrı birimler aracılığıyla kolaylaştırılmış yönetim
 - Tek bileşenli arızaların tüm diski bozmasını önleyen hassas hata izolasyonu
 - Erişim düzenleriyle dosya sistemi hizalaması yoluyla optimize edilmiş performans
 - Yedeklemeler, anlık görüntüler ve kurtarma için ayrı birimler aracılığıyla kolaylaştırılmış yönetim
 
 ### 1.2 Modern Çağda Bölümleme
 
+Depolama teknolojisindeki ilerlemeler (NVMe SSD'ler, çok terabaytlı HDD'ler ve dağıtılmış dosya sistemleri) geleneksel bölümleme bilgeliğinin yeniden değerlendirilmesini gerektirmektedir. İlk Unix sistemlerinin "herkese uyan tek çözüm" yaklaşımı aşağıdaki durumlarda geçerliliğini yitirmiştir:
 Depolama teknolojisindeki ilerlemeler (NVMe SSD'ler, çok terabaytlı HDD'ler ve dağıtılmış dosya sistemleri) geleneksel bölümleme bilgisinin yeniden değerlendirilmesini gerektirmektedir. İlk Unix sistemlerinin "herkese uyan tek çözüm" yaklaşımı aşağıdaki durumlarda geçerliliğini yitirmiştir:
 
+- Konteynerleştirme uygulama bağımlılıklarını özetler
+- Düzenleme platformları (Kubernetes, Docker Swarm) geçici depolamayı yönetir
+- Değişmez altyapıya doğru bulut tabanlı pivot
+- Büyük veri iş akışları petabayt ölçekli planlamayı gerektirir
 - Konteynerleştirme uygulama bağımlılıklarını soyutlar
 - Düzenleme platformları (Kubernetes, Docker Swarm) geçici depolamayı yönetir
 - Değişmez altyapıya doğru bulut tabanlı geçiş
@@ -174,6 +188,7 @@ Dosya sistemi seçimi şu hiyerarşiyi takip eder:
 
 ---
 
+## 4.0 Hacimlerin Boyutlandırılması: Kanıta Dayalı Kılavuzlar
 ## 4.0 Birimlerin Boyutlandırılması: Kanıta Dayalı Kılavuzlar
 
 Optimum bölüm boyutları, mevcut ihtiyaçları büyüme tahminleri ve başarısızlık senaryolarıyla dengeler. Öneriler deneysel çalışmalarla desteklenen Red Hat, SUSE ve Ubuntu belgelerinden alınmıştır.
@@ -190,6 +205,7 @@ Optimum bölüm boyutları, mevcut ihtiyaçları büyüme tahminleri ve başarı
 
 ### 4.2 Değişken Boyutlu Hesaplamalar
 
+Hacim boyutlandırma büyüme modellemesini kullanır:
 Birim boyutlandırma büyüme modellemesini kullanır:
 
 - **`/var`**: Günlük günlük hacminin 3-5 katı (ör. yüksek trafikli sunucular için 50 GB)
@@ -203,15 +219,20 @@ Büyüme Oranı = günlükler için 0,15, kullanıcı verileri için 0,20
 ### 4.3 Donanımla İlgili Hususlar
 
 - SSD'ler: Daha düşük arıza oranları nedeniyle daha küçük bölümler kabul edilebilir
+- HDD'ler: Arama cezaları için daha büyük tamponlar
+- Artıklık: RAID yapılandırmaları boyutlandırma baskısını %30 azaltır
+- SSD'ler: Daha düşük arıza oranları nedeniyle daha küçük bölümler kabul edilebilir
 - HDD'ler: Arama gecikmeleri için daha büyük tamponlar
 - Artıklık: RAID yapılandırmaları boyutlandırma baskısını %30 azaltır
 
 ---
 
+## 5.0 Stratejileri Mühendislik Rolüne Göre Bölümlendirme
 ## 5.0 Mühendislik Rolüne Göre Bölümleme Stratejileri
 
 ### 5.1 Yazılım Mühendisleri (SWE)
 
+### 5.1 Yazılım Mühendisleri (İsveç)
 SWE ortamları geliştirme hızına, araç zincirlerine ve yapı yapıtlarına öncelik verir.
 
 :::tip[SWE Bölümleme Taslağı]
@@ -257,6 +278,7 @@ Bağımlılık yönetimi ve sürüm kontrolüne yoğun vurgu.
 - **`/usr`**: Dil çalışma zamanları (Node.js, Python, Go) için genişletilmiş 20 GB+.
 - **`/opt`**: Paket yöneticileri ve sanal ortamlar için 100 GB.
 - **Yedekleme Stratejisi**: Kod sürümü yedekliliği için Btrfs anlık görüntüleri.
+:::---
 
 :::
 
@@ -277,6 +299,7 @@ LVM, fiziksel depolamayı mantıksal birimlere soyutlayarak geleneksel bölümle
 
 :::
 
+#### 6.1.1 LVM Mimarisine Ayrıntılı Bakış
 #### 6.1.1 LVM Mimarisine Derinlemesine Bakış
 
 LVM, sanal blok aygıtları oluşturmak için aygıt eşleyici çekirdek işlevini kullanır. PV'ler bölümlerde veya disklerin tamamında başlatılır, ardından VG'ler halinde birleştirilir. VG'ler içindeki LV'ler normal bölümler gibi davranır ancak benzeri görülmemiş bir esneklik sunar.
@@ -347,6 +370,7 @@ Burada N = sürücü sayısı. Verim, şeritleme yapılandırmalarında sürüc�
 
 Modern denetleyiciler (LSI/Avago), eşlik hesaplamalarını özel ASIC'lere aktararak RAID 5'in yazma cezasını azaltır. Yazılım RAID'i (mdadm) için CPU yükü IOP'lerle ölçeklenir: tek iş parçacıklı havuzlar 8'den fazla sürücüde performansı sınırlar.
 
+#### 6.3.3 RAID için bölümleme
 #### 6.3.3 RAID için Bölümleme
 
 Çoklu disk kurulumlarında:
@@ -379,14 +403,19 @@ Bölümleme, disk geometrisini cerrahi doğrulukla değiştiren hassas araçlar 
 | `cfdisk` | Ncurses GUI arayüzü | Düşük | Evet | Kullanıcı dostu görselleştirme |
 | `sfdisk` | Betiklenebilir sektör kontrolü | Mükemmel | Evet | Yapılandırma dökümü/geri yükleme |
 
+:::Pratik iş akışları araç kombinasyonlarından yararlanır:`parted`ilk düzen oluşturma için,`sfdisk`yedekleme/geri yükleme işlemleri için.
 :::
 
 Pratik iş akışları araç kombinasyonlarından yararlanır: İlk düzen oluşturma için `parted`, yedekleme/geri yükleme işlemleri için `sfdisk`.
 
 #### 7.1.2 Dosya Sistemi Oluşturma ve Optimizasyon
 
+Dosya sistemi örneklemesi, optimum performans için parametre ayarlaması gerektirir:
 Dosya sistemi örneklendirmesi, optimum performans için parametre ayarı gerektirir:
 
+- **mkfs.ext4**:`--lazy_itable_ini t=0`(daha hızlı ilk indeksleme),`--journal_checksum`(dürüstlük)
+- **mkfs.btrfs**:`--mixed`(küçük hacimler için tek veri/meta veri),`--compres s=zstd`(CPU açısından verimli sıkıştırma)
+- **mkfs.xfs**:`--cr c=1`(meta veri sağlama toplamları),`--bigtimemtim e=1`(yıl 2038+ zaman damgaları)
 - **mkfs.ext4**: `--lazy_itable_init=0` (daha hızlı ilk indeksleme), `--journal_checksum` (bütünlük)
 - **mkfs.btrfs**: `--mixed` (küçük birimler için tek veri/meta veri), `--compress=zstd` (CPU açısından verimli sıkıştırma)
 - **mkfs.xfs**: `--crc=1` (meta veri sağlama toplamları), `--bigtime` (yıl 2038+ zaman damgaları)
@@ -440,6 +469,9 @@ Dosya sistemi sağlığı, sessiz bozulmayı önlemek için düzenli inceleme ge
 
 - **fstrim**: Haftalık SSD çöp toplama iş yükleri (cron aracılığıyla otomatikleştirilmiştir)
 - **fsck**: Üç ayda bir yapılan çevrimdışı tutarlılık kontrolleri (EXT4/Btrfs'in kendi kendini iyileştirme özelliği sıklığı azaltır)
+- **smartctl**: S.M.A.R.T. Tahmini sürücü arızasının izlenmesi (örn.`smartd`arka plan programı)
+- **fstrim**: Haftalık SSD çöp toplama iş yükleri (cron aracılığıyla otomatikleştirilmiştir)
+- **fsck**: Üç ayda bir yapılan çevrimdışı tutarlılık kontrolleri (EXT4/Btrfs'in kendi kendini iyileştirme özelliği sıklığı azaltır)
 - **smartctl**: S.M.A.R.T. Tahmini sürücü arızasının izlenmesi (ör. `smartd` arka plan programı)
 
 :::note[Tahmine Dayalı Bakım Betiği]
@@ -460,6 +492,9 @@ done
 
 G/Ç profili oluşturma, bölümleme darboğazlarını tanımlar:
 
+-`iostat -d 5 3`: RAID/şeritleme analizi için disk G/Ç istatistikleri
+-`blktrace`: Dosya sistemi davranış analizi için blok düzeyinde izleme
+-`sar -d`: Sistem Etkinliği Raporlayıcısı disk ölçümleri
 - `iostat -d 5 3`: RAID/şeritleme analizi için disk G/Ç istatistikleri
 - `blktrace`: Dosya sistemi davranış analizi için blok düzeyinde izleme
 - `sar -d`: Sistem Etkinliği Raporlayıcısı disk ölçümleri
@@ -588,6 +623,9 @@ Bu tür yapılandırmalar, Kubernetes düğümünün otomatik ölçeklendirilmes
 
 Ön uygulama testi üretim kesintilerini önler:
 
+- **Önemli Çalışma Simülasyonu**: Ansible`--check`planların bölümlenmesi için mod
+- **Sanal Prototipleme**: Yalıtılmış VM'lerde bölümleme komut dosyalarını test etmek için QEMU/KVM
+- **Uygulama Sonrası Doğrulama**: Beklenen ve gerçek disk düzenlerini karşılaştıran entegrasyon testleri
 - **Deneme Çalışması Simülasyonu**: Bölümleme planları için Ansible `--check` modu
 - **Sanal Prototipleme**: Yalıtılmış VM'lerde bölümleme komut dosyalarını test etmek için QEMU/KVM
 - **Uygulama Sonrası Doğrulama**: Beklenen ve gerçek disk düzenlerini karşılaştıran entegrasyon testleri
@@ -597,6 +635,9 @@ Bu tür yapılandırmalar, Kubernetes düğümünün otomatik ölçeklendirilmes
 Bölümleme, erişim kontrolleri yoluyla güvenliği keser:
 
 - **dm-verity**: Salt okunur rootfs bütünlüğü (ChromeOS yaklaşımı)
+- **AppArmor/SECOMP**: Bölümleme yardımcı programlarını yetkili kullanıcılarla sınırlandırın
+- **Denetim Günlüğü**: Uyumluluk için günlük disk işlemleri (ör.`auditd`entegrasyon)
+- **dm-verity**: Salt okunur rootfs bütünlüğü (ChromeOS yaklaşımı)
 - **AppArmor/SECCOMP**: Bölümleme yardımcı programlarını yetkili kullanıcılarla sınırlandırın
 - **Denetim Günlüğü**: Uyumluluk için disk işlemlerini kaydeder (ör. `auditd` entegrasyonu)
 
@@ -604,6 +645,9 @@ Bölümleme, erişim kontrolleri yoluyla güvenliği keser:
 
 Ayarlanmış bölümleme, G/Ç düzenlerini optimize eder:
 
+- **Hizalama**: SSD'ler için 4KB sektör sınırları (otomatik`parted`3.1+)
+- **Şeritleme**: Paralel G/Ç için birden fazla PV'de mantıksal ses şeritleri
+- **Noatime**: Günlük iş yüklerinde meta veri yazma işlemlerini %10 azaltan bağlama seçeneği
 - **Hizalama**: SSD'ler için 4KB sektör sınırları (otomatik `parted` 3.1+)
 - **Şeritleme**: Paralel G/Ç için birden fazla PV'de mantıksal birim şeritleri
 - **Noatime**: Günlük iş yüklerinde meta veri yazma işlemlerini %10 azaltan bağlama seçeneği
@@ -612,12 +656,17 @@ Linux Depolama, Dosya Sistemi ve Bellek Yönetimi Zirvesi'nde (LSFMM) yapılan a
 
 #### 7.4.4 Dokümantasyon ve Değişiklik Yönetimi
 
+Sürümlendirilebilir şemalar konfigürasyon kaymasını önler:
 Sürümlendirilebilir şemalar yapılandırma kaymasını önler:
 
 - **Şema Odaklı Bölümleme**: Disk düzenleri için JSON/YAML spesifikasyonları
 - **GitOps Entegrasyonu**: Çekme isteğine dayalı bölümleme değişiklikleri
+- **Runbook'lar**: Ortak işlemler için standartlaştırılmış prosedürler (ör.`/home`)
+- **Şema Odaklı Bölümleme**: Disk düzenleri için JSON/YAML spesifikasyonları
+- **GitOps Entegrasyonu**: Çekme isteğine dayalı bölümleme değişiklikleri
 - **Runbook'lar**: Ortak işlemler için standartlaştırılmış prosedürler (ör. `/home` genişletme)
 
+Bu metodolojiler, sanattan bilime ayırmayı dönüştürerek kritik görev sistemlerinin gerektirdiği güvenilirliği sağlar.
 Bu metodolojiler, bölümlemeyi sanattan bilime dönüştürerek kritik görev sistemlerinin gerektirdiği güvenilirliği sağlar.
 
 ---

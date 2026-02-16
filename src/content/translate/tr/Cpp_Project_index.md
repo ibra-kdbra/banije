@@ -11,92 +11,92 @@ originalSlug: "Cpp_Project_index"
 
 ---
 
-## C++'a Giriş 
+## C++'a Giriş
 
-C++, hem prosedürel hem de nesne yönelimli programlamaya izin veren güçlü, yüksek performanslı bir programlama dilidir. 1979 yılında Bjarne Stroustrup tarafından C dilinin bir uzantısı olarak, sınıflar ve nesne yönelimli kavramlar gibi özellikler eklenerek oluşturulmuştur. C++ sistem yazılımlarında, oyun geliştirmede, gömülü sistemlerde ve performansın önemli olduğu uygulamalarda yaygın olarak kullanılmaktadır. 
+ C++, hem prosedürel hem de nesne yönelimli programlamaya izin veren güçlü, yüksek performanslı bir programlama dilidir. 1979 yılında Bjarne Stroustrup tarafından C dilinin bir uzantısı olarak oluşturulmuş, sınıflar ve nesne yönelimli kavramlar gibi özellikler eklenmiştir. C++; sistem yazılımı, oyun geliştirme, gömülü sistemler ve performansın kritik olduğu uygulamalarda yaygın olarak kullanılmaktadır.
 
-### C++'ın Temel Özellikleri 
+### C++'ın Temel Özellikleri
 
-- **Nesneye Yönelik**: C++, kodu etkili bir şekilde yapılandırmak için nesneleri ve sınıfları tanımlamanıza olanak tanır. Kalıtımı, polimorfizmi, kapsüllemeyi ve soyutlamayı destekler. 
-- **Performans**: Sistem kaynakları üzerinde ayrıntılı kontrol sunan, oldukça verimli bir dil olduğu bilinmektedir. 
-- **Taşınabilirlik**: C++ ile yazılmış programlar, uygun bir derleyiciye sahip herhangi bir makinede çalışabilir, bu da onu oldukça taşınabilir kılar. 
-- **Düşük Düzeyde Bellek İşleme**: C++, işaretçiler ve dinamik bellek tahsisi ile belleği doğrudan yönetmenize olanak tanır. 
-- **Çoklu Paradigma**: C++ hem nesne yönelimli hem de prosedürel programlamayı destekleyerek kodlama stillerinde esneklik sunar.
+- **Nesne Yönelimli**: C++, kodu etkili bir şekilde yapılandırmak için nesneleri ve sınıfları tanımlamanıza olanak tanır. Kalıtım, polimorfizm, kapsülleme ve soyutlamayı destekler.
+- **Performans**: Sistem kaynakları üzerinde hassas kontrol sunan, son derece verimli bir dil olarak bilinir.
+- **Taşınabilirlik**: C++ ile yazılan programlar, uygun bir derleyiciye sahip herhangi bir makinede çalışabilir ve bu da onu son derece taşınabilir kılar.
+- **Düşük Seviyeli Bellek Manipülasyonu**: C++, işaretçiler ve dinamik bellek tahsisi ile belleği doğrudan yönetmenize olanak tanır.
+- **Çoklu Paradigma**: C++, hem nesne yönelimli hem de prosedürel programlamayı destekleyerek kodlama stillerinde esneklik sunar.
 
 :::note
-C++, oyun motorları, işletim sistemleri ve gerçek zamanlı sistemler gibi performansın kritik bir faktör olduğu alanlarda oldukça değerlidir.
+C++; oyun motorları, işletim sistemleri ve gerçek zamanlı sistemler gibi performansın kritik bir faktör olduğu alanlarda oldukça değerlidir.
 :::
 
-## C++'ın Avantajları 
+## C++'ın Avantajları
 
-### 1. Yüksek Performans 
+### 1. Yüksek Performans
 
-C++ performansıyla tanınır. Geliştiricilerin yüksek düzeyde optimize edilmiş kod yazmasına olanak tanıyan yerel makine koduna derlenir. Bu, onu video oyunları ve gerçek zamanlı uygulamalar gibi yüksek performans gerektiren sistemler için tercih edilen dil haline getirir.
+ C++, performansıyla tanınır. Geliştiricilerin son derece optimize edilmiş kod yazmasına olanak tanıyan yerel makine koduna derlenir. Bu, onu video oyunları ve gerçek zamanlı uygulamalar gibi yüksek performans gerektiren sistemler için tercih edilen dil haline getirir.
 
 :::tip
 C++'ın donanıma yakın çalışma yeteneği ve sistem kaynakları üzerindeki kontrolü, onu performans yoğun uygulamalar için ideal kılar.
 :::
 
-### 2. Nesneye Yönelik Programlama (OOP) 
+### 2. Nesne Yönelimli Programlama (OOP)
 
-C++, modüler ve yeniden kullanılabilir kod tasarlamaya yardımcı olan OOP ilkelerini destekler. Sınıflar, nesneler, kalıtım ve polimorfizm sayesinde büyük kod tabanlarını yönetmek, kodun sürdürülebilirliğini geliştirmek ve işbirliğini teşvik etmek daha kolaydır. 
+ C++, modüler ve yeniden kullanılabilir kod tasarlamaya yardımcı olan OOP ilkelerini destekler. Sınıflar, nesneler, kalıtım ve polimorfizm ile büyük kod tabanlarını yönetmek, kodun sürdürülebilirliğini geliştirmek ve iş birliğini teşvik etmek daha kolaydır.
 
-### 3. Zengin Standart Kütüphane 
+### 3. Zengin Standart Kütüphane
 
-C++, veri yapıları (vektörler, listeler ve haritalar gibi) ve algoritmalar (sıralama, arama vb. gibi) için önceden yazılmış işlevler ve sınıflar sağlayan bir Standart Şablon Kitaplığı (STL) ile birlikte gelir. Bu, geliştiricilere çok fazla zaman ve emek tasarrufu sağlayabilir. 
+ C++, veri yapıları (vektörler, listeler ve haritalar gibi) ve algoritmalar (sıralama, arama vb.) için önceden yazılmış işlevler ve sınıflar sağlayan bir Standart Şablon Kitaplığı (STL) ile birlikte gelir. Bu, geliştiricilere çok fazla zaman ve emek kazandırabilir.
 
-### 4. Geniş Kullanım ve Topluluk 
+### 4. Geniş Kullanım ve Topluluk
 
-En eski ve en popüler dillerden biri olan C++'ın geniş bir geliştirici topluluğu vardır. Bu, ister yeni başlayan ister uzman olun, kitaplıkları, öğreticileri ve desteği bulmanızı kolaylaştırır.
+ En eski ve en popüler dillerden biri olan C++, geniş bir geliştirici topluluğuna sahiptir. Bu, ister yeni başlayan ister uzman olun kütüphaneleri, eğitimleri ve desteği bulmanızı kolaylaştırır.
 
 :::important
-C++, diğer teknolojilerle entegrasyonu kolaylaştıran çok sayıda çerçeve ve kütüphaneye sahip geniş bir ekosisteme sahiptir.
+C++, çok sayıda çerçeve ve kütüphane içeren geniş bir ekosisteme sahiptir ve bu da diğer teknolojilerle entegrasyonu kolaylaştırır.
 :::
 
-### 5. Platformlar Arası Geliştirme 
+### 5. Platformlar Arası Geliştirme
 
-C++, geliştiricilerin kaynak kodunda çok az değişiklik yaparak platformlar arası uygulamalar yazmasına olanak tanıyan Windows, Linux ve macOS dahil olmak üzere tüm önemli işletim sistemleri tarafından desteklenir. 
+ C++, Windows, Linux ve macOS dahil tüm ana işletim sistemleri tarafından desteklenir ve bu da geliştiricilerin kaynak kodunda minimum değişiklikle platformlar arası uygulamalar yazmasına olanak tanır.
 
-## C++'ın dezavantajları 
+## C++'ın Dezavantajları
 
-### 1. Dik Öğrenme Eğrisi 
+### 1. Dik Öğrenme Eğrisi
 
-C++'ı öğrenmek özellikle yeni başlayanlar için zorlayıcı olabilir. Sözdizimi karmaşıktır ve dil, programlama kavramlarının derinlemesine anlaşılmasını gerektiren işaretçiler, bellek yönetimi ve şablon metaprogramlama gibi birçok özellik sunar.
+ C++'ı öğrenmek, özellikle yeni başlayanlar için zorlayıcı olabilir. Söz dizimi karmaşıktır ve dil; işaretçiler, bellek yönetimi ve şablon metaprogramlama gibi programlama kavramlarının derinlemesine anlaşılmasını gerektiren birçok özellik sunar.
 
 :::warning
-Yeni başlayanlar, söz dizimi karmaşıklığı ve manuel bellek yönetimi ihtiyacı nedeniyle C++'ı zor bulabilir.
+Yeni başlayanlar, söz dizimi karmaşıklığı ve manuel bellek yönetimi ihtiyacı nedeniyle C++'ı zor bulabilirler.
 :::
 
-### 2. Manuel Bellek Yönetimi 
+### 2. Manuel Bellek Yönetimi
 
-Üst düzey dillerden farklı olarak C++, geliştiricilerin belleği manuel olarak yönetmesini gerektirir; bu da, düzgün şekilde kullanılmazsa bellek sızıntılarına veya işaretçi hatalarına yol açabilir. Modern C++ bu sorunu hafifletmek için akıllı işaretçiler sunmuştur ancak manuel yönetim yönü devam etmektedir. 
+ Üst düzey dillerin aksine C++, geliştiricilerin belleği manuel olarak yönetmesini gerektirir; bu da uygun şekilde işlenmezse bellek sızıntılarına veya işaretçi hatalarına yol açabilir. Modern C++, bu sorunu azaltmak için akıllı işaretçiler sunmuştur ancak manuel yönetim yönü devam etmektedir.
 
-### 3. Çöp Toplamanın Eksikliği 
+### 3. Çöp Toplama Eksikliği
 
-C++, Java veya Python gibi diller gibi otomatik çöp toplama özelliğini içermez. Sonuç olarak, geliştiricilerin belleği manuel olarak ayırması ve yeniden ayırması gerekir; bu da hata ve bellek sızıntısı riskini artırır. 
+ C++, Java veya Python gibi diller gibi otomatik çöp toplama özelliğini içermez. Sonuç olarak, geliştiricilerin belleği manuel olarak tahsis etmesi ve serbest bırakması gerekir, bu da hata ve bellek sızıntısı riskini artırır.
 
-### 4. Karmaşıklık ve Ayrıntı 
+### 4. Karmaşıklık ve Söz Kalabalığı
 
-C++ kodu daha modern dillerle karşılaştırıldığında ayrıntılı ve okunması daha zor olabilir. Şablonlar ve çoklu kalıtım gibi karmaşık özellikler, kodun anlaşılmasını ve sürdürülmesini zorlaştırabilir.
+ C++ kodu, daha modern dillere kıyasla ayrıntılı ve okunması daha zor olabilir. Şablonlar ve çoklu kalıtım gibi karmaşık özellikler, kodun anlaşılmasını ve sürdürülmesini zorlaştırabilir.
 
 :::caution
-Karmaşık C++ özelliklerinin aşırı kullanımı, kodda hata ayıklamayı ve bakımı zorlaştırabilir.
+Karmaşık C++ özelliklerinin aşırı kullanımı, kodun hata ayıklanmasını ve bakımını zorlaştırabilir.
 :::
 
-### 5. Daha Yavaş Derleme Süresi 
+### 5. Daha Yavaş Derleme Süresi
 
-Karmaşıklığı nedeniyle C++ programlarının derleme süreleri özellikle büyük projelerde daha uzun olabilir. Bu, daha yavaş geliştirme döngülerine yol açabilir. 
+ Karmaşıklığı nedeniyle C++ programları, özellikle büyük projeler için daha uzun derleme sürelerine sahip olabilir. Bu, daha yavaş geliştirme döngülerine yol açabilir.
 
-## Sonuç 
+## Sonuç
 
-C++ günümüzde mevcut en güçlü ve çok yönlü programlama dillerinden biri olmayı sürdürüyor. Oyun geliştirmeden sistem programlamaya kadar çeşitli sektörlerde yaygın olarak kullanılmaktadır. Bununla birlikte, dik öğrenme eğrisi ve manuel bellek yönetimi, bir proje için seçilmeden önce dikkatli bir değerlendirme gerektirir.
+ C++, bugün mevcut olan en güçlü ve çok yönlü programlama dillerinden biri olmaya devam ediyor. Oyun geliştirmeden sistem programlamaya kadar çeşitli endüstrilerde yaygın olarak kullanılmaktadır. Bununla birlikte, dik öğrenme eğrisi ve manuel bellek yönetimi, bir proje için seçilmeden önce dikkatli bir değerlendirme gerektirir.
 
 :::tip
-Dezavantajlarına rağmen C++, benzersiz performansı ve sistem kaynakları üzerindeki kontrolü nedeniyle birçok teknik alanda kritik bir dil olmayı sürdürüyor.
+Dezavantajlarına rağmen C++, benzersiz performansı ve sistem kaynakları üzerindeki kontrolü nedeniyle birçok teknik alanda kritik bir dil olmaya devam ediyor.
 :::
 
-## Referanslar 
+## Referanslar
 
-1. Stroustrup, B. (2013). *C++ Programlama Dili* (4. baskı). Addison-Wesley. 
-2. Bjarne Stroustrup. (2024). *C++: Kapsamlı Bir Giriş*. Şuradan alındı:[C++ Programming Resources](https://www.stroustrup.com/). 
-3. Cplusplus.com. (2024). *C++ Referansı*. Şuradan alındı:[cplusplus.com](http://www.cplusplus.com/).
+ 1. Stroustrup, B. (2013). *The C++ Programming Language* (4. baskı). Addison-Wesley.
+ 2. [Bjarne Stroustrup (2024) - C++: Çok Yönlü Bir Giriş](https://www.stroustrup.com/)
+ 3. [Cplusplus.com (2024) - C++ Referansı](http://www.cplusplus.com/)

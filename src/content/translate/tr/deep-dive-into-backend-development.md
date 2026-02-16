@@ -75,6 +75,27 @@ Köprü Metni Aktarım Protokolü (HTTP), World Wide Web'e güç veren uygulama 
 - **İstek-Yanıt Modeli:** HTTP basit bir model üzerinde çalışır. İstemci sunucuya bir istek gönderir ve sunucu yanıt verir. Bir arka ucun birincil işi bu istekleri işlemek ve uygun yanıtları formüle etmektir.
 - **HTTP İsteğinin Anatomisi:**
 - **Yöntem (Fiil):** Bir kaynak üzerinde gerçekleştirilmesi istenen eylemi belirtir. Yaygın yöntemler şunları içerir:
+-`GET`: Bir kaynağı alın. Güvenli ve bağımsız olmalı.
+-`POST`: Yeni bir kaynak oluşturun. İdempotent değil.
+-`PUT`: Mevcut bir kaynağı tamamen değiştirin. İdempotent olmalı.
+-`PATCH`: Mevcut bir kaynağı kısmen güncelleyin. Mutlaka idempotent olması gerekmez.
+-`DELETE`: Bir kaynağı silin. İdempotent olmalı.
+- **URI (Tekdüzen Kaynak Tanımlayıcı):** İsteğin hedeflediği kaynağı belirtir (ör.`/api/v1/users/123`).
+- **Başlıklar:** İstekle ilgili meta verileri içeren anahtar/değer çiftleri (ör.`Content-Type`,`Authorization`,`Accept`).
+- **Gövde:** Genellikle veri içeren isteğe bağlı bir veri`POST`,`PUT`, Ve`PATCH`istekler.
+- **HTTP Yanıtının Anatomisi:**
+- **Durum Kodu:** Talebin sonucunu belirten üç haneli kod. Bunlar sınıflara ayrılmıştır:
+-`1xx`: Bilgilendirici
+-`2xx`: Başarı (ör.`200 OK`,`201 Created`)
+-`3xx`: Yönlendirme (ör.`301 Moved Permanently`)
+-`4xx`: İstemci Hatası (ör.`400 Bad Request`,`401 Unauthorized`,`404 Not Found`)
+-`5xx`: Sunucu Hatası (ör.`500 Internal Server Error`,`503 Service Unavailable`)
+- **Başlıklar:** Yanıtla ilgili meta verileri içeren anahtar/değer çiftleri (ör.`Content-Type`,`Cache-Control`).
+- **Gövde:** İstenen kaynağı veya hata bilgilerini içeren isteğe bağlı bir veri.
+- **Durumsuzluk:** HTTP'nin temel ilkesi, durumsuz olmasıdır. İstemciden sunucuya gönderilen her istek, isteği anlamak ve işlemek için gereken tüm bilgileri içermelidir. Sunucu, istekler arasında istemciye ilişkin herhangi bir durumu saklamaz. Bu tasarım web'in ölçeklenebilirliği açısından temeldir. Durum genellikle istemcide yönetilir veya her istekle birlikte bir belirteç (JWT gibi) iletilir.
+- **İstek-Yanıt Modeli:** HTTP basit bir model üzerinde çalışır. İstemci sunucuya bir istek gönderir ve sunucu yanıt verir. Bir arka ucun birincil işi bu istekleri işlemek ve uygun yanıtları formüle etmektir.
+- **HTTP İsteğinin Anatomisi:**
+- **Yöntem (Fiil):** Bir kaynak üzerinde gerçekleştirilmesi istenen eylemi belirtir. Yaygın yöntemler şunları içerir:
 - `GET`: Bir kaynağı alın. Güvenli ve bağımsız olmalı.
 - `POST`: Yeni bir kaynak oluşturun. İdempotent değil.
 - `PUT`: Mevcut bir kaynağı tamamen değiştirin. İdempotent olmalı.
@@ -105,7 +126,7 @@ Köprü Metni Aktarım Protokolü (HTTP), World Wide Web'e güç veren uygulama 
   "userId": 123,
   "username": "testuser",
   "isActive": true,
-  "roles": ["reader", "commenter"]
+  "roles":["reader", "commenter"]
 }
 ```
 
@@ -185,6 +206,9 @@ Programlama dili seçiminin performans, geliştirici üretkenliği ve sistemin �
 
 Bir web çerçevesi, ortak arka uç görevlerini (örn. yönlendirme, istek işleme, veritabanı etkileşimi) ortadan kaldıran bir dizi araç ve kitaplık sağlar ve geliştiricilerin uygulamaya özel mantığa odaklanmasına olanak tanır.
 
+- **Fikri olan ve fikri olmayan:**
+- **Fikir sahibi (ör. Django, Ruby on Rails, Spring Boot):** Bu çerçeveler sizin için birçok karar verir ve uygulama oluşturmanın belirli bir yolunu belirler. Yüksek üretkenlik sunarlar ("piller dahil") ancak alışılmışın dışına çıkmanız gerekirse kısıtlayıcı olabilirler.
+- **Görüşsüz (ör. Flask, Express.js):** Bu çerçeveler minimal bir çekirdek sağlar ve kararların çoğunu (ör. veritabanı katmanı, şablon oluşturma motoru) geliştiriciye bırakır. Maksimum esneklik sunarlar ancak daha fazla kurulum ve karar verme süreci gerektirirler.
 - **Fikri olan ve fikri olmayan:**
 - **Fikir sahibi (ör. Django, Ruby on Rails, Spring Boot):** Bu çerçeveler sizin için many kararlar verir ve uygulama oluşturmanın belirli bir yolunu belirler. Yüksek üretkenlik sunarlar ("piller dahil") ancak alışılmışın dışına çıkmanız gerekirse kısıtlayıcı olabilirler.
 - **Görüşsüz (ör. Flask, Express.js):** Bu çerçeveler minimal bir çekirdek sağlar ve kararların çoğunu (ör. veritabanı katmanı, şablon oluşturma motoru) geliştiriciye bırakır. Maksimum esneklik sunarlar ancak daha fazla kurulum ve karar verme süreci gerektirirler.
@@ -404,5 +428,7 @@ Test çalışmalarınızı yapılandırmaya yönelik bir model.
 ## 9.0 Sonuç: Arka Uç Mühendisinin Gelişen Rolü
 
 Arka uçtaki yolculuk bizi ağ protokollerinin temel bit ve baytlarından bulutta yerel mimarinin soyut yüksekliklerine götürdü. Arka uç geliştirmenin yalnızca kod yazmakla ilgili olmadığını, karmaşık sistemleri tasarlamak, oluşturmak ve yönetmekle ilgili olduğunu gördük. Bu bir ödünleşme disiplinidir: tutarlılık vs kullanılabilirlik, performans vs maliyet, geliştirme hızı vs operasyonel istikrar.
+
+Günümüzün arka uç mühendisi bir sistem düşünürü, bir problem çözücü ve yaşam boyu öğrenendir. Teknolojiler gelişmeye devam edecek; sunucusuz olgunlaşacak, AI/ML modelleri entegre edilecek başka bir bileşen haline gelecek ve yeni mimari modeller ortaya çıkacak. Ancak ilk ele aldığımız ilkeler; sağlam mimari, işlevsel olmayan gereksinimlere odaklanma, sağlam testler ve otomatik dağıtım; güvenilir ve ölçeklenebilir sistemlerin üzerine inşa edildiği kalıcı temel olarak kalacaktır. Nihai amaç, belirli bir çerçeveye hakim olmak değil, dijital dünyanın karmaşık ve sürekli değişen zorluklarına yönelik doğru araçları seçmek ve kullanmak için gereken mühendislik muhakemesini geliştirmektir.
 
 Günümüzün arka uç mühendisi bir sistem düşünürü, bir problem çözücü ve yaşam boyu öğrenendir. Teknolojiler gelişmeye devam edecek; sunucusuz olgunlaşacak, AI/ML modelleri entegre edilecek başka bir bileşen haline gelecek ve yeni mimari modeller ortaya çıkacak. Ancak ilk ele aldığımız ilkeler; sağlam mimari, işlevsel olmayan gereksinimlere odaklanma, sağlam testler ve otomatik dağıtım; güvenilir ve ölçeklenebilir sistemlerin üzerine inşa olduğu kalıcı temel olarak kalacaktır. Nihai amaç, belirli bir çerçeveye hakim olmak değil, dijital dünyanın karmaşık ve sürekli değişen zorluklarına yönelik doğru araçları seçmek ve kullanmak için gereken mühendislik muhakemesini geliştirmektir.

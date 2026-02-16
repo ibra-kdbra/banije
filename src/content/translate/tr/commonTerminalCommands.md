@@ -10,26 +10,27 @@ originalSlug: "commonTerminalCommands"
 
 ---
 
-## Genel Bakış 
+## Genel Bakış
 
-Bu kılavuz, gezinme, dosya yönetimi ve daha fazlası gibi kategorilere göre düzenlenmiş, temel terminal komutlarının kapsamlı bir listesini sağlar. Hem yeni başlayanlar hem de ileri düzey kullanıcılar için mükemmeldir. 
+Bu kılavuz, gezinme, dosya yönetimi ve daha fazlası gibi kategorilere göre düzenlenmiş, temel terminal komutlarının kapsamlı bir listesini sağlar. Hem yeni başlayanlar hem de ileri düzey kullanıcılar için mükemmeldir.
 
 ## Tuş Komutları ve Gezinme
 
 :::tip
 Klavye kısayolları terminalde gezinirken ve kullanırken zaman kazandırabilir.
-:::-`Up Arrow`: Son komutunuzu gösterecek 
--`Down Arrow`: Bir sonraki komutunuzu gösterecek 
--`Tab`: Komutunuzu otomatik olarak tamamlayacak 
--`Ctrl + L`: Ekranı temizler 
--`Ctrl + C`: Bir komutu iptal eder 
--`Ctrl + R`: Bir komut arayacak 
--`Ctrl + D`: Terminalden çıkacak 
+:::
+
+-`Up Arrow`: Son komutunuzu gösterecek
+-`Down Arrow`: Bir sonraki komutunuzu gösterecek
+-`Tab`: Komutunuzu otomatik olarak tamamlayacak
+-`Ctrl + L`: Ekranı temizler
+-`Ctrl + C`: Bir komutu iptal eder
+-`Ctrl + R`: Bir komut arayacak
+-`Ctrl + D`: Terminalden çıkacak
 
 ## Manuel Komut
 
-:::note
-[Using `man` Command]
+:::note[Using `man` Command]
 'Man' komutu, Linux ve MacOS'taki komutların kılavuzlarını görüntüler. Git Bash'te benzer işlevler için `--help` kullanın.
 :::
 
@@ -41,8 +42,7 @@ man ls
 ls --help
 ```
 
-:::important
-[Identify Current User]
+:::important[Identify Current User]
 'Whoami' komutu mevcut oturum açmış kullanıcıyı görüntüler.
 :::
 
@@ -50,8 +50,7 @@ ls --help
 whoami
 ```
 
-:::tip
-[Get Current Date & Time]
+:::tip[Get Current Date & Time]
 'Tarih' komutu geçerli tarih ve saati gösterir.
 :::
 
@@ -59,53 +58,57 @@ whoami
 date
 ```
 
-:::note
-[Essential Navigation Commands]
+:::note[Essential Navigation Commands]
 Dosya sisteminde gezinme, terminal kullanımı için temeldir.
-:::| Komut | Açıklama | 
-| ----------------------------------- | ---------------------------------------------------------------------------------- | 
-| pwd | Çalışma dizininin yolunu listeler | 
-| l | Dizin içeriğini listele | 
-| ls -a | Gizli dosyalar dahil içerikleri listeleme (Noktayla başlayan dosyalar) | 
-| ls-l | İzinler dahil daha fazla bilgi içeren içerikleri listeleyin (uzun liste) | 
-| ls -r | İçerikleri ters sırada listele | 
-| cd | Dizini ana sayfaya değiştir | 
-| cd [dizin adı] | Dizini belirli bir dizine değiştir | 
-| CD ~ | Ana dizine değiştir | 
-| cd .. | Ana dizine değiştir | 
-| cd- | Önceki dizine geç | 
-| find [dirtosearch] -name [dosyaadı] | Bir programın konumunu bulun | 
+:::
 
-Bayrakları birleştirin, ör.`ls -la`ayrıntılı ve gizli dosyaları görüntülemek için. 
+| Komut | Açıklama |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| pwd | Çalışma dizininin yolunu listeler |
+| l | Dizin içeriğini listele |
+| ls -a | Gizli dosyalar dahil içerikleri listeleme (Noktayla başlayan dosyalar) |
+| ls-l | İzinler dahil daha fazla bilgi içeren içerikleri listeleyin (uzun liste) |
+| ls -r | İçerikleri ters sırada listele |
+| cd | Dizini ana sayfaya değiştir |
+| cd [dizin adı] | Dizini belirli bir dizine değiştir |
+| CD ~ | Ana dizine değiştir |
+| cd .. | Ana dizine değiştir |
+| cd- | Önceki dizine geç |
+| find [dirtosearch] -name [dosyaadı] | Bir programın konumunu bulun |
+
+Bayrakları birleştirin, ör.`ls -la`ayrıntılı ve gizli dosyaları görüntülemek için.
 
 ## Klasör veya Dosya Açma
 
-:::note
-[Open Directories, Files, or URLs]
+:::note[Open Directories, Files, or URLs]
 Dosyaları, klasörleri veya URL'leri açmaya ilişkin komutlar işletim sistemleri arasında farklılık gösterir.
-:::- Mac:`open [dirname]`- Windows:`start [dirname]`-Linux:`xdg-open [dirname]`
+:::
+
+- Mac:`open [dirname]`- Windows:`start [dirname]`-Linux:`xdg-open [dirname]`
 
 ```bash
 open https://example.com
 ```
 
-:::important
-[File & Directory Management Commands]
+:::important[File & Directory Management Commands]
 Dosyaları ve dizinleri oluşturmayı, silmeyi, taşımayı ve yeniden adlandırmayı öğrenin.
-:::| Komut | Açıklama | 
-| ----------------- | --------------------------------------------------- | 
-| mkdir [dizin adı] | Dizin oluştur | 
-| [dosya adı]'na dokunun | Dosya oluştur | 
-| rm [dosya adı] | Dosyayı kaldır | 
-| rm -i [dosya adı] | Onaylı dosyayı kaldır | 
-| rm -r [dizin adı] | Dizini kaldır | 
-| rm -rf [dizin adı] | Dizini kaldırmaya zorla | 
-| rm ./\* | Geçerli klasördeki her şeyi kaldır | 
-| cp [dosya adı] [dizin adı] | Dosyayı kopyala | 
-| mv [dosya adı] [dizin adı] | Dosyayı taşı | 
-| mv [dosya adı] [dosya adı] | Dosyayı yeniden adlandır | 
+:::
+
+| Komut | Açıklama |
+| ----------------- | --------------------------------------------------- |
+| mkdir [dizin adı] | Dizin oluştur |
+| [dosya adı]'na dokunun | Dosya oluştur |
+| rm [dosya adı] | Dosyayı kaldır |
+| rm -i [dosya adı] | Onaylı dosyayı kaldır |
+| rm -r [dizin adı] | Dizini kaldır |
+| rm -rf [dizin adı] | Dizini kaldırmaya zorla |
+| rm ./\* | Geçerli klasördeki her şeyi kaldır |
+| cp [dosya adı] [dizin adı] | Dosyayı kopyala |
+| mv [dosya adı] [dizin adı] | Dosyayı taşı |
+| mv [dosya adı] [dosya adı] | Dosyayı yeniden adlandır |
 
 İç içe geçmiş dizinler oluşturun:
+
 ```bash
 mkdir -p ./home/{a,b}/{x,y,z}
 ```
@@ -114,8 +117,7 @@ mkdir -p ./home/{a,b}/{x,y,z}
 cd test2 && mkdir test3
 ```
 
-:::tip
-[Redirect Output]
+:::tip[Redirect Output]
 Komut çıktısını bir dosyaya yönlendirin.
 :::
 
@@ -123,10 +125,9 @@ Komut çıktısını bir dosyaya yönlendirin.
 > [filename]
 ```
 
-##`cat`Emretmek
+## `cat`Emretmek
 
-:::note
-[Concatenate Files]
+:::note[Concatenate Files]
 'cat' dosyaları görüntüler veya oluşturur ve bunları birleştirir.
 :::
 
@@ -140,8 +141,7 @@ cat >> [filename]
 cat -n [filename]
 ```
 
-:::tip
-[View File Contents]
+:::tip[View File Contents]
 'Daha az' içeren bir dosyada ilerleyin.
 :::
 
@@ -149,10 +149,9 @@ cat -n [filename]
 less [filename]
 ```
 
-##`echo`Emretmek
+## `echo`Emretmek
 
-:::important
-[Display Text or Write to Files]
+:::important[Display Text or Write to Files]
 Metni terminale veya dosyalara yankılayın.
 :::
 
@@ -161,8 +160,7 @@ echo "Hello World"
 echo "Hello World" > [filename]
 ```
 
-:::note
-[Edit Text Files]
+:::note[Edit Text Files]
 'nano' kullanıcı dostu bir metin editörüdür.
 :::
 
@@ -170,10 +168,9 @@ echo "Hello World" > [filename]
 nano [filename]
 ```
 
-##`head`Ve`tail`Komutlar
+## `head`Ve`tail`Komutlar
 
-:::tip
-[View File Parts]
+:::tip[View File Parts]
 Dosyaların başlangıcını (`baş`) veya sonunu (`kuyruk`) görüntüleyin.
 :::
 
@@ -182,8 +179,7 @@ head -n 5 [filename]
 tail -n 5 [filename]
 ```
 
-:::note
-[Search File Content]
+:::note[Search File Content]
 Dosyalardaki metin desenlerini arayın.
 :::
 
@@ -191,8 +187,7 @@ Dosyalardaki metin desenlerini arayın.
 grep [searchterm] [filename]
 ```
 
-:::important
-[Locate Files or Directories]
+:::important[Locate Files or Directories]
 Dosyaları ada, desene veya özelliklere göre arayın.
 :::
 
@@ -209,8 +204,7 @@ find . -empty
 find . -name "file-*" -delete
 ```
 
-:::tip
-[Redirect Output]
+:::tip[Redirect Output]
 Bir komutun çıktısını diğerine aktarın.
 :::
 
@@ -219,8 +213,7 @@ find . -name "file-0*" > output.txt
 cat output.txt
 ```
 
-:::note
-[Create Shortcuts]
+:::note[Create Shortcuts]
 Dosyalara sembolik bağlantılar oluşturun.
 :::
 
@@ -232,19 +225,19 @@ ln -s [filename] [symlinkname]
 rm [symlinkname]
 ```
 
-:::important
-[Manage Archives]
+:::important[Manage Archives]
 'Tar' ile tarball'lar oluşturun ve çıkarın.
-:::| Komut | Açıklama | 
-| ----------------------------------- | -------------------------- | 
-| tar czvf [dizin adı].tar.gz [dizin adı] | Tarball oluştur | 
-| tar tzvf [dizin adı] | Tarball içeriğini görüntüle | 
-| tar xzvf [dizin adı].tar.gz | Tarball'ı çıkart | 
+:::
 
-##`history`Emretmek
+| Komut | Açıklama |
+| ----------------------------------- | -------------------------- |
+| tar czvf [dizin adı].tar.gz [dizin adı] | Tarball oluştur |
+| tar tzvf [dizin adı] | Tarball içeriğini görüntüle |
+| tar xzvf [dizin adı].tar.gz | Tarball'ı çıkart |
 
-:::note
-[Command History]
+## `history`Emretmek
+
+:::note[Command History]
 Geçmiş komutları görüntüleyin ve yürütün.
 :::
 
@@ -256,4 +249,5 @@ history
 ## Tüm komutlar için Sağlanan Kılavuz
 
 :::important
-:::Bunda bilinen tüm terminal komutlarını ekledim[TerCli](https://tercli.netlify.app/)
+Bunda bilinen tüm terminal komutlarını ekledim[TerCli](https://tercli.netlify.app/)
+:::

@@ -25,7 +25,7 @@ series:
 現代後端很少是單個整體應用程序。 更準確地說，它是一個**系統的系統**，包含多個服務、數據庫、緩存、消息隊列和第三方集成。 後端工程師的角色是設計、構建和編排這些組件，使其成為一個有凝聚力、有彈性和高性能的整體。 這涉及：
 
 :::tip
-{title="Core Backend Responsibilities"}
+[Core Backend Responsibilities]
 - **數據建模和持久性：** 設計模式並選擇適當的存儲技術來表示應用程序的數據。 
 - **業務邏輯實現：** 將業務規則和流程轉換為健壯、可測試和可維護的代碼。 
 - **API 設計和管理：** 創建客戶端（前端、移動應用程序、其他服務）與系統交互的合同接口。 
@@ -60,7 +60,7 @@ series:
 後端的核心是在計算機上運行的一個程序（或一組程序），稱為服務器。 服務器技術的發展反映了對更高抽象性、效率和可管理性的持續推動。
 
 :::note
-{title="Evolution of Server Technology"}
+[Evolution of Server Technology]
 - **裸機服務器：** 專用於任務的物理機。 最高性能，但價格昂貴且難以擴展。 
 - **虛擬機 (VM)：** 虛擬化允許在一台物理機上運行多個隔離系統（例如 EC2、計算引擎）。 
 - **容器：** 輕量級包，例如 Docker，可捆綁應用程序和依賴項。 現代部署的關鍵。
@@ -97,7 +97,7 @@ series:
 當前端和後端通信時，它們必須就構建它們交換的數據的格式達成一致。 這個過程稱為序列化。
 
 :::note
-{title="JSON Example"}
+[JSON Example]
 
 ```json {1,4-7}
 {
@@ -122,7 +122,7 @@ series:
 整體架構將應用程序構建為單個統一單元。 所有業務邏輯、數據訪問和 UI 服務組件都包含在單個代碼庫中，並作為單個工件進行部署。
 
 :::caution
-{title="Monolith Disadvantages"}
+[Monolith Disadvantages]
 - **可擴展性挑戰：** 即使只有一個組件是瓶頸，也可以擴展整個應用程序。 
 - **技術鎖定：** 從一開始就鎖定到選定的堆棧。 
 - **缺乏靈活性：** 很難在沒有意外副作用的情況下進行修改。
@@ -133,7 +133,7 @@ series:
 微服務架構將應用程序構建為小型自治服務的集合，每個服務都圍繞特定的業務功能進行組織。
 
 :::tip
-{title="Microservices Advantages"}
+[Microservices Advantages]
 - **獨立擴展：** 服務根據特定需求進行擴展。 
 - **技術自由：** 為每項服務選擇最佳工具。 
 - **故障隔離：** 一項服務的故障不會導致整個系統崩潰。
@@ -144,7 +144,7 @@ series:
 無服務器是一種雲執行模型，雲提供商動態管理服務器的分配和配置。 開發人員以函數的形式編寫代碼，雲提供商運行它們以響應事件。
 
 :::note
-{title="Serverless Characteristics"}
+[Serverless Characteristics]
 - 無需服務器管理。 
 - 事件驅動的執行。 
 - 按執行付費模式。 
@@ -166,7 +166,7 @@ series:
 編程語言的選擇對性能、開發人員生產力以及系統適合解決的問題類型有著深遠的影響。
 
 :::tip
-{title="Language Comparison"}
+[Language Comparison]
 - **Node.js (JavaScript/TypeScript)：** 由於非阻塞事件循環，非常適合 I/O 密集型應用程序。 
 - **Python：** 簡單易讀，具有龐大的數據科學生態系統和快速開發。 
 - **Go：** 高性能、並發網絡服務。 簡單的並發模型。 
@@ -191,7 +191,7 @@ Web 框架提供了一組工具和庫，可以抽像出常見的後端任務（�
 使用結構化查詢語言 (SQL) 的關係數據庫幾十年來一直是行業標準。 它們將數據存儲在具有預定義模式的表中。
 
 :::note
-{title="ACID Properties"}
+[ACID Properties]
 - **原子性：** 所有操作完全成功或完全失敗。 
 - **一致性：** 事務將數據庫從一種有效狀態轉變為另一種有效狀態。 
 - **隔離：** 並發事務互不干擾。 
@@ -213,7 +213,7 @@ NoSQL 數據庫的出現是為了解決關係數據庫的局限性，特別是�
 - **圖數據庫（例如 Neo4j、Amazon Neptune）：** 設計用於存儲和查詢具有復雜關係的數據（例如社交網絡、推薦引擎）。
 
 :::caution
-{title="CAP Theorem"}
+[CAP Theorem]
 A distributed data store can only provide two of: **C**onsistency, **A**vailability, and **P**artition Tolerance. Since network partitions are inevitable, the trade-off is between consistency and availability.
 :::
 
@@ -238,7 +238,7 @@ API 是定義不同軟件組件如何交互的契約。 設計良好的 API 使�
 ### 5.1 API設計原則
 
 :::tip
-{title="API Best Practices"}
+[API Best Practices]
 - **面向資源的設計：**圍繞資源（名詞）進行結構，使用HTTP方法對其進行操作。 
 - **無狀態：** 服務器在請求之間不維護客戶端狀態。 
 - **冪等性：**相同的請求多次產生相同的結果。 
@@ -259,7 +259,7 @@ GraphQL 是 Facebook 開發的 API 查詢語言。 它提供了 REST 的更高�
 - **GraphQL 解決方案：** GraphQL API 公開單個端點。 客戶端發送一個查詢，準確指定其所需的數據，服務器返回一個包含該數據的 JSON 對象，僅此而已。 這使前端開發人員能夠在一次往返中獲取他們所需的數據。
 
 :::note
-{title="GraphQL Query Example"}
+[GraphQL Query Example]
 
 ```graphql
 query GetUser($id: ID!) {
@@ -287,7 +287,7 @@ query GetUser($id: ID!) {
 可擴展性是系統通過添加資源來處理不斷增長的工作量的能力。
 
 :::tip
-{title="Scaling Strategies"}
+[Scaling Strategies]
 - **垂直擴展：** 增加單個服務器的資源（CPU、RAM） - 簡單但有限。 
 - **水平擴展：** 將更多服務器添加到資源池中 - 複雜但幾乎無限。 
 - **負載平衡：**跨服務器分配流量。 
@@ -304,7 +304,7 @@ query GetUser($id: ID!) {
 - **數據庫緩存：** 大多數數據庫都有內部緩存機制來加速查詢執行。
 
 :::note
-{title="Asynchronous Processing"}
+[Asynchronous Processing]
 - **消息隊列（例如，RabbitMQ、SQS）：**解耦服務並提高響應能力。 
 - **流媒體平台（例如 Apache Kafka）：** 高吞吐量、實時數據處理。
 :::
@@ -314,7 +314,7 @@ query GetUser($id: ID!) {
 系統失敗。 網絡分區。 服務器崩潰。 可靠性是指設計能夠承受這些故障並繼續運行的系統。
 
 :::caution
-{title="Fault Tolerance Patterns"}
+[Fault Tolerance Patterns]
 - **冗餘和高可用性：** 通過在不同位置運行多個實例來避免單點故障。 
 - **斷路器模式：** 監控故障并快速故障以防止級聯。 
 - **運行狀況檢查：** 定期 ping 來檢測不健康的實例。 
@@ -334,7 +334,7 @@ query GetUser($id: ID!) {
 - **JSON Web 令牌 (JWT)：** 一種緊湊、URL 安全的方式，用於表示要在兩方之間傳輸的聲明。 JWT 是一種經過簽名的無狀態令牌，可以包含用戶身份和權限。 它通常用於在無狀態 API 中維護用戶會話。
 
 :::caution
-{title="OWASP Top Security Concerns for Backend"}
+[OWASP Top Security Concerns for Backend]
 - 通過參數化查詢防止注入
 - 加密傳輸中的數據 (HTTPS) 和靜態數據
 - 實施適當的訪問控制
@@ -346,7 +346,7 @@ query GetUser($id: ID!) {
 DevOps 是一組結合了軟件開發 (Dev) 和 IT 運營 (Ops) 的實踐。 它旨在縮短系統開發生命週期並提供高質量軟件的持續交付。
 
 :::note
-{title="DevOps Core Components"}
+[DevOps Core Components]
 - **版本控制：** Git 用於代碼和配置管理。 
 - **容器化：** Docker 用於可移植、一致的環境。 
 - **編排：** Kubernetes 用於自動化容器管理。 
@@ -363,7 +363,7 @@ DevOps 是一組結合了軟件開發 (Dev) 和 IT 運營 (Ops) 的實踐。 它
 用於構建測試工作的模型。
 
 :::tip
-{title="Testing Pyramid Structure"}
+[Testing Pyramid Structure]
 - **單元測試（基礎）：** 單獨測試各個函數/類。 快速、便宜、大多數測試。 
 - **集成測試（中）：** 一起測試多個組件（例如，使用真實數據庫）。 
 - **端到端測試（上）：** 測試完整的用戶流程。 緩慢、脆弱，請謹慎使用。
@@ -372,7 +372,7 @@ DevOps 是一組結合了軟件開發 (Dev) 和 IT 運營 (Ops) 的實踐。 它
 ### 8.2 測試最佳實踐
 
 :::note
-{title="Additional Testing Strategies"}
+[Additional Testing Strategies]
 - **模擬/存根：** 替換外部依賴項以隔離測試中的代碼。 
 - **合同測試：** 確保 API 消費者/提供者遵守共同理解。 
 - **性能/負載測試：** 使用 k6 或 JMeter 等工具來模擬高流量。
