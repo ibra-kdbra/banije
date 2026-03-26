@@ -1,6 +1,6 @@
 ---
 title: The Great Digital Migration: Decoding the "Real" History of Numbers
-published: 2026-03-23
+published: 2026-03-10
 description: A concise historical walkthrough of numeral systems, from Brahmi and Arabic transmission to Roman legacy and base-60 influence.
 image: ''
 tags: [Mathematics, History, Numeral Systems, Education]
