@@ -27,6 +27,8 @@ This project reflects a passion for learning and serves as a platform to documen
   - [⚙️ Frontmatter of Posts](#️-frontmatter-of-posts)
   - [🧞 Commands](#-commands)
   - [🤝 Contributing](#-contributing)
+  - [🌍 Translation Workflow (Free)](#-translation-workflow-free)
+  - [🤝 Contributing](#-contributing-1)
   - [🙏 Credits](#-credits)
   - [📄 License](#-license)
 
@@ -50,6 +52,7 @@ Before getting started, ensure you have the following installed:
 - **Git** for version control
 
 Install pnpm globally if you haven't:
+
 ```bash
 npm install -g pnpm
 ```
@@ -57,12 +60,14 @@ npm install -g pnpm
 ## 🚀 How to Use
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/ibra-kdbra/banije.git
    cd banije
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    pnpm add sharp
@@ -71,15 +76,19 @@ npm install -g pnpm
 3. Edit the config file `src/config.ts` to customize your blog.
 
 4. Create a new post:
+
    ```bash
    pnpm new-post <filename>
    ```
+
    This will create a new file in `src/content/posts/` for you to edit.
 
 5. Start the development server:
+
    ```bash
    pnpm dev
    ```
+
    Visit `http://localhost:4321` to see your blog.
 
 6. Deploy your blog to Vercel, Netlify, GitHub Pages, etc., following [the guides](https://docs.astro.build/en/guides/deploy/). Update the site configuration in `astro.config.mjs` before deployment.
@@ -102,11 +111,11 @@ lang: jp                               # Language code if different from site de
 ```
 
 **Notes:**
+
 - `title`, `published`, and `description` are required fields.
 - Images should be placed in the same folder as the post file.
 - Tags and category help with organization and search.
 - Draft posts won't appear in the live site.
-
 
 ## 🧞 Commands
 
@@ -120,9 +129,50 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm build`              | Build your production site to `./dist/`          |
 | `pnpm preview`            | Preview your build locally, before deploying     |
 | `pnpm new-post <filename>`| Create a new post in `src/content/posts/`        |
+| `pnpm translate`          | Translate posts with structure protection + cache |
+| `pnpm translate -- --lang=tr --skip-existing` | Translate only Turkish, skipping existing files |
+| `pnpm translate -- --post=gitCommands --lang=ja` | Translate one post to Japanese |
+| `pnpm translate:fix`      | Post-process and repair known translation artifacts |
+| `pnpm translate:audit`    | Audit translation coverage against source posts |
 | `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro --help`       | Get help using the Astro CLI                     |
 
+## 🤝 Contributing
+
+## 🌍 Translation Workflow (Free)
+
+The project includes a free translation pipeline based on `google-translate-api-x`.
+
+What it does:
+
+- Preserves Markdown structure (code fences, links, admonitions, embeds)
+- Protects technical terms with a glossary
+- Caches results using content hashes to avoid re-translating unchanged files
+- Validates translated output shape before writing files
+
+Main files:
+
+- `scripts/translate.js`
+- `scripts/translation-glossary.json`
+- `scripts/fix-translations.js`
+- `scripts/audit.js`
+
+Recommended flow:
+
+1. Run translation incrementally with `pnpm translate -- --skip-existing`.
+2. Repair known edge cases with `pnpm translate:fix`.
+3. Verify missing translations with `pnpm translate:audit`.
+
+Useful options:
+
+- `--lang=<code>`: target one language (e.g. `tr`, `ja`)
+- `--post=<slug>`: target one post
+- `--force`: ignore cache and re-translate
+- `--delay=<ms>`: request spacing to reduce throttling
+- `--max-chars=<n>`: chunk size per translation request
+- `--dry-run`: process without writing translated files
+
+If wording is not ideal for technical terms, edit `scripts/translation-glossary.json` and run again.
 
 ## 🤝 Contributing
 
