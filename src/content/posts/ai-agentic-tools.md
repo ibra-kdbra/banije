@@ -2,7 +2,7 @@
 title: "The Agentic Revolution: A Deep Dive into the Tools Powering Autonomous AI"
 published: 2026-03-01
 description: "An exhaustive exploration of the core frameworks and libraries that enable the development of autonomous, goal-oriented AI agents."
-image: "/images/posts/"
+image: "/images/posts/architect-ai.webp"
 tags: ["AI", "Agents", "CrewAI", "AutoGen"]
 category: "Artificial Intelligence"
 draft: false

@@ -2,7 +2,7 @@
 title: "Architect's AI Stack: The 2025 Singularity Edition"
 published: 2025-12-31
 description: The definitive, book-length technical manifesto for the post-LLM era. A 100,000-foot view of Unified Agentic Architectures, Persistent Memory Layers, and the Model Context Protocol.
-image: '/images/posts/architect-ai.png'
+image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
 category: Engineering
 draft: false 
