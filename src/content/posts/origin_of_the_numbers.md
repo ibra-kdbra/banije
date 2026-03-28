@@ -36,9 +36,7 @@ Over centuries, as scripts evolved, Brahmi digits refined into **Gupta** script,
 
 Here is a visual analysis of that crucial evolutionary path.
 
-* **Image 1: The Chronology of Evolution.** *This diagram (image_0.png) shows the progression of glyphs from the original 3rd Century BCE Brahmi (top row) through 4th Century Gupta and 11th Century Nagari scripts, concluding with the standardized modern Western digits we use today. Note how '1', '2', and '3' begin as simple tally marks before rotating and connecting into their current cursive forms.*
-
-> **Image Generation Process (Behind the Scenes):** To create this comparison, the system needed an accurate archeological chart aesthetic. I defined a strict structure: four horizontal rows representing distinct historical epochs. The style required aged parchment texture and a "hand-drawn ink" look to emphasize the raw, historical nature of the original Brahmi scripts, contrasting sharply with the clean, mechanical lines of the "Modern Western" digits. Arrows guide the user's eye, making the evolutionary argument visually undeniable.
+![evalpath](/images/posts/evalpath.webp)
 
 ---
 
@@ -61,11 +59,7 @@ Used today across the Middle East (e.g., Egypt, Saudi Arabia, Iraq), these glyph
 
 Used in North Africa and Al-Andalus (Moorish Spain). These are the digits that would migrate to Europe. Because they were often written on "dust boards" (sand abacuses), they became stylized differently. This branch *is* the "real" ancestor of our modern `0-9`.
 
----
-
-* **Image 2: The House of Wisdom.** *This illustration (image_1.png) captures the intellectual environment where Al-Khwarizmi, seated at his desk, analyzes an ancient manuscript scroll. The manuscript specifically features comparison tables (the "real" original process) showing ancient Brahmi digits and their transcription into early Arabic Kufic script. Golden light emphasizes the intellectual discovery.*
-
-> **Image Generation Process (Behind the Scenes):** This scene must communicate transmission, not just creation. Al-Khwarizmi is not *inventing* the numbers; he is decoding them. I specified the atmosphere: 9th-century Baghdad, warm oil lamp light, and a clutter of scrolls and astrolabes to signify the synthesis of mathematical and astronomical knowledge. The key constraint was the manuscript: it needed a comparison table format, visibly demonstrating his analytical *process* of linking original Brahmi to Arabic notation.
+![khwarizmi](/images/posts/khwarizmi.webp)
 
 ---
 
@@ -81,11 +75,7 @@ Fibonacci was astounded by its efficiency. He returned to Italy and wrote *Liber
 
 Europe's adoption was slow and often hostile. The system was sometimes called "Saracen" or associated with black magic. Local governments and guilds occasionally banned the numbers (especially the disruptive **zero**), viewing them as prone to fraud compared to the clear Roman capitals. The battle between the traditional "Abacists" (who used Roman numerals and calculators) and the "Algorists" (who used the new decimal system) defined 13th-century accounting.
 
----
-
-* **Image 3: Abacus vs. Algorism.** *This historical oil painting aesthetic (image_2.png) visually compares the "real" systems in 13th-century Europe. An elderly Abacist (in deep shadow, left) works a traditional counting frame. Fibonacci (right, brightly lit) effortlessly writes Hindu-Arabic numerals on a simple sheet. The text "ABACUS vs. ALGORISM" crowns the clash of old and new mathematics.*
-
-> **Image Generation Process (Behind the Scenes):** This image needed tension. I used lighting as the metaphor: the Abacist, the symbol of old, resistant authority, is cloaked in warm, deep shadows on the left. The Fibonacci character (light, bright), is illuminated by daylight on the right. His ease—writing numbers directly onto paper—is the "real" technological shift. To make the message explicit, I included large, stylized text that defines the core conflict as "Abacus vs. Algorism."
+![aba_algo](/images/posts/aba_algo.webp)
 
 ---
 
@@ -125,11 +115,7 @@ The Maya were the brilliant counterpoint to Babylonian thought. Operating entire
 
 Their "real" symbols were simple: dots (1) and bars (5). They were one of only three cultures (the Maya, the Chinese, and the Indians) to **independently invent the concept of zero**. The Mayan zero (represented by a stylized shell) allowed them to create place value in a system that stacked *vertically*. A dot in the bottom row equaled 1. A dot in the next row up equaled 20, the row above that equaled 400. This system fueled an astronomical calendar more precise than Europe’s for centuries.
 
----
-
-* **Image 4: The Mayan Zero Shell.** *This detail from a Mayan Codex illustration (image_3.png) shows the "real" additive symbols (dots and bars) on amate bark paper. At the bottom, a stylized shell represents the concept of **Zero**, the key to their complex Long Count positional system. The vibrant blues, reds, and jungle greens reflect typical Mayan iconography.*
-
-> **Image Generation Process (Behind the Scenes):** This image had to represent complexity, and the critical concept of the Mayan zero. I chose the aesthetic of a Codex—the worn, textured amate bark paper. The system generates Mayan "real" numbers vertically (a stack). At the top: one dot (1). Below that: two bars (10, i.e., 5+5). And at the bottom, I emphasized the unique 'carved shell glyph' that represents zero, ensuring it was highlighted in the brightest pigments. This visual contrast demonstrates how simple tokens (dots/bars) could, when used with place value (the zero), create sophisticated arithmetic.
+![mayanshell](/images/posts/mayanshell.webp)
 
 ---
 
