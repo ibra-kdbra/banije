@@ -5,7 +5,7 @@ description: The definitive, book-length technical manifesto for the post-LLM er
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
 category: Engineering
-draft: false 
+draft: false
 series:
     name: "AI Foundations"
     order: 4
