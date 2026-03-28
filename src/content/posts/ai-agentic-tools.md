@@ -2,7 +2,7 @@
 title: "The Agentic Revolution: A Deep Dive into the Tools Powering Autonomous AI"
 published: 2026-03-01
 description: "An exhaustive exploration of the core frameworks and libraries that enable the development of autonomous, goal-oriented AI agents."
-image: "/images/posts/"
+image: "/images/posts/agentic-tools.webp"
 tags: ["AI", "Agents", "CrewAI", "AutoGen"]
 category: "Artificial Intelligence"
 draft: false
@@ -19,6 +19,8 @@ This list is most useful when you evaluate each tool by role: orchestration, tes
 :::
 
 ---
+
+![aftermath](/images/posts/aftermath.webp)
 
 The year is 2026, and the "craft" of coding has entered its dark age. We are living in the era of **Slop Overflow**, where "vibe coding" has replaced architecture and AI agents argue in the terminal over lines of code you didn't even write.
 
@@ -62,6 +64,8 @@ Treat prompt tests like CI checks. If prompts are code, evals are your test suit
 
 ## 3. [MiroFish](https://github.com/666ghj/MiroFish)
 
+![simulate_market](/images/posts/simulated_market.webp)
+
 ### The Multi-Agent Prediction Engine
 
 Failure is expensive; predicting it is free. **MiroFish** is a multi-agent simulation engine that extracts real-time data from financial trends and breaking news to create a "digital twin" of the world.
@@ -91,6 +95,8 @@ First reduce complexity, then add polish. Teams usually get better outcomes with
 ---
 
 ## 5. [Open Viking](https://github.com/volcengine/OpenViking)
+
+![refined_core](/images/posts/refined_core.webp)
 
 ### Tiered Context Management for Agents
 

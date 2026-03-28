@@ -14,6 +14,8 @@
     "translate": "node scripts/translate.js",
     "translate:fix": "node scripts/fix-translations.js",
     "translate:audit": "node scripts/audit.js",
+    "images:optimize": "node scripts/optimize-images.js",
+    "images:optimize:dry": "node scripts/optimize-images.js --dry-run",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "npx only-allow pnpm"
