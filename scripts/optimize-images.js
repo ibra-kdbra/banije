@@ -109,6 +109,12 @@ async function emitWebpVariant(inputPath) {
   }
 
   const webpPath = inputPath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+  
+  // Skip if webp already exists
+  if (await fileExists(webpPath)) {
+    return { skipped: true, path: webpPath };
+  }
+
   const tempPath = `${webpPath}.tmp`;
 
   const pipeline = buildPipeline(inputPath).webp({
@@ -118,7 +124,7 @@ async function emitWebpVariant(inputPath) {
   await pipeline.toFile(tempPath);
   await fs.rename(tempPath, webpPath);
 
-  return webpPath;
+  return { skipped: false, path: webpPath };
 }
 
 async function main() {
@@ -142,9 +148,22 @@ async function main() {
   let totalBefore = 0;
   let totalAfter = 0;
   let initiallyLarge = 0;
+  let skippedCount = 0;
 
   for (const filePath of files) {
+    const ext = path.extname(filePath).toLowerCase();
     const before = (await fs.stat(filePath)).size;
+    
+    // Skip PNG/JPG/JPEG files that already have corresponding webp
+    if ([".png", ".jpg", ".jpeg"].includes(ext) && EMIT_WEBP) {
+      const webpPath = filePath.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+      if (await fileExists(webpPath)) {
+        skippedCount++;
+        console.log(`[SKIP] ${path.basename(filePath)} -> webp already exists`);
+        continue;
+      }
+    }
+    
     totalBefore += before;
 
     if (before > 5 * 1024 * 1024) {
@@ -160,7 +179,10 @@ async function main() {
     await optimizeInPlace(filePath);
 
     if (EMIT_WEBP) {
-      await emitWebpVariant(filePath);
+      const result = await emitWebpVariant(filePath);
+      if (result && result.skipped) {
+        console.log(`[SKIP] webp variant already exists for ${path.basename(filePath)}`);
+      }
     }
 
     const after = (await fs.stat(filePath)).size;
@@ -182,6 +204,9 @@ async function main() {
   );
   console.log(`Savings: ${formatBytes(savings)} (${savingsPct.toFixed(2)}%)`);
   console.log(`Files initially >5MB: ${initiallyLarge}`);
+  if (skippedCount > 0) {
+    console.log(`Skipped (already optimized): ${skippedCount}`);
+  }
 }
 
 main().catch((err) => {
