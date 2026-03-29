@@ -22,8 +22,8 @@ export const siteConfig: SiteConfig = {
     position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
     credit: {
       enable: true, // Display the credit text of the banner image
-      text: "Copyright to wallhaven", // Credit text to be displayed
-      url: "https://wallhaven.cc/w/x6yq9d", // (Optional) URL link to the original artwork or artist's page
+      text: "Copyright to AlphaCoders", // Credit text to be displayed
+      url: "https://wall.alphacoders.com/big.php?i=1140063", // (Optional) URL link to the original artwork or artist's page
     },
   },
   toc: {

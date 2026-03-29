@@ -2,7 +2,7 @@
 title: AI Capital Gravity - Parallels and Why This Cycle Behaves Differently
 published: 2026-02-12
 description: A merged analysis of AI infrastructure financing, circular capital loops, and how current risk signals compare with the 2008 credit era.
-image: '/images/posts/'
+image: '/images/posts/gravity_well.webp'
 tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
 category: AI and Economy
 draft: false
