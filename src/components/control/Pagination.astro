@@ -64,7 +64,10 @@ const currentLang = Astro.params.lang;
       { disabled: page.url.prev == undefined },
     ]}
   >
-    <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]" />
+    <Icon
+      name="material-symbols:chevron-left-rounded"
+      class="text-[1.75rem] rtl:rotate-180"
+    />
   </a>
   <div
     class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold"
@@ -104,7 +107,7 @@ const currentLang = Astro.params.lang;
   >
     <Icon
       name="material-symbols:chevron-right-rounded"
-      class="text-[1.75rem]"
+      class="text-[1.75rem] rtl:rotate-180"
     />
   </a>
 </div>

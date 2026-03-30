@@ -4,36 +4,37 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { formatDateToYYYYMMDD } from "@domain/date";
 import { getCategoryUrl, getTagUrl, url } from "@domain/url";
+import { translateArabicCategory, translateArabicTag } from "../utils/arabic-translations";
 
 interface Props {
-	class: string;
-	published: Date;
-	updated?: Date;
-	tags: string[];
-	category: string | null;
-    seriesName?: string;
-	hideTagsForMobile?: boolean;
-	hideUpdateDate?: boolean;
-    lang?: string;
+  class: string;
+  published: Date;
+  updated?: Date;
+  tags: string[];
+  category: string | null;
+  seriesName?: string;
+  hideTagsForMobile?: boolean;
+  hideUpdateDate?: boolean;
+  lang?: string;
 }
 const {
-	published,
-	updated,
-	tags,
-	category,
-    seriesName,
-	hideTagsForMobile = false,
-	hideUpdateDate = false,
-    lang,
+  published,
+  updated,
+  tags,
+  category,
+  seriesName,
+  hideTagsForMobile = false,
+  hideUpdateDate = false,
+  lang,
 } = Astro.props;
 const className = Astro.props.class;
 
 const toAnchor = (value: string) =>
-    value
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 ---
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
@@ -67,7 +68,7 @@ const toAnchor = (value: string) =>
             <a href={getCategoryUrl(category, lang)} aria-label={`View all posts in the ${category} category`}
                class="link-lg transition text-50 text-sm font-medium
                             hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                {category || i18n(I18nKey.uncategorized, lang)}
+                {lang === 'ar' && category ? translateArabicCategory(category) : (category || i18n(I18nKey.uncategorized, lang))}
             </a>
         </div>
     </div>
@@ -84,7 +85,7 @@ const toAnchor = (value: string) =>
                 <a href={getTagUrl(tag, lang)} aria-label={`View all posts with the ${tag.trim()} tag`}
                    class="link-lg transition text-50 text-sm font-medium
                                 hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                    {tag.trim()}
+                    {lang === 'ar' ? translateArabicTag(tag) : tag.trim()}
                 </a>
             ))}
             {!(tags && tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags, lang)}</div>}

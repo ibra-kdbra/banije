@@ -1,13 +1,22 @@
 export const PAGE_SIZE = 8;
 
 export const LIGHT_MODE = "light",
-	DARK_MODE = "dark",
-	AUTO_MODE = "auto";
+  DARK_MODE = "dark",
+  AUTO_MODE = "auto";
 export const DEFAULT_THEME = AUTO_MODE;
 
 // Supported languages for i18n
-export const SUPPORTED_LANGUAGES = ["en", "es", "ja", "ko", "tr", "zh_CN", "zh_TW"] as const;
-export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number];
+export const SUPPORTED_LANGUAGES = [
+  "en",
+  "es",
+  "ja",
+  "ko",
+  "tr",
+  "ar",
+  "zh_CN",
+  "zh_TW",
+] as const;
+export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 export const DEFAULT_LANGUAGE: SupportedLanguage = "en";
 
 // Banner height unit: vh
