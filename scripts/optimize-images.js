@@ -109,7 +109,7 @@ async function emitWebpVariant(inputPath) {
   }
 
   const webpPath = inputPath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
-  
+
   // Skip if webp already exists
   if (await fileExists(webpPath)) {
     return { skipped: true, path: webpPath };
@@ -153,7 +153,7 @@ async function main() {
   for (const filePath of files) {
     const ext = path.extname(filePath).toLowerCase();
     const before = (await fs.stat(filePath)).size;
-    
+
     // Skip PNG/JPG/JPEG files that already have corresponding webp
     if ([".png", ".jpg", ".jpeg"].includes(ext) && EMIT_WEBP) {
       const webpPath = filePath.replace(/\.(png|jpg|jpeg)$/i, ".webp");
@@ -163,7 +163,7 @@ async function main() {
         continue;
       }
     }
-    
+
     totalBefore += before;
 
     if (before > 5 * 1024 * 1024) {
@@ -181,7 +181,9 @@ async function main() {
     if (EMIT_WEBP) {
       const result = await emitWebpVariant(filePath);
       if (result && result.skipped) {
-        console.log(`[SKIP] webp variant already exists for ${path.basename(filePath)}`);
+        console.log(
+          `[SKIP] webp variant already exists for ${path.basename(filePath)}`,
+        );
       }
     }
 

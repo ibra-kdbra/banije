@@ -42,11 +42,10 @@ series:
 
  * 对于 **人口平等** (`Ŷ`独立于`A`），当预测和敏感属性之间的路径自然被阻塞时`Y`是一个“碰撞器”。
 
-:::note
-[Causal Diagram for Demographic Parity]
+:::note[Causal Diagram for Demographic Parity]
 `A -> Y <- Ŷ`
  * 对于 **均等赔率**（给定“Y”，“Ŷ”独立于“A”），观察真实结果“Y”会阻塞“A”和“Ŷ”之间的路径。
-:::注意[均等赔率的因果图]`A -> Y -> Ŷ`
+:::caution[均等赔率的因果图]`A -> Y -> Ŷ`
     :::
 
 * For **Predictive Parity** (`Y` is independent of `A` given `Ŷ`), observing the prediction `Ŷ` blocks the path.
@@ -66,8 +65,7 @@ series:
 
 一个新的因果框架引入了**“校正变量”，`C`** 已提议。 你可以想到`C`作为开关。 该变量，受敏感属性影响`A`，确定模型的预测是否`Ŷ`应遵循真实标签`Y`或不同的“公平”功能。
 
-:::note
-[Causal Diagram for Fairness Through Correction]
+:::note[Causal Diagram for Fairness Through Correction]
 A -> C
 C -> Ŷ
 Y -> Ŷ

@@ -35,8 +35,7 @@ originalSlug: "data_mining"
 5. **評估**：根據某種興趣度度量來識別代表知識的真正有趣的模式。 
 6. **知識呈現**：將挖掘的知識可視化呈現給用戶。
 
-:::note
-[The KDD Process]
+:::note[The KDD Process]
 ![kdd 過程](https://upload.Wikimedia.org/Wikipedia/Commons/Thumb/B1/B1/B1/B1/B1/B1/B1/B120px-Crg-kdd-Pdd-PDD.SVG.PNG)
 :::
 
@@ -66,13 +65,11 @@ originalSlug: "data_mining"
 
 * **分類**：分類模型試圖從觀察值中得出一些結論。 給定一個或多個輸入，分類模型將嘗試預測一個或多個結果的值。
 
-:::tip
-[Example of Classification]
+:::tip[Example of Classification]
 分類模型可用於將貸款申請人識別為低、中或高信用風險。
 :::* **回歸**：回歸模型預測連續值。
 
-:::tip
-[Example of Regression]
+:::tip[Example of Regression]
 回歸模型可用於根據房屋的特徵來預測房屋的售價。
 :::
 
@@ -121,8 +118,7 @@ Web 挖掘是應用數據挖掘技術從萬維網上發現模式。 這是從網
 
 數據挖掘通常涉及個人數據的收集和分析，如果處理不當，可能會導致隱私侵犯。 數據匿名化等技術可以幫助保護個人隱私，但它們並不總是萬無一失。
 
-:::warning
-[The Limits of Anonymization]
+:::warning[The Limits of Anonymization]
 2006 年，AOL 出於研究目的發布了一個大型匿名搜索查詢數據集。 然而，研究人員能夠通過將搜索查詢與其他公開信息交叉引用來對某些用戶進行去匿名化。
 :::
 

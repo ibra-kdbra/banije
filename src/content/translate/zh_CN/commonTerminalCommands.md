@@ -28,8 +28,7 @@ originalSlug: "commonTerminalCommands"
 
  ## 手动命令
 
-:::note
-[Using `man` Command]
+:::note[Using `man` Command]
 “man”命令显示 Linux 和 MacOS 上的命令手册。 在 Git Bash 上使用 `--help` 来获得类似的功能。
 :::
 
@@ -50,8 +49,7 @@ ls --help
 whoami
 ```
 
-:::tip
-[Get Current Date & Time]
+:::tip[Get Current Date & Time]
 “date”命令显示当前日期和时间。
 :::
 
@@ -59,8 +57,7 @@ whoami
 date
 ```
 
-:::note
-[Essential Navigation Commands]
+:::note[Essential Navigation Commands]
 文件系统导航是终端使用的基础。
 :::| 命令 | 描述 |
  | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -80,8 +77,7 @@ date
 
 ## 打开文件夹或文件
 
-:::note
-[Open Directories, Files, or URLs]
+:::note[Open Directories, Files, or URLs]
 不同操作系统打开文件、文件夹或 URL 的命令有所不同。
 :::- 苹果：`open [dirname]`- 窗户：`start [dirname]`- Linux：`xdg-open [dirname]`
 
@@ -114,8 +110,7 @@ mkdir -p ./home/{a,b}/{x,y,z}
 cd test2 && mkdir test3
 ```
 
-:::tip
-[Redirect Output]
+:::tip[Redirect Output]
 将命令输出重定向到文件中。
 :::
 
@@ -125,8 +120,7 @@ cd test2 && mkdir test3
 
 ＃＃ 这`cat`命令
 
-:::note
-[Concatenate Files]
+:::note[Concatenate Files]
 `cat` 显示或创建文件并将它们组合起来。
 :::
 
@@ -140,8 +134,7 @@ cat >> [filename]
 cat -n [filename]
 ```
 
-:::tip
-[View File Contents]
+:::tip[View File Contents]
 使用“less”滚动文件。
 :::
 
@@ -161,8 +154,7 @@ echo "Hello World"
 echo "Hello World" > [filename]
 ```
 
-:::note
-[Edit Text Files]
+:::note[Edit Text Files]
 `nano` 是一个用户友好的文本编辑器。
 :::
 
@@ -172,8 +164,7 @@ nano [filename]
 
 ＃＃ 这`head`和`tail`命令
 
-:::tip
-[View File Parts]
+:::tip[View File Parts]
 显示文件的开头（“head”）或结尾（“tail”）。
 :::
 
@@ -182,8 +173,7 @@ head -n 5 [filename]
 tail -n 5 [filename]
 ```
 
-:::note
-[Search File Content]
+:::note[Search File Content]
 搜索文件中的文本模式。
 :::
 
@@ -209,8 +199,7 @@ find . -empty
 find . -name "file-*" -delete
 ```
 
-:::tip
-[Redirect Output]
+:::tip[Redirect Output]
 将一个命令的输出通过管道传输到另一个命令。
 :::
 
@@ -219,8 +208,7 @@ find . -name "file-0*" > output.txt
 cat output.txt
 ```
 
-:::note
-[Create Shortcuts]
+:::note[Create Shortcuts]
 创建文件的符号链接。
 :::
 
@@ -243,8 +231,7 @@ rm [symlinkname]
 
  ＃＃ 这`history`命令
 
-:::note
-[Command History]
+:::note[Command History]
 查看并执行过去的命令。
 :::
 

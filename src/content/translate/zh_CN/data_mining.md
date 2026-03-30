@@ -35,8 +35,7 @@ originalSlug: "data_mining"
 5. **评估**：根据某种兴趣度度量来识别代表知识的真正有趣的模式。 
 6. **知识呈现**：将挖掘的知识可视化呈现给用户。
 
-:::note
-[The KDD Process]
+:::note[The KDD Process]
 ![kdd 过程](https://upload.Wikimedia.org/Wikipedia/Commons/Thumb/B1/B1/B1/B1/B1/B1/B1/B120px-Crg-kdd-Pdd-PDD.SVG.PNG)
 :::
 
@@ -66,13 +65,11 @@ originalSlug: "data_mining"
 
 * **分类**：分类模型试图从观察值中得出一些结论。 给定一个或多个输入，分类模型将尝试预测一个或多个结果的值。
 
-:::tip
-[Example of Classification]
+:::tip[Example of Classification]
 分类模型可用于将贷款申请人识别为低、中或高信用风险。
 :::* **回归**：回归模型预测连续值。
 
-:::tip
-[Example of Regression]
+:::tip[Example of Regression]
 回归模型可用于根据房屋的特征来预测房屋的售价。
 :::
 
@@ -121,8 +118,7 @@ originalSlug: "data_mining"
 
  数据挖掘通常涉及个人数据的收集和分析，如果处理不当，可能会导致隐私侵犯。 数据匿名化等技术可以帮助保护个人隐私，但它们并不总是万无一失。
 
-:::warning
-[The Limits of Anonymization]
+:::warning[The Limits of Anonymization]
 2006 年，AOL 出于研究目的发布了一个大型匿名搜索查询数据集。 然而，研究人员能够通过将搜索查询与其他公开信息交叉引用来对某些用户进行去匿名化。
 :::
 

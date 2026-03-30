@@ -24,8 +24,7 @@ series:
 
  现代后端很少是单个整体应用程序。 更准确地说，它是一个**系统的系统**，包含多个服务、数据库、缓存、消息队列和第三方集成。 后端工程师的角色是设计、构建和编排这些组件，使其成为一个有凝聚力、有弹性和高性能的整体。 这涉及：
 
-:::tip
-[Core Backend Responsibilities]
+:::tip[Core Backend Responsibilities]
 - **数据建模和持久性：** 设计模式并选择适当的存储技术来表示应用程序的数据。 
 - **业务逻辑实现：** 将业务规则和流程转换为健壮、可测试和可维护的代码。 
 - **API 设计和管理：** 创建客户端（前端、移动应用程序、其他服务）与系统交互的合同接口。 
@@ -59,8 +58,7 @@ series:
 
  后端的核心是在计算机上运行的一个程序（或一组程序），称为服务器。 服务器技术的发展反映了对更高抽象性、效率和可管理性的持续推动。
 
-:::note
-[Evolution of Server Technology]
+:::note[Evolution of Server Technology]
 - **裸机服务器：** 专用于任务的物理机。 最高性能，但价格昂贵且难以扩展。 
 - **虚拟机 (VM)：** 虚拟化允许在一台物理机上运行多个隔离系统（例如 EC2、计算引擎）。 
 - **容器：** 轻量级包，例如 Docker，可捆绑应用程序和依赖项。 现代部署的关键。
@@ -96,8 +94,7 @@ series:
 
  当前端和后端通信时，它们必须就构建它们交换的数据的格式达成一致。 这个过程称为序列化。
 
-:::note
-[JSON Example]
+:::note[JSON Example]
 
 ```json {1,4-7}
 {
@@ -121,8 +118,7 @@ series:
 
  整体架构将应用程序构建为单个统一单元。 所有业务逻辑、数据访问和 UI 服务组件都包含在单个代码库中，并作为单个工件进行部署。
 
-:::caution
-[Monolith Disadvantages]
+:::caution[Monolith Disadvantages]
 - **可扩展性挑战：** 即使只有一个组件是瓶颈，也可以扩展整个应用程序。 
 - **技术锁定：** 从一开始就锁定到选定的堆栈。 
 - **缺乏灵活性：** 很难在没有意外副作用的情况下进行修改。
@@ -132,8 +128,7 @@ series:
 
  微服务架构将应用程序构建为小型自治服务的集合，每个服务都围绕特定的业务功能进行组织。
 
-:::tip
-[Microservices Advantages]
+:::tip[Microservices Advantages]
 - **独立扩展：** 服务根据特定需求进行扩展。 
 - **技术自由：** 为每项服务选择最佳工具。 
 - **故障隔离：** 一项服务的故障不会导致整个系统崩溃。
@@ -143,8 +138,7 @@ series:
 
  无服务器是一种云执行模型，云提供商动态管理服务器的分配和配置。 开发人员以函数的形式编写代码，云提供商运行它们以响应事件。
 
-:::note
-[Serverless Characteristics]
+:::note[Serverless Characteristics]
 - 无需服务器管理。 
 - 事件驱动的执行。 
 - 按执行付费模式。 
@@ -165,8 +159,7 @@ series:
 
  编程语言的选择对性能、开发人员生产力以及系统适合解决的问题类型有着深远的影响。
 
-:::tip
-[Language Comparison]
+:::tip[Language Comparison]
 - **Node.js (JavaScript/TypeScript)：** 由于非阻塞事件循环，非常适合 I/O 密集型应用程序。 
 - **Python：** 简单易读，具有庞大的数据科学生态系统和快速开发。 
 - **Go：** 高性能、并发网络服务。 简单的并发模型。 
@@ -190,8 +183,7 @@ series:
 
  使用结构化查询语言 (SQL) 的关系数据库几十年来一直是行业标准。 它们将数据存储在具有预定义模式的表中。
 
-:::note
-[ACID Properties]
+:::note[ACID Properties]
 - **原子性：** 所有操作完全成功或完全失败。 
 - **一致性：** 事务将数据库从一种有效状态转变为另一种有效状态。 
 - **隔离：** 并发事务互不干扰。 
@@ -212,8 +204,7 @@ series:
 - **列族存储（例如 Cassandra、HBase）：** 将数据存储在列而不是行中。 针对高写入吞吐量和大型数据集查询进行了优化。 
 - **图数据库（例如 Neo4j、Amazon Neptune）：** 设计用于存储和查询具有复杂关系的数据（例如社交网络、推荐引擎）。
 
-:::caution
-[CAP Theorem]
+:::caution[CAP Theorem]
 分布式数据存储只能提供以下两项：**C**一致性、**A**可用性和**P**分区容错性。 由于网络分区不可避免，因此需要在一致性和可用性之间进行权衡。
 :::
 
@@ -237,8 +228,7 @@ series:
 
 ### 5.1 API设计原则
 
-:::tip
-[API Best Practices]
+:::tip[API Best Practices]
 - **面向资源的设计：**围绕资源（名词）进行结构，使用HTTP方法对其进行操作。 
 - **无状态：** 服务器在请求之间不维护客户端状态。 
 - **幂等性：**相同的请求多次产生相同的结果。 
@@ -258,8 +248,7 @@ series:
 - **获取不足：** 客户端需要向不同端点发出多个请求才能获取所需的所有数据。 
 - **GraphQL 解决方案：** GraphQL API 公开单个端点。 客户端发送一个查询，准确指定其所需的数据，服务器返回一个包含该数据的 JSON 对象，仅此而已。 这使前端开发人员能够在一次往返中获取他们所需的数据。
 
-:::note
-[GraphQL Query Example]
+:::note[GraphQL Query Example]
 
 ```graphql
 query GetUser($id: ID!) {
@@ -286,8 +275,7 @@ query GetUser($id: ID!) {
 
  可扩展性是系统通过添加资源来处理不断增长的工作量的能力。
 
-:::tip
-[Scaling Strategies]
+:::tip[Scaling Strategies]
 - **垂直扩展：** 增加单个服务器的资源（CPU、RAM） - 简单但有限。 
 - **水平扩展：** 将更多服务器添加到资源池中 - 复杂但几乎无限。 
 - **负载平衡：**跨服务器分配流量。 
@@ -303,8 +291,7 @@ query GetUser($id: ID!) {
 - **内容交付网络 (CDN)：** 地理上分布式的代理服务器网络，可缓存靠近最终用户的静态资产（图像、CSS、JS），从而显着减少延迟。 
 - **数据库缓存：** 大多数数据库都有内部缓存机制来加速查询执行。
 
-:::note
-[Asynchronous Processing]
+:::note[Asynchronous Processing]
 - **消息队列（例如，RabbitMQ、SQS）：**解耦服务并提高响应能力。 
 - **流媒体平台（例如 Apache Kafka）：** 高吞吐量、实时数据处理。
 :::
@@ -313,8 +300,7 @@ query GetUser($id: ID!) {
 
  系统失败。 网络分区。 服务器崩溃。 可靠性是指设计能够承受这些故障并继续运行的系统。
 
-:::caution
-[Fault Tolerance Patterns]
+:::caution[Fault Tolerance Patterns]
 - **冗余和高可用性：** 通过在不同位置运行多个实例来避免单点故障。 
 - **断路器模式：** 监控故障并快速故障以防止级联。 
 - **运行状况检查：** 定期 ping 来检测不健康的实例。 
@@ -333,8 +319,7 @@ query GetUser($id: ID!) {
 - **OpenID Connect (OIDC)：** 构建在 OAuth 2.0 之上的简单身份层。 它提供了执行身份验证的标准方法。 
 - **JSON Web 令牌 (JWT)：** 一种紧凑、URL 安全的方式，用于表示要在两方之间传输的声明。 JWT 是一种经过签名的无状态令牌，可以包含用户身份和权限。 它通常用于在无状态 API 中维护用户会话。
 
-:::caution
-[OWASP Top Security Concerns for Backend]
+:::caution[OWASP Top Security Concerns for Backend]
 - 通过参数化查询防止注入
  - 加密传输中的数据 (HTTPS) 和静态数据
  - 实施适当的访问控制
@@ -345,8 +330,7 @@ query GetUser($id: ID!) {
 
  DevOps 是一组结合了软件开发 (Dev) 和 IT 运营 (Ops) 的实践。 它旨在缩短系统开发生命周期并提供高质量软件的持续交付。
 
-:::note
-[DevOps Core Components]
+:::note[DevOps Core Components]
 - **版本控制：** Git 用于代码和配置管理。 
 - **容器化：** Docker 用于可移植、一致的环境。 
 - **编排：** Kubernetes 用于自动化容器管理。 
@@ -362,8 +346,7 @@ query GetUser($id: ID!) {
 
  用于构建测试工作的模型。
 
-:::tip
-[Testing Pyramid Structure]
+:::tip[Testing Pyramid Structure]
 - **单元测试（基础）：** 单独测试各个函数/类。 快速、便宜、大多数测试。 
 - **集成测试（中）：** 一起测试多个组件（例如，使用真实数据库）。 
 - **端到端测试（上）：** 测试完整的用户流程。 缓慢、脆弱，请谨慎使用。
@@ -371,8 +354,7 @@ query GetUser($id: ID!) {
 
 ### 8.2 测试最佳实践
 
-:::note
-[Additional Testing Strategies]
+:::note[Additional Testing Strategies]
 - **模拟/存根：** 替换外部依赖项以隔离测试中的代码。 
 - **合同测试：** 确保 API 消费者/提供者遵守共同理解。 
 - **性能/负载测试：** 使用 k6 或 JMeter 等工具来模拟高流量。

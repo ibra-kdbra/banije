@@ -13,8 +13,7 @@ originalSlug: "cmd_commands"
 
 ## 協會
 
-:::note
-[Purpose]
+:::note[Purpose]
 assoc 命令用於顯示或修改文件擴展名關聯。
 :::
 
@@ -24,8 +23,7 @@ assoc
 
 ## CHKDSK（檢查磁盤）
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 檢查磁盤是否有錯誤，並根據要求更正任何錯誤。
 :::
 
@@ -35,8 +33,7 @@ chkdsk C:
 
 ## 密碼
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 加密或解密 NTFS 分區上的文件/目錄。
 :::
 
@@ -46,8 +43,7 @@ cipher /E
 
 ## CLS
 
-:::note
-[Purpose]
+:::note[Purpose]
 清除屏幕上所有先前輸入的命令和其他文本。
 :::
 
@@ -57,8 +53,7 @@ cls
 
 ## 磁盤部分
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 管理硬盤分區。
 :::
 
@@ -68,8 +63,7 @@ diskpart
 
 ## 驅動程序查詢
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 顯示已安裝的設備驅動程序及其屬性的列表。
 :::
 
@@ -79,8 +73,7 @@ driverquery
 
 ## GPU更新
 
-:::note
-[Purpose]
+:::note[Purpose]
 更新組策略設置。
 :::
 
@@ -90,8 +83,7 @@ gpupdate /force
 
 ## IP配置
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 顯示所有網絡接口的 IP 配置。
 :::
 
@@ -101,8 +93,7 @@ ipconfig /all
 
 ## 網絡統計
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 顯示活動的 TCP 連接和各種網絡統計信息。
 :::
 
@@ -112,8 +103,7 @@ netstat -a
 
 ## 查詢
 
-:::note
-[Purpose]
+:::note[Purpose]
 查詢DNS，獲取域名或IP地址映射。
 :::
 
@@ -123,8 +113,7 @@ nslookup <www.example.com>
 
 ## 探路
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 提供中間躍點的網絡延遲和丟失信息。
 :::
 
@@ -134,8 +123,7 @@ pathping <www.example.com>
 
 ## 平
 
-:::note
-[Purpose]
+:::note[Purpose]
 測試源計算機到達指定目標計算機的能力。
 :::
 
@@ -145,8 +133,7 @@ ping <www.example.com>
 
 ## 電源CFG
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 控制電源設置和配置。
 :::
 
@@ -156,8 +143,7 @@ powercfg /hibernate on
 
 ## SFC（系統文件檢查器）
 
-:::note
-[Purpose]
+:::note[Purpose]
 掃描並修復重要的系統文件。
 :::
 
@@ -167,8 +153,7 @@ sfc /scannow
 
 ＃＃ 關閉
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 關閉、重新啟動或註銷計算機或遠程計算機。
 :::
 
@@ -178,8 +163,7 @@ shutdown /s /t 0
 
 ## 系統信息
 
-:::note
-[Purpose]
+:::note[Purpose]
 顯示有​​關計算機及其操作系統的詳細配置信息。
 :::
 
@@ -189,8 +173,7 @@ systeminfo
 
 ## 任務列表
 
-:::tip
-[Purpose]
+:::tip[Purpose]
 顯示正在運行的任務、服務和進程的列表。
 :::
 
@@ -200,8 +183,7 @@ tasklist
 
 ## 追踪器
 
-:::warning
-[Purpose]
+:::warning[Purpose]
 顯示數據包到達目的地所需的路由和躍點。
 :::
 
