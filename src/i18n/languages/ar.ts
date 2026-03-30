@@ -8,7 +8,8 @@ export const ar: Translation = {
   [Key.search]: "بحث",
 
   [Key.tags]: "الوسوم",
-  [Key.categories]: "الفئات",
+  [Key.categories]: "التصنيفات",
+
   [Key.recentPosts]: "المشاركات الأخيرة",
   [Key.series]: "السلاسل",
 
