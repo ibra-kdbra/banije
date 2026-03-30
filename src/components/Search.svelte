@@ -1,208 +1,241 @@
 <script lang="ts">
-import type { SearchResult } from "@/global";
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import Icon from "@iconify/svelte";
-import { url } from "@domain/url";
-import { onMount } from "svelte";
+  import type { SearchResult } from "@/global";
+  import I18nKey from "@i18n/i18nKey";
+  import { i18n } from "@i18n/translation";
+  import Icon from "@iconify/svelte";
+  import { url } from "@domain/url";
+  import { onMount } from "svelte";
 
-let keywordDesktop = "";
-let keywordMobile = "";
-let result: SearchResult[] = [];
-let isSearching = false;
-let pagefindLoaded = false;
-let initialized = false;
-let loadingPagefind = false;
+  let keywordDesktop = "";
+  let keywordMobile = "";
+  let result: SearchResult[] = [];
+  let isSearching = false;
+  let pagefindLoaded = false;
+  let initialized = false;
+  let loadingPagefind = false;
 
-const pagefindScriptUrl = url("/pagefind/pagefind.js");
+  const pagefindScriptUrl = url("/pagefind/pagefind.js");
 
-const fakeResult: SearchResult[] = [
-	{
-		url: url("/"),
-		meta: {
-			title: "This Is a Fake Search Result",
-		},
-		excerpt:
-			"Because the search cannot work in the <mark>dev</mark> environment.",
-	},
-	{
-		url: url("/"),
-		meta: {
-			title: "If You Want to Test the Search",
-		},
-		excerpt: "Try running <mark>npm build && npm preview</mark> instead.",
-	},
-];
+  const fakeResult: SearchResult[] = [
+    {
+      url: url("/"),
+      meta: {
+        title: "This Is a Fake Search Result",
+      },
+      excerpt:
+        "Because the search cannot work in the <mark>dev</mark> environment.",
+    },
+    {
+      url: url("/"),
+      meta: {
+        title: "If You Want to Test the Search",
+      },
+      excerpt: "Try running <mark>npm build && npm preview</mark> instead.",
+    },
+  ];
 
-const togglePanel = () => {
-	const panel = document.getElementById("search-panel");
-	panel?.classList.toggle("float-panel-closed");
-};
+  const togglePanel = () => {
+    const panel = document.getElementById("search-panel");
+    panel?.classList.toggle("float-panel-closed");
+  };
 
-const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
-	const panel = document.getElementById("search-panel");
-	if (!panel || !isDesktop) return;
+  const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
+    const panel = document.getElementById("search-panel");
+    if (!panel || !isDesktop) return;
 
-	if (show) {
-		panel.classList.remove("float-panel-closed");
-	} else {
-		panel.classList.add("float-panel-closed");
-	}
-};
+    if (show) {
+      panel.classList.remove("float-panel-closed");
+    } else {
+      panel.classList.add("float-panel-closed");
+    }
+  };
 
-const ensurePagefind = async (): Promise<void> => {
-	if (initialized || loadingPagefind) return;
+  const ensurePagefind = async (): Promise<void> => {
+    if (initialized || loadingPagefind) return;
 
-	if (import.meta.env.DEV) {
-		initialized = true;
-		return;
-	}
+    if (import.meta.env.DEV) {
+      initialized = true;
+      return;
+    }
 
-	loadingPagefind = true;
-	try {
-		const response = await fetch(pagefindScriptUrl, { method: "HEAD" });
-		if (!response.ok) {
-			throw new Error(`Pagefind script not found: ${response.status}`);
-		}
+    loadingPagefind = true;
+    try {
+      const response = await fetch(pagefindScriptUrl, { method: "HEAD" });
+      if (!response.ok) {
+        throw new Error(`Pagefind script not found: ${response.status}`);
+      }
 
-		const pagefind = await import(/* @vite-ignore */ pagefindScriptUrl);
-		await pagefind.options({ excerptLength: 20 });
-		window.pagefind = pagefind;
-		pagefindLoaded = true;
-	} catch (error) {
-		console.error("Failed to load Pagefind:", error);
-		window.pagefind = {
-			search: () => Promise.resolve({ results: [] }),
-		};
-		pagefindLoaded = false;
-	} finally {
-		initialized = true;
-		loadingPagefind = false;
-	}
-};
+      const pagefind = await import(/* @vite-ignore */ pagefindScriptUrl);
+      await pagefind.options({ excerptLength: 20 });
+      window.pagefind = pagefind;
+      pagefindLoaded = true;
+    } catch (error) {
+      console.error("Failed to load Pagefind:", error);
+      window.pagefind = {
+        search: () => Promise.resolve({ results: [] }),
+      };
+      pagefindLoaded = false;
+    } finally {
+      initialized = true;
+      loadingPagefind = false;
+    }
+  };
 
-const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
-	if (!keyword) {
-		setPanelVisibility(false, isDesktop);
-		result = [];
-		return;
-	}
+  const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
+    if (!keyword) {
+      setPanelVisibility(false, isDesktop);
+      result = [];
+      return;
+    }
 
-	if (!initialized) {
-		await ensurePagefind();
-		if (!initialized) return;
-	}
+    if (!initialized) {
+      await ensurePagefind();
+      if (!initialized) return;
+    }
 
-	isSearching = true;
+    isSearching = true;
 
-	try {
-		let searchResults: SearchResult[] = [];
+    try {
+      let searchResults: SearchResult[] = [];
 
-		if (import.meta.env.PROD && pagefindLoaded && window.pagefind) {
-			const response = await window.pagefind.search(keyword);
-			searchResults = await Promise.all(
-				response.results.map((item) => item.data()),
-			);
-		} else if (import.meta.env.DEV) {
-			searchResults = fakeResult;
-		} else {
-			searchResults = [];
-			console.error("Pagefind is not available in production environment.");
-		}
+      if (import.meta.env.PROD && pagefindLoaded && window.pagefind) {
+        const response = await window.pagefind.search(keyword);
+        searchResults = await Promise.all(
+          response.results.map((item) => item.data()),
+        );
+      } else if (import.meta.env.DEV) {
+        searchResults = fakeResult;
+      } else {
+        searchResults = [];
+        console.error("Pagefind is not available in production environment.");
+      }
 
-		result = searchResults;
-		setPanelVisibility(result.length > 0, isDesktop);
-	} catch (error) {
-		console.error("Search error:", error);
-		result = [];
-		setPanelVisibility(false, isDesktop);
-	} finally {
-		isSearching = false;
-	}
-};
+      result = searchResults;
+      setPanelVisibility(result.length > 0, isDesktop);
+    } catch (error) {
+      console.error("Search error:", error);
+      result = [];
+      setPanelVisibility(false, isDesktop);
+    } finally {
+      isSearching = false;
+    }
+  };
 
-onMount(() => {
-	if (import.meta.env.DEV) {
-		console.log(
-			"Pagefind is not available in development mode. Using mock data.",
-		);
-		initialized = true;
-	}
-});
+  onMount(() => {
+    if (import.meta.env.DEV) {
+      console.log(
+        "Pagefind is not available in development mode. Using mock data.",
+      );
+      initialized = true;
+    }
+  });
 
-const handleDesktopFocus = async () => {
-	await ensurePagefind();
-	if (keywordDesktop) search(keywordDesktop, true);
-};
+  const handleDesktopFocus = async () => {
+    await ensurePagefind();
+    if (keywordDesktop) search(keywordDesktop, true);
+  };
 
-const handleMobileInput = async () => {
-	await ensurePagefind();
-	if (keywordMobile) search(keywordMobile, false);
-};
+  const handleMobileInput = async () => {
+    await ensurePagefind();
+    if (keywordMobile) search(keywordMobile, false);
+  };
 
-$: if (initialized && keywordDesktop) {
-	(async () => {
-		await search(keywordDesktop, true);
-	})();
-}
+  $: if (initialized && keywordDesktop) {
+    (async () => {
+      await search(keywordDesktop, true);
+    })();
+  }
 
-$: if (initialized && keywordMobile) {
-	(async () => {
-		await search(keywordMobile, false);
-	})();
-}
+  $: if (initialized && keywordMobile) {
+    (async () => {
+      await search(keywordMobile, false);
+    })();
+  }
 </script>
 
 <!-- search bar for desktop view -->
-<div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg
+<div
+  id="search-bar"
+  class="hidden lg:flex transition-all items-center h-11 me-2 rounded-lg
       bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06]
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
-">
-    <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-	<input
-		placeholder="{i18n(I18nKey.search)}"
-		bind:value={keywordDesktop}
-		on:focus={handleDesktopFocus}
-           class="transition-all pl-10 text-sm bg-transparent outline-0
-         h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50"
-    >
+"
+>
+  <Icon
+    icon="material-symbols:search"
+    class="absolute text-[1.25rem] pointer-events-none ms-3 transition my-auto text-black/30 dark:text-white/30"
+  ></Icon>
+  <input
+    placeholder={i18n(I18nKey.search)}
+    bind:value={keywordDesktop}
+    on:focus={handleDesktopFocus}
+    dir="auto"
+    class="transition-all ps-10 text-sm bg-transparent outline-0
+         h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50 text-start"
+  />
 </div>
 
 <!-- toggle btn for phone/tablet view -->
-<button on:click={async () => { togglePanel(); await ensurePagefind(); }} aria-label="Search Panel" id="search-switch"
-        class="btn-plain scale-animation lg:!hidden rounded-lg w-11 h-11 active:scale-90">
-    <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
+<button
+  on:click={async () => {
+    togglePanel();
+    await ensurePagefind();
+  }}
+  aria-label="Search Panel"
+  id="search-switch"
+  class="btn-plain scale-animation lg:!hidden rounded-lg w-11 h-11 active:scale-90"
+>
+  <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
 </button>
 
 <!-- search panel -->
-<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
-top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
-
-    <!-- search bar inside panel for phone/tablet -->
-    <div id="search-bar-inside" class="flex relative lg:hidden transition-all items-center h-11 rounded-xl
+<div
+  id="search-panel"
+  class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
+top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2"
+>
+  <!-- search bar inside panel for phone/tablet -->
+  <div
+    id="search-bar-inside"
+    class="flex relative lg:hidden transition-all items-center h-11 rounded-xl
       bg-black/[0.04] hover:bg-black/[0.06] focus-within:bg-black/[0.06]
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
-  ">
-        <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-		 <input placeholder="Search" bind:value={keywordMobile} on:input={handleMobileInput}
-               class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
-               focus:w-60 text-black/50 dark:text-white/50"
-        >
-    </div>
+  "
+  >
+    <Icon
+      icon="material-symbols:search"
+      class="absolute text-[1.25rem] pointer-events-none ms-3 transition my-auto text-black/30 dark:text-white/30"
+    ></Icon>
+    <input
+      placeholder="Search"
+      bind:value={keywordMobile}
+      on:input={handleMobileInput}
+      dir="auto"
+      class="ps-10 absolute inset-0 text-sm bg-transparent outline-0
+               focus:w-60 text-black/50 dark:text-white/50 text-start"
+    />
+  </div>
 
-    <!-- search results -->
-    {#each result as item}
-        <a href={item.url}
-           class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
-       rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
-            <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
-                {item.meta.title}<Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
-            </div>
-            <div class="transition text-sm text-50">
-                {@html item.excerpt}
-            </div>
-        </a>
-    {/each}
+  <!-- search results -->
+  {#each result as item}
+    <a
+      href={item.url}
+      class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
+       rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]"
+    >
+      <div
+        class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]"
+      >
+        {item.meta.title}<Icon
+          icon="fa6-solid:chevron-right"
+          class="transition text-[0.75rem] translate-x-1 rtl:rotate-180 my-auto text-[var(--primary)]"
+        ></Icon>
+      </div>
+      <div class="transition text-sm text-50">
+        {@html item.excerpt}
+      </div>
+    </a>
+  {/each}
 </div>
 
 <style>

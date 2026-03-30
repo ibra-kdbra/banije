@@ -1,18 +1,21 @@
 ---
-import ArchivePanel from "../../components/ArchivePanel.astro";
+import ArchivePanel from "../../components/ArchivePanel.svelte";
 import I18nKey from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "../../utils/content-utils";
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from "../../constants/constants";
+import {
+  SUPPORTED_LANGUAGES,
+  DEFAULT_LANGUAGE,
+} from "../../constants/constants";
 
 export async function getStaticPaths() {
-    return SUPPORTED_LANGUAGES
-        .filter(lang => lang !== DEFAULT_LANGUAGE)
-        .map(lang => ({
-            params: { lang },
-            props: { lang }
-        }));
+  return SUPPORTED_LANGUAGES.filter((lang) => lang !== DEFAULT_LANGUAGE).map(
+    (lang) => ({
+      params: { lang },
+      props: { lang },
+    }),
+  );
 }
 
 const { lang } = Astro.props;
@@ -20,5 +23,5 @@ const sortedPosts = await getSortedPosts(lang);
 ---
 
 <MainGridLayout title={i18n(I18nKey.archive, lang)} lang={lang}>
-    <ArchivePanel sortedPosts={sortedPosts} lang={lang}></ArchivePanel>
+  <ArchivePanel sortedPosts={sortedPosts} client:only="svelte" />
 </MainGridLayout>
