@@ -6,7 +6,7 @@ published: 2026-02-12
 description: AI 인프라 금융, 순환적 자본 루프, 그리고 현재의 리스크 신호와 2008년 신용 시대의 비교 분석.
 image: '/images/posts/gravity_well.webp'
 tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
-category: AI and Economy
+category: Financial Market
 draft: false
 ---
 

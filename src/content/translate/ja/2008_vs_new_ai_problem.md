@@ -6,7 +6,7 @@ published: 2026-02-12
 description: AIインフラストラクチャの資金調達、循環する資本ループ、そして現在のリスクシグナルが2008年の信用時代とどのように比較されるかを統合的に分析します。
 image: '/images/posts/gravity_well.webp'
 tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
-category: AI and Economy
+category: Financial Market
 draft: false
 ---
 

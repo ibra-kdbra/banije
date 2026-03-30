@@ -6,7 +6,7 @@ published: 2026-02-12
 description: AI 基礎設施融資、循環資本鏈條的綜合分析，以及當前風險訊號與 2008 年信貸時代的比較。
 image: '/images/posts/gravity_well.webp'
 tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
-category: AI and Economy
+category: Financial Market
 draft: false
 ---
 
