@@ -22,7 +22,7 @@ C++, hem yordamsal (procedural) hem de nesne yönelimli programlamaya olanak tan
 - **Düşük Seviyeli Bellek Yönetimi**: C++, işaretçiler (pointers) ve dinamik bellek tahsisi ile belleği doğrudan yönetmenize olanak sağlar.
 - **Çoklu Paradigma**: C++, hem nesne yönelimli hem de yordamsal programlamayı destekleyerek kodlama tarzlarında esneklik sunar.
 
-:::note [Not]
+:::note[Not]
 C++, oyun motorları, işletim sistemleri ve gerçek zamanlı sistemler gibi performansın kritik bir faktör olduğu alanlarda oldukça değerlidir.
 :::
 
@@ -32,7 +32,7 @@ C++, oyun motorları, işletim sistemleri ve gerçek zamanlı sistemler gibi per
 
 C++, performansıyla bilinir. Yerel (native) makine koduna derlenir, bu da geliştiricilerin oldukça optimize edilmiş kodlar yazmasına olanak tanır. Bu durum, onu video oyunları ve gerçek zamanlı uygulamalar gibi yüksek performans gerektiren sistemler için tercih edilen dil haline getirir.
 
-:::tip [İpucu]
+:::tip[İpucu]
 C++'ın donanıma yakın çalışabilme yeteneği ve sistem kaynakları üzerindeki kontrolü, onu performans odaklı uygulamalar için ideal kılar.
 :::
 
@@ -48,7 +48,7 @@ C++, veri yapıları (vektörler, listeler ve haritalar gibi) ve algoritmalar (s
 
 En eski ve en popüler dillerden biri olan C++, geniş bir geliştirici topluluğuna sahiptir. İster yeni başlayan ister uzman olun, kütüphaneler, eğitimler ve destek bulmayı kolaylaştırır.
 
-:::important [Önemli]
+:::important[Önemli]
 C++, sayısız çerçeve ve kütüphanesiyle diğer teknolojilerle kolayca entegre olabilen geniş bir ekosisteme sahiptir.
 :::
 
@@ -62,7 +62,7 @@ C++, Windows, Linux ve macOS dahil olmak üzere tüm büyük işletim sistemleri
 
 C++, özellikle yeni başlayanlar için öğrenmesi zor olabilir. Söz dizimi karmaşıktır ve dil; işaretçiler, bellek yönetimi ve şablon metaprogramlama gibi programlama kavramlarının derinlemesine anlaşılmasını gerektiren birçok özellik sunar.
 
-:::warning [Uyarı]
+:::warning[Uyarı]
 Yeni başlayanlar, söz dizimi karmaşıklığı ve manuel bellek yönetimi gerekliliği nedeniyle C++'ı zor bulabilirler.
 :::
 
@@ -78,7 +78,7 @@ C++, Java veya Python gibi dillerdeki gibi otomatik çöp toplama (garbage colle
 
 C++ kodu, daha modern dillere kıyasla daha yoğun (verbose) olabilir ve okunması daha zor olabilir. Şablonlar ve çoklu kalıtım gibi karmaşık özellikler, kodun anlaşılmasını ve bakımını zorlaştırabilir.
 
-:::caution [Dikkat]
+:::caution[Dikkat]
 Karmaşık C++ özelliklerinin aşırı kullanımı, kodun hatalarının ayıklanmasını ve bakımını zorlaştırabilir.
 :::
 
@@ -90,7 +90,7 @@ Karmaşıklığı nedeniyle C++ programları, özellikle büyük projelerde daha
 
 C++, bugün mevcut olan en güçlü ve çok yönlü programlama dillerinden biri olmaya devam etmektedir. Oyun geliştirmeden sistem programlamaya kadar çeşitli endüstrilerde yaygın olarak kullanılır. Ancak, zorlu öğrenme eğrisi ve manuel bellek yönetimi, bir proje için seçilmeden önce dikkatlice düşünülmesini gerektirir.
 
-:::tip [İpucu]
+:::tip[İpucu]
 Dezavantajlarına rağmen C++, benzersiz performansı ve sistem kaynakları üzerindeki kontrolü sayesinde birçok teknik alanda kritik bir dil olmaya devam etmektedir.
 :::
 
