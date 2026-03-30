@@ -2,10 +2,10 @@
 title: "건축가의 AI 스택: 2025 Singularity Edition"
 published: 2025-12-31
 description: "LLM 이후 시대를 위한 책 한 권 분량의 최종 기술 선언문입니다. 통합 에이전트 아키텍처, 영구 메모리 계층 및 모델 컨텍스트 프로토콜에 대한 100,000피트 뷰입니다."
-image: '/images/posts/architect-ai.png'
+image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
 category: Engineering
-draft: false 
+draft: false
 lang: "ko"
 originalSlug: "ai-tools"
 series:

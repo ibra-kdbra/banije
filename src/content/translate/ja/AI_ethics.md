@@ -33,7 +33,7 @@ AIシステムがより高性能で自律的になるにつれて、**公平性*
 
 これらの柱は、**信頼できるAI**の基盤を形成します。
 
-![AI倫理の柱](/images/posts/five_pillars.png)
+![AI倫理の柱](/images/posts/five_pillars.webp)
 
 ### 1. 公平性と非差別
 

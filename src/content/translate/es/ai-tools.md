@@ -2,10 +2,10 @@
 title: "Pila de IA del arquitecto: la edición de singularidad 2025"
 published: 2025-12-31
 description: "El manifiesto técnico definitivo, que ocupa una extensión de libro, para la era posterior al LLM. Una vista de 100.000 pies de las arquitecturas agentes unificadas, las capas de memoria persistente y el protocolo de contexto del modelo."
-image: '/images/posts/architect-ai.png'
+image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
 category: Engineering
-draft: false 
+draft: false
 lang: "es"
 originalSlug: "ai-tools"
 series:
