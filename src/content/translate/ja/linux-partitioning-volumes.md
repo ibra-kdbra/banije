@@ -94,8 +94,7 @@ originalSlug: "linux-partitioning-volumes"
 
  EXT4 は、その安定性と機能の成熟度により、ほとんどの Linux ディストリビューションのデフォルトのままです。
 
-:::tip
-[EXT4 の特徴]
+:::tip[EXT4 の特徴]
 
 - **パフォーマンス メトリクス**: 以前のバージョンと比べて最大 8 倍高速な書き込み。 大きなファイルの操作に優れています (ベンチマーク: NVMe でシーケンシャル読み取り 1.2GB/秒、書き込み 950MB/秒)。
 - **長所**: 堅牢なジャーナリング、断片化を軽減するためのエクステント、オンライン最適化。
@@ -108,8 +107,7 @@ originalSlug: "linux-partitioning-volumes"
 
  Btrfs は、高度なコピーオンライトおよびスナップショット機能を備えた次世代ファイルシステムとしての地位を確立しています。
 
-:::note
-[Btrfs の拡張機能]
+:::note[Btrfs の拡張機能]
 
 - **高度な機能**: 内蔵 RAID、サブボリューム、および圧縮サブボリュームにより、スペースが 20 ～ 50% 削減されます。
 - **パフォーマンスのトレードオフ**: SATA SSD は、COW オーバーヘッドによりランダム I/O が 15% 遅くなります。
@@ -331,8 +329,7 @@ originalSlug: "linux-partitioning-volumes"
 
 #### 6.3.1 RAID レベルの分析
 
-:::tip
-[RAID パフォーマンス マトリックス]
+:::tip[RAID パフォーマンス マトリックス]
 
 | Level | Redundancy | Read Performance | Write Performance | Capacity Cost | Ideal Use Case |
 |-------|------------|------------------|-------------------|---------------|----------------|

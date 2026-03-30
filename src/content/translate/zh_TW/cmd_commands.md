@@ -1,215 +1,233 @@
 ---
-title: "Windows 命令提示符 (CMD) 命令"
+originalSlug: "cmd_commands"
+lang: "zh_TW"
+title: Windows 命令提示字元 (CMD) 指令
 published: 2023-11-02
-description: "Windows 基本 CMD 命令列表。"
+description: 'Windows 的基本 CMD 指令列表。'
 image: ''
 tags: [Windows, CMD, Commands, Productivity]
 category: Guide
 draft: false
-lang: "zh_TW"
-originalSlug: "cmd_commands"
-
 ---
 
-## 協會
+## ASSOC
 
-:::note
-[Purpose]
-assoc 命令用於顯示或修改文件擴展名關聯。
+:::note[用途]
+`assoc` 指令用於顯示或修改檔案副檔名關聯。
 :::
 
 ```sh
 assoc
 ```
 
-## CHKDSK（檢查磁盤）
+此指令將顯示目前的檔案關聯。
 
-:::tip
-[Purpose]
-檢查磁盤是否有錯誤，並根據要求更正任何錯誤。
+## CHKDSK (檢查磁碟)
+
+:::tip[用途]
+檢查磁碟是否有錯誤，並在要求時修正任何錯誤。
 :::
 
 ```sh
 chkdsk C:
 ```
 
-## 密碼
+此指令將檢查磁碟 C: 的錯誤。
 
-:::warning
-[Purpose]
-加密或解密 NTFS 分區上的文件/目錄。
+## CIPHER
+
+:::warning[用途]
+在 NTFS 分割區上加密或解密檔案/目錄。
 :::
 
 ```sh
 cipher /E
 ```
 
+此指令將加密指定的目錄。
+
 ## CLS
 
-:::note
-[Purpose]
-清除屏幕上所有先前輸入的命令和其他文本。
+:::note[用途]
+清除螢幕上所有先前輸入的指令和其他文字。
 :::
 
 ```sh
 cls
 ```
 
-## 磁盤部分
+此指令將清除命令提示字元螢幕。
 
-:::tip
-[Purpose]
-管理硬盤分區。
+## DISKPART
+
+:::tip[用途]
+管理硬碟分割區。
 :::
 
 ```sh
 diskpart
 ```
 
-## 驅動程序查詢
+此指令將啟動 DiskPart 命令直譯器。
 
-:::warning
-[Purpose]
-顯示已安裝的設備驅動程序及其屬性的列表。
+## DRIVERQUERY
+
+:::warning[用途]
+顯示已安裝裝置驅動程式及其屬性的列表。
 :::
 
 ```sh
 driverquery
 ```
 
-## GPU更新
+此指令將顯示所有已安裝裝置驅動程式的列表。
 
-:::note
-[Purpose]
-更新組策略設置。
+## GPUPDATE
+
+:::note[用途]
+更新群組原則設定。
 :::
 
 ```sh
 gpupdate /force
 ```
 
-## IP配置
+此指令將強制立即更新群組原則設定。
 
-:::tip
-[Purpose]
-顯示所有網絡接口的 IP 配置。
+## IPCONFIG
+
+:::tip[用途]
+顯示所有網路介面的 IP 設定。
 :::
 
 ```sh
 ipconfig /all
 ```
 
-## 網絡統計
+此指令將顯示所有網路介面的詳細 IP 設定資料。
 
-:::warning
-[Purpose]
-顯示活動的 TCP 連接和各種網絡統計信息。
+## NETSTAT
+
+:::warning[用途]
+顯示作用中的 TCP 連線及各種網路統計資料。
 :::
 
 ```sh
 netstat -a
 ```
 
-## 查詢
+此指令將顯示所有作用中的 TCP 連線，以及電腦正在監聽的 TCP 和 UDP 連接埠。
 
-:::note
-[Purpose]
-查詢DNS，獲取域名或IP地址映射。
+## NSLOOKUP
+
+:::note[用途]
+查詢 DNS 以取得網域名稱或 IP 位址對應。
 :::
 
 ```sh
 nslookup <www.example.com>
 ```
 
-## 探路
+此指令將傳回 <www.example.com> 的 IP 位址。
 
-:::tip
-[Purpose]
-提供中間躍點的網絡延遲和丟失信息。
+## PATHPING
+
+:::tip[用途]
+提供中間節點的網路延遲和封包遺失資訊。
 :::
 
 ```sh
 pathping <www.example.com>
 ```
 
-## 平
+此指令將提供到達 <www.example.com> 的每個網路節點的延遲和遺失資訊。
 
-:::note
-[Purpose]
-測試源計算機到達指定目標計算機的能力。
+## PING
+
+:::note[用途]
+測試來源電腦是否能到達指定目的電腦的能力。
 :::
 
 ```sh
 ping <www.example.com>
 ```
 
-## 電源CFG
+此指令將向 <www.example.com> 傳送網路請求並等待回應。
 
-:::warning
-[Purpose]
-控制電源設置和配置。
+## POWERCFG
+
+:::warning[用途]
+控制電源設定和組態。
 :::
 
 ```sh
 powercfg /hibernate on
 ```
 
-## SFC（系統文件檢查器）
+此指令將啟用休眠功能。
 
-:::note
-[Purpose]
-掃描並修復重要的系統文件。
+## SFC (系統檔案檢查程式)
+
+:::note[用途]
+掃描並修復重要的系統檔案。
 :::
 
 ```sh
 sfc /scannow
 ```
 
-＃＃ 關閉
+此指令將立即掃描所有受保護的系統檔案。
 
-:::tip
-[Purpose]
-關閉、重新啟動或註銷計算機或遠程計算機。
+## SHUTDOWN
+
+:::tip[用途]
+關閉、重新啟動或登出電腦或遠端電腦。
 :::
 
 ```sh
 shutdown /s /t 0
 ```
 
-## 系統信息
+此指令將立即關閉您的電腦。
 
-:::note
-[Purpose]
-顯示有​​關計算機及其操作系統的詳細配置信息。
+## SYSTEMINFO
+
+:::note[用途]
+顯示電腦及其作業系統的詳細組態資訊。
 :::
 
 ```sh
 systeminfo
 ```
 
-## 任務列表
+此指令將顯示詳細的系統資訊。
 
-:::tip
-[Purpose]
-顯示正在運行的任務、服務和進程的列表。
+## TASKLIST
+
+:::tip[用途]
+顯示正在執行的任務、服務和處理序的列表。
 :::
 
 ```sh
 tasklist
 ```
 
-## 追踪器
+此指令將顯示目前正在執行的任務列表。
 
-:::warning
-[Purpose]
-顯示數據包到達目的地所需的路由和躍點。
+## TRACERT
+
+:::warning[用途]
+顯示封包到達目的地所經過的路由和節點。
 :::
 
 ```sh
 tracert <www.example.com>
 ```
 
-## 提供所有命令的指南
+此指令將顯示封包到達 <www.example.com> 所經過的路由。
+
+## 提供的所有指令指南
 
 :::important
-:::我確實添加了在此已知的所有 CMD 命令[TerCli](https://tercli.netlify.app/)
+我在 [TerCli](https://tercli.netlify.app/) 中加入了所有已知的 CMD 指令。
+:::

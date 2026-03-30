@@ -284,4 +284,3 @@ Platformlar arası masaüstü ve mobil uygulamalar oluşturun.
 :::
 
 **Neden Kullanmalı**: Hafif, güvenli uygulamaların geliştirilmesine olanak tanıyan açık kaynaklı bir çerçeve.
-::contentReference[oaicite:3]{index=3}

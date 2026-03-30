@@ -1,126 +1,168 @@
 ---
-title: "Linux 上的閃存驅動器設置和恢復"
-published: 2024-11-18
-description: "在 Linux 上檢查、恢復和格式化閃存驅動器的分步指南。"
-image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
-draft: false
-lang: "zh_TW"
 originalSlug: "flash_drive_setup"
+lang: "zh_TW"
+title: Linux 下的隨身碟設定與救援
+published: 2024-11-18
+description: '檢查、救援和格式化 Linux 隨身碟的逐步指南。'
+image: ''
+tags: [Linux, 隨身碟, 救援, 指南]
+category: 教學
+draft: false
+---
+
+
+本文提供一份逐步指南，介紹如何在 Linux 環境下檢查、救援和格式化隨身碟。
 
 ---
 
-本文檔提供了在 Linux 上檢查、恢復和格式化閃存驅動器的分步指南。 
+## 步驟 1：驗證磁碟資訊
 
----
+列出所有已連接的磁碟，以識別正確的裝置：
 
-## **第 1 步：驗證磁盤信息**
-
-列出所有連接的驅動器以識別正確的設備：
 ```bash
 sudo fdisk -l
 ```
-- **輸出**將有助於確認閃存驅動器的實際容量（例如，`/dev/sdb`）。 
+
+- 此指令會列出所有磁碟分割區，以及磁碟大小、磁區大小和分割區佈局等詳細資訊。
+- **輸出**結果將有助於確認隨身碟的實際容量（例如：`/dev/sdb`）。
 
 ---
 
-## **第 2 步：檢查錯誤**
+## 步驟 2：檢查錯誤
 
-安裝與使用`smartctl`執行健康檢查：
+安裝並使用 `smartctl` 來執行健康檢查：
 
-1. 安裝`smartmontools`包裹：
-```bash
+1. 安裝 `smartmontools` 套件：
+
+   ```bash
    sudo pacman -S smartmontools
-```
+   ```
 
-```bash
+2. 取得詳細的裝置資訊：
+
+   ```bash
    sudo smartctl -i /dev/sdb
-```
+   ```
 
-```bash
+3. 執行非破壞性的健康測試（如果支援）：
+
+   ```bash
    sudo smartctl -t long /dev/sdb
-```
+   ```
+
+- **注意**：如果測試失敗並出現「unsupported SCSI opcode」等錯誤，表示該裝置可能不支援 SMART 功能。
 
 ---
 
-## **步驟 3：擦除磁盤**
+## 步驟 3：清除磁碟
 
-刪除所有數據，包括分區表：
+若要清除所有資料，包括分割區表：
+
 ```bash
-sudo dd i f=/dev/zero o f=/dev/sdb b s=1M coun t=10
+sudo dd if=/dev/zero of=/dev/sdb bs=1M count=10
 ```
--`i f=/dev/zero`：輸入文件是`/dev/zero`（產生清零字節）。 
--`o f=/dev/sdb`：輸出文件是閃存驅動器。 
--`b s=1M`：塊大小為 1MB。 
--`coun t=10`：寫入10個塊（10MB）。 
+
+- **說明**：
+  - `if=/dev/zero`：輸入檔為 `/dev/zero`（產生零位元組）。
+  - `of=/dev/sdb`：輸出檔為隨身碟。
+  - `bs=1M`：區塊大小為 1MB。
+  - `count=10`：寫入 10 個區塊（共 10MB）。
 
 ---
 
-## **步驟 4：創建新分區表**
+## 步驟 4：建立新的分割區表
 
-發射`fdisk`創建新的分區佈局：
+啟動 `fdisk` 來建立新的分割區佈局：
+
 ```bash
 sudo fdisk /dev/sdb
 ```
-1、創建新的分區表（MBR）：
-```bash
-     o
-```
 
-```bash
+- **`fdisk` 中的指令**：
+  1. 建立新的分割區表（MBR）：
+
+     ```bash
+     o
+     ```
+
+  2. 建立主要分割區：
+
+     ```bash
      n
-```
-4. 將更改寫入磁盤：
-```bash
+     ```
+
+  3. 將變更寫入磁碟：
+
+     ```bash
      w
-```
+     ```
+
+驗證分割區表：
 
 ```bash
 sudo fdisk -l /dev/sdb
 ```
 
-## **第五步：格式化分區**
+---
 
-使用所需的文件系統格式化新創建的分區：
+## 步驟 5：格式化分割區
 
-- 對於僅 Linux 系統 (ext4)：
-```bash
+使用您想要的檔案系統格式化新建立的分割區：
+
+- 僅限 Linux 系統（ext4）：
+
+  ```bash
   sudo mkfs.ext4 /dev/sdb1
-```
+  ```
 
-```bash
+- 跨平台相容（FAT32）：
+
+  ```bash
   sudo mkfs.vfat -F 32 /dev/sdb1
-```
+  ```
 
-## **第6步：掛載分區**
+---
 
-1.創建掛載點：
-```bash
+## 步驟 6：掛載分割區**
+
+1. 建立掛載點：
+
+   ```bash
    sudo mkdir /mnt/flashdrive
-```
+   ```
 
-```bash
+2. 掛載分割區：
+
+   ```bash
    sudo mount /dev/sdb1 /mnt/flashdrive
-```
+   ```
 
-```bash
+3. 驗證掛載：
+
+   ```bash
    df -h
-```
+   ```
 
-## **可選：測試閃存驅動器是否偽造**
+---
 
-如果驅動器顯示的容量不正確，請使用`f3`驗證其真實尺寸：
+## 選用：測試隨身碟是否仿冒
 
-1. 安裝`f3`:
-```bash
+如果隨身碟顯示的容量不正確，請使用 `f3` 來驗證其真實大小：
+
+1. 安裝 `f3`：
+
+   ```bash
    sudo pacman -S f3
-```
+   ```
 
-```bash
+2. 測試隨身碟：
+
+   ```bash
    sudo f3probe --destructive --time-ops /dev/sdb
-```
+   ```
 
-## **結論**
+---
 
-通過執行以下步驟，您可以恢復和設置閃存驅動器，確保恢復其容量和功能。 為了實現額外的自動化，您可以將分區添加到`/etc/fstab`用於持久安裝。
+## 結論
+
+遵循以上步驟，您可以修復並設定隨身碟，確保其容量和功能恢復正常。為了進一步自動化，您可以將分割區加入 `/etc/fstab` 以實現永久掛載。

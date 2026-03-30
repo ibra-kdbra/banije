@@ -1,19 +1,18 @@
 ---
-title: "Web 開發工具回顧"
+originalSlug: "developerTools"
+lang: "zh_TW"
+title: Web 開發工具評測
 published: 2024-01-08
-description: "探索瀏覽器擴展、簡化 Web 開發的工具（從前端到後端工具）。"
+description: '探索各式瀏覽器擴充功能與開發工具，助您簡化從前端到後端的網頁開發流程。'
 image: ''
 tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
 category: Guide
-draft: false 
-lang: "zh_TW"
-originalSlug: "developerTools"
-
+draft: false
 ---
 
 ## 🛠️ Web 開發工具
 
-作為一名 Web 應用工程師，我不斷尋找能夠提高我的技能和生產力的工具。 以下是基本工具的更新列表，其中包含 2024 年和 2025 年的最新進展。
+身為一名網頁應用程式工程師，我持續尋找能提升技能與生產力的工具。以下是一份經過更新的必備工具清單，其中整合了 2024 年與 2025 年的最新進展。
 
 ---
 
@@ -21,203 +20,225 @@ originalSlug: "developerTools"
 
 ### 🛠️ Wappalyzer
 
-:::important
-[Purpose]
-識別網站上使用的技術。
-:::**為什麼使用它**：幫助識別 Web 服務器、CMS、框架等。 它非常適合從其他網站學習並發現可能適合您自己的項目的技術。 
+:::important[用途]
+識別網站所使用的技術。
+:::
+
+**使用原因**：有助於識別網頁伺服器、CMS、框架等資訊。非常適合用來學習其他網站的架構，並探索適合自己專案的技術。
 
 ---
 
-### 🎨 手寫筆
+### 🎨 Stylus
 
-:::important
-[Purpose]
-自定義網站外觀。
-:::**為什麼使用它**：在任何網站上自定義 CSS 樣式。 對於試驗設計和修復字體大小或配色方案等佈局問題很有用。 
+:::important[用途]
+自訂網站外觀。
+:::
 
----
-
-### 🧑‍💻 JSON 視圖
-
-:::important
-[Purpose]
-格式化並驗證 JSON 數據。
-:::**為什麼使用它**：幫助讀取和理解來自 API 的 JSON 數據。 整齊地格式化數據並幫助調試語法或邏輯錯誤。 
+**使用原因**：可自訂任何網站的 CSS 樣式。適合用於設計實驗，或修復字體大小、配色方案等版面配置問題。
 
 ---
 
-### 📜 HTML 驗證器
+### 🧑‍💻 JSON View
 
-:::important
-[Purpose]
-檢查 HTML 代碼是否有錯誤。
-:::**為什麼使用它**：確保 HTML 代碼有效並遵循標準。 有助於提高代碼質量和網站性能。 
+:::important[用途]
+格式化並驗證 JSON 資料。
+:::
+
+**使用原因**：協助閱讀並理解來自 API 的 JSON 資料。能將資料整理得井然有序，並協助除錯語法或邏輯錯誤。
 
 ---
 
-### 📏 測量一下
+### 📜 HTML Validator
 
-:::important
-[Purpose]
+:::important[用途]
+檢查 HTML 程式碼錯誤。
+:::
+
+**使用原因**：確保 HTML 程式碼有效且符合標準，有助於提升程式碼品質與網站效能。
+
+---
+
+### 📏 Measure-it
+
+:::important[用途]
 測量網頁上的元素。
-:::**為什麼使用它**：允許精確測量網站上的圖像、文本、按鈕和其他元素。 對於優化佈局和設計很有用。 
+:::
+
+**使用原因**：允許對網頁上的圖片、文字、按鈕及其他元素進行精確測量。對於優化版面與設計非常有幫助。
 
 ---
 
-### 🌐 REST 客戶端
+### 🌐 REST Client
 
-:::important
-[Purpose]
-測試和調試 API。
-:::**為什麼使用它**：允許您向任何 API 發送 HTTP 請求、查看響應並分析狀態代碼和數據，從而幫助進行 API 測試和調試。 
+:::important[用途]
+測試與除錯 API。
+:::
+
+**使用原因**：允許您發送 HTTP 請求至任何 API，查看回應內容並分析狀態碼與資料，協助進行 API 的測試與除錯。
 
 ---
 
 ### 🎨 ColorZilla
 
-:::important
-[Purpose]
-選擇並分析顏色。
-:::**為什麼使用它**：幫助為您的網站選擇顏色並分析其他網站的配色方案。 非常適合創建一致、有吸引力的設計。 
+:::important[用途]
+擷取與分析顏色。
+:::
+
+**使用原因**：協助為您的網站選擇配色，並分析其他網站的配色方案。對於建立一致且吸引人的設計非常有幫助。
 
 ---
 
-### 🧪 硒 IDE
+### 🧪 Selenium IDE
 
-:::important
-[Purpose]
-自動化網絡測試。
-:::**為什麼使用它**：在瀏覽器中記錄和回放自動化測試。 幫助確保您的網站正常運行並節省手動測試時間。 
+:::important[用途]
+自動化網頁測試。
+:::
 
----
-
-### 🛠️ 網頁開發人員
-
-:::important
-[Purpose]
-操縱和檢查網站。
-:::**為什麼使用它**：提供禁用 JavaScript、檢查 cookie、查看源代碼、驗證鏈接等功能，這些功能對於調試和增強網站都至關重要。 
+**使用原因**：在瀏覽器中錄製並回放自動化測試。有助於確保網站功能運作正常，並節省手動測試的時間。
 
 ---
 
-### 🔤WhatFont
+### 🛠️ Web Developer
 
-:::important
-[Purpose]
+:::important[用途]
+操作與檢查網站。
+:::
+
+**使用原因**：提供停用 JavaScript、檢查 Cookie、檢視原始碼、驗證連結等多項功能，這些對於網站除錯與優化至關重要。
+
+---
+
+### 🔤 WhatFont
+
+:::important[用途]
 識別網頁上的字體。
-:::**為什麼使用它**：快速識別網站上使用的字體並顯示字體屬性。 對於為您自己的項目選擇和應用正確的字體很有用。 
+:::
+
+**使用原因**：快速識別網站使用的字體並顯示字體屬性。適合用於為自己的專案選擇並套用合適的字體。
 
 ---
 
-### 🌍WhatRuns
+### 🌍 WhatRuns
 
-:::important
-[Purpose]
-發現網站使用的技術。
-:::**為什麼使用它**：識別任何網站上使用的插件、小部件、分析和框架。 幫助跟踪趨勢並發現改進您自己的項目的工具。 
+:::important[用途]
+探索網站使用的技術。
+:::
 
----
-
-## 適用於前端、後端和全棧開發人員的其他工具
+**使用原因**：識別任何網站所使用的外掛、小工具、分析工具與框架。有助於追蹤技術趨勢並發掘能提升您專案的工具。
 
 ---
 
-### 📱 React 開發者工具
-
-:::important
-[Purpose]
-調試 React 應用程序。
-:::**為什麼使用它**：對於調試 React 應用程序至關重要，允許您檢查組件層次結構、狀態和屬性，幫助優化用戶界面。 
+## 前端、後端與全端開發人員的額外工具
 
 ---
 
-### 🖥️ Redux 開發工具
+### 📱 React Developer Tools
 
-:::important
-[Purpose]
-調試 Redux 狀態更改。
-:::**為什麼使用它**：跟踪 Redux 支持的應用程序中的操作和狀態變化。 非常適合使用 React 和 Redux 的全棧開發人員。 
+:::important[用途]
+除錯 React 應用程式。
+:::
 
----
-
-### 🧑‍💻 Vue.js 開發工具
-
-:::important
-[Purpose]
-調試 Vue.js 應用程序。
-:::**為什麼使用它**：提供用於檢查 Vue 組件、Vuex 狀態等的工具，使其成為使用 Vue.js 的前端開發人員不可或缺的工具。 
+**使用原因**：開發 React 應用程式的必備工具，可檢查組件層級、狀態（State）與屬性（Props），有助於優化使用者介面。
 
 ---
 
-### 🐍 郵遞員
+### 🖥️ Redux DevTools
 
-:::important
-[Purpose]
-API開發和測試。
-:::**為什麼使用它**：可以輕鬆地向 API 發送請求、查看響應和測試 API 端點。 對於後端開發人員或使用 REST API 的任何人來說都是必不可少的。 
+:::important[用途]
+除錯 Redux 狀態變更。
+:::
+
+**使用原因**：追蹤 Redux 應用程式中的動作與狀態變化。對於使用 React 與 Redux 的全端開發人員非常實用。
 
 ---
 
-### 🖧 實時服務器
+### 🧑‍💻 Vue.js Devtools
 
-:::important
-[Purpose]
-啟動本地開發服務器。
-:::**為什麼使用它**：立即啟動本地服務器並進行實時重新加載，非常適合在前端開發期間需要快速反饋的全棧開發人員。 
+:::important[用途]
+除錯 Vue.js 應用程式。
+:::
+
+**使用原因**：提供檢查 Vue 組件、Vuex 狀態等功能，對於使用 Vue.js 的前端開發人員來說不可或缺。
+
+---
+
+### 🐍 Postman
+
+:::important[用途]
+API 開發與測試。
+:::
+
+**使用原因**：輕鬆發送 API 請求、檢視回應並測試 API 端點。對於後端開發人員或任何使用 REST API 的人來說是必備工具。
+
+---
+
+### 🖧 Live Server
+
+:::important[用途]
+啟動本地開發伺服器。
+:::
+
+**使用原因**：立即啟動具備即時重新載入功能的本地伺服器，非常適合需要即時回饋的前端與全端開發人員。
 
 ---
 
 ### 🌐 GitHub
 
-:::important
-[Purpose]
-增強 GitHub 工作流程。
-:::**為什麼使用它**：直接從瀏覽器提供通知、拉取請求和問題等功能，使協作和管理存儲庫變得更加容易。 
+:::important[用途]
+強化 GitHub 工作流程。
+:::
+
+**使用原因**：直接在瀏覽器中提供通知、Pull Request 與 Issue 管理功能，使協作與維護儲存庫變得更輕鬆。
 
 ---
 
 ### ⚙️ Gitpod
 
-:::important
-[Purpose]
-在雲中啟動開發環境。
-:::**為什麼使用它**：為全棧開發人員提供基於雲的 IDE，讓您可以輕鬆地從任何設備進行編碼並與 GitHub 存儲庫同步。 
+:::important[用途]
+在雲端啟動開發環境。
+:::
+
+**使用原因**：為全端開發人員提供基於雲端的 IDE，讓您能從任何裝置輕鬆編碼，並與 GitHub 儲存庫同步。
 
 ---
 
-### 📑 JSON 格式化程序
+### 📑 JSON Formatter
 
-:::important
-[Purpose]
-格式化和美化JSON數據。
-:::**為什麼使用它**：自動格式化 JSON 數據，使其更具可讀性且更易於調試。 對於使用 API 的後端開發人員特別有用。 
+:::important[用途]
+格式化與美化 JSON 資料。
+:::
 
----
-
-### 🖥️失眠
-
-:::important
-[Purpose]
-API設計和測試。
-:::**為什麼使用它**：用於測試 RESTful API 和 GraphQL 的強大工具。 它支持調試、請求和響應，並允許創建複雜的 API 工作流程。 它是使用 API 驅動的應用程序的開發人員的必備工具。 
+**使用原因**：自動格式化 JSON 資料，使其更易讀、更容易除錯。特別適合處理 API 的後端開發人員。
 
 ---
 
-＃＃＃ GitLab
+### 🖥️ Insomnia
 
-:::important
-[Purpose]
-在代碼存儲庫上進行協作。
-:::**為什麼使用它**：基於 Git 的版本控制的流行平台，允許開發人員管理項目、跟踪問題以及與團隊協作。 GitLab 非常適合開源和私有項目。 
+:::important[用途]
+API 設計與測試。
+:::
+
+**使用原因**：測試 RESTful API 與 GraphQL 的強大工具。它支援除錯、請求與回應，並允許建立複雜的 API 工作流程。對於從事 API 驅動型開發的工程師來說是必備品。
 
 ---
 
-### 🔧 代碼博格
+### 🌍 GitLab
 
-:::important
-[Purpose]
-Git 存儲庫託管。
-:::**為什麼使用它**：Codeberg 是 GitHub 的社區驅動替代品，提供了一個更加開源的平台來託管 Git 存儲庫。 對於想要替代主流服務的開發人員來說，這是一個不錯的選擇。 
+:::important[用途]
+共同開發程式碼儲存庫。
+:::
+
+**使用原因**：基於 Git 的熱門版本控制平台，讓開發人員能夠管理專案、追蹤 Issue 並與團隊協作。GitLab 非常適合開源與私人專案。
+
+---
+
+### 🔧 Codeberg
+
+:::important[用途]
+Git 儲存庫託管。
+:::
+
+**使用原因**：作為 GitHub 的社群驅動替代方案，Codeberg 提供了一個更專注於開源的平台來託管 Git 儲存庫。對於尋求主流服務替代方案的開發者來說是極佳選擇。
 
 ---
 
@@ -225,37 +246,40 @@ Git 存儲庫託管。
 
 ---
 
-### 🤖 OpenAI 響應 API
+### 🤖 OpenAI Responses API
 
-:::important
-[Purpose]
-開發先進的人工智能代理。
-:::**為什麼使用它**：使開發人員能夠構建能夠執行複雜任務而無需直接人工干預的人工智能代理，從而增強應用程序的自動化和效率。 :contentReference[oaicite:0]{索引=0}
+:::important[用途]
+開發進階 AI 代理。
+:::
 
----
-
-### 🛠️ IDX 項目
-
-:::important
-[Purpose]
-支持人工智能的基於瀏覽器的開發環境。
-:::**為什麼使用它**：由 Google 開發的在線 IDE，基於 Visual Studio Code，內置由 Gemini 提供支持的生成式 AI 助手，以及 iOS 和 Android 模擬器，簡化了開發流程。 :contentReference[oaicite:1]{inde x=1}
+**使用原因**：使開發人員能夠建構無需人工直接干預即可執行複雜任務的 AI 代理，進而提升應用程式的自動化程度與效率。 :contentReference[oaicite:0]{index=0}
 
 ---
 
-### 🌐OpenSilver 框架
+### 🛠️ Project IDX
 
-:::important
-[Purpose]
-使用 C# 和 XAML 開發豐富的 Internet 應用程序。
-:::**為什麼使用它**：作為 Microsoft Silverlight 後繼者的開源框架，允許開發人員利用 HTML5、CSS3 和 WebAssembly 等現代 Web 標準將現有 Silverlight 應用程序遷移到 Web，而無需重寫代碼庫。 :contentReference[oaicite:2]{inde x=2}
+:::important[用途]
+支援 AI 的瀏覽器端開發環境。
+:::
+
+**使用原因**：由 Google 開發的線上 IDE，以 Visual Studio Code 為基礎，內建由 Gemini 驅動的生成式 AI 助手，並包含 iOS 與 Android 模擬器，能大幅簡化開發流程。 :contentReference[oaicite:1]{index=1}
 
 ---
 
-### 🦀 金牛座
+### 🌐 OpenSilver Framework
 
-:::important
-[Purpose]
-創建跨平台桌面和移動應用程序。
-:::**為什麼使用它**：一個開源框架，支持輕量級、安全的開發
-::contentReference[oaicite:3]{inde x=3}
+:::important[用途]
+使用 C# 與 XAML 開發富網頁應用程式 (RIA)。
+:::
+
+**使用原因**：作為 Microsoft Silverlight 後繼者的開源框架，允許開發人員在不重寫程式碼庫的情況下，將現有的 Silverlight 應用程式遷移至網頁，並利用 HTML5、CSS3 與 WebAssembly 等現代網頁標準。 :contentReference[oaicite:2]{index=2}
+
+---
+
+### 🦀 Tauri
+
+:::important[用途]
+建立跨平台桌面與行動應用程式。
+:::
+
+**使用原因**：一個開源框架，能夠開發輕量級且安全的應用程式。

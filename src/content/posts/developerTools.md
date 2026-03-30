@@ -5,7 +5,7 @@ description: 'Discover browser extensions, tools that streamline web development
 image: ''
 tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
 category: Guide
-draft: false 
+draft: false
 ---
 
 ## 🛠️ Web Development Tools
@@ -281,4 +281,3 @@ Create cross-platform desktop and mobile applications.
 :::
 
 **Why Use It**: An open-source framework that enables the development of lightweight, secure
-::contentReference[oaicite:3]{index=3}

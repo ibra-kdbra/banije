@@ -31,33 +31,38 @@ As AI systems grow more capable and autonomous, concerns about **fairness**, **a
 
 These pillars form the foundation for **trustworthy AI**.
 
-![pillars-of-ai-ethics](/images/posts/five_pillars.png)
+![pillars-of-ai-ethics](/images/posts/five_pillars.webp)
 
 ### 1. Fairness & Non-Discrimination
+
 AI must assess based on relevant criteria, not race, gender, or location.
 
 - **Challenges**: Biased training data can lead to systemic discrimination.
 - **Solutions**: Use diverse datasets, bias-detection tools, and fairness-aware algorithms.
 
 ### 2. Transparency
+
 We must understand how AI reaches its conclusions.
 
 - **Challenges**: Complex models like deep neural networks operate as opaque "black boxes."
 - **Solutions**: Invest in **Explainable AI (XAI)**, visual decision trees, and factor attribution methods.
 
 ### 3. Data Protection
+
 Safeguard personal data from misuse.
 
 - **Challenges**: Risk of breaches, unauthorized use, or regulatory non-compliance.
 - **Solutions**: Clear consent policies, encrypted storage, and strict access control.
 
 ### 4. Explainability
+
 Goes beyond transparency: ensuring explanations are **meaningful to affected individuals**.
 
 - **Challenges**: Technical complexity can hinder non-expert understanding.
 - **Solutions**: Simplify outputs into human-readable narratives and decision breakdowns.
 
 ### 5. Human Autonomy & Control
+
 AI should **assist**, not replace, human decision-making.
 
 - **Challenges**: Over-reliance risks loss of oversight, especially in safety-critical domains.

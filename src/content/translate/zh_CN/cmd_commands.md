@@ -1,20 +1,18 @@
 ---
-title: "Windows 命令提示符 (CMD) 命令"
+originalSlug: "cmd_commands"
+lang: "zh_CN"
+title: Windows 命令提示符 (CMD) 指令
 published: 2023-11-02
-description: "Windows 基本 CMD 命令列表。"
+description: 'Windows 常用 CMD 指令列表。'
 image: ''
 tags: [Windows, CMD, Commands, Productivity]
 category: Guide
 draft: false
-lang: "zh_CN"
-originalSlug: "cmd_commands"
-
 ---
 
-## 协会
+## ASSOC
 
-:::note
-[Purpose]
+:::note[用途]
 assoc 命令用于显示或修改文件扩展名关联。
 :::
 
@@ -22,21 +20,23 @@ assoc 命令用于显示或修改文件扩展名关联。
 assoc
 ```
 
-## CHKDSK（检查磁盘）
+此命令将显示当前的文件关联。
 
-:::tip
-[Purpose]
-检查磁盘是否有错误，并根据要求更正任何错误。
+## CHKDSK (磁盘检查)
+
+:::tip[用途]
+检查磁盘错误，并在有要求时修复错误。
 :::
 
 ```sh
 chkdsk C:
 ```
 
-## 密码
+此命令将检查 C 盘是否存在错误。
 
-:::warning
-[Purpose]
+## CIPHER
+
+:::warning[用途]
 加密或解密 NTFS 分区上的文件/目录。
 :::
 
@@ -44,21 +44,23 @@ chkdsk C:
 cipher /E
 ```
 
+此命令将加密指定的目录。
+
 ## CLS
 
-:::note
-[Purpose]
-清除屏幕上所有先前输入的命令和其他文本。
+:::note[用途]
+清除屏幕上之前输入的所有命令及其他文本。
 :::
 
 ```sh
 cls
 ```
 
-## 磁盘部分
+此命令将清除命令提示符屏幕。
 
-:::tip
-[Purpose]
+## DISKPART
+
+:::tip[用途]
 管理硬盘分区。
 :::
 
@@ -66,21 +68,23 @@ cls
 diskpart
 ```
 
-## 驱动程序查询
+此命令将启动 DiskPart 命令解释器。
 
-:::warning
-[Purpose]
-显示已安装的设备驱动程序及其属性的列表。
+## DRIVERQUERY
+
+:::warning[用途]
+显示已安装设备驱动程序的列表及其属性。
 :::
 
 ```sh
 driverquery
 ```
 
-## GPU更新
+此命令将显示所有已安装设备驱动程序的列表。
 
-:::note
-[Purpose]
+## GPUPDATE
+
+:::note[用途]
 更新组策略设置。
 :::
 
@@ -88,10 +92,11 @@ driverquery
 gpupdate /force
 ```
 
-## IP配置
+此命令将强制立即更新组策略设置。
 
-:::tip
-[Purpose]
+## IPCONFIG
+
+:::tip[用途]
 显示所有网络接口的 IP 配置。
 :::
 
@@ -99,43 +104,47 @@ gpupdate /force
 ipconfig /all
 ```
 
-## 网络统计
+此命令将显示所有网络接口的详细 IP 配置数据。
 
-:::warning
-[Purpose]
-显示活动的 TCP 连接和各种网络统计信息。
+## NETSTAT
+
+:::warning[用途]
+显示活动的 TCP 连接及各种网络统计信息。
 :::
 
 ```sh
 netstat -a
 ```
 
-## 查询
+此命令将显示所有活动的 TCP 连接以及计算机正在监听的 TCP 和 UDP 端口。
 
-:::note
-[Purpose]
-查询DNS，获取域名或IP地址映射。
+## NSLOOKUP
+
+:::note[用途]
+查询 DNS 以获取域名或 IP 地址映射。
 :::
 
 ```sh
 nslookup <www.example.com>
 ```
 
-## 探路
+此命令将返回 <www.example.com> 的 IP 地址。
 
-:::tip
-[Purpose]
-提供中间跃点的网络延迟和丢失信息。
+## PATHPING
+
+:::tip[用途]
+提供中间节点的网络延迟和丢包信息。
 :::
 
 ```sh
 pathping <www.example.com>
 ```
 
-## 平
+此命令将提供到达 <www.example.com> 的每个网络节点的延迟和丢包信息。
 
-:::note
-[Purpose]
+## PING
+
+:::note[用途]
 测试源计算机到达指定目标计算机的能力。
 :::
 
@@ -143,10 +152,11 @@ pathping <www.example.com>
 ping <www.example.com>
 ```
 
-## 电源CFG
+此命令将向 <www.example.com> 发送网络请求并等待响应。
 
-:::warning
-[Purpose]
+## POWERCFG
+
+:::warning[用途]
 控制电源设置和配置。
 :::
 
@@ -154,10 +164,11 @@ ping <www.example.com>
 powercfg /hibernate on
 ```
 
-## SFC（系统文件检查器）
+此命令将启用休眠功能。
 
-:::note
-[Purpose]
+## SFC (系统文件检查器)
+
+:::note[用途]
 扫描并修复重要的系统文件。
 :::
 
@@ -165,21 +176,23 @@ powercfg /hibernate on
 sfc /scannow
 ```
 
-＃＃ 关闭
+此命令将立即扫描所有受保护的系统文件。
 
-:::tip
-[Purpose]
-关闭、重新启动或注销计算机或远程计算机。
+## SHUTDOWN
+
+:::tip[用途]
+关闭、重启或注销计算机（或远程计算机）。
 :::
 
 ```sh
 shutdown /s /t 0
 ```
 
-## 系统信息
+此命令将立即关闭您的计算机。
 
-:::note
-[Purpose]
+## SYSTEMINFO
+
+:::note[用途]
 显示有关计算机及其操作系统的详细配置信息。
 :::
 
@@ -187,29 +200,34 @@ shutdown /s /t 0
 systeminfo
 ```
 
-## 任务列表
+此命令将显示详细的系统信息。
 
-:::tip
-[Purpose]
-显示正在运行的任务、服务和进程的列表。
+## TASKLIST
+
+:::tip[用途]
+显示运行中的任务、服务和进程列表。
 :::
 
 ```sh
 tasklist
 ```
 
-## 追踪器
+此命令将显示当前运行的任务列表。
 
-:::warning
-[Purpose]
-显示数据包到达目的地所需的路由和跃点。
+## TRACERT
+
+:::warning[用途]
+显示数据包到达目的地所经过的路由和节点。
 :::
 
 ```sh
 tracert <www.example.com>
 ```
 
-## 提供所有命令的指南
+此命令将显示数据包到达 <www.example.com> 所经过的路由。
+
+## 所有命令的参考指南
 
 :::important
-:::我确实添加了在此已知的所有 CMD 命令[TerCli](https://tercli.netlify.app/)
+我添加了此 [TerCli](https://tercli.netlify.app/) 中已知的所有 CMD 命令。
+:::
