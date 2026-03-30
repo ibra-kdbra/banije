@@ -33,21 +33,24 @@ sudo fdisk -l
 
 1. `smartmontools` パッケージをインストールします。
 
-   ```bash
+```bash
    sudo pacman -S smartmontools
-   ```
+
+```
 
 2. デバイスの詳細情報を取得します。
 
-   ```bash
+```bash
    sudo smartctl -i /dev/sdb
-   ```
+
+```
 
 3. 非破壊ヘルステストを実行します（サポートされている場合）。
 
-   ```bash
+```bash
    sudo smartctl -t long /dev/sdb
-   ```
+
+```
 
 - **注**: 「unsupported SCSI opcode」などのエラーでテストが失敗する場合は、デバイスが SMART 機能をサポートしていない可能性があります。
 
@@ -80,21 +83,24 @@ sudo fdisk /dev/sdb
 
 1. 新しいパーティションテーブル (MBR) を作成します。
 
-   ```bash
+```bash
    o
-   ```
+
+```
 
 2. プライマリパーティションを作成します。
 
-   ```bash
+```bash
    n
-   ```
+
+```
 
 3. パーティション番号、開始セクター、終了セクターはデフォルトのままにして、ディスク全体を使用します。
 
-   ```bash
+```bash
    w
-   ```
+
+```
 
 パーティションテーブルを確認します。
 
@@ -108,15 +114,17 @@ sudo fdisk -l /dev/sdb
 
 - Linux のみのシステムの場合 (ext4):
 
-   ```bash
+```bash
    sudo mkfs.ext4 /dev/sdb1
-   ```
+
+```
 
 - クロスプラットフォーム互換性の場合 (FAT32):
 
-   ```bash
+```bash
    sudo mkfs.vfat -F 32 /dev/sdb1
-   ```
+
+```
 
 ---
 
@@ -124,21 +132,24 @@ sudo fdisk -l /dev/sdb
 
 1. マウントポイントを作成します。
 
-   ```bash
+```bash
    sudo mkdir /mnt/flashdrive
-   ```
+
+```
 
 2. パーティションをマウントします。
 
-   ```bash
+```bash
    sudo mount /dev/sdb1 /mnt/flashdrive
-   ```
+
+```
 
 3. マウントを確認します。
 
-   ```bash
+```bash
    df -h
-   ```
+
+```
 
 ---
 
@@ -148,15 +159,16 @@ sudo fdisk -l /dev/sdb
 
 1. `f3` をインストールします。
 
-   ```bash
+```bash
    sudo pacman -S f3
    ``
 
 2. ドライブをテストします。
 
-   ```bash
+```bash
    sudo f3probe --destructive --time-ops /dev/sdb
-   ```
+
+```
 
 ---
 
