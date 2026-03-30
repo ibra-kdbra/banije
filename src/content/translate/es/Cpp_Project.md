@@ -22,7 +22,7 @@ C++ es un lenguaje de programación de alto rendimiento y gran potencia que perm
 - **Manipulación de memoria de bajo nivel**: C++ permite gestionar la memoria directamente mediante punteros y asignación dinámica de memoria.
 - **Multiparadigma**: C++ admite tanto la programación orientada a objetos como la procedimental, ofreciendo flexibilidad en los estilos de codificación.
 
-:::note [Nota]
+:::note[Nota]
 C++ es muy valorado en campos donde el rendimiento es un factor crítico, como en motores de juegos, sistemas operativos y sistemas en tiempo real.
 :::
 
@@ -32,7 +32,7 @@ C++ es muy valorado en campos donde el rendimiento es un factor crítico, como e
 
 C++ es conocido por su rendimiento. Se compila a código máquina nativo, lo que permite a los desarrolladores escribir código altamente optimizado. Esto lo convierte en el lenguaje preferido para sistemas que requieren un alto rendimiento, como videojuegos y aplicaciones en tiempo real.
 
-:::tip [Consejo]
+:::tip[Consejo]
 La capacidad de C++ para trabajar cerca del hardware y su control sobre los recursos del sistema lo hacen ideal para aplicaciones que requieren un rendimiento intensivo.
 :::
 
@@ -48,7 +48,7 @@ C++ viene con una Biblioteca de Plantillas Estándar (STL, por sus siglas en ing
 
 Al ser uno de los lenguajes más antiguos y populares, C++ cuenta con una vasta comunidad de desarrolladores. Esto hace que sea fácil encontrar bibliotecas, tutoriales y soporte, ya seas principiante o experto.
 
-:::important [Importante]
+:::important[Importante]
 C++ tiene un gran ecosistema, con numerosos marcos de trabajo y bibliotecas, lo que facilita su integración con otras tecnologías.
 :::
 
@@ -62,7 +62,7 @@ C++ es compatible con todos los principales sistemas operativos, incluidos Windo
 
 C++ puede ser difícil de aprender, especialmente para principiantes. Su sintaxis es compleja y el lenguaje ofrece muchas características, como punteros, gestión de memoria y metaprogramación de plantillas, que requieren una comprensión profunda de los conceptos de programación.
 
-:::warning [Advertencia]
+:::warning[Advertencia]
 Los principiantes pueden encontrar difícil C++ debido a la complejidad de su sintaxis y a la necesidad de realizar una gestión manual de la memoria.
 :::
 
@@ -78,7 +78,7 @@ C++ no incluye recolección de basura automática como lenguajes de la talla de 
 
 El código de C++ puede ser verboso y más difícil de leer en comparación con lenguajes más modernos. Las características complejas, como las plantillas y la herencia múltiple, pueden hacer que el código sea más difícil de entender y mantener.
 
-:::caution [Precaución]
+:::caution[Precaución]
 El uso excesivo de características complejas de C++ puede dificultar la depuración y el mantenimiento del código.
 :::
 
@@ -90,7 +90,7 @@ Debido a su complejidad, los programas en C++ pueden tener tiempos de compilaci�
 
 C++ sigue siendo uno de los lenguajes de programación más potentes y versátiles disponibles hoy en día. Se utiliza ampliamente en diversas industrias, desde el desarrollo de juegos hasta la programación de sistemas. Sin embargo, su curva de aprendizaje pronunciada y la gestión manual de la memoria requieren una consideración cuidadosa antes de elegirlo para un proyecto.
 
-:::tip [Consejo]
+:::tip[Consejo]
 A pesar de sus inconvenientes, C++ sigue siendo un lenguaje fundamental en muchos campos técnicos debido a su rendimiento inigualable y su control sobre los recursos del sistema.
 :::
 
