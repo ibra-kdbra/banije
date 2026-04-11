@@ -96,19 +96,33 @@ async function translateWithAI(content, targetLangName, retryCount = 0) {
   const modelName = MODELS[currentActiveModelIndex];
   const model = genAI.getGenerativeModel({ model: modelName });
 
-  const prompt = `You are a professional technical translator and blog writer.
-Translate the following Markdown blog post into ${targetLangName}.
+  const prompt = `You are an expert technical linguist and senior software engineer.
+Translate the provided Markdown content into ${targetLangName}.
 
-STRICT RULES:
-1. **Frontmatter**: DO NOT translate keys. ONLY translate values for "title" and "description".
-2. **Code Blocks**: DO NOT translate any content inside triple backticks (\`\`\`) or single backticks (\`).
-3. **Markdown Syntax**: Preserve all structure. DO NOT translate URLs in links or image paths.
-4. **Admonitions/Callouts**: Keep \`:::type\`, only translate the Title inside \`[]\`.
-5. **Tone**: Professional technical tone.
-6. **Output**: Return ONLY the translated Markdown. No conversational text.
+### CORE MISSION:
+Produce a high-quality technical translation that feels native to a developer speaking ${targetLangName}. While this must work for any language, pay extreme attention to Bi-Directional (BiDi) formatting if the target is Arabic.
 
-Markdown Content to Translate:
+### TRANSLATION RULES:
+1. **Technical Tone**: Use a professional, modern "Tech-Stack" vocabulary.
+2. **Arabic-Specific Handling (If target is Arabic)**:
+   - **BiDi Integrity**: Ensure English technical terms or variable names within Arabic sentences are formatted to prevent text-flipping.
+   - **Terminology**: Use modern tech Arabic (e.g., use 'واجهة برمجة التطبيقات' for API or keep 'API' if it is the industry standard).
+   - **Punctuation**: Use Arabic-specific punctuation where appropriate (e.g., '،' instead of ',').
+3. **Markdown Preservation**:
+   - **Frontmatter**: Translate ONLY the values for 'title' and 'description'. Keep keys and date formats identical.
+   - **Code**: STRICTLY DO NOT translate \`inline code\` or \`\`\`code blocks\`\`\`. Never translate variable names or comments unless explicitly requested.
+   - **Non-Translatable**: Keep URLs, file paths, and image alt-text (if it serves as a functional ID) in their original form.
+4. **Component Syntax**:
+   - Keep \`:::type [Title]\` containers. Only translate the 'Title' inside the brackets.
+   - Maintain all HTML tags (\`<br>\`, \`<div>\`, etc.) exactly as they are.
+
+### OUTPUT REQUIREMENTS:
+- Return ONLY the raw translated Markdown.
+- No conversational filler ("Sure, here is...") or markdown code-block wrapping.
+- Ensure the Markdown structure (headers, lists, bolding) remains identical to the source.
+
 ---
+CONTENT TO TRANSLATE:
 ${content}`;
 
   try {
