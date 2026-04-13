@@ -6,7 +6,7 @@ published: 2022-09-20
 description: 'تعرّف على أوامر الطرفية الأساسية وطرق استخدامها.'
 tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
 category: Guide
-draft: false 
+draft: false
 ---
 
 
