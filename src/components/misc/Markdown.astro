@@ -63,3 +63,32 @@ const className = Astro.props.class;
     }
   });
 </script>
+
+<script>
+    import mermaid from 'mermaid'
+
+    const renderMermaid = async () => {
+        const mermaidElements = document.querySelectorAll(".mermaid");
+        if (mermaidElements.length > 0) {
+            const isDark = document.documentElement.classList.contains("dark");
+            mermaid.initialize({
+                startOnLoad: false,
+                theme: isDark ? "dark" : "default",
+            });
+            await mermaid.run();
+        }
+    };
+
+    renderMermaid();
+
+    // Re-render mermaid when swup replaces content
+    const setup = () => {
+        window.swup.hooks.on("page:view", renderMermaid);
+    };
+
+    if (window.swup) {
+        setup();
+    } else {
+        document.addEventListener("swup:enable", setup);
+    }
+</script>
