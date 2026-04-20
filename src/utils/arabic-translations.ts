@@ -80,7 +80,7 @@ export const arabicTagMap: Record<string, string> = {
 
 export const arabicCategoryMap: Record<string, string> = {
   "Financial Market": "السوق المالية",
-  "Artificial Intelligence": "الذكاء الاصطناعي",
+  "Artificial Intelligence": "الذكاء الصنعي",
   Engineering: "الهندسة",
   Guide: "دليل",
   Tutorial: "دروس تعليمية",
