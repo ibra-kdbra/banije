@@ -50,13 +50,26 @@
     }
   };
 
-  const ensurePagefind = async (): Promise<void> => {
-    if (initialized || loadingPagefind) return;
+  let pagefindLang = "";
 
+  const ensurePagefind = async (): Promise<void> => {
     if (import.meta.env.DEV) {
       initialized = true;
       return;
     }
+
+    const currentLang = (document.documentElement.lang || "en").toLowerCase();
+
+    // If pagefind was already loaded for a different language (e.g. Swup navigation),
+    // destroy and reinitialize so it picks up the new <html lang>.
+    if (initialized && pagefindLoaded && pagefindLang !== currentLang && window.pagefind?.destroy) {
+      await window.pagefind.destroy();
+      initialized = false;
+      pagefindLoaded = false;
+      loadingPagefind = false;
+    }
+
+    if (initialized || loadingPagefind) return;
 
     loadingPagefind = true;
     try {
@@ -66,9 +79,11 @@
       }
 
       const pagefind = await import(/* @vite-ignore */ pagefindScriptUrl);
+      await pagefind.init();
       await pagefind.options({ excerptLength: 20 });
       window.pagefind = pagefind;
       pagefindLoaded = true;
+      pagefindLang = currentLang;
     } catch (error) {
       console.error("Failed to load Pagefind:", error);
       window.pagefind = {
@@ -88,10 +103,9 @@
       return;
     }
 
-    if (!initialized) {
-      await ensurePagefind();
-      if (!initialized) return;
-    }
+    // Always call ensurePagefind — it handles language-change reinit internally
+    await ensurePagefind();
+    if (!initialized) return;
 
     isSearching = true;
 

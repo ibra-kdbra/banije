@@ -59,7 +59,9 @@ export function url(path: string, lang?: string) {
                     path.startsWith("/favicon/") || 
                     path.startsWith("favicon/") ||
                     path.startsWith("/assets/") ||
-                    path.startsWith("assets/");
+                    path.startsWith("assets/") ||
+                    path.startsWith("/pagefind/") ||
+                    path.startsWith("pagefind/");
 
 	const langPrefix =
 		!isAsset && currentLang && currentLang !== DEFAULT_LANGUAGE && SUPPORTED_LANGUAGES.includes(currentLang as any)

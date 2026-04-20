@@ -90,6 +90,10 @@ const bannerOffset =
     <script is:inline define:vars={{ lang }}>
       window.__lang = lang;
     </script>
+
+    <!-- Mermaid Support -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
     <title>{pageTitle}</title>
 
     <meta charset="UTF-8" />
@@ -306,6 +310,34 @@ const bannerOffset =
     setHue(getHue());
   }
 
+  function initMermaid() {
+    // @ts-ignore
+    const mermaidElements = document.querySelectorAll('code.language-mermaid');
+    if (mermaidElements.length === 0) return;
+
+    mermaidElements.forEach((el) => {
+      const pre = el.parentElement;
+      if (!pre) return;
+
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = el.textContent;
+
+      pre.replaceWith(div);
+    });
+
+    // @ts-ignore
+    if (window.mermaid) {
+      // @ts-ignore
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+      });
+      // @ts-ignore
+      window.mermaid.init();
+    }
+  }
+
   function initCustomScrollbar() {
     const bodyElement = document.querySelector("body");
     if (!bodyElement) return;
@@ -389,9 +421,15 @@ const bannerOffset =
     loadTheme();
     loadHue();
     if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(() => initCustomScrollbar());
+      window.requestIdleCallback(() => {
+          initCustomScrollbar();
+          initMermaid();
+      });
     } else {
-      setTimeout(() => initCustomScrollbar(), 0);
+      setTimeout(() => {
+          initCustomScrollbar();
+          initMermaid();
+      }, 0);
     }
     showBanner();
   }
@@ -417,7 +455,10 @@ const bannerOffset =
         navbar.classList.add("navbar-hidden");
       }
     });
-    window.swup.hooks.on("content:replace", initCustomScrollbar);
+    window.swup.hooks.on("content:replace", () => {
+        initCustomScrollbar();
+        initMermaid();
+    });
     window.swup.hooks.on("visit:start", (visit: { to: { url: string } }) => {
       const bodyElement = document.querySelector("body");
       if (pathsEqual(visit.to.url, url("/"))) {
