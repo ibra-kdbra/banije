@@ -142,4 +142,9 @@
     overflow-x: auto;
     margin: 1em 0;
   }
+
+  .mermaid {
+    @apply flex justify-center my-4;
+    direction: ltr !important;
+  }
 }
