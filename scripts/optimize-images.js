@@ -30,7 +30,7 @@ const QUALITY = Number(
 );
 const EMIT_WEBP = !args.includes("--no-webp");
 
-const SUPPORTED_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
+const SUPPORTED_EXT = new Set([".jpg", ".jpeg", ".png", ".avif"]);
 
 function formatBytes(bytes) {
   if (bytes < 1024) return `${bytes} B`;
@@ -87,8 +87,6 @@ async function optimizeInPlace(inputPath) {
       effort: 8,
       palette: true,
     });
-  } else if (ext === ".webp") {
-    pipeline = pipeline.webp({ quality: QUALITY, effort: 6 });
   } else if (ext === ".avif") {
     pipeline = pipeline.avif({ quality: Math.min(QUALITY, 65), effort: 5 });
   } else {
