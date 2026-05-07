@@ -1,0 +1,38 @@
+[
+  { 
+    "id": "overview", 
+    "label": "Overview", 
+    "info": "The 'Angles of Elevation' diagram illustrates the geometric relationship between an observer, an object at a higher altitude, and the horizontal reference line. It is a fundamental concept in trigonometry used to determine heights and distances.",
+    "x": 0, "y": 0, "w": 100, "h": 100 
+  },
+  { 
+    "id": "observer", 
+    "label": "Observer", 
+    "info": "The observer is the reference point from which the measurement begins. In this diagram, it is located at the origin of the angle. In practice, this could be a person, a transit, or a sensor.",
+    "x": 14, "y": 70, "w": 10, "h": 10 
+  },
+  { 
+    "id": "horizontal-line", 
+    "label": "Horizontal Line", 
+    "info": "The horizontal line is the reference level that passes through the observer's eye level. It is parallel to the ground and forms the base for measuring the angle.",
+    "x": 40, "y": 73, "w": 50, "h": 5 
+  },
+  { 
+    "id": "object", 
+    "label": "Object", 
+    "info": "The object is the target being observed, located above the horizontal line. The goal of measuring the angle of elevation is often to calculate the object's height or its distance from the observer.",
+    "x": 75, "y": 20, "w": 10, "h": 10 
+  },
+  { 
+    "id": "line-of-sight", 
+    "label": "Line of Sight", 
+    "info": "The line of sight is the direct straight line between the observer's eye and the object being viewed.",
+    "x": 35, "y": 30, "w": 40, "h": 40 
+  },
+  { 
+    "id": "angle-of-elevation", 
+    "label": "Angle of Elevation", 
+    "info": "The angle of elevation is the angle formed between the horizontal line and the line of sight when looking up at an object. It is always measured upwards from the horizontal.",
+    "x": 35, "y": 60, "w": 15, "h": 15 
+  }
+]
