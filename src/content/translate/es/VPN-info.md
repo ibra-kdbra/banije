@@ -5,8 +5,8 @@ title: Estrategia de implementación de VPN empresarial para 300 usuarios
 published: 2026-03-15
 description: Una guía de arquitectura práctica para implementar una VPN empresarial segura y escalable con WireGuard, controles de identidad y alta disponibilidad.
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

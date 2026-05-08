@@ -5,8 +5,8 @@ title: 安全系統架構 - 多視角工程論文
 published: 2025-09-11
 description: 涵蓋網路安全基礎、縱深防禦策略、威脅建模及安全開發實踐的安全系統架構，從多個專業視角進行探討。
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Network Security, Threat Modeling]
+category: "Systems & Security"
 draft: false
 series:
   name: "Security Architecture"

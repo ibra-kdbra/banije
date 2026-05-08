@@ -3,8 +3,8 @@ title: Introduction to Web Landscape Design
 published: 2025-04-05
 description: Modern web design from a software engineering perspective, covering UI/UX fundamentals, software engineering principles, security, and performance optimization.
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: Architecture
 draft: false
 ---
 

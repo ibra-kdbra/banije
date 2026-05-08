@@ -2,8 +2,8 @@
 title: "Ortak Terminal Komutları"
 published: 2022-09-20
 description: "Anahtar terminal komutlarını ve bunların kullanımını öğrenin."
-tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+tags: [Terminal, Commands, Linux]
+category: "Systems & Security"
 draft: false 
 lang: "tr"
 originalSlug: "commonTerminalCommands"

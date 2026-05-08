@@ -5,8 +5,8 @@ title: 網頁設計導論
 published: 2025-04-05
 description: 從軟體工程的角度探討現代網頁設計，涵蓋 UI/UX 基礎、軟體工程原則、安全性及效能優化。
 image: ''
-tags: [網頁設計, UI/UX, 軟體工程, 前端, 後端, 安全性, 效能]
-category: Software Development
+tags: [網頁設計, UI/UX, 軟體工程]
+category: "Architecture"
 draft: false
 ---
 

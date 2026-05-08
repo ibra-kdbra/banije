@@ -5,8 +5,8 @@ title: 300인 규모 기업을 위한 엔터프라이즈 VPN 구현 전략
 published: 2026-03-15
 description: WireGuard, ID 제어, 고가용성을 활용하여 안전하고 확장 가능한 엔터프라이즈 VPN을 구축하기 위한 실무 아키텍처 가이드입니다.
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

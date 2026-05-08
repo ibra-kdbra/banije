@@ -3,8 +3,8 @@ title: "Extensiones de código VS"
 published: 2024-01-17
 description: "Una guía extensa de extensiones de VS Code agrupadas por categorías para mejorar la productividad y el desarrollo de habilidades."
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "vscode_extensions"

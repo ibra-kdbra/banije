@@ -2,8 +2,8 @@
 title: "Comandos de terminal comunes"
 published: 2022-09-20
 description: "Aprenda los comandos clave del terminal y su uso."
-tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+tags: [Terminal, Commands, Linux]
+category: "Systems & Security"
 draft: false 
 lang: "es"
 originalSlug: "commonTerminalCommands"

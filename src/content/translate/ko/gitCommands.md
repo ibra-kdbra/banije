@@ -3,8 +3,8 @@ title: "예제가 포함된 Git 명령"
 published: 2024-02-18
 description: "워크플로를 간소화하기 위한 예제와 함께 필수 Git 명령에 대해 알아보세요."
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 lang: "ko"
 originalSlug: "gitCommands"

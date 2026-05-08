@@ -2,8 +2,8 @@
 title: "일반적인 터미널 명령"
 published: 2022-09-20
 description: "주요 터미널 명령과 그 사용법에 대해 알아봅니다."
-tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+tags: [Terminal, Commands, Linux]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "commonTerminalCommands"

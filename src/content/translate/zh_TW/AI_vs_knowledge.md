@@ -5,7 +5,7 @@ title: 基本演算法 AI vs. 簡式模型 AI - 全面性比較
 published: 2024-11-23
 description: '深入比較傳統基本演算法 AI 與深度學習模型，涵蓋優勢、使用案例和差異。'
 image: '/images/posts/superior.webp'
-tags: [AI, 機器學習, 神經網路, 演算法, 比較]
+tags: [AI, 機器學習, 神經網路]
 category: 人工智慧
 draft: false
 series:

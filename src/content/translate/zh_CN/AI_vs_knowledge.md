@@ -5,7 +5,7 @@ title: 基础算法AI与通用模型AI：全面比较
 published: 2024-11-23
 description: '深入比较传统基础算法AI与深度学习模型，涵盖它们的优势、应用场景和差异。'
 image: '/images/posts/superior.webp'
-tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

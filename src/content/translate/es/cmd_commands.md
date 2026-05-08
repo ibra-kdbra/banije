@@ -3,8 +3,8 @@ title: "Comandos del símbolo del sistema de Windows (CMD)"
 published: 2023-11-02
 description: "Lista de comandos CMD esenciales para Windows."
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "cmd_commands"

@@ -5,8 +5,8 @@ title: أوامر Git مع أمثلة
 published: 2024-02-18
 description: 'تعرف على أوامر Git الأساسية مع أمثلة لتبسيط سير عملك.'
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 ---
 

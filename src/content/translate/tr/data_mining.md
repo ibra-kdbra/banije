@@ -3,7 +3,7 @@ title: "Veri Madenciliğine Derin Bir Bakış: Dijital Tufandan İçgörüleri O
 published: 2025-08-14
 description: "Veri madenciliğinin temel kavramlarından ileri konulara ve etik çıkarımlara kadar araştırılması."
 image: ''
-tags: [Data Mining, AI, Machine Learning, Big Data]
+tags: [Data Mining, AI, Machine Learning]
 category: Artificial Intelligence
 draft: false
 lang: "tr"

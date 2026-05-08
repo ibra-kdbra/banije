@@ -5,8 +5,8 @@ title: مراجعة لأدوات تطوير الويب
 published: 2024-01-08
 description: 'اكتشف إضافات المتصفح والأدوات التي تبسط عملية تطوير الويب، بدءاً من أدوات الواجهات الأمامية وصولاً إلى الخلفية.'
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 ---
 
@@ -259,7 +259,7 @@ draft: false
 ### 🛠️ Project IDX
 
 :::important[الغرض]
-بيئة تطوير قائمة على المتصفح ومدعومة بالذكاء الاصطناعي.
+بيئة تطوير قائمة على المتصفح ومدعومة بالذكاء الصنعي.
 :::
 
 **لماذا تستخدمها**: بيئة تطوير متكاملة (IDE) عبر الإنترنت من تطوير Google، تستند إلى Visual Studio Code، وتتميز بمساعد ذكاء اصطناعي توليدي مدمج مدعوم بـ Gemini، بالإضافة إلى محاكيات لنظامي iOS و Android، مما يبسط عملية التطوير. :contentReference[oaicite:1]{index=1}

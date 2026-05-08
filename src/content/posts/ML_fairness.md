@@ -4,7 +4,7 @@ published: 2025-06-12
 description: "An explanation of why the three most prominent fairness metrics in machine learning are mutually incompatible, and a look at a causal approach to building fairer models."
 image: ''
 tags: [AI, Machine Learning, Fairness, Ethics]
-category: Engineering
+category: "Artificial Intelligence"
 draft: false
 ---
 

@@ -4,7 +4,7 @@ published: 2024-11-18
 description: 'Step-by-step guide to check, recover, and format a flash drive on Linux.'
 image: ''
 tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

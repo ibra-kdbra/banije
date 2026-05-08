@@ -3,8 +3,8 @@ title: "Güvenli Sistem Mimarisi - Çok Perspektifli Bir Mühendislik İncelemes
 published: 2025-09-11
 description: "Ağ güvenliği temellerini, derinlemesine savunma stratejilerini, tehdit modellemeyi ve güvenli geliştirme uygulamalarını birden fazla profesyonel perspektiften kapsayan güvenli sistem mimarisi."
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Network Security, Threat Modeling]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "secure-systems-architecture"

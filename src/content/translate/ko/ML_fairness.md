@@ -3,8 +3,8 @@ title: "AI 공정성 딜레마: 우리가 모든 것을 가질 수 없는 이유
 published: 2025-06-12
 description: "기계 학습에서 가장 두드러진 세 가지 공정성 지표가 상호 호환되지 않는 이유에 대한 설명과 보다 공정한 모델을 구축하기 위한 인과적 접근 방식을 살펴봅니다."
 image: ''
-tags: [AI, Machine Learning, Fairness, Ethics]
-category: Engineering
+tags: [AI, Machine Learning, Fairness]
+category: "Architecture"
 draft: false
 lang: "ko"
 originalSlug: "ML_fairness"

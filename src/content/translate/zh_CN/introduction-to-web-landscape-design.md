@@ -5,8 +5,8 @@ title: Web 景观设计入门
 published: 2025-04-05
 description: 从软件工程的角度审视现代 Web 设计，涵盖 UI/UX 基础、软件工程原则、安全性以及性能优化。
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: "Architecture"
 draft: false
 ---
 

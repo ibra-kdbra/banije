@@ -5,7 +5,7 @@ title: C와 C++ - 심층 비교 분석
 published: 2023-04-11
 description: 'C와 C++에 대한 시니어 수준의 상세한 비교를 통해 각 언어의 강점, 약점, 그리고 각 언어가 빛을 발하는 분야를 살펴봅니다.'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

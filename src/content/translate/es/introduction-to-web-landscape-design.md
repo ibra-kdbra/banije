@@ -3,8 +3,8 @@ title: "Introducción al diseño paisajístico web"
 published: 2025-04-05
 description: "Diseño web moderno desde una perspectiva de ingeniería de software, que cubre los fundamentos de UI/UX, principios de ingeniería de software, seguridad y optimización del rendimiento."
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: "Architecture"
 draft: false
 lang: "es"
 originalSlug: "introduction-to-web-landscape-design"

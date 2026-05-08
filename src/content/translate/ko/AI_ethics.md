@@ -5,7 +5,7 @@ title: 인공지능 윤리
 published: 2025-07-10
 description: '인공지능 윤리와 도덕에 대한 심층 분석.'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

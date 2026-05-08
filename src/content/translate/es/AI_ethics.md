@@ -5,7 +5,7 @@ title: Ética en la Inteligencia Artificial
 published: 2025-07-10
 description: 'Análisis profundo sobre la ética y la moral en la inteligencia artificial.'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

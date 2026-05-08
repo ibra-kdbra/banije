@@ -5,7 +5,7 @@ title: "数字大迁徙：解读数字的“真实”历史"
 published: 2026-03-10
 description: 本文简要回顾了数字系统的历史，从婆罗米数字和阿拉伯数字的传播，到罗马数字的遗产以及 60 进制的影响。
 image: ''
-tags: [Mathematics, History, Numeral Systems, Education]
+tags: [Mathematics, History, Numeral Systems]
 category: Mathematics
 draft: false
 ---

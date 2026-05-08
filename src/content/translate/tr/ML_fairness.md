@@ -3,8 +3,8 @@ title: "Yapay Zeka Adillik İkilemi: Neden Her Şeye Sahip Olamayız"
 published: 2025-06-12
 description: "Makine öğreniminde en öne çıkan üç adalet ölçütünün neden birbiriyle uyumsuz olduğuna dair bir açıklama ve daha adil modeller oluşturmaya yönelik nedensel bir yaklaşıma bir bakış."
 image: ''
-tags: [AI, Machine Learning, Fairness, Ethics]
-category: Engineering
+tags: [AI, Machine Learning, Fairness]
+category: "Architecture"
 draft: false
 lang: "tr"
 originalSlug: "ML_fairness"

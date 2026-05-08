@@ -3,8 +3,8 @@ title: "Arka Uç Geliştirmeye Derin Bakış"
 published: 2025-04-28
 description: "Mimariyi, teknoloji yığınlarını, API'leri, ölçeklenebilirliği ve DevOps uygulamalarını kapsayan, arka uç geliştirmeye yönelik bir mühendislik kılavuzu."
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 lang: "tr"
 originalSlug: "deep-dive-into-backend-development"

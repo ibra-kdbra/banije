@@ -5,8 +5,8 @@ title: أوامر موجه أوامر ويندوز (CMD)
 published: 2023-11-02
 description: 'قائمة بالأوامر الأساسية لـ CMD في نظام ويندوز.'
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 ---
 
