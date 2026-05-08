@@ -30,7 +30,8 @@ export function InteractiveComponent(properties, children) {
         class: "interactive-mount-point",
         "data-src": src,
         "data-items": JSON.stringify(items),
-        "data-alt": properties.alt || "Interactive Diagram"
+        "data-alt": properties.alt || "Interactive Diagram",
+        "data-overview": properties.overview || ""
       })
     ]);
   }
