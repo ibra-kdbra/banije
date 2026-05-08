@@ -8,7 +8,7 @@ category: "Architecture"
 draft: false
 ---
 
-## The Architect’s Dilemma — Blueprint or Burden?
+## The Architect’s Dilemma: Blueprint or Burden?
 
 In the ivory towers of software architecture, we often talk about **Design Patterns** as if they were sacred geometry. To a junior developer, they look like a secret handshake; to a cynical veteran, they often look like unnecessary layers of abstraction that make "Hello World" require five interfaces and a factory.
 
@@ -27,11 +27,12 @@ Before we argue about utility, we have to stop using these terms interchangeably
 
 The greatest utility of a pattern isn't the code itself; it's the **mental shorthand**. If I tell a team of engineers, *"We need a way to notify multiple services when a state changes without tight coupling,"* we might spend an hour debating. If I say, *"Let’s implement an Observer pattern here,"* everyone immediately understands the data flow, the constraints, and the responsibilities [^3].
 
-::interactive{id="perspective-diagram" src="/images/posts/licensed-image.webp" data="src/data/interactive/angles.json"}
+::interactive{id="perspective-diagram" src="/images/posts/angles-of-elevation.webp" data="src/data/interactive/angles.json" overview="Just as this diagram uses a standardized vocabulary to explain a complex spatial relationship, Software Architecture relies on Design Patterns as a universal shorthand to communicate complex system behaviors instantly across a team."}
 
 Patterns reduce the cognitive load of "reinventing the wheel." Every time you "invent" a clever way to manage global state, you’re actually just building a (likely buggy) version of a **Singleton** or **State** pattern. Using the established version means you get the benefit of decades of edge-case testing for free.
 
 ### The "Safety Net" for Evolution
+
 
 Good architecture is about **deferring decisions**. Design patterns allow you to build "plugs" into your system. By using an **Adapter** or a **Strategy** pattern, you aren't just making the code "pretty"—years down the line, when the business decides to switch from AWS S3 to Azure Blob Storage, you won't have to rewrite your entire core logic. You just swap the implementation [^4].
 
@@ -41,7 +42,7 @@ We don’t use patterns to make the code clever. We use them to make the code **
 
 ---
 
-## The Dark Side — When Patterns Become the Problem
+## The Dark Side: When Patterns Become the Problem
 
 In my career, I’ve seen more projects killed by **over-engineering** than by "spaghetti code." There is a specific malady in our industry called **"Patternitis"**—the compulsion to fit every problem into a textbook design pattern, regardless of whether it actually fits.
 
@@ -63,7 +64,7 @@ We’ve all met the engineer who just finished a book on Design Patterns and sud
 
 ---
 
-## The Selection Matrix — When to Pull the Trigger
+## The Selection Matrix: When to Pull the Trigger
 
 As a Software Architect, my job isn’t to find ways to use patterns; it’s to find ways to solve business problems with the least amount of "magic" possible. However, there comes a point where a pattern becomes cheaper than the alternative (chaos).
 
@@ -91,7 +92,7 @@ Architecture selection is as much about **psychology** as it is about technology
 
 ---
 
-## Pattern Evolution — Beyond the Gang of Four
+## Pattern Evolution: Beyond the Gang of Four
 
 Classic design patterns were mostly conceptualized in the 90s for single-process systems [^7]. Today, we spend as much time in the cloud as in the IDE. This shift has forced our patterns to evolve from internal code structures to **distributed system behaviors**.
 
@@ -111,7 +112,7 @@ In modern architecture, the patterns that matter most handle the inevitable fail
 
 ---
 
-## The Pragmatic Architect’s Manifesto — Engineering in the Age of AI
+## The Pragmatic Architect’s Manifesto: Engineering in the Age of LLMs
 
 In 2026, the biggest question isn't just about which pattern to use—it's about who (or what) is doing the using. With AI-assisted tools now generating 40% of the world’s boilerplate, the role of the Software Architect has shifted from "Master Scripter" to **"Orchestrator of Intent."**
 
