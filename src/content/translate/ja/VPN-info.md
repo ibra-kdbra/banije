@@ -5,8 +5,8 @@ title: 300ユーザー向けエンタープライズVPN実装戦略
 published: 2026-03-15
 description: WireGuard、ID制御、高可用性による安全でスケーラブルなエンタープライズVPNを展開するための実用的なアーキテクチャガイド。
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

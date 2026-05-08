@@ -3,8 +3,8 @@ title: Advanced Backend Engineering - From Distributed Systems to Resilient Arch
 published: 2025-05-12
 description: An advanced guide to distributed systems covering consistency models, resilience patterns, event sourcing, CQRS, and modern backend architectures for building scalable, fault-tolerant applications.
 image: ''
-tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
-category: Backend Development
+tags: [Distributed Systems, Architecture, Backend]
+category: Architecture
 draft: false
 series:
   name: "Backend Engineering"

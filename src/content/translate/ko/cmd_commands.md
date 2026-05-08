@@ -3,8 +3,8 @@ title: "Windows 명령 프롬프트(CMD) 명령"
 published: 2023-11-02
 description: "Windows용 필수 CMD 명령 목록입니다."
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "cmd_commands"

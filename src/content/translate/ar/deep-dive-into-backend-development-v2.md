@@ -5,8 +5,8 @@ title: هندسة الواجهات الخلفية المتقدمة - من الأ
 published: 2025-05-12
 description: دليل متقدم للأنظمة الموزعة يغطي نماذج الاتساق، أنماط المرونة، تأصيل الأحداث (Event Sourcing)، نمط CQRS، وبنيات الواجهة الخلفية الحديثة لبناء تطبيقات قابلة للتوسع ومقاومة للأعطال.
 image: ''
-tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
-category: Backend Development
+tags: [Backend, Distributed Systems, Architecture]
+category: "Architecture"
 draft: false
 series:
   name: "Backend Engineering"

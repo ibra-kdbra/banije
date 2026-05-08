@@ -6,7 +6,7 @@ published: 2025-12-31
 description: 這是一份後 LLM 時代的權威技術宣言，篇幅堪比書籍。從宏觀角度深度解析統一代理架構（Unified Agentic Architectures）、持久化記憶層（Persistent Memory Layers）與模型上下文協議（MCP）。
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
-category: Engineering
+category: "Architecture"
 draft: false
 series:
     name: "AI Foundations"

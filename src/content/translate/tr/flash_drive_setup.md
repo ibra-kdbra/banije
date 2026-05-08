@@ -3,8 +3,8 @@ title: "Linux'ta Flash Sürücü Kurulumu ve Kurtarma"
 published: 2024-11-18
 description: "Linux'ta bir flash sürücüyü kontrol etmek, kurtarmak ve biçimlendirmek için adım adım kılavuz."
 image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+tags: [Linux, Flash Drive, Recovery]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "flash_drive_setup"

@@ -6,7 +6,7 @@ published: 2021-08-23
 description: 'تعرف على أساسيات لغة البرمجة ++C، ومميزاتها وعيوبها.'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

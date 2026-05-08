@@ -3,8 +3,8 @@ title: "Arquitectura de sistemas seguros: un tratado de ingeniería con múltipl
 published: 2025-09-11
 description: "Arquitectura de sistemas seguros que cubre los fundamentos de la seguridad de la red, estrategias de defensa en profundidad, modelado de amenazas y prácticas de desarrollo seguro desde múltiples perspectivas profesionales."
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Network Security, Threat Modeling]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "secure-systems-architecture"

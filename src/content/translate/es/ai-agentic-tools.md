@@ -5,7 +5,7 @@ title: "La Revolución de los Agentes: Una inmersión profunda en las herramient
 published: 2026-03-01
 description: "Una exploración exhaustiva de los marcos de trabajo y librerías fundamentales que permiten el desarrollo de agentes de IA autónomos y orientados a objetivos."
 image: "/images/posts/agentic-tools.webp"
-tags: ["AI", "Agents", "CrewAI", "AutoGen"]
+tags: ["AI", "Agents", "CrewAI"]
 category: "Artificial Intelligence"
 draft: false
 ---

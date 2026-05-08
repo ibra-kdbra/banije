@@ -5,7 +5,7 @@ title: "Büyük Dijital Göç: Sayıların 'Gerçek' Tarihini Çözümlemek"
 published: 2026-03-10
 description: Brahmi ve Arap aktarımından Roma mirasına ve 60'lık tabanın etkisine kadar sayı sistemlerinin kısa bir tarihsel özeti.
 image: ''
-tags: [Mathematics, History, Numeral Systems, Education]
+tags: [Mathematics, History, Numeral Systems]
 category: Mathematics
 draft: false
 ---

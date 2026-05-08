@@ -5,7 +5,7 @@ title: مقارنة متعمقة بين Cpp و C
 published: 2023-04-11
 description: 'مقارنة مفصلة على مستوى متقدم بين C++ و C، تستعرض نقاط القوة والضعف لكل منهما، والمجالات التي يتفوق فيها كل لغة.'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

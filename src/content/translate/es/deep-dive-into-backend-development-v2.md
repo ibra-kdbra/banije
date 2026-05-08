@@ -3,8 +3,8 @@ title: "Ingeniería backend avanzada: desde sistemas distribuidos hasta arquitec
 published: 2025-05-12
 description: "Una guía avanzada para sistemas distribuidos que cubre modelos de consistencia, patrones de resiliencia, abastecimiento de eventos, CQRS y arquitecturas backend modernas para crear aplicaciones escalables y tolerantes a fallas."
 image: ''
-tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
-category: Backend Development
+tags: [Backend, Distributed Systems, Architecture]
+category: "Architecture"
 draft: false
 lang: "es"
 originalSlug: "deep-dive-into-backend-development-v2"

@@ -5,7 +5,7 @@ title: أخلاقيات الذكاء الصنعي
 published: 2025-07-10
 description: 'غوص عميق في أخلاقيات ومبادئ الذكاء الصنعي.'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

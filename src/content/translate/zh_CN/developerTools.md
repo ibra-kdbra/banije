@@ -5,8 +5,8 @@ title: Web 开发工具测评
 published: 2024-01-08
 description: '探索能够简化从前端到后端 Web 开发流程的浏览器扩展与实用工具。'
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 ---
 

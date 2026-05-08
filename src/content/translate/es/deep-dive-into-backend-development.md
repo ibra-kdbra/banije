@@ -3,8 +3,8 @@ title: "Profundice en el desarrollo backend"
 published: 2025-04-28
 description: "Una guía de ingeniería para el desarrollo backend, que cubre arquitectura, pilas de tecnología, API, escalabilidad y prácticas de DevOps."
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 lang: "es"
 originalSlug: "deep-dive-into-backend-development"

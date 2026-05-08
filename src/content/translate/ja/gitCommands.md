@@ -3,8 +3,8 @@ title: "Git コマンドと例"
 published: 2024-02-18
 description: "ワークフローを合理化するために、例を使用して重要な Git コマンドについて学びます。"
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 lang: "ja"
 originalSlug: "gitCommands"

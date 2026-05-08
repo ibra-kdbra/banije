@@ -5,8 +5,8 @@ title: Git 命令示例
 published: 2024-02-18
 description: '通过示例学习 essential Git 命令，以简化您的工作流程。'
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 ---
 

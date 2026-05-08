@@ -6,7 +6,7 @@ published: 2021-08-23
 description: 'C++プログラミング言語の基本、その利点と欠点を学びましょう。'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: Enterprise VPN Implementation Strategy for 300 Users
 published: 2026-03-15
 description: A practical architecture guide for deploying a secure, scalable enterprise VPN with WireGuard, identity controls, and high availability.
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Networking]
+category: "Systems & Security"
 draft: false
 ---
 

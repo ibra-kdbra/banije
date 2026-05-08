@@ -5,8 +5,8 @@ title: 后端开发深度解析
 published: 2025-04-28
 description: 本工程指南涵盖后端开发的方方面面，包括架构设计、技术栈选型、API 设计、可扩展性以及 DevOps 实践。
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 series:
   name: "Backend Engineering"

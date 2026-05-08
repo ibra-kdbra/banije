@@ -5,8 +5,8 @@ title: نظرة متعمقة في تطوير الواجهة الخلفية (Back
 published: 2025-04-28
 description: دليل هندسي لتطوير الواجهة الخلفية، يغطي البنية التحتية، حزم التقنيات، واجهات برمجة التطبيقات (APIs)، قابلية التوسع، وممارسات الـ DevOps.
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 series:
   name: "Backend Engineering"

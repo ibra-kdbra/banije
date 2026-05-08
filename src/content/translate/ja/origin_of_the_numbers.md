@@ -5,7 +5,7 @@ title: "偉大なデジタル移行: 数字の「真の」歴史を解読する"
 published: 2026-03-10
 description: ブラーフミー数字からアラビア数字の伝播、ローマ数字の遺産、そして60進数の影響まで、数字体系の簡潔な歴史を辿ります。
 image: ''
-tags: [Mathematics, History, Numeral Systems, Education]
+tags: [Mathematics, History, Numeral Systems]
 category: Mathematics
 draft: false
 ---

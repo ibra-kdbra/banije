@@ -5,8 +5,8 @@ title: 安全系统架构——多视角工程论述
 published: 2025-09-11
 description: 本文涵盖网络安全基础、深度防御策略、威胁建模以及从多个专业视角出发的安全开发实践，是一篇关于安全系统架构的论述。
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Network Security, Threat Modeling]
+category: "Systems & Security"
 draft: false
 series:
   name: "Security Architecture"

@@ -5,8 +5,8 @@ title: Web 開發工具評測
 published: 2024-01-08
 description: '探索各式瀏覽器擴充功能與開發工具，助您簡化從前端到後端的網頁開發流程。'
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 ---
 

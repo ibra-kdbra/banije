@@ -3,8 +3,8 @@ title: "Revisión de herramientas de desarrollo web"
 published: 2024-01-08
 description: "Descubra extensiones de navegador, herramientas que agilizan el desarrollo web, desde herramientas de front-end hasta back-end."
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "developerTools"

@@ -5,8 +5,8 @@ title: VS Code 擴充功能
 published: 2024-01-17
 description: '這是一份全面的 VS Code 擴充功能指南，按類別分組，旨在提升生產力與技術發展。'
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 ---
 

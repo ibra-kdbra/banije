@@ -5,8 +5,8 @@ title: 300 Kullanıcı İçin Kurumsal VPN Uygulama Stratejisi
 published: 2026-03-15
 description: WireGuard, kimlik kontrolleri ve yüksek erişilebilirlik ile güvenli, ölçeklenebilir bir kurumsal VPN dağıtımı için pratik bir mimari rehberi.
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

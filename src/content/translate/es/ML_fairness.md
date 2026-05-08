@@ -3,8 +3,8 @@ title: "El dilema de la equidad de la IA: por qué no podemos tenerlo todo"
 published: 2025-06-12
 description: "Una explicación de por qué las tres métricas de equidad más destacadas en el aprendizaje automático son mutuamente incompatibles y una mirada a un enfoque causal para construir modelos más justos."
 image: ''
-tags: [AI, Machine Learning, Fairness, Ethics]
-category: Engineering
+tags: [AI, Machine Learning, Fairness]
+category: "Architecture"
 draft: false
 lang: "es"
 originalSlug: "ML_fairness"

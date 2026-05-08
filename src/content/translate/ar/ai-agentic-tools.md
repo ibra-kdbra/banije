@@ -5,7 +5,7 @@ title: "الثورة الوكالية: نظرة متعمقة في الأدوات
 published: 2026-03-01
 description: "استكشاف شامل للأطر البرمجية والمكتبات الأساسية التي تمكن من تطوير وكلاء ذكاء اصطناعي مستقلين وموجهين نحو الأهداف."
 image: "/images/posts/agentic-tools.webp"
-tags: ["AI", "Agents", "CrewAI", "AutoGen"]
+tags: ["AI", "Agents", "CrewAI"]
 category: "Artificial Intelligence"
 draft: false
 ---

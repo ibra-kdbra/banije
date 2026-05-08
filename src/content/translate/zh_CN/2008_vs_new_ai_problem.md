@@ -5,7 +5,7 @@ title: AI 资本引力 - 相似之处与本轮周期的不同之处
 published: 2026-02-12
 description: 对人工智能基础设施融资、循环资本回路以及当前风险信号与2008年信贷时代对比的综合分析。
 image: '/images/posts/gravity_well.webp'
-tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
+tags: [AI, Finance, Infrastructure]
 category: Financial Market
 draft: false
 ---

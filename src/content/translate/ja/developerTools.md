@@ -3,8 +3,8 @@ title: "Web 開発ツールのレビュー"
 published: 2024-01-08
 description: "フロントエンド ツールからバックエンド ツールまで、Web 開発を効率化するブラウザ拡張機能を見つけてください。"
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false 
 lang: "ja"
 originalSlug: "developerTools"

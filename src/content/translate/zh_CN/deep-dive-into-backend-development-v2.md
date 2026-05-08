@@ -5,8 +5,8 @@ title: 高级后端工程 - 从分布式系统到弹性架构
 published: 2025-05-12
 description: 一份关于分布式系统的高级指南，涵盖一致性模型、弹性模式、事件溯源、CQRS 以及用于构建可伸缩、容错应用程序的现代后端架构。
 image: ''
-tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
-category: Backend Development
+tags: [Backend, Distributed Systems, Architecture]
+category: "Architecture"
 draft: false
 series:
   name: "Backend Engineering"

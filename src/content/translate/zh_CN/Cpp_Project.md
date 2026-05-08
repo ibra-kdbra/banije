@@ -6,7 +6,7 @@ published: 2021-08-23
 description: '了解 C++ 编程语言的基础知识、其优点和缺点。'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

@@ -5,8 +5,8 @@ title: Linux 磁碟分割 — 工程職位的最佳磁碟區與策略
 published: 2025-11-02
 description: 一份針對 Linux 磁碟分割的工程指南，涵蓋最佳磁碟區大小、檔案系統選擇，以及針對軟體工程師、網路工程師與開發人員的量身打造策略。
 image: ''
-tags: [Linux, Partitioning, Filesystems, System Administration, Storage Optimization]
-category: Guide
+tags: [Linux, Partitioning, Filesystems]
+category: "Systems & Security"
 draft: false
 ---
 

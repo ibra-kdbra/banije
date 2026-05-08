@@ -3,8 +3,8 @@ title: "VS コード拡張機能"
 published: 2024-01-17
 description: "生産性とスキル開発を強化するためにカテゴリ別にグループ化された VS Code 拡張機能の広範なガイド。"
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 lang: "ja"
 originalSlug: "vscode_extensions"
