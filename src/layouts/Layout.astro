@@ -633,3 +633,43 @@ const bannerOffset =
     document.addEventListener("swup:enable", setup);
   }
 </script>
+
+<script>
+  import { mount } from 'svelte';
+  import InteractiveImage from '@components/InteractiveImage.svelte';
+
+  function hydrateInteractiveImages() {
+    const targets = document.querySelectorAll('.interactive-mount-point');
+    targets.forEach((target) => {
+      if (target.getAttribute('data-hydrated')) return;
+
+      const itemsRaw = target.getAttribute('data-items');
+      const src = target.getAttribute('data-src');
+      const alt = target.getAttribute('data-alt') || 'Interactive Diagram';
+
+      if (!itemsRaw || !src) return;
+
+      try {
+        const items = JSON.parse(itemsRaw);
+        target.innerHTML = '';
+        mount(InteractiveImage, { target, props: { src, items, alt } });
+        target.setAttribute('data-hydrated', 'true');
+      } catch (err) {
+        console.error('[InteractiveImage] Hydration failed:', err);
+      }
+    });
+  }
+
+  // Run on initial page load
+  hydrateInteractiveImages();
+
+  // Re-run after Swup page transitions
+  const swupSetup = () => {
+    window.swup.hooks.on('content:replace', hydrateInteractiveImages);
+  };
+  if (window?.swup?.hooks) {
+    swupSetup();
+  } else {
+    document.addEventListener('swup:enable', swupSetup);
+  }
+</script>
