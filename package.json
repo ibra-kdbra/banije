@@ -16,6 +16,7 @@
     "images:optimize:dry": "node scripts/optimize-images.js --dry-run",
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
+    "interactive:gen": "node scripts/interactive-gen.js",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
