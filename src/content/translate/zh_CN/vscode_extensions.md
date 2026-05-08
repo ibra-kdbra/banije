@@ -5,8 +5,8 @@ title: VS Code 扩展
 published: 2024-01-17
 description: '一份详尽的 VS Code 扩展指南，按类别分组，旨在提升生产力和开发技能。'
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 ---
 

@@ -4,7 +4,7 @@ published: 2025-12-31
 description: "Yüksek Lisans sonrası dönem için eksiksiz, kitap uzunluğunda teknik manifesto. Birleşik Aracı Mimarilerin, Kalıcı Bellek Katmanlarının ve Model Bağlam Protokolünün 100.000 metrelik görünümü."
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
-category: Engineering
+category: "Architecture"
 draft: false
 lang: "tr"
 originalSlug: "ai-tools"

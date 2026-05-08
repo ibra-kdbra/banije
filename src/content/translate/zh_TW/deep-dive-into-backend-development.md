@@ -5,8 +5,8 @@ title: Backend 開發深度剖析
 published: 2025-04-28
 description: 後端開發的工程指南，涵蓋架構、技術堆疊、API、可擴展性及 DevOps 實踐。
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 series:
   name: "Backend Engineering"

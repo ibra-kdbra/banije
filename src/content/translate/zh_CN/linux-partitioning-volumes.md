@@ -5,8 +5,8 @@ title: Linux 磁盘分区 - 工程师的角色需求与最佳实践方案
 published: 2025-11-02
 description: 一份面向工程师的 Linux 磁盘分区指南，涵盖最佳卷大小、文件系统选择，以及针对软件工程师、网络工程师和开发人员的定制化策略。
 image: ''
-tags: [Linux, Partitioning, Filesystems, System Administration, Storage Optimization]
-category: Guide
+tags: [Linux, Partitioning, Filesystems]
+category: "Systems & Security"
 draft: false
 ---
 

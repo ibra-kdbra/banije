@@ -3,8 +3,8 @@ title: "Windows コマンド プロンプト (CMD) コマンド"
 published: 2023-11-02
 description: "Windows の必須 CMD コマンドのリスト。"
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 lang: "ja"
 originalSlug: "cmd_commands"

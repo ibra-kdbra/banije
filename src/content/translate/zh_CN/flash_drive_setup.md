@@ -5,8 +5,8 @@ title: 在 Linux 上设置和恢复闪存驱动器
 published: 2024-11-18
 description: '在 Linux 上检查、恢复和格式化闪存驱动器的分步指南。'
 image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+tags: [Linux, Flash Drive, Recovery]
+category: "Systems & Security"
 draft: false
 ---
 

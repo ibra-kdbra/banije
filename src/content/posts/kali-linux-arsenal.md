@@ -3,8 +3,8 @@ title: "The Kali Linux Arsenal: A Comprehensive Guide to Every Weapon in Your Pe
 published: 2026-01-27
 description: "A deep dive into the industry-standard tools for reconnaissance, vulnerability assessment, exploitation, and post-exploitation."
 image: ""
-tags: ["Cybersecurity", "Pentesting", "Kali Linux", "Infosec"]
-category: "Cybersecurity"
+tags: [Pentesting, Kali Linux, Security]
+category: "Systems & Security"
 draft: false
 ---
 

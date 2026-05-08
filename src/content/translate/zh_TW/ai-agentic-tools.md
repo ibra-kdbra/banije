@@ -5,7 +5,7 @@ title: "代理革命：深入探討驅動自主 AI 的工具"
 published: 2026-03-01
 description: "深入探索賦予開發自主、以目標為導向的 AI 代理的核心框架和函式庫。"
 image: "/images/posts/agentic-tools.webp"
-tags: ["AI", "Agents", "CrewAI", "AutoGen"]
+tags: ["AI", "Agents", "CrewAI"]
 category: "Artificial Intelligence"
 draft: false
 ---

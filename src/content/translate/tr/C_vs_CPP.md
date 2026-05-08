@@ -5,7 +5,7 @@ title: Cpp ve C - Derinlemesine Bir Karşılaştırma
 published: 2023-04-11
 description: 'C++ ve C arasında, güçlü yönleri, zayıflıkları ve her birinin öne çıktığı alanları inceleyen, kıdemli seviyesinde detaylı bir karşılaştırma.'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

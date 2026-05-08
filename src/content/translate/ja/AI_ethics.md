@@ -5,7 +5,7 @@ title: 人工知能の倫理
 published: 2025-07-10
 description: '人工知能の倫理と道徳を深く掘り下げます。'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

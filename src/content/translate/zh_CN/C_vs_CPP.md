@@ -5,7 +5,7 @@ title: C++ 与 C 之争——深度对比
 published: 2023-04-11
 description: '一篇详细的高级对比，深入探讨 C++ 和 C 的优势、劣势以及它们各自的适用场景。'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

@@ -5,8 +5,8 @@ title: مراجعة لأدوات تطوير الويب
 published: 2024-01-08
 description: 'اكتشف إضافات المتصفح والأدوات التي تبسط عملية تطوير الويب، بدءاً من أدوات الواجهات الأمامية وصولاً إلى الخلفية.'
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 ---
 

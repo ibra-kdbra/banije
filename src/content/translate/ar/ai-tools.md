@@ -6,7 +6,7 @@ published: 2025-12-31
 description: بيان تقني شامل بحجم كتاب لعصر ما بعد النماذج اللغوية الكبيرة. نظرة بانورامية على البنيات الوكيلية الموحدة، وطبقات الذاكرة المستمرة، وبروتوكول سياق النموذج.
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
-category: Engineering
+category: "Architecture"
 draft: false
 series:
     name: "AI Foundations"

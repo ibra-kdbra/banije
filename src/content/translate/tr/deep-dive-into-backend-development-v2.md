@@ -3,8 +3,8 @@ title: "Gelişmiş Arka Uç Mühendisliği - Dağıtık Sistemlerden Esnek Mimar
 published: 2025-05-12
 description: "Ölçeklenebilir, hataya dayanıklı uygulamalar oluşturmak için tutarlılık modelleri, esneklik modelleri, olay kaynağı oluşturma, CQRS ve modern arka uç mimarilerini kapsayan dağıtılmış sistemlere yönelik gelişmiş bir kılavuz."
 image: ''
-tags: [Backend, Distributed Systems, Architecture, Resilience, CQRS, Event Sourcing, Microservices]
-category: Backend Development
+tags: [Backend, Distributed Systems, Architecture]
+category: "Architecture"
 draft: false
 lang: "tr"
 originalSlug: "deep-dive-into-backend-development-v2"

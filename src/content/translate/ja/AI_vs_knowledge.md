@@ -5,7 +5,7 @@ title: 基本アルゴリズムAIとプレーンモデルAI – 徹底比較
 published: 2024-11-23
 description: '従来の基本アルゴリズムAIと深層学習モデルについて、その強み、ユースケース、相違点を網羅的に比較します。'
 image: '/images/posts/superior.webp'
-tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

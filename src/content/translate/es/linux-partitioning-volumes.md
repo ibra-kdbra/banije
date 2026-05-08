@@ -3,8 +3,8 @@ title: "Partición de discos de Linux: volúmenes y estrategias óptimos para fu
 published: 2025-11-02
 description: "Una guía de ingeniería para la partición de discos de Linux, que cubre tamaños de volumen óptimos, opciones de sistemas de archivos y estrategias personalizadas para ingenieros de software, ingenieros de redes y desarrolladores."
 image: ''
-tags: [Linux, Partitioning, Filesystems, System Administration, Storage Optimization]
-category: Guide
+tags: [Linux, Partitioning, Filesystems]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "linux-partitioning-volumes"

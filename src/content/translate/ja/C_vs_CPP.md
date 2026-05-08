@@ -5,7 +5,7 @@ title: C++とCの比較 - 詳細な考察
 published: 2023-04-11
 description: 'C++とCの詳細かつ上級者向けの比較。それぞれの長所、短所、そしてどのような場面で輝くかを探ります。'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

@@ -3,7 +3,7 @@ title: Common Terminal Commands
 published: 2022-09-20
 description: 'Learn key terminal commands and their usage.'
 tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+category: "Developer Workflow"
 draft: false 
 ---
 

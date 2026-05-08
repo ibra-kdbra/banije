@@ -3,8 +3,8 @@ title: "Linux Disk Bölümleme - Mühendislik Rolleri için Optimum Birimler ve 
 published: 2025-11-02
 description: "Yazılım mühendisleri, ağ mühendisleri ve geliştiriciler için optimum birim boyutlarını, dosya sistemi seçimlerini ve özel stratejileri kapsayan, Linux disk bölümlemeye yönelik bir mühendislik kılavuzu."
 image: ''
-tags: [Linux, Partitioning, Filesystems, System Administration, Storage Optimization]
-category: Guide
+tags: [Linux, Partitioning, Filesystems]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "linux-partitioning-volumes"

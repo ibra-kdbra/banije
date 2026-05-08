@@ -3,8 +3,8 @@ title: "VS Kodu Uzantıları"
 published: 2024-01-17
 description: "Üretkenliği ve beceri gelişimini artırmak için kategorilere göre gruplandırılmış VS Code uzantılarına ilişkin kapsamlı bir kılavuz."
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "vscode_extensions"

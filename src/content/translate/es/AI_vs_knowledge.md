@@ -5,7 +5,7 @@ title: IA algorítmica básica vs. IA de modelo simple - Una comparación exhaus
 published: 2024-11-23
 description: 'Comparación en profundidad entre la IA algorítmica básica tradicional y los modelos de deep learning, cubriendo fortalezas, casos de uso y diferencias.'
 image: '/images/posts/superior.webp'
-tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

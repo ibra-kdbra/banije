@@ -3,8 +3,8 @@ title: "VS 코드 확장"
 published: 2024-01-17
 description: "생산성과 기술 개발을 향상시키기 위해 범주별로 그룹화된 VS Code 확장에 대한 광범위한 가이드입니다."
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "vscode_extensions"

@@ -5,7 +5,7 @@ title: C++ 對比 C - 深入比較
 published: 2023-04-11
 description: '一篇詳盡、針對資深開發者的 C++ 與 C 比較，深入探討各自的優勢、劣勢以及適用場景。'
 image: './compare.jpg'
-tags: [程式設計, C++, C, 比較, 進階概念]
+tags: [程式設計, C++, C]
 category: '進階程式設計'
 draft: false
 ---

@@ -5,8 +5,8 @@ title: 300 位使用者企業 VPN 實施策略
 published: 2026-03-15
 description: 使用 WireGuard、身份控制和高可用性部署安全、可擴展企業 VPN 的實用架構指南。
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

@@ -5,8 +5,8 @@ title: "AI 公平性困境：為什麼我們無法魚與熊掌兼得"
 published: 2025-06-12
 description: "解釋為什麼機器學習中三個最顯著的公平性指標是互斥的，並探討構建更公平模型的因果關係方法。"
 image: ''
-tags: [AI, Machine Learning, Fairness, Ethics]
-category: Engineering
+tags: [AI, Machine Learning, Fairness]
+category: "Architecture"
 draft: false
 ---
 

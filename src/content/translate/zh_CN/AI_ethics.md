@@ -5,7 +5,7 @@ title: 人工智能伦理
 published: 2025-07-10
 description: '深入探讨人工智能的伦理与道德。'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

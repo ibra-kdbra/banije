@@ -3,7 +3,7 @@ title: Deep Dive into Backend Development
 published: 2025-04-28
 description: An engineering guide to backend development, covering architecture, technology stacks, APIs, scalability, and DevOps practices.
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
+tags: [Backend, Architecture, APIs]
 category: Backend Development
 draft: false
 series:

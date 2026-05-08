@@ -3,8 +3,8 @@ title: "백엔드 개발에 대한 심층 분석"
 published: 2025-04-28
 description: "아키텍처, 기술 스택, API, 확장성 및 DevOps 관행을 다루는 백엔드 개발에 대한 엔지니어링 가이드입니다."
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 lang: "ko"
 originalSlug: "deep-dive-into-backend-development"

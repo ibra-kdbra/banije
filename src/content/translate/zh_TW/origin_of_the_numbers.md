@@ -5,7 +5,7 @@ title: "偉大的數位遷徙：解碼數字的「真實」歷史"
 published: 2026-03-10
 description: 一段簡潔的數字系統歷史回顧，從婆羅米文和阿拉伯文的傳播，到羅馬數字的傳承及六十進位的影響。
 image: ''
-tags: [數學, 歷史, 數字系統, 教育]
+tags: [數學, 歷史, 數字系統]
 category: Mathematics
 draft: false
 ---

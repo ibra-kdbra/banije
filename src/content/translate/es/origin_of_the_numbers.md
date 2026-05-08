@@ -5,7 +5,7 @@ title: "La gran migración digital: descifrando la 'verdadera' historia de los n
 published: 2026-03-10
 description: Un recorrido histórico conciso por los sistemas de numeración, desde la transmisión del brahmi y los números arábigos hasta el legado romano y la influencia de la base 60.
 image: ''
-tags: [Mathematics, History, Numeral Systems, Education]
+tags: [Mathematics, History, Numeral Systems]
 category: Mathematics
 draft: false
 ---

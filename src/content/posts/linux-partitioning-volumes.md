@@ -3,8 +3,8 @@ title: Linux Disk Partitioning - Optimal Volumes and Strategies for Engineering 
 published: 2025-11-02
 description: An engineering guide to Linux disk partitioning, covering optimal volume sizes, filesystem choices, and tailored strategies for software engineers, network engineers, and developers.
 image: ''
-tags: [Linux, Partitioning, Filesystems, System Administration, Storage Optimization]
-category: Guide
+tags: [Linux, Partitioning, Storage]
+category: "Systems & Security"
 draft: false
 ---
 

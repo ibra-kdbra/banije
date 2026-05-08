@@ -5,8 +5,8 @@ title: مقدمة في تصميم واجهات الويب
 published: 2025-04-05
 description: تصميم الويب الحديث من منظور هندسة البرمجيات، مع تغطية أساسيات واجهة المستخدم وتجربة المستخدم (UI/UX)، ومبادئ هندسة البرمجيات، والأمن، وتحسين الأداء.
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: "Architecture"
 draft: false
 ---
 

@@ -6,7 +6,7 @@ published: 2021-08-23
 description: 'C++ programlama dilinin temellerini, avantajlarını ve dezavantajlarını öğrenin.'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

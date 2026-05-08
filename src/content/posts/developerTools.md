@@ -3,8 +3,8 @@ title: Review of Web Development Tools
 published: 2024-01-08
 description: 'Discover browser extensions, tools that streamline web development, from front-end to back-end tools.'
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Dev, Tools, Extensions]
+category: "Developer Workflow"
 draft: false
 ---
 

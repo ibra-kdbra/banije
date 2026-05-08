@@ -3,8 +3,8 @@ title: "Web ランドスケープ デザインの概要"
 published: 2025-04-05
 description: "ソフトウェア エンジニアリングの観点から見た最新の Web デザイン。UI/UX の基礎、ソフトウェア エンジニアリングの原則、セキュリティ、パフォーマンスの最適化をカバーします。"
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: "Architecture"
 draft: false
 lang: "ja"
 originalSlug: "introduction-to-web-landscape-design"

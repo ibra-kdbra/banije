@@ -6,7 +6,7 @@ published: 2025-12-31
 description: 后 LLM 时代的权威技术宣言。全面解析统一智能体架构、持久化内存层及模型上下文协议（MCP）。
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
-category: Engineering
+category: "Architecture"
 draft: false
 series:
     name: "AI Foundations"

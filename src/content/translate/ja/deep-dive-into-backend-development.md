@@ -3,8 +3,8 @@ title: "バックエンド開発の詳細"
 published: 2025-04-28
 description: "アーキテクチャ、テクノロジー スタック、API、スケーラビリティ、DevOps の実践をカバーするバックエンド開発のエンジニアリング ガイド。"
 image: ''
-tags: [Backend, Software Engineering, Architecture, APIs, DevOps, Scalability]
-category: Backend Development
+tags: [Backend, Software Engineering, Architecture]
+category: "Architecture"
 draft: false
 lang: "ja"
 originalSlug: "deep-dive-into-backend-development"

@@ -3,8 +3,8 @@ title: "Örneklerle Git Komutları"
 published: 2024-02-18
 description: "İş akışınızı kolaylaştıracak örneklerle temel Git komutları hakkında bilgi edinin."
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 lang: "tr"
 originalSlug: "gitCommands"

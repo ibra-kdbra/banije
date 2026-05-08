@@ -6,7 +6,7 @@ published: 2021-08-23
 description: 'C++ 프로그래밍 언어의 기초와 장단점에 대해 알아보세요.'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

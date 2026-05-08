@@ -3,8 +3,8 @@ title: "웹 환경 디자인 소개"
 published: 2025-04-05
 description: "UI/UX 기초, 소프트웨어 공학 원칙, 보안 및 성능 최적화를 다루는 소프트웨어 공학 관점의 현대 웹 디자인입니다."
 image: ''
-tags: [Web Design, UI/UX, Software Engineering, Frontend, Backend, Security, Performance]
-category: Software Development
+tags: [Web Design, UI/UX, Software Engineering]
+category: "Architecture"
 draft: false
 lang: "ko"
 originalSlug: "introduction-to-web-landscape-design"

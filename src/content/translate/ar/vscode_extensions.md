@@ -5,8 +5,8 @@ title: إضافات VS Code
 published: 2024-01-17
 description: 'دليل شامل لإضافات VS Code مصنفة حسب المجالات لتعزيز الإنتاجية وتطوير المهارات.'
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Systems & Security"
 draft: false
 ---
 

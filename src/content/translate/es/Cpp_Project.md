@@ -6,7 +6,7 @@ published: 2021-08-23
 description: 'Aprende los fundamentos del lenguaje de programación C++, sus ventajas e inconvenientes.'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

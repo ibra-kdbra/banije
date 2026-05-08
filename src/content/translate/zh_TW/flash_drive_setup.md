@@ -5,7 +5,7 @@ title: Linux 下的隨身碟設定與救援
 published: 2024-11-18
 description: '檢查、救援和格式化 Linux 隨身碟的逐步指南。'
 image: ''
-tags: [Linux, 隨身碟, 救援, 指南]
+tags: [Linux, 隨身碟, 救援]
 category: 教學
 draft: false
 ---
