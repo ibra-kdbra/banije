@@ -1,17 +1,17 @@
 <script>
   /**
-   * InteractiveImage — Version 2 (Svelte 5)
-   * 
-   * Features:
-   *   - Dev-Only Debugger: Visible only during development (npm run dev)
-   *   - Premium UI: Glassmorphism and smooth transitions
-   *   - Portaled Overlay: Escapes parent CSS transforms
+   * InteractiveImage — Refined Version
+   * Focus: Clean UI, Smaller Sidebar, Improved Theme Contrast.
    */
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
 
-  let { src, items = [], alt = 'Interactive Diagram' } = $props();
+  let { src, items = [], alt = 'Interactive Diagram', overview = "" } = $props();
 
-  // Environment Check
+  // Robust Overview Logic
+  const finalOverview = $derived(overview && overview !== "null" && overview !== "undefined" 
+    ? overview 
+    : "Explore the components of this diagram. Click any label or use the sidebar list to see detailed descriptions.");
+
   const isDev = import.meta.env.DEV;
 
   // State
@@ -20,6 +20,7 @@
   let activeId   = $state(null);
   let debugX     = $state(0);
   let debugY     = $state(0);
+  let sidebarRefs = {};
 
   // Derived
   let activeItem = $derived(items.find(i => i.id === activeId));
@@ -33,8 +34,16 @@
     };
   });
 
-  function toggleHotspot(id) {
-    activeId = activeId === id ? null : id;
+  async function toggleHotspot(id) {
+    if (activeId === id) {
+      activeId = null;
+    } else {
+      activeId = id;
+      await tick();
+      if (sidebarRefs[id]) {
+        sidebarRefs[id].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
   }
 
   function openFocus() {
@@ -56,20 +65,20 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<!-- Preview (inline) -->
+<!-- ── Preview UI (Minimalist) ── -->
 <div class="ii-wrap">
   <button class="ii-preview" onclick={openFocus} type="button">
     <img {src} {alt} class="ii-preview-img" />
-    <div class="ii-preview-hover">
-      <span class="ii-cta">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        Click to explore
-      </span>
+    <div class="ii-preview-overlay">
+      <div class="ii-preview-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        <span class="ii-preview-text">Expand Diagram</span>
+      </div>
     </div>
   </button>
 </div>
 
-<!-- Focus Overlay (portaled to body) -->
+<!-- ── Fullscreen Overlay ── -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
@@ -80,30 +89,34 @@
   onclick={(e) => e.target === e.currentTarget && closeFocus()}
 >
   <div class="ii-modal">
-    <!-- Top bar -->
+    <!-- Top Bar -->
     <div class="ii-topbar">
-      <span class="ii-topbar-label">Interactive Diagram</span>
+      <div class="ii-topbar-left">
+        <button class="ii-topbar-back" onclick={closeFocus} title="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <span class="ii-topbar-label">Interactive View</span>
+      </div>
       <div class="ii-topbar-actions">
         <button
           class="ii-ctrl-btn"
           class:ii-ctrl-active={isZoomed}
           onclick={() => isZoomed = !isZoomed}
-          type="button"
           aria-label="Toggle Zoom"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/>{#if !isZoomed}<line x1="11" y1="8" x2="11" y2="14"/>{/if}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/>{#if !isZoomed}<line x1="11" y1="8" x2="11" y2="14"/>{/if}</svg>
         </button>
-        <button class="ii-ctrl-btn ii-ctrl-close" onclick={closeFocus} type="button" aria-label="Close">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <button class="ii-ctrl-btn ii-close-btn" onclick={closeFocus} aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Body -->
-    <div class="ii-body">
-      <div class="ii-imgpane">
+    <div class="ii-layout">
+      <!-- Image Pane -->
+      <div class="ii-pane-image">
         <div 
-          class="ii-imgframe" 
+          class="ii-canvas"
           class:ii-zoomed={isZoomed}
           onmousemove={(e) => {
             if (!isDev) return;
@@ -111,16 +124,11 @@
             debugX = Number(((e.clientX - rect.left) / rect.width) * 100).toFixed(1);
             debugY = Number(((e.clientY - rect.top) / rect.height) * 100).toFixed(1);
           }}
-          onclick={(e) => {
-            if (isDev && e.target.tagName === 'IMG') {
-              console.log(`COORDS: "x": ${debugX}, "y": ${debugY}`);
-            }
-          }}
         >
-          <img {src} {alt} class="ii-mainimg" draggable="false" />
+          <img {src} {alt} class="ii-main-img" draggable="false" />
           
           {#if isDev}
-            <div class="ii-debug-coords">X: {debugX}% Y: {debugY}%</div>
+            <div class="ii-debug-badge">X: {debugX}% Y: {debugY}%</div>
           {/if}
 
           {#each items as item (item.id)}
@@ -129,168 +137,173 @@
               class:ii-active={activeId === item.id}
               style="left:{item.x}%; top:{item.y}%; width:{item.w}%; height:{item.h}%"
               onclick={() => toggleHotspot(item.id)}
-              type="button"
               aria-label={item.label}
             ></button>
           {/each}
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div class="ii-sidebar">
-        {#if activeItem}
-          <div class="ii-card">
-            <div class="ii-card-dot"></div>
-            <h3 class="ii-card-title">{activeItem.label}</h3>
-            <p class="ii-card-body">{activeItem.info}</p>
+      <!-- Compact Sidebar -->
+      <div class="ii-pane-sidebar">
+        <div class="ii-sidebar-inner">
+          <div class="ii-header">
+            <h2 class="ii-title">Diagram Details</h2>
+            <p class="ii-description">{finalOverview}</p>
           </div>
-        {:else}
-          <div class="ii-placeholder">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
-            <p class="ii-ph-title">Select a label</p>
-            <p class="ii-ph-sub">Click any label on the diagram to view its description.</p>
+
+          <div class="ii-list">
+            {#each items as item (item.id)}
+              <!-- svelte-ignore a11y_click_events_have_key_events -->
+              <!-- svelte-ignore a11y_no_static_element_interactions -->
+              <div 
+                bind:this={sidebarRefs[item.id]}
+                class="ii-item"
+                class:ii-item-active={activeId === item.id}
+                onclick={() => toggleHotspot(item.id)}
+              >
+                <div class="ii-item-trigger">
+                  <span class="ii-item-idx">{items.indexOf(item) + 1}</span>
+                  <span class="ii-item-label">{item.label}</span>
+                  <svg class="ii-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                {#if activeId === item.id}
+                  <div class="ii-item-body">
+                    <p>{item.info}</p>
+                  </div>
+                {/if}
+              </div>
+            {/each}
           </div>
-        {/if}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  /* ── Preview (Scoped) ────────────────── */
-  .ii-wrap { margin: 2rem 0; }
+  /* ── PREVIEW ── */
+  .ii-wrap { margin: 2rem 0; border-radius: 1rem; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  :global(.dark .ii-wrap) { box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
   .ii-preview {
-    position: relative; display: block; width: 100%; padding: 0;
-    border: 2px solid rgba(128,128,128,.1); border-radius: 1rem;
-    overflow: hidden; cursor: pointer; background: none;
-    transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .ii-preview:hover {
-    border-color: oklch(0.58 0.19 255);
-    box-shadow: 0 12px 40px rgba(0,0,0,.15);
-    transform: translateY(-4px);
-  }
-  .ii-preview-img { display: block; width: 100%; height: auto; transition: transform .6s; }
-  .ii-preview:hover .ii-preview-img { transform: scale(1.03); }
-  .ii-preview-hover {
-    position: absolute; inset: 0;
+    position: relative; width: 100%; border: none; padding: 0; background: transparent; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,.05); opacity: 0; transition: opacity .3s;
   }
-  .ii-preview:hover .ii-preview-hover { opacity: 1; }
-  .ii-cta {
-    display: inline-flex; align-items: center; gap: .5rem;
-    padding: .6rem 1.4rem; border-radius: 999px;
-    font-size: .85rem; font-weight: 700;
-    background: #fff; color: #111;
-    box-shadow: 0 4px 15px rgba(0,0,0,.1);
-  }
-  :global(.dark) .ii-cta { background: #1a1a1e; color: #fff; }
+  .ii-preview-img { display: block; width: 100%; height: auto; transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
+  .ii-preview:hover .ii-preview-img { transform: scale(1.02); }
 
-  /* ── Overlay (Global - Portaled) ──────── */
+  .ii-preview-overlay {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.4s; pointer-events: none;
+  }
+  .ii-preview:hover .ii-preview-overlay { opacity: 1; }
+  
+  .ii-preview-icon { 
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.7rem 1.25rem; border-radius: 100px;
+    background: rgba(15, 15, 20, 0.75); border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px); color: #fff; font-weight: 700; font-size: 0.8rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+    transform: translateY(10px); transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+  .ii-preview:hover .ii-preview-icon { transform: translateY(0); background: rgba(15, 15, 20, 0.9); border-color: oklch(0.58 0.19 255 / 0.4); }
+  .ii-preview-text { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; }
+
+  /* ── OVERLAY ── */
   :global(.ii-overlay) {
-    position: fixed; inset: 0; z-index: 99999;
-    display: flex; flex-direction: column;
-    background: rgba(0,0,0,.7);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-    opacity: 0; pointer-events: none;
-    transition: opacity .4s ease;
+    position: fixed; inset: 0; z-index: 99999; display: flex;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(12px);
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
   }
   :global(.ii-overlay.ii-visible) { opacity: 1; pointer-events: auto; }
 
   :global(.ii-modal) {
     flex: 1; display: flex; flex-direction: column;
-    max-width: 1400px; width: 96%;
-    margin: 1rem auto; border-radius: 1.5rem;
-    overflow: hidden; background: #fff;
-    box-shadow: 0 30px 90px rgba(0,0,0,.5);
+    max-width: 1400px; width: 96%; margin: auto; height: 92vh;
+    background: #fff; border-radius: 1.5rem; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
   }
-  :global(.dark .ii-modal) { background: #0f0f12; border: 1px solid rgba(255,255,255,.05); }
+  :global(.dark .ii-modal) { background: #0f0f12; border: 1px solid rgba(255,255,255,0.05); }
 
   :global(.ii-topbar) {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: .75rem 1.5rem; background: #fafafa;
-    border-bottom: 1px solid rgba(0,0,0,.05); flex-shrink: 0;
+    padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.05); background: #fff;
   }
-  :global(.dark .ii-topbar) { background: #151518; border-color: rgba(255,255,255,.05); }
-  :global(.ii-topbar-label) { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; color: #888; }
-  :global(.ii-topbar-actions) { display: flex; gap: .5rem; }
+  :global(.dark .ii-topbar) { background: #16161a; border-color: rgba(255,255,255,0.05); }
+  :global(.ii-topbar-left) { display: flex; align-items: center; gap: 0.75rem; }
+  :global(.ii-topbar-back) { background: none; border: none; padding: 0.5rem; cursor: pointer; border-radius: 8px; color: inherit; }
+  :global(.ii-topbar-back:hover) { background: rgba(0,0,0,0.05); }
+  :global(.dark .ii-topbar-back:hover) { background: rgba(255,255,255,0.05); }
+  :global(.ii-topbar-label) { font-weight: 800; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; }
 
+  /* Clean Actions (No hover backgrounds) */
+  :global(.ii-topbar-actions) { display: flex; border: 1px solid rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
+  :global(.dark .ii-topbar-actions) { border-color: rgba(255,255,255,0.1); }
   :global(.ii-ctrl-btn) {
-    width: 38px; height: 38px;
-    border: 1px solid rgba(0,0,0,.08); border-radius: .75rem;
-    background: #fff; color: #444;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: all .2s;
+    width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    background: #fff; border: none; cursor: pointer; transition: all 0.2s; color: #666;
   }
-  :global(.dark .ii-ctrl-btn) { background: #1c1c21; color: #ccc; border-color: rgba(255,255,255,.1); }
-  :global(.ii-ctrl-btn:hover) { background: #f0f0f0; transform: translateY(-1px); }
-  :global(.dark .ii-ctrl-btn:hover) { background: #2a2a30; }
-  :global(.ii-ctrl-btn.ii-ctrl-active) { background: oklch(0.58 0.19 255); color: #fff; border-color: oklch(0.58 0.19 255); }
-  :global(.ii-ctrl-close:hover) { background: #fee2e2; color: #ef4444; border-color: #fecaca; }
+  :global(.dark .ii-ctrl-btn) { background: #1a1a1e; color: #aaa; }
+  :global(.ii-ctrl-btn:not(:last-child)) { border-right: 1px solid rgba(0,0,0,0.05); }
+  :global(.dark .ii-ctrl-btn:not(:last-child)) { border-color: rgba(255,255,255,0.1); }
+  :global(.ii-ctrl-active) { color: oklch(0.58 0.19 255) !important; background: rgba(59,130,246,0.05) !important; }
+  :global(.ii-close-btn:hover) { color: #ef4444 !important; }
 
-  /* ── Body split ──────────────────────── */
-  :global(.ii-body) { flex: 1; display: flex; overflow: hidden; }
-  @media (max-width: 900px) { :global(.ii-body) { flex-direction: column; } }
+  /* ── LAYOUT ── */
+  :global(.ii-layout) { flex: 1; display: flex; overflow: hidden; }
+  @media (max-width: 900px) { :global(.ii-layout) { flex-direction: column; } }
 
-  :global(.ii-imgpane) { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; overflow: hidden; background: #f4f5f7; }
-  :global(.dark .ii-imgpane) { background: #08080a; }
+  :global(.ii-pane-image) { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; background: #f8fafc; overflow: hidden; }
+  :global(.dark .ii-pane-image) { background: #08080a; }
 
-  :global(.ii-imgframe) { position: relative; display: inline-block; transition: transform .5s cubic-bezier(0.2, 1, 0.3, 1); transform-origin: center; }
-  :global(.ii-imgframe.ii-zoomed) { transform: scale(1.8); cursor: zoom-out; }
+  :global(.ii-canvas) { position: relative; transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1); transform-origin: center; }
+  :global(.ii-zoomed) { transform: scale(1.8); cursor: zoom-out; }
+  :global(.ii-main-img) { max-width: 100%; max-height: 78vh; border-radius: 1rem; box-shadow: 0 15px 50px rgba(0,0,0,0.2); }
 
-  :global(.ii-mainimg) { display: block; max-width: 100%; height: auto; max-height: calc(88vh - 80px); border-radius: 1rem; box-shadow: 0 10px 40px rgba(0,0,0,.2); pointer-events: none; }
-
-  /* ── Hotspots (Premium Bounding Box) ─── */
+  /* ── HOTSPOTS ── */
   :global(.ii-hotspot) {
-    position: absolute; appearance: none; outline: none; padding: 0; margin: 0;
-    border: 2px solid transparent; border-radius: 8px; background: transparent;
-    cursor: pointer; transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute; appearance: none; outline: none; border: 1.5px solid transparent; border-radius: 6px;
+    background: transparent; cursor: pointer; transition: all 0.2s;
   }
-  
-  /* Visible only in DEV mode */
-  :global(.ii-dev-mode .ii-hotspot) {
-    border-color: rgba(239, 68, 68, 0.25);
-    background: rgba(239, 68, 68, 0.05);
-  }
-
-  :global(.ii-hotspot:hover) {
-    background: rgba(59, 130, 246, 0.1) !important;
-    border-color: rgba(59, 130, 246, 0.3) !important;
-    transform: scale(1.03);
-  }
+  :global(.ii-dev-mode .ii-hotspot) { border-color: rgba(239,68,68,0.2); background: rgba(239,68,68,0.04); }
+  :global(.ii-hotspot:hover) { border-color: rgba(59,130,246,0.3) !important; background: rgba(59,130,246,0.08) !important; }
   :global(.ii-hotspot.ii-active) {
-    background: rgba(59, 130, 246, 0.12) !important;
-    border-color: oklch(0.58 0.19 255) !important;
-    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.15), 0 10px 25px rgba(0,0,0,0.1);
-    transform: scale(1.03);
+    border-color: oklch(0.58 0.19 255) !important; background: rgba(59,130,246,0.12) !important;
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.15); z-index: 10;
   }
 
-  /* ── Debug Tracker ───────────────────── */
-  :global(.ii-debug-coords) {
-    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9); color: #00ff00; padding: 6px 14px;
-    border-radius: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 11px; font-weight: 700; pointer-events: none; z-index: 1000;
-    border: 1px solid rgba(0, 255, 0, 0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  /* ── SIDEBAR (Compact) ── */
+  :global(.ii-pane-sidebar) { width: 320px; flex-shrink: 0; background: #fff; border-left: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+  :global(.dark .ii-pane-sidebar) { background: #121215; border-color: rgba(255,255,255,0.05); }
+  @media (max-width: 900px) { :global(.ii-pane-sidebar) { width: 100%; height: 42%; border-left: none; border-top: 1px solid rgba(0,0,0,0.05); } }
+
+  :global(.ii-sidebar-inner) { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+  :global(.ii-header) { padding: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.03); }
+  :global(.ii-title) { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 900; color: #111; }
+  :global(.dark .ii-title) { color: #fff; }
+  :global(.ii-description) { margin: 0; font-size: 0.85rem; line-height: 1.6; color: #64748b; }
+  :global(.dark .ii-description) { color: #94a3b8; }
+
+  :global(.ii-list) { padding: 0.75rem; }
+  :global(.ii-item) {
+    margin-bottom: 0.25rem; border-radius: 12px; cursor: pointer; transition: all 0.2s;
   }
+  :global(.ii-item:hover) { background: #f8fafc; }
+  :global(.dark .ii-item:hover) { background: #1a1a20; }
 
-  /* ── Sidebar ─────────────────────────── */
-  :global(.ii-sidebar) { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; background: #fff; border-left: 1px solid rgba(0,0,0,.05); overflow-y: auto; }
-  :global(.dark .ii-sidebar) { background: #121215; border-color: rgba(255,255,255,.05); }
-  @media (max-width: 900px) { :global(.ii-sidebar) { width: 100%; height: 40%; border-left: none; border-top: 1px solid rgba(0,0,0,.05); } }
+  :global(.ii-item-trigger) { padding: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  :global(.ii-item-idx) { font-size: 0.7rem; font-weight: 800; color: #94a3b8; width: 18px; }
+  :global(.ii-item-label) { flex: 1; font-weight: 700; font-size: 0.95rem; color: #334155; }
+  :global(.dark .ii-item-label) { color: #e2e8f0; }
+  :global(.ii-chevron) { color: #cbd5e1; transition: transform 0.2s; }
 
-  /* ── Card ────────────────────────────── */
-  :global(.ii-card) { margin: 1.5rem; padding: 1.75rem; border-radius: 1.25rem; background: #f9fafb; border: 1px solid rgba(0,0,0,.05); animation: ii-up .4s cubic-bezier(0.2, 1, 0.3, 1); position: relative; overflow: hidden; }
-  :global(.dark .ii-card) { background: #1a1a20; border-color: rgba(255,255,255,.05); }
-  :global(.ii-card-dot) { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: oklch(0.58 0.19 255); }
-  :global(.ii-card-title) { margin: 0 0 .8rem; font-size: 1.35rem; font-weight: 900; color: oklch(0.58 0.19 255); letter-spacing: -.02em; }
-  :global(.ii-card-body) { margin: 0; font-size: .95rem; line-height: 1.8; color: #444; }
-  :global(.dark .ii-card-body) { color: #aaa; }
-  @keyframes ii-up { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+  :global(.ii-item-body) { padding: 0 1rem 1rem 2.6rem; font-size: 0.85rem; line-height: 1.6; color: #475569; animation: ii-slide .3s ease; }
+  :global(.dark .ii-item-body) { color: #94a3b8; }
 
-  :global(.ii-placeholder) { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 3rem; opacity: .4; }
-  :global(.ii-ph-title) { margin: 1rem 0 .4rem; font-size: 1.1rem; font-weight: 800; color: #111; }
-  :global(.dark .ii-ph-title) { color: #fff; }
-  :global(.ii-ph-sub) { margin: 0; font-size: .85rem; max-width: 240px; line-height: 1.6; }
+  :global(.ii-item-active) { background: rgba(59,130,246,0.05) !important; }
+  :global(.dark .ii-item-active) { background: rgba(59,130,246,0.08) !important; }
+  :global(.ii-item-active .ii-item-label) { color: oklch(0.58 0.19 255); }
+  :global(.ii-item-active .ii-chevron) { transform: rotate(180deg); color: oklch(0.58 0.19 255); }
+
+  @keyframes ii-slide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  :global(.ii-debug-badge) { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); background: #000; color: #0f0; padding: 4px 10px; border-radius: 5px; font-family: monospace; font-size: 10px; font-weight: 700; z-index: 100; }
 </style>
