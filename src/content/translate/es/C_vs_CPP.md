@@ -5,7 +5,7 @@ title: Cpp frente a C - Una comparación en profundidad
 published: 2023-04-11
 description: 'Una comparación detallada de nivel senior entre C++ y C, analizando sus fortalezas, debilidades y en qué áreas destaca cada uno.'
 image: './compare.jpg'
-tags: [Programming, C++, C, Comparison, Advanced Concepts]
+tags: [Programming, C++, C]
 category: 'Advanced Programming'
 draft: false
 ---

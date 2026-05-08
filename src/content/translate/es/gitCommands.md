@@ -3,8 +3,8 @@ title: "Comandos de Git con ejemplos"
 published: 2024-02-18
 description: "Conozca los comandos esenciales de Git con ejemplos para optimizar su flujo de trabajo."
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 lang: "es"
 originalSlug: "gitCommands"

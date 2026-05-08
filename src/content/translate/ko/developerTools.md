@@ -3,8 +3,8 @@ title: "웹 개발 도구 검토"
 published: 2024-01-08
 description: "프런트엔드부터 백엔드 도구까지 웹 개발을 간소화하는 브라우저 확장 프로그램 및 도구를 살펴보세요."
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "developerTools"

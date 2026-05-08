@@ -5,8 +5,8 @@ title: إعداد واستعادة محرك الأقراص المحمول (Flash
 published: 2024-11-18
 description: 'دليل خطوة بخطوة لفحص واستعادة وتهيئة محرك أقراص محمول على نظام لينكس.'
 image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+tags: [Linux, Flash Drive, Recovery]
+category: "Systems & Security"
 draft: false
 ---
 

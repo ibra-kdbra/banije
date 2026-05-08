@@ -6,7 +6,7 @@ published: 2021-08-23
 description: '學習 C++ 程式語言的基礎知識、其優缺點。'
 image: './cpp.jpg'
 tags: [Programming, C++, Language]
-category: Tutorial
+category: "Systems & Security"
 draft: false
 ---
 

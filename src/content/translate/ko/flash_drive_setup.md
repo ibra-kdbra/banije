@@ -3,8 +3,8 @@ title: "Linux에서 플래시 드라이브 설정 및 복구"
 published: 2024-11-18
 description: "Linux에서 플래시 드라이브를 확인, 복구 및 포맷하는 단계별 가이드입니다."
 image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+tags: [Linux, Flash Drive, Recovery]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "flash_drive_setup"

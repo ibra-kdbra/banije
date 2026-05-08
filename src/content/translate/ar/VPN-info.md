@@ -5,8 +5,8 @@ title: استراتيجية تنفيذ شبكة VPN للمؤسسات لـ 300 م
 published: 2026-03-15
 description: دليل معماري عملي لنشر شبكة VPN آمنة وقابلة للتطوير للمؤسسات باستخدام WireGuard، وضوابط الهوية، والتوافر العالي.
 image: ''
-tags: [VPN, WireGuard, Security, Networking, Infrastructure]
-category: Network Engineering
+tags: [VPN, WireGuard, Security]
+category: "Systems & Security"
 draft: false
 ---
 

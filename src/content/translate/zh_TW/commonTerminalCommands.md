@@ -4,7 +4,7 @@ lang: "zh_TW"
 title: 常見終端機指令
 published: 2022-09-20
 description: '學習關鍵的終端機指令及其用法。'
-tags: [終端機, 指令, Linux, MacOS, Windows, Shell]
+tags: [終端機, 指令, Linux]
 category: 指南
 draft: false
 ---

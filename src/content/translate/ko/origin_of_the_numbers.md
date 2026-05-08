@@ -5,7 +5,7 @@ title: "위대한 디지털 이주: 숫자의 '진짜' 역사를 해독하다"
 published: 2026-03-10
 description: 브라흐미 문자에서 아랍의 전파, 로마의 유산 및 60진법의 영향에 이르기까지, 숫자 체계의 간략한 역사적 흐름을 살펴봅니다.
 image: ''
-tags: [Mathematics, History, Numeral Systems, Education]
+tags: [Mathematics, History, Numeral Systems]
 category: Mathematics
 draft: false
 ---

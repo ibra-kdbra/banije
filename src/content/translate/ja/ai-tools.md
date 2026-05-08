@@ -4,7 +4,7 @@ published: 2025-12-31
 description: "LLM 以降の時代における決定版の、一冊の本に相当する技術マニフェスト。 統合エージェント アーキテクチャ、永続メモリ層、およびモデル コンテキスト プロトコルの 100,000 フィートのビュー。"
 image: '/images/posts/architect-ai.webp'
 tags: [AI, Architecture, Future-Tech]
-category: Engineering
+category: "Architecture"
 draft: false
 lang: "ja"
 originalSlug: "ai-tools"

@@ -5,8 +5,8 @@ title: 進階後端工程 - 從分散式系統到彈性架構
 published: 2025-05-12
 description: 分散式系統的進階指南，涵蓋一致性模型、彈性模式、事件溯源、CQRS，以及用於建構可擴展、容錯型應用程式的現代後端架構。
 image: ''
-tags: [後端, 分散式系統, 架構, 彈性, CQRS, 事件溯源, 微服務]
-category: 後端開發
+tags: [後端, 分散式系統, 架構]
+category: "Architecture"
 draft: false
 series:
   name: "後端工程"

@@ -3,7 +3,7 @@ title: "Una inmersión profunda en la minería de datos: descubriendo conocimien
 published: 2025-08-14
 description: "Exploración de la minería de datos, desde sus conceptos centrales hasta temas avanzados e implicaciones éticas."
 image: ''
-tags: [Data Mining, AI, Machine Learning, Big Data]
+tags: [Data Mining, AI, Machine Learning]
 category: Artificial Intelligence
 draft: false
 lang: "es"

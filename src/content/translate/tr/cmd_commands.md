@@ -3,8 +3,8 @@ title: "Windows Komut İstemi (CMD) Komutları"
 published: 2023-11-02
 description: "Windows için temel CMD komutlarının listesi."
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "cmd_commands"

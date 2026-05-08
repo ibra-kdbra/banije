@@ -5,7 +5,7 @@ title: Yapay Zeka Etiği
 published: 2025-07-10
 description: 'Yapay zeka etiği ve ahlakına derinlemesine bir bakış.'
 image: '/images/posts/ethics-of-ai.webp'
-tags: [AI, Machine Learning, Neural Networks, Design, Guide]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

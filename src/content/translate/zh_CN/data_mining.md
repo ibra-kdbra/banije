@@ -5,7 +5,7 @@ title: "深入挖掘数据：从数字洪流中发掘洞见"
 published: 2025-08-14
 description: "探索数据挖掘：涵盖从核心概念到高级课题及伦理影响的全方位解析。"
 image: ''
-tags: [Data Mining, AI, Machine Learning, Big Data]
+tags: [Data Mining, AI, Machine Learning]
 category: Artificial Intelligence
 draft: false
 ---

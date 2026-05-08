@@ -5,7 +5,7 @@ title: 기본 알고리즘 AI vs. 일반 모델 AI - 포괄적 비교
 published: 2024-11-23
 description: '전통적인 기본 알고리즘 AI와 딥러닝 모델 간의 심층 비교를 통해 각자의 강점, 사용 사례 및 차이점을 다룹니다.'
 image: '/images/posts/superior.webp'
-tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

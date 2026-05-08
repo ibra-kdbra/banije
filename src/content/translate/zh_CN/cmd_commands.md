@@ -5,8 +5,8 @@ title: Windows 命令提示符 (CMD) 指令
 published: 2023-11-02
 description: 'Windows 常用 CMD 指令列表。'
 image: ''
-tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+tags: [Windows, CMD, Commands]
+category: "Systems & Security"
 draft: false
 ---
 

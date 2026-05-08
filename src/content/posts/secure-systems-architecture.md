@@ -3,8 +3,8 @@ title: Secure Systems Architecture - A Multi-Perspective Engineering Treatise
 published: 2025-09-11
 description: Secure systems architecture covering network security fundamentals, defense-in-depth strategies, threat modeling, and secure development practices from multiple professional perspectives.
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Threat Modeling, Architecture]
+category: "Systems & Security"
 draft: false
 series:
   name: "Security Architecture"

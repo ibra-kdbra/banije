@@ -5,8 +5,8 @@ title: Git 指令範例大全
 published: 2024-02-18
 description: '學習必備的 Git 指令與範例，優化您的開發工作流程。'
 image: ''
-tags: [Git, Commands, Examples, Guide]
-category: Version Control
+tags: [Git, Commands, Examples]
+category: "Developer Workflow"
 draft: false
 ---
 

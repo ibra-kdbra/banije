@@ -2,8 +2,8 @@
 title: "The Architect's Vocabulary: Balancing Design Patterns and Pragmatism"
 published: 2026-04-08
 description: "A deep dive into the utility and pitfalls of design patterns, from classic object-oriented structures to modern distributed systems and AI-assisted orchestration."
-image: "/images/posts/architect-ai.webp"
-tags: ["Software Architecture", "Design Patterns", "Clean Code", "AI", "Software Engineering"]
+image: "/images/posts/design-patterns-blueprint.png"
+tags: [Architecture, Design Patterns, AI]
 category: "Architecture"
 draft: false
 ---

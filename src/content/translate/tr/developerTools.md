@@ -3,8 +3,8 @@ title: "Web Geliştirme Araçlarının İncelenmesi"
 published: 2024-01-08
 description: "Ön uçtan arka uç araçlara kadar web geliştirmeyi kolaylaştıran araçlar olan tarayıcı uzantılarını keşfedin."
 image: ''
-tags: [Web Development, Front-end, Back-end, Full-Stack, Tools, Extensions]
-category: Guide
+tags: [Web Development, Front-end, Back-end]
+category: "Systems & Security"
 draft: false
 lang: "tr"
 originalSlug: "developerTools"

@@ -5,8 +5,8 @@ title: "El arsenal de Kali Linux: Una guía completa de cada arma en tu caja de 
 published: 2026-01-27
 description: "Un análisis profundo de las herramientas estándar de la industria para reconocimiento, evaluación de vulnerabilidades, explotación y post-explotación."
 image: ""
-tags: ["Cybersecurity", "Pentesting", "Kali Linux", "Infosec"]
-category: "Cybersecurity"
+tags: ["Cybersecurity", "Pentesting", "Kali Linux"]
+category: "Systems & Security"
 draft: false
 ---
 

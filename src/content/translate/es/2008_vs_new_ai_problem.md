@@ -5,7 +5,7 @@ title: Gravedad del Capital en la IA - Paralelismos y por qué este ciclo se com
 published: 2026-02-12
 description: Un análisis combinado sobre la financiación de infraestructuras de IA, los bucles circulares de capital y cómo las señales de riesgo actuales se comparan con la era crediticia de 2008.
 image: '/images/posts/gravity_well.webp'
-tags: [AI, Finance, Infrastructure, Debt, Markets, Capital Markets, Risk]
+tags: [AI, Finance, Infrastructure]
 category: Financial Market
 draft: false
 ---

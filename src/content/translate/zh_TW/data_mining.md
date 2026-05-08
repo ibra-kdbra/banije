@@ -5,7 +5,7 @@ title: "深入剖析資料探勘：從數位洪流中挖掘洞見"
 published: 2025-08-14
 description: "探索資料探勘，從核心概念到進階議題及倫理影響。"
 image: ''
-tags: [資料探勘, 人工智慧, 機器學習, 大數據]
+tags: [資料探勘, 人工智慧, 機器學習]
 category: Artificial Intelligence
 draft: false
 ---

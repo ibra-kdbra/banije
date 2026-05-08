@@ -5,8 +5,8 @@ title: "Kali Linux 工具箱：渗透测试必备武器库全指南"
 published: 2026-01-27
 description: "深度解析行业标准工具，涵盖侦察、漏洞评估、利用及后渗透测试阶段的核心技术。"
 image: ""
-tags: ["Cybersecurity", "Pentesting", "Kali Linux", "Infosec"]
-category: "Cybersecurity"
+tags: ["Cybersecurity", "Pentesting", "Kali Linux"]
+category: "Systems & Security"
 draft: false
 ---
 

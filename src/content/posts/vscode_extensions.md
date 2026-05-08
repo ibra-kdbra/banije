@@ -3,8 +3,8 @@ title: VS Code Extensions
 published: 2024-01-17
 description: 'An extensive guide to VS Code extensions grouped by categories to enhance productivity and skill development.'
 image: ''
-tags: [VSCode, Extensions, Productivity, Development]
-category: Guide
+tags: [VSCode, Extensions, Productivity]
+category: "Developer Workflow"
 draft: false
 ---
 

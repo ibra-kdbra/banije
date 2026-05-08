@@ -5,8 +5,8 @@ title: "Kali Linux Cephaneliği: Pentest Araç Çantanızdaki Her Silah İçin K
 published: 2026-01-27
 description: "Keşif, zafiyet değerlendirmesi, istismar ve istismar sonrası süreçler için endüstri standardı araçlara derinlemesine bir bakış."
 image: ""
-tags: ["Cybersecurity", "Pentesting", "Kali Linux", "Infosec"]
-category: "Cybersecurity"
+tags: ["Cybersecurity", "Pentesting", "Kali Linux"]
+category: "Systems & Security"
 draft: false
 ---
 

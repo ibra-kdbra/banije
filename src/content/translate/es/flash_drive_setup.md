@@ -3,8 +3,8 @@ title: "Configuración y recuperación de unidades flash en Linux"
 published: 2024-11-18
 description: "Guípaso paso para comprobar, recuperar y formatear una unidad flash en Linux."
 image: ''
-tags: [Linux, Flash Drive, Recovery, Guide]
-category: Tutorial
+tags: [Linux, Flash Drive, Recovery]
+category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "flash_drive_setup"

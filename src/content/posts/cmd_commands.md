@@ -4,7 +4,7 @@ published: 2023-11-02
 description: 'List of essential CMD commands for Windows.'
 image: ''
 tags: [Windows, CMD, Commands, Productivity]
-category: Guide
+category: "Developer Workflow"
 draft: false
 ---
 

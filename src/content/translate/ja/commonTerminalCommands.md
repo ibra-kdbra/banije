@@ -2,8 +2,8 @@
 title: "一般的な端末コマンド"
 published: 2022-09-20
 description: "主要な端末コマンドとその使用法を学びます。"
-tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+tags: [Terminal, Commands, Linux]
+category: "Systems & Security"
 draft: false 
 lang: "ja"
 originalSlug: "commonTerminalCommands"

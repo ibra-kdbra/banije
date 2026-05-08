@@ -3,8 +3,8 @@ title: "보안 시스템 아키텍처 - 다관점 엔지니어링 논문"
 published: 2025-09-11
 description: "다양한 전문적 관점에서 네트워크 보안 기본 사항, 심층 방어 전략, 위협 모델링 및 보안 개발 사례를 다루는 보안 시스템 아키텍처입니다."
 image: ''
-tags: [Security, Network Security, Threat Modeling, Defense-in-Depth, Cybersecurity, Secure Development]
-category: Guide
+tags: [Security, Network Security, Threat Modeling]
+category: "Systems & Security"
 draft: false
 lang: "ko"
 originalSlug: "secure-systems-architecture"

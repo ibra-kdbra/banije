@@ -4,8 +4,8 @@ lang: "zh_CN"
 title: 常用终端命令
 published: 2022-09-20
 description: '学习关键的终端命令及其用法。'
-tags: [Terminal, Commands, Linux, MacOS, Windows, Shell]
-category: Guide
+tags: [Terminal, Commands, Linux]
+category: "Systems & Security"
 draft: false
 ---
 

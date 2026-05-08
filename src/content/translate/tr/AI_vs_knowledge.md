@@ -5,7 +5,7 @@ title: Temel Algoritma Yapay Zekası ve Düz Model Yapay Zekası - Kapsamlı Bir
 published: 2024-11-23
 description: 'Geleneksel temel algoritmik yapay zeka ile derin öğrenme modelleri arasında güçlü yönleri, kullanım durumlarını ve farklılıkları kapsayan derinlemesine bir karşılaştırma.'
 image: '/images/posts/superior.webp'
-tags: [AI, Machine Learning, Neural Networks, Algorithms, Comparison]
+tags: [AI, Machine Learning, Neural Networks]
 category: Artificial Intelligence
 draft: false
 series:

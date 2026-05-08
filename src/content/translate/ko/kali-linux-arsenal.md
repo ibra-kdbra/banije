@@ -5,8 +5,8 @@ title: "Kali Linux 아스널: 펜테스팅 툴킷의 모든 무기를 다루는 
 published: 2026-01-27
 description: "정보 수집, 취약점 평가, 익스플로잇 및 익스플로잇 이후 단계까지 업계 표준 도구들을 심층적으로 다룹니다."
 image: ""
-tags: ["Cybersecurity", "Pentesting", "Kali Linux", "Infosec"]
-category: "Cybersecurity"
+tags: ["Cybersecurity", "Pentesting", "Kali Linux"]
+category: "Systems & Security"
 draft: false
 ---
 
