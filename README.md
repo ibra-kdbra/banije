@@ -174,6 +174,52 @@ Useful options:
 
 If wording is not ideal for technical terms, edit `scripts/translation-glossary.json` and run again.
 
+## 📊 Interactive Diagrams
+
+Banije features a custom-built, declarative interactive diagram system powered by **Svelte 5** and **Gemini AI**.
+
+### Features:
+- **Portaled Focus Mode**: A premium fullscreen overlay that escapes parent container constraints for a cinematic experience.
+- **Precision Zoom**: Smooth 1.8x zoom capability for high-detail technical diagrams.
+- **Smart Hotspots**: Interactive bounding boxes with glassmorphism effects and smooth transitions.
+- **Dev-Only Visual Debugger**: An integrated coordinate tracker and hitbox highlighter that automatically appears in `DEV` mode (`pnpm dev`) to help with alignment.
+- **Mobile Responsive**: Transitions from a split-screen layout on desktop to a native-feeling bottom-sheet on mobile.
+
+### AI Automation (Auto-Labeling):
+You can automatically generate the coordinate JSON for any image using Gemini Vision:
+
+1. Place your image in `public/images/posts/`.
+2. Run the generator:
+   ```bash
+   pnpm interactive:gen public/images/posts/your-diagram.webp
+   ```
+3. A `.json` file will be created next to your image. Use it in Markdown:
+   ```markdown
+   ::interactive{id="my-id" src="/images/posts/img.webp" data="src/images/posts/img.json"}
+   ```
+
+### Debugging & Alignment:
+While running `pnpm dev`, move your mouse over any `::interactive` component to see real-time X/Y percentages. Clicking the image will log the exact coordinates to your browser console for easy fine-tuning.
+
+## 🖼️ Image Optimization
+
+To ensure fast page loads, Banije includes a built-in image optimization pipeline powered by **Sharp**.
+
+### Features:
+- **Automatic Compression**: Reduces file size without noticeable quality loss.
+- **WebP Generation**: Automatically creates `.webp` variants for better browser support.
+- **Responsive Resizing**: Scales large images down to a maximum width (default: 1600px).
+- **Format Conversion**: Optimizes JPG, PNG, and WebP files in-place.
+
+### Usage:
+```bash
+# Preview savings without changing files
+pnpm images:optimize:dry
+
+# Optimize all images in public/images/posts
+pnpm images:optimize
+```
+
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
