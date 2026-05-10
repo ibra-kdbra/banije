@@ -147,4 +147,10 @@
     @apply flex justify-center my-4;
     direction: ltr !important;
   }
+
+  /* Hide the auto-generated "Footnotes" header from remark-gfm */
+  .footnotes h2, 
+  #footnote-label {
+    display: none !important;
+  }
 }
