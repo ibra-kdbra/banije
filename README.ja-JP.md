@@ -1,145 +1,170 @@
-# ⛓️‍💥 Banije
+# ⛓️‍💥 Banije (日本語版)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**banije** は、長年にわたって得た知識を記録するための個人的な学習日記です。このプロジェクトは、以下の分野を探求してきた経験を基にしています：
+**Banije** は、長年にわたって蓄積された、複数の技術領域にわたる知識を記録するための、個人的な学習ダイアリーおよび集約されたナレッジベースです。このプロジェクトは、探求への情熱を反映しており、エンジニアリングの洞察を文書化し、洗練させ、共有するための**生きたプラットフォーム**として機能します。
 
-- 💻 **コンピュータサイエンス**
-- 🛠️ **ソフトウェアエンジニアリング**
-- 🐚 **Unixシェル**
-- 🔩 **ハードウェア開発**
-- 📐 **高度な数学**
-- 🗂️ **データ構造**
-- 📊 **アルゴリズム**
-- 🌟 *その他...*
+---
 
-このプロジェクトは学びへの情熱を反映しており、知識を文書化し、洗練し、共有するためのプラットフォームとして機能します。
+## 🔍 関心領域
 
-（英語版もご覧ください：[英語版](./README.md)）
+コンテンツは、以下の主要な技術ピラーに基づいて構成されています。
+- 💻 **Computer Science**: 基礎理論とデータ構造。
+- 🛠️ **Software Engineering**: デザインパターン、リファクタリング、クリーンコード。
+- 🐚 **Unix Shell**: 環境の自動化とシェルスクリプト。
+- 🔩 **Hardware Development**: 低レイヤーシステムとハードウェアの相互作用。
+- 📐 **Advanced Mathematics**: アルゴリズムと数学的論理。
+- 🧠 **Artificial Intelligence**: LLM、エージェントワークフロー、および倫理的AI。
 
-## 目次
+---
 
-- [⛓️‍💥 Banije](#️-banije)
-  - [目次](#目次)
-  - [✨ 特徴](#-特徴)
-  - [📋 前提条件](#-前提条件)
-  - [🚀 使用方法](#-使用方法)
-  - [⚙️ 記事のフロントマター](#️-記事のフロントマター)
-  - [🧞 コマンド](#-コマンド)
-  - [🤝 貢献](#-貢献)
-  - [🙏 クレジット](#-クレジット)
-  - [📄 ライセンス](#-ライセンス)
+## 🏗️ アーキテクチャと技術スタック
 
-![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/banije/main/public/captured.png)
+本プロジェクトは、速度、SEO、およびプレミアムな開発者体験（DX）を最適化するように設計されています。
+- **フレームワーク**: [Astro 5](https://astro.build) (静的サイト生成 - SSG)
+- **スタイリング**: [Tailwind CSS](https://tailwindcss.com) + [Stylus](https://stylus-lang.com/)
+- **コンポーネント**: [Svelte 5](https://svelte.dev) (Runesによるインタラクティブ性)
+- **検索エンジン**: [Pagefind](https://pagefind.app/) (分散型静的検索)
+- **タイポグラフィ**: コードの視認性を高めるための [JetBrains Mono](https://www.jetbrains.com/lp/mono/) を採用。
 
+---
 
 ## ✨ 特徴
 
-- [x] [Astro](https://astro.build) と [Tailwind CSS](https://tailwindcss.com) を使用して構築
-- [x] スムーズなアニメーションとページ遷移
-- [x] ライト/ダークモード
-- [x] カスタマイズ可能なテーマカラーとバナー
-- [x] レスポンシブデザイン
-- [x] 検索機能
+- [x] **パフォーマンス**: Astro 5 による瞬時の静的ページ読み込み。
+- [x] **モダンなUI**: Svelte 5 によるスムーズなアニメーションとページ遷移。
+- [x] **テーマ**: レスポンシブなライト/ダークモードに対応。
+- [x] **カスタマイズ**: テーマカラーやバナーを簡単に変更可能。
+- [x] **検索**: 高速な分散型静的検索を統合。
+- [x] **多言語翻訳**: 自動化された多言語サポート。
+
+---
 
 ## 📋 前提条件
 
-始める前に、以下のものがインストールされていることを確認してください：
-
-- **Node.js** （バージョン 18 以上）
+開始する前に、以下のツールがインストールされていることを確認してください。
+- **Node.js** (バージョン 18 以上)
 - **pnpm** パッケージマネージャー
-- **Git** バージョン管理用
+- **Git** (バージョン管理用)
 
-pnpm がインストールされていない場合は、グローバルにインストールしてください：
+pnpm がインストールされていない場合は、グローバルにインストールしてください。
 ```bash
 npm install -g pnpm
 ```
 
-## 🚀 使用方法
+---
 
-1. このリポジトリをクローンします：
+## 🚀 使い方
+
+1. **リポジトリをクローンする**:
    ```bash
    git clone https://github.com/ibra-kdbra/banije.git
    cd banije
    ```
 
-2. 依存関係をインストールします：
+2. **依存関係のインストール**:
    ```bash
    pnpm install
-   pnpm add sharp
+   pnpm add sharp # Astroの画像処理に必要
    ```
 
-3. `src/config.ts` ファイルを編集してブログをカスタマイズします。
+3. **ブログのカスタマイズ**:
+   `src/config.ts` を編集して、ブログの設定を自分好みに変更します。
 
-4. 新しい投稿を作成します：
+4. **新しい記事を作成する**:
    ```bash
    pnpm new-post <filename>
    ```
-   これにより、`src/content/posts/` フォルダ内に新しいファイルが作成され、編集できます。
+   これにより、`src/content/posts/` に編集用の新しいファイルが作成されます。
 
-5. 開発サーバーを起動します：
+5. **開発サーバーを起動する**:
    ```bash
    pnpm dev
    ```
-   `http://localhost:4321` でブログを確認できます。
+   `http://localhost:4321` にアクセスして、変更をリアルタイムで確認できます。
 
-6. 作成したブログをVercel、Netlify、GitHub Pages などにデプロイするには、[ガイド](https://docs.astro.build/ja/guides/deploy/)に従ってください。デプロイ前に、`astro.config.mjs` を編集してサイト構成を変更する必要があります。
+6. **ビルドとデプロイ**:
+   本番用サイトを `./dist/` ディレクトリにビルドします。
+   ```bash
+   pnpm build
+   ```
+   Vercel、Netlify、GitHub Pages へのデプロイについては、[Astroのガイド](https://docs.astro.build/en/guides/deploy/)を参照してください。
 
-## ⚙️ 記事のフロントマター
+---
 
-`src/content/posts/` 内の各記事は、メタデータのためのYAMLフロントマターを使用します。構造は以下の通りです：
+## ⚙️ フロントマター仕様
+
+`src/content/posts/` 内の各記事は YAML フロントマターを使用します。
 
 ```yaml
 ---
-title: My First Blog Post              # 記事タイトル（必須）
-published: 2023-09-09                  # 公開日（YYYY-MM-DD形式、必須）
-description: This is the first post... # 説明文（SEOとプレビュー用、必須）
-image: ./cover.jpg                     # カバー画像のパス（記事フォルダからの相対パス、オプション）
-tags: [Foo, Bar]                       # タグの配列（分類用、オプション）
-category: Front-end                    # メインカテゴリ（オプション）
-draft: false                           # プロダクションで非表示にする場合true（オプション、デフォルト: false）
-lang: jp                               # サイトのデフォルト言語と異なる場合の言語コード（オプション）
+title: "記事のタイトル"                # (必須)
+published: YYYY-MM-DD              # (必須)
+description: "SEO用の要約"             # (必須)
+image: "/images/posts/cover.png"   # (任意) カバー画像のパス
+tags: [Tag1, Tag2, Tag3]           # (任意) 最大3つ推奨
+category: "Architecture"           # (任意) 主要カテゴリ
+draft: false                       # (任意) デフォルトは false
 ---
 ```
 
-**注意点：**
-- `title`、`published`、`description` は必須フィールドです。
-- 画像は記事ファイルと同じフォルダに配置してください。
-- タグとカテゴリは整理と検索に役立ちます。
-- 下書き記事はライブサイトに表示されません。
+**注意点:**
+- `title`、`published`、`description` はビルドを通すために必須です。
+- 画像は `public/images/posts/` ディレクトリ、または記事の相対パスに配置してください。
+- タグとカテゴリにより、動的なフィルタリングと検索が可能になります。
 
-## 🧞 コマンド
+---
 
-すべてのコマンドは、ターミナルでプロジェクトのルートから実行する必要があります:
+## 🧞 全コマンドリスト
 
-| コマンド                    | アクション                                           |
-|:--------------------------|:-------------------------------------------------|
-| `pnpm install`            | プロジェクトの依存関係をインストール                    |
-| `pnpm add sharp`          | 画像処理用のSharpを追加                          |
-| `pnpm dev`                | `localhost:4321` で開発サーバーを起動              |
-| `pnpm build`              | `./dist/` に本番サイトをビルド                      |
-| `pnpm preview`            | デプロイ前のビルド内容をローカルでプレビュー            |
-| `pnpm new-post <filename>`| `src/content/posts/` に新しい投稿を作成            |
-| `pnpm astro ...`          | `astro add`、`astro check` などのCLIコマンドを実行 |
-| `pnpm astro --help`       | Astro CLIのヘルプを表示                            |
+| コマンド | アクション |
+| :--- | :--- |
+| `pnpm install` | プロジェクトの依存関係をインストール |
+| `pnpm add sharp` | 画像処理用の Sharp を追加 |
+| `pnpm dev` | `localhost:4321` でローカル開発サーバーを起動 |
+| `pnpm build` | 本番サイトのビルドと検索インデックスの生成 |
+| `pnpm preview` | デプロイ前にビルドをローカルでプレビュー |
+| `pnpm new-post` | `src/content/posts/` に新しい記事を作成 |
+| `pnpm translate` | LLMを活用した多言語翻訳の実行 |
+| `pnpm images:optimize`| コンテンツディレクトリ内の画像を最適化 |
+| `pnpm lint` | Biome を使用したコード品質チェック |
+| `pnpm format` | ソースコードの自動フォーマット |
+| `pnpm type-check` | TypeScript の型チェックを実行 |
 
+---
 
-## 🤝 貢献
+## 🛠️ 翻訳ワークフロー (無料版)
 
-貢献は歓迎します！以下の方法で協力できます：
+本プロジェクトには、`google-translate-api-x` とカスタムスクリプトに基づいた無料の翻訳パイプラインが含まれています。
 
-1. リポジトリをフォークします
-2. 機能ブランチを作成します：`git checkout -b feature/your-feature`
-3. 変更を加えてコミットします：`git commit -m 'Add some feature'`
-4. ブランチにプッシュします：`git push origin feature/your-feature`
-5. プルリクエストを送信します
+**主な機能:**
+- **構造の維持**: Markdownのフェンス、リンク、警告（Admonitions）、Svelte埋め込みを保護。
+- **技術用語集**: `scripts/translation-glossary.json` を使用して、技術用語の誤訳を防止。
+- **キャッシュ**: コンテンツハッシュを使用して、変更のないファイルの再翻訳をスキップ。
+- **バリデーション**: 翻訳された出力がフロントマターの形式に一致することを確認。
 
-コードは既存のスタイルに従い、必要に応じて適切なテストを含めてください。
+**便利なコマンド:**
+- `pnpm translate -- --lang=tr --skip-existing`: トルコ語のみを翻訳し、既存ファイルをスキップ。
+- `pnpm translate -- --post=gitCommands --lang=ja`: 特定の記事のみを日本語に翻訳。
+- `pnpm translate:fix`: 翻訳時によく発生するアーティファクトを修正。
+
+---
+
+## 🤝 貢献について
+
+コントリビューションを歓迎します！
+1. リポジトリをフォークします。
+2. フィーチャーブランチを作成します: `git checkout -b feature/your-feature`
+3. 変更をコミットします: `git commit -m 'Add some feature'`
+4. ブランチをプッシュします: `git push origin feature/your-feature`
+5. プルリクエストを送信します。
+
+---
 
 ## 🙏 クレジット
 
-このプロジェクト「banije」は、[Fuwari](https://github.com/saicaca/fuwari)の優れた作品に触発されました。彼らの静的サイト生成におけるAstroの使用と、テンプレート作成における細部へのこだわりには感銘を受けました。
+クリーンな Astro の基盤とミニマルなデザイン哲学を提供している [Fuwari](https://github.com/saicaca/fuwari) にインスパイアされました。
 
 ## 📄 ライセンス
 
-このプロジェクトはMITライセンスの下でライセンスされています。詳細については[LICENSE](LICENSE)ファイルを参照してください。
+MIT ライセンス。詳細は [LICENSE](LICENSE) を参照してください。
