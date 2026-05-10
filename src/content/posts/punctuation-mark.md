@@ -1,5 +1,5 @@
 ---
-title: "Punctuation in the Age of AI: The Rise of the Em Dash"
+title: "The Rise of the Em Dash"
 published: 2026-05-02
 description: "An exploration of how digital communication and LLMs are shifting our use of punctuation from formal colons to dynamic em dashes."
 image: "/images/posts/punctuation-marks.png"
@@ -14,7 +14,7 @@ The way we use punctuation is changing, driven by a shift from formal print to d
 
 ## The Punctuation Power Grid
 
-Before we look at why AI loves the dash, let’s define the rules of engagement for the most common "break" marks.
+Before we look at why LLMs loves the dash, let’s define the rules of engagement for the most common "break" marks.
 
 ### 1. The Colon (`:`) — The Gateway
 
@@ -39,9 +39,9 @@ The em dash is the Swiss Army knife of punctuation. It can replace commas, paren
 
 ---
 
-## The Rise of the Dash in the Age of AI
+## The Rise of the Dash in the Age of LLM
 
-If you’ve spent any time chatting with an AI, you’ve likely noticed a flurry of double hyphens (`--`) or long dashes (`—`). There are three specific reasons why the dash has become the "standard" for LLM-generated text:
+If you’ve spent any time chatting with an LLM, you’ve likely noticed a flurry of double hyphens (`--`) or long dashes (`—`). There are three specific reasons why the dash has become the "standard" for LLM-generated text:
 
 ### 1. Mimicking Human "Flow"
 
@@ -49,17 +49,17 @@ LLMs are trained to sound like helpful, conversational peers. In natural speech,
 
 ### 2. Solving the "Wall of Text" Problem
 
-AI often explains complex technical concepts. Using a colon feels like a textbook; using a period feels like a list of disconnected facts. The dash allows the AI to provide a term and its explanation in one fluid line, making it much easier for a human to skim and digest.
+AI often explains complex technical concepts. Using a colon feels like a textbook; using a period feels like a list of disconnected facts. The dash allows the LLM to provide a term and its explanation in one fluid line, making it much easier for a human to skim and digest.
 
 ### 3. Grammatical Safety
 
-Because the em dash is so versatile, it is "low risk" for an AI. A semicolon has strict rules; if an AI uses one incorrectly, the sentence breaks. A dash, however, is almost always stylistically acceptable. It acts as a safety net that ensures the sentence remains readable even if the structure is complex.
+Because the em dash is so versatile(not my opinion, if you ask me), it is "low risk" for an LLM. A semicolon has strict rules; if an LLM uses one incorrectly, the sentence breaks. A dash, however, is almost always stylistically acceptable. It acts as a safety net that ensures the sentence remains readable even if the structure is complex.
 
 ---
 
 ## A Quick Comparison
 
-| Mark | Formal Rule | "Vibe" | AI Frequency |
+| Mark | Formal Rule | "Vibe" | LLM Frequency |
 | --- | --- | --- | --- |
 | **Colon** | Introduces a list/quote. | Structural | Moderate |
 | **Semicolon** | Joins two full sentences. | Intellectual | Low |
