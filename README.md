@@ -2,194 +2,171 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**banije** is a personal learning diary, capturing knowledge accumulated over the years through exploring multiple fields, including:
+**Banije** is a personal learning diary and centralized knowledge base, capturing knowledge accumulated over the years through exploring multiple technical fields. This project reflects a passion for discovery and serves as a living platform to document, refine, and share engineering insights.
 
-- 💻 **Computer Science**
-- 🛠️ **Software Engineering**
-- 🐚 **Unix Shell**
-- 🔩 **Hardware Development**
-- 📐 **Advanced Mathematics**
-- 🗂️ **Data Structures**
-- 📊 **Algorithms**
-- 🌟 *And more...*
+---
 
-This project reflects a passion for learning and serves as a platform to document, refine, and share insights.
+## 🔍 Fields of Interest
+
+The content is organized across several core technical pillars:
+- 💻 **Computer Science**: Foundational theory and data structures.
+- 🛠️ **Software Engineering**: Design patterns, refactoring, and clean code.
+- 🐚 **Unix Shell**: Environment automation and shell scripting.
+- 🔩 **Hardware Development**: Low-level systems and hardware interactions.
+- 📐 **Advanced Mathematics**: Algorithms and mathematical logic.
+- 🧠 **Artificial Intelligence**: LLMs, agentic workflows, and ethical AI.
 
 (See also the Japanese version: [Japanese version](./README.ja-JP.md))
 
-## Table of Contents
+---
 
-- [⛓️‍💥 Banije](#️-banije)
-  - [Table of Contents](#table-of-contents)
-  - [✨ Features](#-features)
-  - [📋 Prerequisites](#-prerequisites)
-  - [🚀 How to Use](#-how-to-use)
-  - [⚙️ Frontmatter of Posts](#️-frontmatter-of-posts)
-  - [🧞 Commands](#-commands)
-  - [🤝 Contributing](#-contributing)
-  - [🌍 Translation Workflow (Free)](#-translation-workflow-free)
-  - [🤝 Contributing](#-contributing-1)
-  - [🙏 Credits](#-credits)
-  - [📄 License](#-license)
+## 🏗️ Architecture & Tech Stack
 
-![Preview Image](https://raw.githubusercontent.com/ibra-kdbra/banije/main/public/captured.png)
+The project is architected for speed, SEO, and a premium developer experience:
+- **Framework**: [Astro 5](https://astro.build) (Static Site Generation)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) + [Stylus](https://stylus-lang.com/)
+- **Components**: [Svelte 5](https://svelte.dev) (Runes-based interactivity)
+- **Search**: [Pagefind](https://pagefind.app/) (Decentralized static search)
+- **Typography**: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code-heavy legibility.
+
+---
 
 ## ✨ Features
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [x] Search functionality
+- [x] **Performance**: Built with Astro 5 for near-instant static page loads.
+- [x] **Modern UI**: Smooth animations and page transitions via Svelte 5.
+- [x] **Themes**: Responsive Light / Dark mode support.
+- [x] **Customization**: Easily customizable theme colors and banners.
+- [x] **Search**: Integrated lightning-fast decentralized search.
+- [x] **Translation**: Robust automated multi-language support.
+
+---
 
 ## 📋 Prerequisites
 
 Before getting started, ensure you have the following installed:
-
 - **Node.js** (version 18 or higher)
 - **pnpm** package manager
 - **Git** for version control
 
 Install pnpm globally if you haven't:
-
 ```bash
 npm install -g pnpm
 ```
 
+---
+
 ## 🚀 How to Use
 
-1. Clone this repository:
-
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/ibra-kdbra/banije.git
    cd banije
    ```
 
-2. Install dependencies:
-
+2. **Install dependencies**:
    ```bash
    pnpm install
-   pnpm add sharp
+   pnpm add sharp # Required for Astro image processing
    ```
 
-3. Edit the config file `src/config.ts` to customize your blog.
+3. **Customize your blog**:
+   Edit the configuration file at `src/config.ts` to tailor the blog to your needs.
 
-4. Create a new post:
-
+4. **Create a new post**:
    ```bash
    pnpm new-post <filename>
    ```
+   This will scaffold a new file in `src/content/posts/` for you to edit.
 
-   This will create a new file in `src/content/posts/` for you to edit.
-
-5. Start the development server:
-
+5. **Start development server**:
    ```bash
    pnpm dev
    ```
+   Visit `http://localhost:4321` to see your changes in real-time.
 
-   Visit `http://localhost:4321` to see your blog.
+6. **Build & Deploy**:
+   Build your production site to the `./dist/` directory:
+   ```bash
+   pnpm build
+   ```
+   Follow [the Astro guides](https://docs.astro.build/en/guides/deploy/) to deploy to Vercel, Netlify, or GitHub Pages.
 
-6. Deploy your blog to Vercel, Netlify, GitHub Pages, etc., following [the guides](https://docs.astro.build/en/guides/deploy/). Update the site configuration in `astro.config.mjs` before deployment.
+---
 
-## ⚙️ Frontmatter of Posts
+## ⚙️ Frontmatter Specification
 
-Each post in `src/content/posts/` uses YAML frontmatter for metadata. Here's the structure:
+Each post in `src/content/posts/` uses YAML frontmatter. All fields below are standard:
 
 ```yaml
 ---
-title: My First Blog Post              # Post title (required)
-published: 2023-09-09                  # Publication date in YYYY-MM-DD format (required)
-description: This is the first post... # Brief description for SEO and previews (required)
-image: ./cover.jpg                     # Cover image path relative to post folder (optional)
-tags: [Foo, Bar]                       # Array of tags for categorization (optional)
-category: Front-end                    # Main category (optional)
-draft: false                           # Set to true to hide from production (optional, default: false)
-lang: jp                               # Language code if different from site default (optional)
+title: "Post Title"                # (Required)
+published: YYYY-MM-DD              # (Required)
+description: "Brief SEO summary"    # (Required)
+image: "/images/posts/cover.png"   # (Optional) Cover image path
+tags: [Tag1, Tag2, Tag3]           # (Optional) Max 3 tags recommended
+category: "Architecture"           # (Optional) Main technical pillar
+draft: false                       # (Optional) Default: false
 ---
 ```
 
 **Notes:**
+- `title`, `published`, and `description` are required for the build to pass.
+- Images should be placed in the `public/images/posts/` directory or relative to the post.
+- Tags and categories enable the dynamic filtering and search systems.
 
-- `title`, `published`, and `description` are required fields.
-- Images should be placed in the same folder as the post file.
-- Tags and category help with organization and search.
-- Draft posts won't appear in the live site.
+---
 
-## 🧞 Commands
+## 🧞 Full Command List
 
-All commands are run from the root of the project, from a terminal:
+| Command | Action |
+| :--- | :--- |
+| `pnpm install` | Installs project dependencies |
+| `pnpm add sharp` | Adds Sharp for image processing |
+| `pnpm dev` | Starts local dev server at `localhost:4321` |
+| `pnpm build` | Build production site and generate search index |
+| `pnpm preview` | Preview your build locally before deploying |
+| `pnpm new-post` | Create a new post in `src/content/posts/` |
+| `pnpm translate` | Runs LLM-powered multi-language translation |
+| `pnpm images:optimize`| Optimizes images in the content directory |
+| `pnpm lint` | Perform code quality checks using Biome |
+| `pnpm format` | Automatically format the source code |
+| `pnpm type-check` | Run TypeScript validation |
 
-| Command                   | Action                                           |
-|:--------------------------|:-------------------------------------------------|
-| `pnpm install`            | Installs project dependencies                    |
-| `pnpm add sharp`          | Adds Sharp for image processing                  |
-| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
-| `pnpm build`              | Build your production site to `./dist/`          |
-| `pnpm preview`            | Preview your build locally, before deploying     |
-| `pnpm new-post <filename>`| Create a new post in `src/content/posts/`        |
-| `pnpm translate`          | Translate posts with structure protection + cache |
-| `pnpm translate -- --lang=tr --skip-existing` | Translate only Turkish, skipping existing files |
-| `pnpm translate -- --post=gitCommands --lang=ja` | Translate one post to Japanese |
-| `pnpm translate:fix`      | Post-process and repair known translation artifacts |
-| `pnpm translate:audit`    | Audit translation coverage against source posts |
-| `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro --help`       | Get help using the Astro CLI                     |
+---
 
-## 🤝 Contributing
+## 🛠️ Translation Workflow (Free)
 
-## 🌍 Translation Workflow (Free)
+The project includes a free translation pipeline based on `google-translate-api-x` and custom scripts.
 
-The project includes a free translation pipeline based on `google-translate-api-x`.
+**Core Capabilities:**
+- **Structure Preservation**: Protects Markdown fences, links, admonitions, and Svelte embeds.
+- **Technical Glossary**: Uses `scripts/translation-glossary.json` to protect technical terms.
+- **Caching**: Uses content hashes to avoid re-translating unchanged files.
+- **Validation**: Ensures the translated output matches the required frontmatter shape.
 
-What it does:
+**Useful Commands:**
+- `pnpm translate -- --lang=tr --skip-existing`: Translate only Turkish, skipping existing files.
+- `pnpm translate -- --post=gitCommands --lang=ja`: Translate one specific post to Japanese.
+- `pnpm translate:fix`: Post-process and repair known translation artifacts.
 
-- Preserves Markdown structure (code fences, links, admonitions, embeds)
-- Protects technical terms with a glossary
-- Caches results using content hashes to avoid re-translating unchanged files
-- Validates translated output shape before writing files
-
-Main files:
-
-- `scripts/translate.js`
-- `scripts/translation-glossary.json`
-- `scripts/fix-translations.js`
-- `scripts/audit.js`
-
-Recommended flow:
-
-1. Run translation incrementally with `pnpm translate -- --skip-existing`.
-2. Repair known edge cases with `pnpm translate:fix`.
-3. Verify missing translations with `pnpm translate:audit`.
-
-Useful options:
-
-- `--lang=<code>`: target one language (e.g. `tr`, `ja`)
-- `--post=<slug>`: target one post
-- `--force`: ignore cache and re-translate
-- `--delay=<ms>`: request spacing to reduce throttling
-- `--max-chars=<n>`: chunk size per translation request
-- `--dry-run`: process without writing translated files
-
-If wording is not ideal for technical terms, edit `scripts/translation-glossary.json` and run again.
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
+Contributions are welcome!
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-feature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Submit a pull request.
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Make your changes and commit them: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/your-feature`
-5. Submit a pull request
-
-Please ensure your code follows the existing style and includes appropriate tests if applicable.
+---
 
 ## 🙏 Credits
 
-This project, banije, is inspired by the excellent work on the [Fuwari](https://github.com/saicaca/fuwari). Their use of Astro for static site generation and attention to detail in crafting templates is truly commendable.
+Inspired by [Fuwari](https://github.com/saicaca/fuwari) for its clean Astro foundations and minimalist aesthetic.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License. See [LICENSE](LICENSE) for details.
