@@ -39,7 +39,7 @@ Conversely, thoughtfully partitioned systems exhibit superior operational charac
 
 ### 1.2 Partitioning in the Modern Era
 
-Advances in storage technology—NVMe SSDs, multi-terabyte HDDs, and distributed filesystems—demand a reconsideration of traditional partitioning wisdom. The "one size fits all" approach of early Unix systems is obsolete in environments where:
+Advances in storage technology, such as NVMe SSDs, multi-terabyte HDDs, and distributed filesystems, demand a reconsideration of traditional partitioning wisdom. The "one size fits all" approach of early Unix systems is obsolete in environments where:
 
 - Containerization abstracts application dependencies
 - Orchestration platforms (Kubernetes, Docker Swarm) manage ephemeral storage
@@ -641,7 +641,7 @@ These methodologies transform partitioning from art into science, enabling the r
 
 ## 9.0 Conclusion: Engineering Storage Architectures
 
-Partitioning Linux systems transcends routine setup; it's a sophisticated engineering discipline demanding quantitative analysis, role-specific customization, and future-proofing against evolving workloads. The frameworks outlined herein—combining empirical research with practical trade-offs—equip engineers to architect storage solutions that enhance system reliability, performance, and maintainability.
+Partitioning Linux systems transcends routine setup; it's a sophisticated engineering discipline demanding quantitative analysis, role-specific customization, and future-proofing against evolving workloads. The frameworks outlined herein, which combine empirical research with practical trade-offs, equip engineers to architect storage solutions that enhance system reliability, performance, and maintainability.
 
 In an era of exponential data growth and containerized architectures, the principles of deliberate partitioning remain timeless: understanding usage patterns, projecting growth, and aligning technological choices with operational imperatives. This analytical approach transforms partitioning from an afterthought into a cornerstone of robust system design.
 

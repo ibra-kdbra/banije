@@ -10,7 +10,7 @@ draft: false
 
 ## 0.0 Executive Summary: Why VPNs Still Matter in a Zero Trust World
 
-In the modern enterprise, the "perimeter" has largely evaporated. However, the Virtual Private Network (VPN) remains a critical tool for infrastructure management, secure administrative access, and legacy application bridging. This guide is designed for a 300-user environment—a scale where manual management becomes impossible, but "massive enterprise" solutions might be overkill.
+In the modern enterprise, the "perimeter" has largely evaporated. However, the Virtual Private Network (VPN) remains a critical tool for infrastructure management, secure administrative access, and legacy application bridging. This guide is designed for a 300-user environment: a scale where manual management becomes impossible, but "massive enterprise" solutions might be overkill.
 
 We focus on **WireGuard** as our primary protocol due to its high performance, modern cryptographic primitives, and simplified codebase, while acknowledging the role of OpenVPN and IPsec for specific use cases.
 
@@ -257,7 +257,7 @@ If someone asks "Who accessed the backup server at 2 AM?", your VPN logs must ha
 
 ### 11.2 SIEM Integration
 
-Stream your logs to Elasticsearch, Splunk, or Azure Monitor. Look for "impossible travel"—a user logging in from New York, and then 10 minutes later from Frankfurt. This is a primary indicator of a stolen session token.
+Stream your logs to Elasticsearch, Splunk, or Azure Monitor. Look for "impossible travel," such as a user logging in from New York and then 10 minutes later from Frankfurt. This is a primary indicator of a stolen session token.
 
 ---
 

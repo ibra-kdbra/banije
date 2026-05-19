@@ -58,7 +58,7 @@ The translation of UI/UX designs into a functioning application is the domain of
 
 ### 3.1 Frontend Development
 
-The frontend is the client-side of the application—the code that runs in the user's web browser. Its primary responsibility is to render the UI and manage user interactions.
+The frontend is the client-side of the application, consisting of the code that runs in the user's web browser. Its primary responsibility is to render the UI and manage user interactions.
 
 * **Core Technologies:** The foundation of the web is built on three languages:
   * **HTML (HyperText Markup Language):** Defines the semantic structure and content of the web page.
@@ -103,7 +103,7 @@ A web application that is functional but insecure or slow is a failed system. Se
 
 ### 4.1 Web Security
 
-Web application security is the practice of protecting websites and web services from malicious attacks, unauthorized access, and data breaches. Adopting a **"Shift-Left"** security mindset—integrating security considerations from the earliest stages of design—is paramount.
+Web application security is the practice of protecting websites and web services from malicious attacks, unauthorized access, and data breaches. Adopting a **"Shift-Left"** security mindset by integrating security considerations from the earliest stages of design is paramount.
 
 * **Common Vulnerabilities:** The **OWASP (Open Web Application Security Project) Top 10** provides a list of the most critical web security risks.
 

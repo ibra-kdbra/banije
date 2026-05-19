@@ -38,7 +38,7 @@ series:
 
 ## 1.0 The Ontology of 2025: System 2 & The Death of "Chat"
 
-The interface of 2024—the "Chatbot"—is dead. It was a skeuomorphic bridge, a transitional phase where we treated AI like a very smart person we had to text.
+The interface of 2024, characterized by the "Chatbot," is dead. It was a skeuomorphic bridge, a transitional phase where we treated AI like a very smart person we had to text.
 
 In late 2025, the interface is **Context**. We no longer "chat" with AI; we *inhabit* a workspace where the AI is an omnipresent, stateful layer of the operating system. The defining shift of this year is the move from **Probabilistic Token Generation** (System 1) to **Reasoning-First Planning** (System 2).
 
@@ -189,14 +189,14 @@ Ollama is now the standard runtime for local AI.
 
 ## 6.0 Operationalizing Intelligence: The "Review Crisis"
 
-The fundamental problem of 2025 is not generating code; it is **verifying** it. When a junior dev (or an AI agent) can generate 5,000 lines of complex React logic in 30 seconds, the Senior Architect becomes the bottleneck. We have entered the era of **"Code Slop"**—code that looks correct, passes unit tests, but introduces subtle architectural drift.
+The fundamental problem of 2025 is not generating code; it is **verifying** it. When a junior dev (or an AI agent) can generate 5,000 lines of complex React logic in 30 seconds, the Senior Architect becomes the bottleneck. We have entered the era of **"Code Slop,"** consisting of code that looks correct and passes unit tests, but introduces subtle architectural drift.
 
 ### 6.1 Qodo (formerly Codium): The "BS Detector"
 
-Tools like Qodo are no longer "nice to haves"—they are defensive infrastructure. Their primary job is not just testing, but **Hallucination Containment**.
+Tools like Qodo are no longer "nice to haves"; instead, they serve as defensive infrastructure. Their primary job is not just testing, but **Hallucination Containment**.
 
 * **The "Confidence Cliff":** AI agents are notoriously confident even when they are wrong. Qodo acts as the impartial auditor.
-* **Property-Based Fuzzing:** Since we can't trust the AI to understand edge cases, we use Qodo to "fuzz" the agent's code—throwing millions of random inputs at the function to see where the logic breaks.
+* **Property-Based Fuzzing:** Since we can't trust the AI to understand edge cases, we use Qodo to "fuzz" the agent's code by throwing millions of random inputs at the function to see where the logic breaks.
 * **Reality Check:** In production, we see Qodo rejecting ~40% of "System 1" AI code for subtle off-by-one errors or security regressions that a tired human reviewer would have missed.
 
 ### 6.2 The Realistic Pipeline: "The Loop of Pain"

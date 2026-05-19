@@ -38,7 +38,7 @@ The examples below are framed as strategic tooling options, not one-size-fits-al
 
 In the old days, being a full-stack developer meant mastering CSS, databases, and DevOps. In 2026, it means hiring the right agents. **Agency** provides a library of open-source agent templates that mimic every role in a tech startup.
 
-* **How it works:** Instead of one generic chatbot, you deploy specialized personas—a Front-end Architect, a Growth Hacker, and a Twitter Engager.
+* **How it works:** Instead of one generic chatbot, you deploy specialized personas, such as a Front-end Architect, a Growth Hacker, and a Twitter Engager.
 * **The Benefit:** By combining these templates within environments like Claude Code, you can move from an idea to a functional product without manually implementing the "personality" or logic for each department.
 
 :::tip[When To Use]
@@ -83,7 +83,7 @@ Forecasting systems can amplify bad assumptions. Validate simulated outcomes wit
 
 ### The Antidote to "Vibe-Coded" UI Slop
 
-Most AI-generated UIs suffer from "Purple Gradient Syndrome"—they look flashy but are functionally cluttered. **Impeccable** is a CLI-based tool designed to refine front-end design through 17 specialized commands.
+Most AI-generated UIs suffer from "Purple Gradient Syndrome," meaning they look flashy but are functionally cluttered. **Impeccable** is a CLI-based tool designed to refine front-end design through 17 specialized commands.
 
 * **The Distill Command:** This automatically strips away the unnecessary complexity often introduced by LLMs, simplifying your DOM structure.
 * **Delight & Animate:** Once the structure is solid, you can programmatically inject brand colors and micro-interactions to ensure your UI doesn't look like a generic template.
@@ -130,7 +130,7 @@ Removing safety constraints can create legal, policy, and security risks. Use st
 
 ### The $100 Custom LLM Pipeline
 
-If you don't trust the big tech giants, build your own. **NanoChat** (inspired by Andrej Karpathy's NanoGPT) implements the entire LLM pipeline from scratch—including tokenization, pre-training, and fine-tuning.
+If you don't trust the big tech giants, build your own. **NanoChat** (inspired by Andrej Karpathy's NanoGPT) implements the entire LLM pipeline from scratch, including tokenization, pre-training, and fine-tuning.
 
 * **Sovereignty:** For about $100 in GPU time, you can train a Small Language Model (SLM) that you have absolute control over.
 * **Educational Utility:** It is the best way to move from being an "AI user" to an "AI architect" by understanding the underlying math of transformers.
