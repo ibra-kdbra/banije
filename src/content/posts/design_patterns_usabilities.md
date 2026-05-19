@@ -1,5 +1,5 @@
 ---
-title: "The Architect's Vocabulary: Balancing Design Patterns and Pragmatism"
+title: "The Architect's Mind: Balancing Design Patterns and Pragmatism"
 published: 2026-04-08
 description: "A deep dive into the utility and pitfalls of design patterns, from classic object-oriented structures to modern distributed systems and AI-assisted orchestration."
 image: "/images/posts/design-patterns-blueprint.png"
