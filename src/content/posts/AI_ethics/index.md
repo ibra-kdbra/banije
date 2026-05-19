@@ -11,7 +11,7 @@ series:
   order: 2
 ---
 
-## 🌐 AI Ethics -- Principles, Challenges & The Future
+## 🌐 AI Ethics: Principles, Challenges, and the Future
 
 Artificial Intelligence (AI) is transforming industries, decision-making, and everyday life. But with this power comes responsibility.
 As AI systems grow more capable and autonomous, concerns about **fairness**, **accountability**, **privacy**, and **bias** intensify.
@@ -21,9 +21,9 @@ As AI systems grow more capable and autonomous, concerns about **fairness**, **a
 
 ## 📌 Why AI Ethics Matters
 
-- **Avoiding Bias** — Prevent discriminatory outcomes by detecting and correcting bias in training data and algorithms.
-- **Privacy Protection** — Manage sensitive data responsibly to maintain trust.
-- **Transparency** — Ensure AI decisions can be understood and explained.
+- **Avoiding Bias**: Prevent discriminatory outcomes by detecting and correcting bias in training data and algorithms.
+- **Privacy Protection**: Manage sensitive data responsibly to maintain trust.
+- **Transparency**: Ensure AI decisions can be understood and explained.
 
 ---
 

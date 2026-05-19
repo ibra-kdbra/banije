@@ -10,7 +10,7 @@ draft: false
 
 When you type the number `2000` on a keyboard, or look at a digital clock, you are interacting with a piece of cognitive technology so effective, so ancient, and so universally adopted that its history is almost entirely forgotten.
 
-We call these digits—0, 1, 2, 3, 4, 5, 6, 7, 8, 9—**"Arabic Numerals."**
+We call these digits, from 0 to 9, **"Arabic Numerals."**
 
 But this name is a historical misnomer, a branding artifact of medieval trade routes. If we want to find the **"real" original numbers** of the world, we must strip away the modern font and trace the migration of abstract thought across civilizations, languages, and millennia.
 

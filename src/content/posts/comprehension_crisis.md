@@ -1,7 +1,7 @@
 ---
 title: "The Comprehension Crisis: When AI Writes Code We No Longer Understand"
 published: 2026-04-11
-description: "AI tools have turned tasks that used to take days into mere hours — but we are shipping code we don't fully understand."
+description: "AI tools have turned tasks that used to take days into mere hours, yet we are shipping code we don't fully understand."
 tags: [AI, Software Engineering, Architecture, Complexity]
 image: "/images/posts/codeflood.webp"
 category: Software Engineering
@@ -12,7 +12,7 @@ There is a quiet phenomenon happening across engineering teams right now. A deve
 
 We are shipping code we don't fully understand, and the velocity at which we are doing it is unprecedented.
 
-Recent industry discussions—most notably from engineering leaders tackling massive codebases at enterprise companies—have highlighted a glaring paradox in modern software development. AI tools have turned tasks that used to take days into mere hours. But large production systems inevitably fail, and when they do, you need a human who deeply understands the system to debug it.
+Recent industry discussions, most notably from engineering leaders tackling massive codebases at enterprise companies, have highlighted a glaring paradox in modern software development. AI tools have turned tasks that used to take days into mere hours. But large production systems inevitably fail, and when they do, you need a human who deeply understands the system to debug it.
 
 We are not the first generation to face a software crisis, but we are the first to face it at an infinite scale of generation.
 
@@ -20,7 +20,7 @@ We are not the first generation to face a software crisis, but we are the first 
 
 To understand why our codebases are becoming harder to comprehend, we have to revisit a fundamental engineering philosophy: the difference between *simple* and *easy*.
 
-As famously defined by Rich Hickey (creator of Clojure), **simple** refers to structure. It means a component does one thing and is not entangled with others. **Easy**, on the other hand, means proximity. It means the solution is readily available at your fingertips—like pulling a package from npm, copying a snippet from Stack Overflow, or prompting an LLM.
+As famously defined by Rich Hickey (creator of Clojure), **simple** refers to structure. It means a component does one thing and is not entangled with others. **Easy**, on the other hand, means proximity. It means the solution is readily available at your fingertips, such as pulling a package from npm, copying a snippet from Stack Overflow, or prompting an LLM.
 
 Simplicity requires deliberate thought, design, and architectural untangling. "Easy" requires almost no thought at all.
 
@@ -44,7 +44,7 @@ AI generation tools struggle immensely with this. When an LLM scans a repository
 
 If the core issue is a lack of comprehension, the solution is not to prompt harder or wait for a smarter model. The solution is to change our relationship with code generation entirely. We must shift from writing code to *specifying architecture*.
 
-This methodology—often referred to as context compression or spec-driven development—forces the human engineer to do the hard work of thinking before the AI does the mechanical work of typing. It typically involves three distinct phases:
+This methodology, often referred to as context compression or spec-driven development, forces the human engineer to do the hard work of thinking before the AI does the mechanical work of typing. It typically involves three distinct phases:
 
 ```mermaid
 graph TD
