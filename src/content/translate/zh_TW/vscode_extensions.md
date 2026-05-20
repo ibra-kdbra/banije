@@ -18,8 +18,7 @@ draft: false
 
 ## 乾淨程式碼與重構 (Clean Code & Refactoring)
 
-:::tip
-[使用這些擴充功能維護乾淨且易於維護的程式碼，提供重構、度量及改善註解的工具。]
+:::tip[使用這些擴充功能維護乾淨且易於維護的程式碼，提供重構、度量及改善註解的工具。]
 :::
 
 - **Code Metrics**: 直接在狀態列顯示程式碼複雜度，協助進行維護性分析。
@@ -54,8 +53,7 @@ draft: false
 
 ## 資料庫 (Database)
 
-:::note
-[使用這些強大的擴充功能直接在 VS Code 中管理與查詢資料庫。]
+:::note[使用這些強大的擴充功能直接在 VS Code 中管理與查詢資料庫。]
 :::
 
 - **SQL Server (mssql)**: 無縫操作 SQL Server 與 Azure 資料庫。
@@ -68,8 +66,7 @@ draft: false
 
 ## 主題與樣式 (Themes & Styling)
 
-:::tip
-[透過主題與視覺自訂工具改善您的程式開發環境。]
+:::tip[透過主題與視覺自訂工具改善您的程式開發環境。]
 :::
 
 - **Winter Is Coming Theme**: 受《權力遊戲》啟發的主題。
@@ -98,8 +95,7 @@ draft: false
 
 ## 除錯 (Debugging)
 
-:::warning
-[簡化除錯流程，利用這些工具避免代價高昂的錯誤。]
+:::warning[簡化除錯流程，利用這些工具避免代價高昂的錯誤。]
 :::
 
 - **Debugger for Chrome**: 除錯在 Chrome 中執行的 JavaScript。
@@ -110,8 +106,7 @@ draft: false
 
 ## 公用程式 (Utilities)
 
-:::tip
-[這些公用程式可加速重複性任務並簡化開發過程。]
+:::tip[這些公用程式可加速重複性任務並簡化開發過程。]
 :::
 
 - **Polacode**: 產生精美的程式碼快照。
@@ -125,8 +120,7 @@ draft: false
 
 ## 鍵盤映射 (Keymaps)
 
-:::note
-[使用您偏好的編輯器熟悉的快速鍵，輕鬆轉換至 VS Code。]
+:::note[使用您偏好的編輯器熟悉的快速鍵，輕鬆轉換至 VS Code。]
 :::
 
 - **Visual Studio**: 模擬 Visual Studio 快速鍵。
@@ -150,8 +144,7 @@ draft: false
 
 ## 前端開發 (Front-End Development)
 
-:::tip
-[透過這些擴充功能增強您的前端開發工作流程。]
+:::tip[透過這些擴充功能增強您的前端開發工作流程。]
 :::
 
 - **Live Sass Compiler**: 即時將 Sass 或 SCSS 檔案編譯為 CSS。
@@ -164,8 +157,7 @@ draft: false
 
 ## 後端開發 (Back-End Development)
 
-:::note
-[使用這些核心工具簡化後端開發流程。]
+:::note[使用這些核心工具簡化後端開發流程。]
 :::
 
 - **Docker**: 為 Dockerfile 與 docker-compose 檔案新增語法高亮、指令、懸停提示與 Linting 功能。
@@ -199,8 +191,7 @@ draft: false
 
 ## Vim 使用者 (Vim Users)
 
-:::tip
-[透過這些擴充功能讓您的 VS Code 體驗更像 Vim。]
+:::tip[透過這些擴充功能讓您的 VS Code 體驗更像 Vim。]
 :::
 
 - **Vim**
@@ -218,8 +209,7 @@ draft: false
 
 ## 底層程式設計與嵌入式開發 (Low-Level Programming & Embedded Development)
 
-:::note
-[用於處理組合語言、C 語言與嵌入式系統的擴充功能。]
+:::note[用於處理組合語言、C 語言與嵌入式系統的擴充功能。]
 :::
 
 - **C/C++ Extension Pack**
@@ -243,8 +233,7 @@ draft: false
 
 ## 網路安全與逆向工程 (Cybersecurity & Reverse Engineering)
 
-:::warning
-[分析程式碼弱點、執行靜態分析並探索逆向工程工具。]
+:::warning[分析程式碼弱點、執行靜態分析並探索逆向工程工具。]
 :::
 
 - **Binwalk**
@@ -291,8 +280,7 @@ draft: false
 
 ## 雲端與 DevOps (Cloud & DevOps)
 
-:::tip
-[優化雲端開發與 DevOps 工作流程。]
+:::tip[優化雲端開發與 DevOps 工作流程。]
 :::
 
 - **Terraform**
@@ -316,8 +304,7 @@ draft: false
 
 ## 效能與分析 (Performance & Profiling)
 
-:::warning
-[使用這些工具分析並最佳化程式碼效能。]
+:::warning[使用這些工具分析並最佳化程式碼效能。]
 :::
 
 - **Flamegraph Profiler**

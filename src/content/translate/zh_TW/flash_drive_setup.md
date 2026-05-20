@@ -34,21 +34,30 @@ sudo fdisk -l
 
 1. 安裝 `smartmontools` 套件：
 
-   ```bash
+   
+
+```bash
    sudo pacman -S smartmontools
-   ```
+   
+```
 
 2. 取得詳細的裝置資訊：
 
-   ```bash
+   
+
+```bash
    sudo smartctl -i /dev/sdb
-   ```
+   
+```
 
 3. 執行非破壞性的健康測試（如果支援）：
 
-   ```bash
+   
+
+```bash
    sudo smartctl -t long /dev/sdb
-   ```
+   
+```
 
 - **注意**：如果測試失敗並出現「unsupported SCSI opcode」等錯誤，表示該裝置可能不支援 SMART 功能。
 
@@ -81,21 +90,30 @@ sudo fdisk /dev/sdb
 - **`fdisk` 中的指令**：
   1. 建立新的分割區表（MBR）：
 
-     ```bash
+     
+
+```bash
      o
-     ```
+     
+```
 
   2. 建立主要分割區：
 
-     ```bash
+     
+
+```bash
      n
-     ```
+     
+```
 
   3. 將變更寫入磁碟：
 
-     ```bash
+     
+
+```bash
      w
-     ```
+     
+```
 
 驗證分割區表：
 
@@ -111,15 +129,21 @@ sudo fdisk -l /dev/sdb
 
 - 僅限 Linux 系統（ext4）：
 
-  ```bash
+  
+
+```bash
   sudo mkfs.ext4 /dev/sdb1
-  ```
+  
+```
 
 - 跨平台相容（FAT32）：
 
-  ```bash
+  
+
+```bash
   sudo mkfs.vfat -F 32 /dev/sdb1
-  ```
+  
+```
 
 ---
 
@@ -127,21 +151,30 @@ sudo fdisk -l /dev/sdb
 
 1. 建立掛載點：
 
-   ```bash
+   
+
+```bash
    sudo mkdir /mnt/flashdrive
-   ```
+   
+```
 
 2. 掛載分割區：
 
-   ```bash
+   
+
+```bash
    sudo mount /dev/sdb1 /mnt/flashdrive
-   ```
+   
+```
 
 3. 驗證掛載：
 
-   ```bash
+   
+
+```bash
    df -h
-   ```
+   
+```
 
 ---
 
@@ -151,15 +184,21 @@ sudo fdisk -l /dev/sdb
 
 1. 安裝 `f3`：
 
-   ```bash
+   
+
+```bash
    sudo pacman -S f3
-   ```
+   
+```
 
 2. 測試隨身碟：
 
-   ```bash
+   
+
+```bash
    sudo f3probe --destructive --time-ops /dev/sdb
-   ```
+   
+```
 
 ---
 

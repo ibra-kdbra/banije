@@ -18,7 +18,7 @@ Git merge 允許您將兩個分支的工作合併為一個。
 git merge <branch>
 ```
 
-:::tip [提示]
+:::tip[提示]
 使用 `git merge` 將一個分支的變更整合到另一個分支（通常是主分支）。
 :::
 
@@ -42,7 +42,7 @@ git diff <source branch> <target branch>
 git log
 ```
 
-:::note [備註]
+:::note[備註]
 使用 `--oneline` 或 `--graph` 等選項來簡化或視覺化日誌。
 :::
 
@@ -76,7 +76,7 @@ git grep -n <pattern>
 git branch
 ```
 
-:::tip [提示]
+:::tip[提示]
 使用 `git branch -d <branch>` 來刪除分支。
 :::
 
@@ -114,7 +114,7 @@ git stash
 git rebase <base>
 ```
 
-:::caution [警告]
+:::caution[警告]
 請務必了解 `rebase` 與 `merge` 之間的差異，以避免不必要的歷史紀錄重寫。
 :::
 
@@ -181,7 +181,7 @@ git reset <commit>
 git tag
 ```
 
-:::tip [提示]
+:::tip[提示]
 使用 `git tag -a <tag>` 來建立註釋標籤。
 :::
 
@@ -395,7 +395,7 @@ git cherry-pick <commit>
 git switch <branch>
 ```
 
-:::note [備註]
+:::note[備註]
 `git switch` 是 `git checkout` 在分支切換功能上的現代化替代方案。
 :::
 
