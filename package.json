@@ -12,6 +12,7 @@
     "type-check": "tsc --noEmit --isolatedDeclarations",
     "new-post": "node scripts/new-post.js",
     "translate": "node scripts/translate-llm.js",
+    "translate:fix": "node scripts/fix-translations.js",
     "images:optimize": "node scripts/optimize-images.js",
     "images:optimize:dry": "node scripts/optimize-images.js --dry-run",
     "format": "biome format --write ./src",
