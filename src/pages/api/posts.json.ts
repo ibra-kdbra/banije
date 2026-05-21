@@ -17,7 +17,7 @@ const formattedPosts = sortedPosts.map(post => ({
 title: post.data.title,
 brief: post.data.description, // Matches your 'description' field
 coverImage: post.data.image,    // ✅ CHANGED from coverImage to 'image'
-slug: post.slug,
+slug: post.id,
 publishedAt: post.data.published.toISOString(), // ✅ CHANGED from pubDate to 'published'
 }));
 
