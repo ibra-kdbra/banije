@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@domain/url";
@@ -6,9 +6,9 @@ import { normalizeSlug } from "./slug-utils";
 
 export { normalizeSlug };
 
-let cachedSortedPosts: Map<string, CollectionEntry<"posts">[]> = new Map();
+let cachedSortedPosts: Map<string, any[]> = new Map();
 let cachedIsProd: boolean | null = null;
-let cachedTranslations: Map<string, Map<string, CollectionEntry<"translate">>> | null = null;
+let cachedTranslations: Map<string, Map<string, any>> | null = null;
 
 /**
  * Get all translations indexed by originalSlug and lang
@@ -21,9 +21,14 @@ async function getTranslationsMap(): Promise<Map<string, Map<string, CollectionE
 	const map = new Map<string, Map<string, CollectionEntry<"translate">>>();
 
 	try {
-		const translations = await getCollection("translate");
+		const rawTranslations = await getCollection("translate");
 
-		for (const translation of translations) {
+		for (const rawTranslation of rawTranslations) {
+			const translation = {
+				...rawTranslation,
+				slug: rawTranslation.id,
+				render: () => render(rawTranslation),
+			} as any;
 			const originalSlug = normalizeSlug(translation.data.originalSlug);
 			const lang = translation.data.lang;
 
@@ -46,13 +51,13 @@ async function getTranslationsMap(): Promise<Map<string, Map<string, CollectionE
 export async function getTranslatedPost(
 	post: CollectionEntry<"posts">,
 	targetLang: string
-): Promise<CollectionEntry<"posts"> | CollectionEntry<"translate">> {
+): Promise<any> {
 	if (targetLang === "en") {
 		return post;
 	}
 
 	const translationsMap = await getTranslationsMap();
-	const normalizedPostSlug = normalizeSlug(post.slug);
+	const normalizedPostSlug = normalizeSlug(post.id);
 	const langTranslations = translationsMap.get(normalizedPostSlug);
 
 	if (langTranslations?.has(targetLang)) {
@@ -73,9 +78,15 @@ export async function getSortedPosts(lang?: string) {
 		return cachedSortedPosts.get(currentLang)!;
 	}
 
-	const allBlogPosts = await getCollection("posts", ({ data }) => {
+	const rawBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+
+	const allBlogPosts = rawBlogPosts.map(post => ({
+		...post,
+		slug: post.id,
+		render: () => render(post),
+	})) as any[];
 
 	const sorted = allBlogPosts.sort((a, b) => {
 		const dateA = new Date(a.data.published);
@@ -84,13 +95,13 @@ export async function getSortedPosts(lang?: string) {
 	});
 
 	// Prepare results for the specific language
-	const resultPosts: CollectionEntry<"posts">[] = [];
+	const resultPosts: any[] = [];
 
 	for (const post of sorted) {
 		if (currentLang === "en") {
 			resultPosts.push(post);
 		} else {
-			const translated = await getTranslatedPost(post, currentLang);
+			const translated = await getTranslatedPost(post, currentLang) as any;
 			resultPosts.push({
 				...post, // Start with original post to preserve ID, collection, and file system context
 				data: {

@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
@@ -15,7 +15,7 @@ if (!aboutPost) {
     aboutPost = await getEntry("spec", "about-en");
 }
 
-const { Content } = aboutPost ? await aboutPost.render() : { Content: null };
+const { Content } = aboutPost ? await render(aboutPost) : { Content: null };
 ---
 
 <MainGridLayout title={i18n(I18nKey.about, currentLang)} lang={currentLang}>

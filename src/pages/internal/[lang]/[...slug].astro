@@ -13,7 +13,7 @@ import PostMetadata from "../../../components/PostMeta.astro";
 import ImageWrapper from "../../../components/misc/ImageWrapper.astro";
 import { profileConfig, siteConfig } from "../../../config";
 import { formatDateToYYYYMMDD } from "@domain/date";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const translations = await getCollection("translate");
@@ -22,7 +22,13 @@ export async function getStaticPaths() {
             lang: entry.data.lang,
             slug: normalizeSlug(entry.data.originalSlug)
         },
-        props: { entry },
+        props: { 
+            entry: {
+                ...entry,
+                slug: entry.id,
+                render: () => render(entry)
+            }
+        },
     }));
 }
 
