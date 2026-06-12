@@ -4,7 +4,7 @@ lang: "tr"
 title: "Mimarin Zihni: Tasarım Desenlerini ve Pragmatizmi Dengelemek"
 published: 2026-04-08
 description: "Klasik nesne yönelimli yapılardan modern dağıtık sistemlere ve yapay zeka destekli orkestrasyona kadar tasarım desenlerinin faydaları ve tuzakları üzerine derinlemesine bir inceleme."
-image: "/images/posts/design-patterns-blueprint.png"
+image: "/images/posts/design-patterns-blueprint.webp"
 tags: [Mimari, Tasarım Desenleri, Yapay Zeka]
 category: "Mimari"
 draft: false
@@ -22,8 +22,8 @@ Ancak projeleri "spagetti mimaride" boğulmaktan kurtarmak zorunda kalmış bir 
 
 Fayda hakkında tartışmadan önce, bu terimleri birbirinin yerine kullanmayı bırakmalıyız.
 
-*   **Yazılım Mimari** "Makro"dur. Yüksek seviyeli yapıdır (Mikroservisler, Monolit, Olay Güdümlü). Değiştirmesi zor kararlarla ilgilidir: "Servislerimiz nasıl konuşuyor?" veya "Veri nerede yaşıyor?" [^2].
-*   **Tasarım Desenleri** "Mikro"dur. O mimari içindeki tekrarlayan sorunlara yönelik yerelleştirilmiş çözümlerdir. Mimariyi bir evin kat planı gibi düşünün ve Tasarım Desenlerini ışık anahtarlarını kablolama şekliniz olarak düşünün.
+* **Yazılım Mimari** "Makro"dur. Yüksek seviyeli yapıdır (Mikroservisler, Monolit, Olay Güdümlü). Değiştirmesi zor kararlarla ilgilidir: "Servislerimiz nasıl konuşuyor?" veya "Veri nerede yaşıyor?" [^2].
+* **Tasarım Desenleri** "Mikro"dur. O mimari içindeki tekrarlayan sorunlara yönelik yerelleştirilmiş çözümlerdir. Mimariyi bir evin kat planı gibi düşünün ve Tasarım Desenlerini ışık anahtarlarını kablolama şekliniz olarak düşünün.
 
 ### Gerçek Değer: İletişim Hızı
 
@@ -34,7 +34,6 @@ Bir desenin en büyük faydası kodun kendisi değil; **zihinsel kısayoldur**. 
 Desenler, "tekerleği yeniden icat etme"nin bilişsel yükünü azaltır. Küresel durumu yönetmenin zekice bir yolunu her "icat ettiğinizde", aslında sadece bir **Singleton** veya **State** deseninin (muhtemelen hatalı) bir sürümünü oluşturuyorsunuz. Yerleşik sürümü kullanmak, ücretsiz olarak onlarca yıllık uç durum testinin faydasını elde ettiğiniz anlamına gelir.
 
 ### Evrim İçin "Güvenlik Ağı"
-
 
 İyi mimari **kararları ertelemeyle** ilgilidir. Tasarım desenleri sisteminize "prizler" oluşturmanıza olanak tanır. Bir **Adapter** veya **Strategy** deseni kullanarak, sadece kodu "güzel" yapmıyorsunuz; yıllar sonra, iş mantığı AWS S3'ten Azure Blob Storage'a geçmeye karar verdiğinde, tüm çekirdek mantığınızı yeniden yazmak zorunda kalmayacaksınız. Sadece uygulamayı değiştireceksiniz [^4].
 
@@ -77,9 +76,10 @@ Bu en kritik metriktir. Bir kod parçası bir kez yazılıp nadiren dokunulursa,
 ### 2. Boyut: Üçler Kuralı
 
 Mimaride **Üçler Kuralı**'nı takip ederiz [^6]:
-1.  **İlk kez:** Kodu yazarsınız. Çalışmasını sağlarsınız.
-2.  **İkinci kez:** Kopyala-yapıştır yaptığınız için suçluluk duyarsınız. Genelleştirme dürtüsüne karşı koyarsınız.
-3.  **Üçüncü kez:** Resmi olarak tekrarlayan bir sorun bulmuşsunuz demektir. **Şimdi** deseni uygulayın.
+
+1. **İlk kez:** Kodu yazarsınız. Çalışmasını sağlarsınız.
+2. **İkinci kez:** Kopyala-yapıştır yaptığınız için suçluluk duyarsınız. Genelleştirme dürtüsüne karşı koyarsınız.
+3. **Üçüncü kez:** Resmi olarak tekrarlayan bir sorun bulmuşsunuz demektir. **Şimdi** deseni uygulayın.
 
 ### 3. Boyut: Ekip Ölçeği (Bilişsel Yük)
 
@@ -101,16 +101,18 @@ Klasik tasarım desenleri çoğunlukla 90'larda tek işlemcili sistemler için k
 ### Nesnelerden Servislere
 
 Ayrıştırma mantığı aynı kalır, ancak uygulama ağ katmanına taşınmıştır:
-*   **Observer**, **Pub/Sub Mesajlaşma** (Kafka, RabbitMQ, SNS/SQS) olur.
-*   **Singleton**, **Global Konfigürasyon Deposu** veya **Dağıtık Önbellek** (Redis) haline gelir.
-*   **Facade**, aşağı akış mikroservislerinin karmaşıklığını gizlemek için **API Gateway** olur [^8].
+
+* **Observer**, **Pub/Sub Mesajlaşma** (Kafka, RabbitMQ, SNS/SQS) olur.
+* **Singleton**, **Global Konfigürasyon Deposu** veya **Dağıtık Önbellek** (Redis) haline gelir.
+* **Facade**, aşağı akış mikroservislerinin karmaşıklığını gizlemek için **API Gateway** olur [^8].
 
 ### Dayanıklılık Desenlerinin Yükselişi
 
 Modern mimaride en önemli desenler, uzak çağrıların kaçınılmaz başarısızlığını yönetir [^9]:
-*   **Devre Kesici:** Başarısız bir hizmetin kümenizde zincirleme bir başarısızlığa neden olmasını önler [^10].
-*   **Yan Pod Deseni:** Çapraz kesen endişeleri (günlükleme, güvenlik) uygulama kodundan ayrı bir kapsüle taşır [^11].
-*   **Saga Deseni:** Sonunda tutarlılığı korumak için telafi edici ("geri al") mantık ile yerel işlemler dizisi olarak dağıtık işlemleri yönetir [^12].
+
+* **Devre Kesici:** Başarısız bir hizmetin kümenizde zincirleme bir başarısızlığa neden olmasını önler [^10].
+* **Yan Pod Deseni:** Çapraz kesen endişeleri (günlükleme, güvenlik) uygulama kodundan ayrı bir kapsüle taşır [^11].
+* **Saga Deseni:** Sonunda tutarlılığı korumak için telafi edici ("geri al") mantık ile yerel işlemler dizisi olarak dağıtık işlemleri yönetir [^12].
 
 ---
 
@@ -119,11 +121,13 @@ Modern mimaride en önemli desenler, uzak çağrıların kaçınılmaz başarıs
 2026'da en büyük soru sadece hangi desenin kullanılacağı değil; kimin (veya neyin) kullandığıdır. Yapay zeka destekli araçlar artık dünyanın tek kalıplı kodunun %40'ını ürettiğinden, Yazılım Mimarının rolü "Usta Yazıcı"dan **"Niyet Orkestratörü"**ne kaymıştır.
 
 ### 1. Desenler Yerine İlkeler
-*   **Dogma Yerine Bağlam:** Hiçbir desen boşlukta "en iyi uygulama" değildir.
-*   **Zekâ Yerine Sürdürülebilirlik:** Bir yapay zeka, bir insanın hata ayıklayamayacağı karmaşık bir desen üretirse, başarısız olmuş demektir.
-*   **Soyutlama Yerine Değer:** Desen gelecekteki değişiklik maliyetini azaltmıyorsa, bu **Teknik Kaplama**'dır.
+
+* **Dogma Yerine Bağlam:** Hiçbir desen boşlukta "en iyi uygulama" değildir.
+* **Zekâ Yerine Sürdürülebilirlik:** Bir yapay zeka, bir insanın hata ayıklayamayacağı karmaşık bir desen üretirse, başarısız olmuş demektir.
+* **Soyutlama Yerine Değer:** Desen gelecekteki değişiklik maliyetini azaltmıyorsa, bu **Teknik Kaplama**'dır.
 
 ### 2. Yapay Zeka Faktörü: "Vibe Kodlama" vs. Mühendislik
+
 Doğal dilde bir sistemi tanımlayabileceğiniz **"Vibe Kodlama"** çağına giriyoruz. Bu, Tasarım Desenlerini *daha* önemli hale getirir, çünkü yapay zeka, verimsiz olsalar bile popüler desenleri önermeyi sever. Mimarın görevi **Korumaya Almak** olmaktır.
 
 :::tip[Çözüm Mühendisi'nden İpucu]
@@ -131,10 +135,12 @@ Deseni *uygulamak* için yapay zekayı kullanın, ancak *seçmesine* asla izin v
 :::
 
 ### 3. Yeni GoF: Ajans ve Dağıtık Desenler
+
 Alfabe, **Ajans İş Akışlarına** doğru evriliyor:
-*   **Orchestrator Deseni:** Birden fazla uzman yapay zeka ajansını yönetme.
-*   **Guardrail Deseni:** Olasılıksal LLM çıktısını doğrulayan deterministik bir katman.
-*   **Prompt-as-Code Deseni:** Yapay zeka talimatlarını kaynak koduyla aynı sürüm kontrolü ve test titizliğiyle ele alma.
+
+* **Orchestrator Deseni:** Birden fazla uzman yapay zeka ajansını yönetme.
+* **Guardrail Deseni:** Olasılıksal LLM çıktısını doğrulayan deterministik bir katman.
+* **Prompt-as-Code Deseni:** Yapay zeka talimatlarını kaynak koduyla aynı sürüm kontrolü ve test titizliğiyle ele alma.
 
 ---
 

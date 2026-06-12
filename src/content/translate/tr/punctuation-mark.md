@@ -4,7 +4,7 @@ lang: "tr"
 title: "Düz Çizginin Yükselişi"
 published: 2026-05-02
 description: "Dijital iletişimin ve LLM'lerin, noktalama işaretleri kullanımımızı resmi iki noktalardan dinamik düz çizgilere doğru nasıl kaydırdığının bir incelemesi."
-image: "/images/posts/punctuation-marks.png"
+image: "/images/posts/punctuation-marks.webp"
 tags: [Yazım, Yapay Zeka, İletişim]
 category: "Geliştirici İş Akışı"
 draft: false

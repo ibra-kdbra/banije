@@ -2,7 +2,7 @@
 title: "The Rise of the Em Dash"
 published: 2026-05-02
 description: "An exploration of how digital communication and LLMs are shifting our use of punctuation from formal colons to dynamic em dashes."
-image: "/images/posts/punctuation-marks.png"
+image: "/images/posts/punctuation-marks.webp"
 tags: [Writing, AI, Communication]
 category: "Developer Workflow"
 draft: false
