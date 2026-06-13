@@ -16,7 +16,7 @@ Here is a structured breakdown of both the historical/philosophical evolution an
 
 ## The Ancient and Historical Perspective
 
-![ancient-historical](/images/public/posts/9th-century.webp)
+![ancient-historical](/images/posts/ancient-century.webp)
 
 Historically, humanity has shifted from viewing names as literal extensions of a thing's soul to viewing them as arbitrary tools for communication.
 
