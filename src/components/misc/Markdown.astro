@@ -36,6 +36,8 @@ const className = Astro.props.class;
 
   document.addEventListener("click", function (e: MouseEvent) {
     const target = e.target as Element | null;
+    
+    // Copy button handling
     if (target && target.classList.contains("copy-btn")) {
       const preEle = target.closest("pre");
       const codeEle = preEle?.querySelector("code");
@@ -54,12 +56,21 @@ const className = Astro.props.class;
 
       target.classList.add("success");
 
-      // 设置新的timeout并保存ID到按钮的自定义属性中
+      // Set new timeout and save ID to button's custom attributes
       const newTimeoutId = setTimeout(() => {
         target.classList.remove("success");
       }, 1000);
 
       target.setAttribute("data-timeout-id", newTimeoutId.toString());
+    }
+
+    // Steps accordion toggle handling
+    const stepsHeader = target?.closest(".steps-header");
+    if (stepsHeader) {
+      const stepsItem = stepsHeader.closest(".steps-item");
+      if (stepsItem) {
+        stepsItem.classList.toggle("open");
+      }
     }
   });
 </script>

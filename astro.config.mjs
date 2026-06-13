@@ -21,6 +21,7 @@ import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badg
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { InteractiveComponent } from "./src/plugins/rehype-component-interactive.mjs";
+import { StepsComponent, StepComponent } from "./src/plugins/rehype-component-steps.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
@@ -132,6 +133,8 @@ export default defineConfig({
 						github: GithubCardComponent,
 						interactive: InteractiveComponent,
 						shutterstock: InteractiveComponent,
+						steps: StepsComponent,
+						step: StepComponent,
 						note: (x, y) => AdmonitionComponent(x, y, "note"),
 						tip: (x, y) => AdmonitionComponent(x, y, "tip"),
 						important: (x, y) => AdmonitionComponent(x, y, "important"),

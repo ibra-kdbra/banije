@@ -1,14 +1,14 @@
 ---
 title: "Do We Name Things Right?"
 published: 2026-06-13
-description: "A critical look at the philosophy, linguistics, and Islamic theology of naming things—exploring the tension between Naturalism, Conventionalism, and Surah Al-Baqarah."
+description: "A critical look at the philosophy, linguistics, and Islamic theology of naming things, exploring the tension between Naturalism, Conventionalism, and Surah Al-Baqarah."
 image: ""
 tags: [Philosophy, Linguistics, Islamic Studies, Theology]
 category: "Philosophy"
 draft: false
 ---
 
-Writing a comprehensive article on this requires bridging philosophy, linguistics, and theology. The fundamental question you're asking—"Do we really name things correctly?"—is known in philosophy as the debate between **Naturalism** (names reflect the true nature of a thing) and **Conventionalism** (names are just arbitrary social agreements).
+Writing a comprehensive article on this requires bridging philosophy, linguistics, and theology. The fundamental question you're asking ("Do we really name things correctly?") is known in philosophy as the debate between **Naturalism** (names reflect the true nature of a thing) and **Conventionalism** (names are just arbitrary social agreements).
 
 Here is a structured breakdown of both the historical/philosophical evolution and the deep, multi-layered Islamic perspective.
 
@@ -18,53 +18,25 @@ Here is a structured breakdown of both the historical/philosophical evolution an
 
 Historically, humanity has shifted from viewing names as literal extensions of a thing's soul to viewing them as arbitrary tools for communication.
 
-<div class="steps-timeline">
+::::steps
 
-  <div class="steps-item">
-    <div class="steps-marker"></div>
-    <div class="steps-content">
-      <div class="steps-title">Prehistoric &amp; Mythological Era</div>
-      <div class="steps-subtitle">Ancient History</div>
-      <div class="steps-body">
-        <strong>The "True Name" Concept:</strong> In ancient Egyptian, Mesopotamian, and early pagan traditions, a name wasn't just a label; it was the essence of the thing itself. This gave rise to "sympathetic magic"—the belief that if you knew a god's, a demon's, or a person's <em>true</em> secret name, you held absolute power over them. To name a thing incorrectly was to misunderstand its very soul.
-      </div>
-    </div>
-  </div>
+:::step[Prehistoric & Mythological Era]{subtitle="Ancient History"}
+**The "True Name" Concept:** In ancient Egyptian, Mesopotamian, and early pagan traditions, a name wasn't just a label; it was the essence of the thing itself. This gave rise to "sympathetic magic": the belief that if you knew a god's, a demon's, or a person's *true* secret name, you held absolute power over them. To name a thing incorrectly was to misunderstand its very soul.
+:::
 
-  <div class="steps-item">
-    <div class="steps-marker"></div>
-    <div class="steps-content">
-      <div class="steps-title">Classical Antiquity (Plato's Cratylus)</div>
-      <div class="steps-subtitle">c. 360 BCE</div>
-      <div class="steps-body">
-        <strong>Naturalism vs. Convention:</strong> Plato wrote the <em>Cratylus</em>, the foundational text on this subject. In it, Hermogenes argues that names are just social habits (Conventionalism), while Cratylus argues that words have an inherent, natural connection to the things they signify (Naturalism). Socrates moderates, suggesting that while names <em>should</em> perfectly describe the essence of a thing, language is flawed by human error over time.
-      </div>
-    </div>
-  </div>
+:::step[Classical Antiquity (Plato's Cratylus)]{subtitle="c. 360 BCE"}
+**Naturalism vs. Convention:** Plato wrote the *Cratylus*, the foundational text on this subject. In it, Hermogenes argues that names are just social habits (Conventionalism), while Cratylus argues that words have an inherent, natural connection to the things they signify (Naturalism). Socrates moderates, suggesting that while names *should* perfectly describe the essence of a thing, language is flawed by human error over time.
+:::
 
-  <div class="steps-item">
-    <div class="steps-marker"></div>
-    <div class="steps-content">
-      <div class="steps-title">The Middle Ages</div>
-      <div class="steps-subtitle">c. 1100–1400 CE</div>
-      <div class="steps-body">
-        <strong>Realism vs. Nominalism:</strong> Medieval philosophers argued over "Universals." If we name something a "chair," does the concept of "chairness" actually exist in reality (Realism, argued by thinkers like Aquinas)? Or is "chair" just a convenient vocal breath we use to group similar objects together, while only individual objects truly exist (Nominalism, championed by William of Ockham)?
-      </div>
-    </div>
-  </div>
+:::step[The Middle Ages]{subtitle="c. 1100-1400 CE"}
+**Realism vs. Nominalism:** Medieval philosophers argued over "Universals." If we name something a "chair," does the concept of "chairness" actually exist in reality (Realism, argued by thinkers like Aquinas)? Or is "chair" just a convenient vocal breath we use to group similar objects together, while only individual objects truly exist (Nominalism, championed by William of Ockham)?
+:::
 
-  <div class="steps-item">
-    <div class="steps-marker"></div>
-    <div class="steps-content">
-      <div class="steps-title">Modern Structuralism (Ferdinand de Saussure)</div>
-      <div class="steps-subtitle">1916 CE</div>
-      <div class="steps-body">
-        <strong>The Arbitrary Signifier:</strong> The father of modern linguistics, Saussure, concluded that the connection between a word (the <em>signifier</em>) and the concept it represents (the <em>signified</em>) is entirely arbitrary. There is nothing inherently "tree-like" about the word <em>tree</em>—we only agree it means tree. From a modern secular perspective, we <em>don't</em> name things "correctly" in a cosmic sense; we only name them "usefully."
-      </div>
-    </div>
-  </div>
+:::step[Modern Structuralism (Ferdinand de Saussure)]{subtitle="1916 CE"}
+**The Arbitrary Signifier:** The father of modern linguistics, Saussure, concluded that the connection between a word (the *signifier*) and the concept it represents (the *signified*) is entirely arbitrary. There is nothing inherently "tree-like" about the word *tree*; we only agree it means tree. From a modern secular perspective, we *don't* name things "correctly" in a cosmic sense; we only name them "usefully."
+:::
 
-</div>
+::::
 
 ---
 
@@ -74,7 +46,7 @@ In Islam, naming is not merely conventional; it is profoundly spiritual, psychol
 
 ### 1. The Quranic Foundation: The Vicegerency of Man
 
-The deepest Islamic answer to naming comes from the story of creation in Surah Al-Baqarah (2:31):
+The deepest Islamic answer to naming comes from the story of creation in **Surah Al-Baqarah (2:31)**:
 
 > *"And He taught Adam the names of all things; then He presented them to the angels and said, 'Tell Me the names of these, if you are truthful.'"*
 

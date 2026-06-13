@@ -155,4 +155,127 @@
   #footnote-label {
     display: none !important;
   }
+
+  /* Timeline / Steps component styling */
+  .steps-timeline {
+    @apply relative my-10 pl-4;
+  }
+
+  .steps-item {
+    @apply relative pl-8 pb-8 transition-all duration-300;
+
+    &::before {
+      content: "";
+      @apply absolute left-[9px] top-[1.75rem] bottom-0 transition-all duration-300;
+      border-left: 2px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    &:last-child {
+      @apply pb-0 mb-0;
+      &::before {
+        @apply hidden;
+      }
+    }
+  }
+
+  .steps-header {
+    @apply flex items-center justify-between cursor-pointer py-2 px-3 -mx-3 rounded-xl select-none transition-all duration-200;
+    
+    &:hover {
+      background: var(--btn-plain-bg-hover);
+      
+      .steps-marker {
+        @apply border-[var(--primary)] scale-110 shadow-lg shadow-[var(--primary)]/20;
+      }
+      
+      .steps-title {
+        @apply text-[var(--primary)];
+      }
+    }
+  }
+
+  .steps-marker {
+    @apply absolute left-0 top-[0.6rem] w-5 h-5 rounded-full border-2 border-white/20 dark:border-white/15 bg-[var(--card-bg)] transition-all duration-300 z-10 flex items-center justify-center;
+  }
+
+  .steps-marker-inner {
+    @apply w-1.5 h-1.5 rounded-full bg-white/30 dark:bg-white/20 transition-all duration-300;
+  }
+
+  .steps-item.open {
+    &::before {
+      border-left-style: solid;
+      border-left-color: var(--primary);
+      opacity: 0.6;
+    }
+
+    .steps-marker {
+      @apply border-[var(--primary)] bg-[var(--primary)] shadow-lg shadow-[var(--primary)]/30 scale-110;
+    }
+    
+    .steps-marker-inner {
+      @apply bg-white scale-125;
+    }
+
+    .steps-chevron {
+      @apply rotate-180 text-[var(--primary)];
+    }
+    
+    .steps-title {
+      @apply text-[var(--primary)] font-extrabold;
+    }
+  }
+
+  .steps-title-group {
+    @apply flex flex-col flex-1 pr-4;
+  }
+
+  .steps-title {
+    @apply font-bold text-[1.2rem] text-black/90 dark:text-white/90 leading-snug transition-colors duration-200;
+  }
+
+  .steps-subtitle {
+    @apply text-xs font-semibold tracking-wider uppercase text-black/40 dark:text-white/40 mt-1 transition-colors duration-200;
+  }
+
+  .steps-item.open .steps-subtitle {
+    @apply text-[var(--primary)] opacity-80;
+  }
+
+  .steps-chevron {
+    @apply text-black/30 dark:text-white/30 transition-all duration-300 mr-2 flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/5 dark:hover:bg-white/5;
+  }
+
+  /* Smooth height transition wrapper */
+  .steps-body-wrapper {
+    @apply grid transition-all duration-300 ease-in-out;
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+
+  .steps-item.open .steps-body-wrapper {
+    grid-template-rows: 1fr;
+    @apply opacity-100;
+  }
+
+  .steps-body-inner {
+    @apply overflow-hidden min-h-0;
+  }
+
+  .steps-body {
+    @apply text-black/70 dark:text-white/70 text-[0.975rem] leading-relaxed pt-3 pb-2 pr-2 transition-all duration-300 transform -translate-y-2;
+    
+    /* Elegant line indicator on the left of content */
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+    @apply pl-4 ml-1;
+    
+    strong {
+      @apply text-black/90 dark:text-white/90 font-semibold;
+    }
+  }
+
+  .steps-item.open .steps-body {
+    @apply translate-y-0;
+    border-left-color: var(--primary);
+  }
 }
