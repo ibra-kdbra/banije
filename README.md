@@ -9,6 +9,7 @@
 ## 🔍 Fields of Interest
 
 The content is organized across several core technical pillars:
+
 - 💻 **Computer Science**: Foundational theory and data structures.
 - 🛠️ **Software Engineering**: Design patterns, refactoring, and clean code.
 - 🐚 **Unix Shell**: Environment automation and shell scripting.
@@ -23,6 +24,7 @@ The content is organized across several core technical pillars:
 ## 🏗️ Architecture & Tech Stack
 
 The project is architected for speed, SEO, and a premium developer experience:
+
 - **Framework**: [Astro 5](https://astro.build) (Static Site Generation)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com) + [Stylus](https://stylus-lang.com/)
 - **Components**: [Svelte 5](https://svelte.dev) (Runes-based interactivity)
@@ -45,11 +47,13 @@ The project is architected for speed, SEO, and a premium developer experience:
 ## 📋 Prerequisites
 
 Before getting started, ensure you have the following installed:
+
 - **Node.js** (version 18 or higher)
 - **pnpm** package manager
 - **Git** for version control
 
 Install pnpm globally if you haven't:
+
 ```bash
 npm install -g pnpm
 ```
@@ -59,12 +63,14 @@ npm install -g pnpm
 ## 🚀 How to Use
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/ibra-kdbra/banije.git
    cd banije
    ```
 
 2. **Install dependencies**:
+
    ```bash
    pnpm install
    pnpm add sharp # Required for Astro image processing
@@ -74,22 +80,28 @@ npm install -g pnpm
    Edit the configuration file at `src/config.ts` to tailor the blog to your needs.
 
 4. **Create a new post**:
+
    ```bash
    pnpm new-post <filename>
    ```
+
    This will scaffold a new file in `src/content/posts/` for you to edit.
 
 5. **Start development server**:
+
    ```bash
    pnpm dev
    ```
+
    Visit `http://localhost:4321` to see your changes in real-time.
 
 6. **Build & Deploy**:
    Build your production site to the `./dist/` directory:
+
    ```bash
    pnpm build
    ```
+
    Follow [the Astro guides](https://docs.astro.build/en/guides/deploy/) to deploy to Vercel, Netlify, or GitHub Pages.
 
 ---
@@ -111,6 +123,7 @@ draft: false                       # (Optional) Default: false
 ```
 
 **Notes:**
+
 - `title`, `published`, and `description` are required for the build to pass.
 - Images should be placed in the `public/images/posts/` directory or relative to the post.
 - Tags and categories enable the dynamic filtering and search systems.
@@ -140,12 +153,14 @@ draft: false                       # (Optional) Default: false
 The project includes a free translation pipeline based on `google-translate-api-x` and custom scripts.
 
 **Core Capabilities:**
+
 - **Structure Preservation**: Protects Markdown fences, links, admonitions, and Svelte embeds.
 - **Technical Glossary**: Uses `scripts/translation-glossary.json` to protect technical terms.
 - **Caching**: Uses content hashes to avoid re-translating unchanged files.
 - **Validation**: Ensures the translated output matches the required frontmatter shape.
 
 **Useful Commands:**
+
 - `pnpm translate -- --lang=tr --skip-existing`: Translate only Turkish, skipping existing files.
 - `pnpm translate -- --post=gitCommands --lang=ja`: Translate one specific post to Japanese.
 - `pnpm translate:fix`: Post-process and repair known translation artifacts.
@@ -156,40 +171,48 @@ The project includes a free translation pipeline based on `google-translate-api-
 
 Banije features a custom-built, declarative interactive diagram system powered by **Svelte 5** and **Gemini AI**.
 
-### Features:
+### Features
+
 - **Portaled Focus Mode**: A premium fullscreen overlay that escapes parent container constraints for a cinematic experience.
 - **Precision Zoom**: Smooth 1.8x zoom capability for high-detail technical diagrams.
 - **Smart Hotspots**: Interactive bounding boxes with glassmorphism effects and smooth transitions.
 - **Dev-Only Visual Debugger**: An integrated coordinate tracker and hitbox highlighter that automatically appears in `DEV` mode (`pnpm dev`) to help with alignment.
 - **Mobile Responsive**: Transitions from a split-screen layout on desktop to a native-feeling bottom-sheet on mobile.
 
-### AI Automation (Auto-Labeling):
+### AI Automation (Auto-Labeling)
+
 You can automatically generate the coordinate JSON for any image using Gemini Vision:
 
 1. Place your image in `public/images/posts/`.
 2. Run the generator:
+
    ```bash
    pnpm interactive:gen public/images/posts/your-diagram.webp
    ```
+
 3. A `.json` file will be created next to your image. Use it in Markdown:
+
    ```markdown
    ::interactive{id="my-id" src="/images/posts/img.webp" data="src/images/posts/img.json"}
    ```
 
-### Debugging & Alignment:
+### Debugging & Alignment
+
 While running `pnpm dev`, move your mouse over any `::interactive` component to see real-time X/Y percentages. Clicking the image will log the exact coordinates to your browser console for easy fine-tuning.
 
 ## 🖼️ Image Optimization
 
 To ensure fast page loads, Banije includes a built-in image optimization pipeline powered by **Sharp**.
 
-### Features:
+### Features
+
 - **Automatic Compression**: Reduces file size without noticeable quality loss.
 - **WebP Generation**: Automatically creates `.webp` variants for better browser support.
 - **Responsive Resizing**: Scales large images down to a maximum width (default: 1600px).
 - **Format Conversion**: Optimizes JPG, PNG, and WebP files in-place.
 
-### Usage:
+### Usage
+
 ```bash
 # Preview savings without changing files
 pnpm images:optimize:dry
@@ -201,6 +224,7 @@ pnpm images:optimize
 ## 🤝 Contributing
 
 Contributions are welcome!
+
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feature/your-feature`.
 3. Commit your changes: `git commit -m 'Add some feature'`.

@@ -4,7 +4,7 @@ lang: "es"
 title: "El Auge del Guion Largo (Em Dash)"
 published: 2026-05-02
 description: "Una exploración de cómo la comunicación digital y los LLM están cambiando nuestro uso de la puntuación, de los dos puntos formales a los dinámicos guiones largos."
-image: "/images/posts/punctuation-marks.png"
+image: "/images/posts/punctuation-marks.webp"
 tags: [Escritura, IA, Comunicación]
 category: "Flujo de Trabajo del Desarrollador"
 draft: false
@@ -22,22 +22,22 @@ Antes de ver por qué los LLM aman el guion largo, definamos las reglas de enfre
 
 Los dos puntos se utilizan para introducir algo que sigue naturalmente de la cláusula anterior. Piénselo como una señal que dice: "Mira esto a continuación".
 
-*   **Mejor para:** Listas, definiciones y subtítulos.
-*   **La Sensación:** Formal, autoritaria y estructurada.
+* **Mejor para:** Listas, definiciones y subtítulos.
+* **La Sensación:** Formal, autoritaria y estructurada.
 
 ### 2. El Punto y Coma (`;`) — El Conector
 
 El punto y coma une dos oraciones independientes y completas que están estrechamente relacionadas en tema. Es una pausa "más fuerte" que una coma pero "más suave" que un punto.
 
-*   **Mejor para:** Equilibrar dos pensamientos completos sin empezar una nueva oración.
-*   **La Sensación:** Académica, sofisticada y ligeramente "pesada".
+* **Mejor para:** Equilibrar dos pensamientos completos sin empezar una nueva oración.
+* **La Sensación:** Académica, sofisticada y ligeramente "pesada".
 
 ### 3. El Guion Largo (`—` o `--`) — El Puente
 
 El guion largo es la navaja suiza de la puntuación. Puede reemplazar comas, paréntesis o dos puntos, dependiendo del contexto.
 
-*   **Mejor para:** Añadir énfasis, un cambio abrupto de pensamiento o una explicación "adicional".
-*   **La Sensación:** Conversacional, enérgica y moderna.
+* **Mejor para:** Añadir énfasis, un cambio abrupto de pensamiento o una explicación "adicional".
+* **La Sensación:** Conversacional, enérgica y moderna.
 
 ---
 
@@ -71,8 +71,8 @@ Debido a que el guion largo es tan versátil (no es mi opinión, si me preguntas
 
 ## ¿Cuál deberías usar?
 
-*   **Usa dos puntos** si quieres parecer un redactor de documentación profesional o un académico. Exige respeto y señala una organización clara.
-*   **Usa punto y coma** con moderación. Es genial para mostrar una relación sofisticada entre dos ideas, pero demasiados pueden hacer que tu escritura se sienta "recargada".
-*   **Usa un guion largo** si quieres sonar moderno, rápido y atractivo. Es la puntuación de la era digital: flexible, contundente y clara.
+* **Usa dos puntos** si quieres parecer un redactor de documentación profesional o un académico. Exige respeto y señala una organización clara.
+* **Usa punto y coma** con moderación. Es genial para mostrar una relación sofisticada entre dos ideas, pero demasiados pueden hacer que tu escritura se sienta "recargada".
+* **Usa un guion largo** si quieres sonar moderno, rápido y atractivo. Es la puntuación de la era digital: flexible, contundente y clara.
 
 > **Nota Técnica:** En la escritura digital, si no te molestas en buscar el carácter especial `—`, el guion doble `--` es el sustituto universalmente aceptado. La mayoría de los editores modernos incluso lo "corregirán automáticamente" por ti.
