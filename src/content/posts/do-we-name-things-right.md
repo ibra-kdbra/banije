@@ -1,6 +1,6 @@
 ---
 title: "Do We Name Things Right?"
-published: 2026-06-13
+published: 2026-05-25
 description: "A critical look at the philosophy, linguistics, and Islamic theology of naming things, exploring the tension between Naturalism, Conventionalism, and Surah Al-Baqarah."
 image: ""
 tags: [Philosophy, Linguistics, Islamic Studies, Theology]
@@ -15,6 +15,8 @@ Here is a structured breakdown of both the historical/philosophical evolution an
 ---
 
 ## The Ancient and Historical Perspective
+
+![ancient-historical](/images/public/posts/9th-century.webp)
 
 Historically, humanity has shifted from viewing names as literal extensions of a thing's soul to viewing them as arbitrary tools for communication.
 
