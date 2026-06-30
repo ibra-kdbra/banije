@@ -121,7 +121,7 @@
         >
           <div class="flex flex-row justify-start items-center h-full">
             <div
-              class="w-[15%] md:w-[10%] transition text-sm text-right text-50"
+              class="shrink-0 w-[15%] md:w-[10%] transition text-sm text-right text-50 whitespace-nowrap tabular-nums"
             >
               {formatDate(post.data.published)}
             </div>
