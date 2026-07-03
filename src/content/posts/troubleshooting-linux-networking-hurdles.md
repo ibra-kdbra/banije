@@ -98,7 +98,7 @@ I was trying to optimize a resource that was fundamentally overloaded. Free publ
 
 ## Act IV: Evaluating Alternatives Under a Strict Budget
 
-Faced with unusable public speeds, I looked into commercial alternatives, specifically considering a dedicated private proxy for $2.50 per month. I hoped it would provide a lightweight, application-level tunnel for my development tools.
+Faced with unusable public speeds, I looked into commercial alternatives, specifically considering a dedicated private proxy for \$2.50 per month. I hoped it would provide a lightweight, application-level tunnel for my development tools.
 
 Before committing, I realized there were two major constraints:
 
@@ -110,16 +110,16 @@ Before committing, I realized there were two major constraints:
 
 ## Act V: Implementing a Budget-Friendly Custom Plan
 
-To find a middle ground between clean IP reputation, reliable access, and a strict financial limit, I looked into flexible plans and settled on a custom "Build-A-Plan" tier through Windscribe. It allows users to purchase access to specific server locations individually for $1 each, with a $3 minimum purchase requirement.
+To find a middle ground between clean IP reputation, reliable access, and a strict financial limit, I looked into flexible plans and settled on a custom "Build-A-Plan" tier through Windscribe. It allows users to purchase access to specific server locations individually for \$1 each, with a \$3 minimum purchase requirement.
 
 I put together a basic configuration:
 
-* Premium Server Access for the first needed `<region>` node: $1.00
-* Premium Server Access for the second needed `<region>` node: $1.00
-* Unlimited Data and Security Profile Upgrade: $1.00
-* **Total Cost: $3.00**
+* Premium Server Access for the first needed `<region>` node: \$1.00
+* Premium Server Access for the second needed `<region>` node: \$1.00
+* Unlimited Data and Security Profile Upgrade: \$1.00
+* **Total Cost: \$3.00**
 
-This fit comfortably within the budget, leaving a safe balance of $4.75 on the card while unlocking unthrottled access to commercial consumer-grade routing lines.
+This fit comfortably within the budget, leaving a safe balance of \$4.75 on the card while unlocking unthrottled access to commercial consumer-grade routing lines.
 
 ---
 

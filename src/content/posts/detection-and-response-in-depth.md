@@ -120,14 +120,14 @@ quadrantChart
     quadrant-1 Well Defended
     quadrant-2 Over-invested
     quadrant-3 Low Priority Gaps
-    quadrant-4 DANGER - Common & Undetected
-    Phishing (T1566): [0.9, 0.7]
-    Valid Accounts (T1078): [0.85, 0.35]
-    PowerShell (T1059): [0.8, 0.8]
-    Scheduled Task (T1053): [0.5, 0.6]
-    Credential Dumping (T1003): [0.7, 0.75]
-    Cloud API Abuse (T1078.004): [0.6, 0.25]
-    Rundll32 Proxy (T1218): [0.3, 0.45]
+    quadrant-4 "DANGER - Common & Undetected"
+    "Phishing (T1566)": [0.9, 0.7]
+    "Valid Accounts (T1078)": [0.85, 0.35]
+    "PowerShell (T1059)": [0.8, 0.8]
+    "Scheduled Task (T1053)": [0.5, 0.6]
+    "Credential Dumping (T1003)": [0.7, 0.75]
+    "Cloud API Abuse (T1078.004)": [0.6, 0.25]
+    "Rundll32 Proxy (T1218)": [0.3, 0.45]
 ```
 
 Quadrant 4, **common techniques with weak coverage**, is your prioritized backlog. This is how a small blue team allocates finite effort: defend what attackers actually do and you don't yet catch, before chasing exotic techniques nobody uses against you.
