@@ -38,16 +38,16 @@ const languages = SUPPORTED_LANGUAGES.map((value) => ({
 
   <div
     id="lang-dropdown"
-    class="absolute right-0 top-12 min-w-[10rem] p-1.5 rounded-xl border border-black/5 dark:border-white/5
+    class="absolute end-0 top-12 min-w-[10rem] p-1.5 rounded-xl border border-black/5 dark:border-white/5
 			bg-[var(--float-panel-bg)] shadow-xl invisible opacity-0 translate-y-2
-			transition-all duration-200 z-50 origin-top-right backdrop-blur-md"
+			transition-all duration-200 z-50 origin-top-right rtl:origin-top-left backdrop-blur-md"
   >
     {
       languages.map((lang) => (
         <button
           data-lang={lang.value}
           data-label={lang.label}
-          class="lang-option w-full text-left px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
+          class="lang-option w-full text-start px-3 py-2 my-0.5 rounded-lg text-sm font-medium transition-colors
 					hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] text-black/75 dark:text-white/75"
         >
           {lang.label}

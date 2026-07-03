@@ -11,11 +11,11 @@ interface Props {
 
 const { links, lang } = Astro.props;
 ---
-<div id="nav-menu-panel" class:list={["float-panel float-panel-closed absolute transition-all fixed right-4 px-2 py-2"]}>
+<div id="nav-menu-panel" class:list={["float-panel float-panel-closed absolute transition-all fixed end-4 px-2 py-2"]}>
     {links.map((link) => {
         const displayName = link.i18nKey ? i18n(link.i18nKey, lang) : link.name;
         return (
-            <a href={link.external ? link.url : url(link.url, lang)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+            <a href={link.external ? link.url : url(link.url, lang)} class="group flex justify-between items-center py-2 ps-3 pe-1 rounded-lg gap-8
                 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
             "
                target={link.external ? "_blank" : null}
@@ -24,11 +24,11 @@ const { links, lang } = Astro.props;
                     {displayName}
                 </div>
                 {!link.external && <Icon name="material-symbols:chevron-right-rounded"
-                      class="transition text-[1.25rem] text-[var(--primary)]"
+                      class="transition text-[1.25rem] text-[var(--primary)] rtl:-scale-x-100"
                 >
                 </Icon>}
                 {link.external && <Icon name="fa6-solid:arrow-up-right-from-square"
-                      class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1"
+                      class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1 rtl:translate-x-1"
                 >
                 </Icon>}
             </a>

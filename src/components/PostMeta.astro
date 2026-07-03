@@ -4,7 +4,8 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { formatDateToYYYYMMDD } from "@domain/date";
 import { getCategoryUrl, getTagUrl, url } from "@domain/url";
-import { translateArabicCategory, translateArabicTag } from "../utils/arabic-translations";
+import { translateArabicTag } from "../utils/arabic-translations";
+import { translateCategory, translateSeries } from "../i18n/taxonomy";
 
 interface Props {
   class: string;
@@ -68,7 +69,7 @@ const toAnchor = (value: string) =>
             <a href={getCategoryUrl(category, lang)} aria-label={`View all posts in the ${category} category`}
                class="link-lg transition text-50 text-sm font-medium
                             hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                {lang === 'ar' && category ? translateArabicCategory(category) : (category || i18n(I18nKey.uncategorized, lang))}
+                {category ? translateCategory(category, lang) : i18n(I18nKey.uncategorized, lang)}
             </a>
         </div>
     </div>
@@ -104,7 +105,7 @@ const toAnchor = (value: string) =>
                     aria-label={`View series ${seriesName}`}
                     class="link-lg transition text-50 text-sm font-medium hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap"
                 >
-                    {seriesName}
+                    {translateSeries(seriesName, lang)}
                 </a>
             </div>
         </div>

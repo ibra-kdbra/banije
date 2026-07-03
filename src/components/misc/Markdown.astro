@@ -18,21 +18,9 @@ const className = Astro.props.class;
 </div>
 
 <script>
-  import mermaid from "mermaid";
+  import { initMermaid } from "../../scripts/mermaid";
 
-  const renderMermaid = async () => {
-    const mermaidElements = document.querySelectorAll(".mermaid");
-    if (mermaidElements.length > 0) {
-      const isDark = document.documentElement.classList.contains("dark");
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: isDark ? "dark" : "default",
-      });
-      await mermaid.run();
-    }
-  };
-
-  renderMermaid();
+  initMermaid();
 
   document.addEventListener("click", function (e: MouseEvent) {
     const target = e.target as Element | null;
@@ -63,43 +51,6 @@ const className = Astro.props.class;
 
       target.setAttribute("data-timeout-id", newTimeoutId.toString());
     }
-
-    // Steps accordion toggle handling
-    const stepsHeader = target?.closest(".steps-header");
-    if (stepsHeader) {
-      const stepsItem = stepsHeader.closest(".steps-item");
-      if (stepsItem) {
-        stepsItem.classList.toggle("open");
-      }
-    }
+    // Steps accordion is native <details>/<summary> — no JS needed.
   });
-</script>
-
-<script>
-    import mermaid from 'mermaid'
-
-    const renderMermaid = async () => {
-        const mermaidElements = document.querySelectorAll(".mermaid");
-        if (mermaidElements.length > 0) {
-            const isDark = document.documentElement.classList.contains("dark");
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: isDark ? "dark" : "default",
-            });
-            await mermaid.run();
-        }
-    };
-
-    renderMermaid();
-
-    // Re-render mermaid when swup replaces content
-    const setup = () => {
-        window.swup.hooks.on("page:view", renderMermaid);
-    };
-
-    if (window.swup) {
-        setup();
-    } else {
-        document.addEventListener("swup:enable", setup);
-    }
 </script>

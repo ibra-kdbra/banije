@@ -1,6 +1,7 @@
 ---
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
+import { translateSeries } from "@i18n/taxonomy";
 import { getPostUrlBySlug } from "@domain/url";
 import { formatDateToYYYYMMDD } from "@domain/date";
 import type { SeriesItem } from "@features/content";
@@ -29,7 +30,7 @@ const toAnchor = (value: string) =>
 		<div id={`series-${toAnchor(series.name)}`} class="mb-8 last:mb-0 scroll-mt-24">
 			<div class="flex items-center justify-between gap-3 mb-3">
 				<div class="font-bold text-xl text-90 break-words">
-					{series.name}
+					{translateSeries(series.name, lang)}
 				</div>
 				<div class="text-sm text-50 shrink-0">
 					{series.count} {i18n(I18nKey.postsCount, lang)}
@@ -43,7 +44,7 @@ const toAnchor = (value: string) =>
 					class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
 				>
 					<div class="flex flex-row justify-start items-center h-full">
-						<div class="shrink-0 w-22 md:w-24 transition text-sm text-right text-50 whitespace-nowrap tabular-nums">
+						<div class="shrink-0 w-22 md:w-24 transition text-sm text-right rtl:text-left text-50 whitespace-nowrap tabular-nums">
 							{formatDateToYYYYMMDD(post.data.published)}
 						</div>
 
@@ -54,7 +55,7 @@ const toAnchor = (value: string) =>
 						</div>
 
 						<div
-							class="flex-1 min-w-0 text-left font-bold group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
+							class="flex-1 min-w-0 text-left rtl:text-right font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 rtl:pr-0 rtl:pl-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
 						>
 							{post.data.title}
 						</div>

@@ -107,7 +107,7 @@
             class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto -outline-offset-[2px] z-50 outline-3"
           ></div>
         </div>
-        <div class="w-[70%] md:w-[80%] transition text-left text-50">
+        <div class="w-[70%] md:w-[80%] transition text-left rtl:text-right text-50">
           {group.posts.length}
           {i18n(I18nKey.postsCount)}
         </div>
@@ -121,7 +121,7 @@
         >
           <div class="flex flex-row justify-start items-center h-full">
             <div
-              class="shrink-0 w-[15%] md:w-[10%] transition text-sm text-right text-50 whitespace-nowrap tabular-nums"
+              class="shrink-0 w-[15%] md:w-[10%] transition text-sm text-right rtl:text-left text-50 whitespace-nowrap tabular-nums"
             >
               {formatDate(post.data.published)}
             </div>
@@ -135,13 +135,13 @@
             </div>
 
             <div
-              class="w-[70%] md:max-w-[65%] md:w-[65%] text-left font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 rtl:pr-0 rtl:pl-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
+              class="w-[70%] md:max-w-[65%] md:w-[65%] text-left rtl:text-right font-bold group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all group-hover:text-[var(--primary)] text-75 pr-8 rtl:pr-0 rtl:pl-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
             >
               {post.data.title}
             </div>
 
             <div
-              class="hidden md:block md:w-[15%] text-left text-sm transition whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+              class="hidden md:block md:w-[15%] text-left rtl:text-right text-sm transition whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
             >
               {formatTag(post.data.tags)}
             </div>
@@ -151,10 +151,3 @@
     </div>
   {/each}
 </div>
-
-<style>
-  .search-panel {
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-  }
-</style>
