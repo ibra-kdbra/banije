@@ -422,7 +422,7 @@ mkfs.xfs -l version=2,size=32m -i attr=2,maxpct=5 /dev/sda3
 ```bash
 #!/bin/bash
 # Disk usage monitoring with escalation
-USAG E=$(df / | awk 'N R==2 {print $5}' | sed 's/%//')
+USAGE=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')
 if [ $USAGE -gt 90 ]; then
   echo "Critical: / partition at ${USAGE}%" | mail -s "Disk Alert" admin@example.com
 fi
@@ -441,7 +441,7 @@ fi
 ```bash
 #!/bin/bash
 # S.M.A.R.T. ヘルスチェックとアラート
-/dev/sd{a..z} 内のディスクに対して実行します。do
+for disk in /dev/sd{a..z}; do
 if smartctl -H "$disk" | grep -q 'FAILED\|FAILING'; then
 echo "$disk で SMART 障害が検出されました" >> /var/log/disk_health.log
 fi
@@ -520,7 +520,7 @@ done
         opts: "-L {{ item.lv }}"
       mount:
         path: "/{{ item.lv == 'root' | ternary('', item.lv) }}"
-        src: "LABE L={{ item.lv }}"
+        src: "LABEL={{ item.lv }}"
         fstype: "{{ item.fs }}"
         state: mounted
         opts: "{{ item.opts | default('defaults') }}"
@@ -539,7 +539,7 @@ done
     - name: Configure fstab
       lineinfile:
         path: /etc/fstab
-        line: "LABE L={{ item.lv }} /{{ item.lv == 'root' | ternary('', item.lv) }} {{ item.fs }} {{ item.opts | default('defaults') }} 0 0"
+        line: "LABEL={{ item.lv }} /{{ item.lv == 'root' | ternary('', item.lv) }} {{ item.fs }} {{ item.opts | default('defaults') }} 0 0"
       loop: "{{ filesystem_configuration }}"
 ```
 

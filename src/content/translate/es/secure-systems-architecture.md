@@ -1,403 +1,342 @@
 ---
-title: "Arquitectura de sistemas seguros: un tratado de ingeniería con múltiples perspectivas"
+title: "Seguridad en profundidad, Vol. I - Fundamentos, redes y el sistema defendible"
 published: 2025-09-11
-description: "Arquitectura de sistemas seguros que cubre los fundamentos de la seguridad de la red, estrategias de defensa en profundidad, modelado de amenazas y prácticas de desarrollo seguro desde múltiples perspectivas profesionales."
+description: "El primer volumen de la serie de Arquitectura de Seguridad. Donde todo comienza: el stack de red como superficie de ataque, la arquitectura defendible y la segmentación, la filosofía de la defensa en profundidad, el modelado de amenazas con STRIDE, la kill chain del atacante y los principios de seguridad por diseño sobre los que se construye toda la serie."
 image: ''
-tags: [Security, Network Security, Threat Modeling]
+tags: [Security, Network Security, Defense in Depth, Threat Modeling, Architecture]
 category: "Systems & Security"
 draft: false
 lang: "es"
 originalSlug: "secure-systems-architecture"
 series:
-    name: "Security Architecture"
-    order: 1
+  name: "Security Architecture"
+  order: 1
 ---
 
-## Una mirada rápida al interior
+## Donde comienza la serie
 
-Piense en esto como una guía práctica para construir y defender redes y sistemas de software modernos desde cero.
+Este es el volumen inaugural de un recorrido de cinco partes por la **Arquitectura de Seguridad**. A lo largo de la serie recorreremos todo el stack, desde el cobre hasta el contenedor, y el mapa se ve así:
 
-Lo que hace que esta guía sea diferente es nuestro enfoque. Examinaré toda la tecnología, desde los cables de red físicos hasta el código de la aplicación, a través de los ojos de las cuatro personas que viven y respiran esto todos los días:
+* **Volumen I (este)** - los fundamentos: la red como superficie de ataque, el diseño defendible, la defensa en profundidad, el modelado de amenazas y el método del atacante.
+* **Volumen II** - [Identidad, acceso y la frontera de Zero Trust](/posts/identity_and_access_in_depth/): cuando el perímetro se disuelve, la identidad se convierte en el nuevo límite.
+* **Volumen III** - [Ingeniería de la criptografía](/posts/cryptography_engineering_in_depth/): las primitivas que hacen que todo lo demás sea confiable.
+* **Volumen IV** - [Detección, respuesta e inteligencia de amenazas](/posts/detection_and_response_in_depth/): qué haces cuando la prevención falla.
+* **Volumen V** - [Seguridad nativa de la nube y de la cadena de suministro](/posts/cloud_native_and_supply_chain_security_in_depth/): asegurar lo efímero y probar lo que despliegas.
+
+Lo que hace diferente a esta guía es su método. Cada tema se examina a través de **cuatro pares de ojos**, porque un sistema real es debatido por cuatro tipos de ingeniero a la vez:
 
 * El **ingeniero de redes** que construye los cimientos.
-* El **Defensor de la Ciberseguridad** que tiene que protegerla.
-* El **Hacker ofensivo** que intenta romperlo.
-* El **Ingeniero de software** que escribe el código que se ejecuta en él.
+* El **defensor** que tiene que protegerlos.
+* El **hacker** que intenta romperlos.
+* El **ingeniero de software** que escribe el código que se ejecuta sobre ellos.
 
-Obtendrá un recorrido completo por temas de seguridad esenciales sin la tontería académica y seca. Cubriré cosas como:
-
-* Diseñar una red que sea difícil de atacar desde el principio.
-* Colocar tus defensas en capas para que un fracaso no sea una catástrofe (Defensa en profundidad).
-* Pensar como un atacante siguiendo Cyber ​​Kill Chain.
-* Escritura de código seguro desde el primer día (el Secure SDLC).
+:::note[La tesis de toda la serie]
+Ningún control por sí solo es confiable. Los firewalls fallan, las credenciales se filtran, el código tiene errores y las dependencias se envenenan. La seguridad, por lo tanto, no es un producto que compras sino una **propiedad que diseñas**: capas que asumen, cada una, que la anterior ya ha fallado. Este volumen construye las capas más externas y la mentalidad. El resto de la serie construye hacia adentro.
+:::
 
 ---
 
-## **Parte I: La base: fundamentos de una red segura**
+## Parte I: La red es el territorio
 
-### **Capítulo 1: Los modelos de red revisados a través de una lente de seguridad**
+La comunicación de datos comienza en la red, y el ataque también. Una lectura superficial del modelo OSI o TCP/IP no basta [^1]; un profesional de la seguridad lee cada capa dos veces, una por lo que *hace* y otra por cómo puede ser *utilizada en su contra*.
 
-El viaje hacia una arquitectura segura comienza donde comienza toda comunicación de datos: la red. Una comprensión superficial de los modelos OSI o TCP/IP es insuficiente [^1]. Un profesional de la seguridad debe comprender cada capa no sólo por su función, sino también por su superficie de ataque.
+### Capítulo 1: El stack a través de una lente de seguridad
 
-#### **1.1 Capa 1 - La capa física: la amenaza tangible**
+Cada capa acarrea sus propios ataques nativos y sus propias defensas nativas. Cuanto más abajo vas, más físico y absoluto es el compromiso.
 
-* **La visión del ingeniero de redes:** Esta capa es el mundo de los cables, la fibra óptica, los conmutadores y los concentradores. La principal preocupación es la conectividad física, la integridad de la señal y el aprovisionamiento de hardware. Es la base sobre la que se construye todo.
-* **La visión del hacker:** La capa física es el vector de ataque definitivo si es accesible. Los ataques suelen ser descarados pero muy eficaces:
-* **Escuchas telefónicas:** Conexión directa a cables de red para interceptar el tráfico no cifrado [^2].
-* **Implantes de hardware:** Colocar dispositivos maliciosos (por ejemplo, una Raspberry Pi) detrás de un firewall, dentro de una red segura, para establecer un canal C2 (comando y control) persistente.
-* **Acceso al puerto:** Simplemente conecte una computadora portátil a un conector de red activo y no seguro en una sala de conferencias o vestíbulo.
-* **La visión del defensor:** La seguridad física es la seguridad de la red. Las defensas son físicas y de procedimiento: salas de servidores cerradas, puertos de pared no utilizados desactivados, políticas estrictas de control de acceso y sellos de hardware a prueba de manipulaciones. Desde un punto de vista técnico, **Control de acceso a la red (NAC)** IEEE 802.1X se puede implementar para requerir autenticación desde cualquier dispositivo que se conecte físicamente a la red. [^3].
+```mermaid
+graph TD
+    A7["L7 Aplicación - HTTP, DNS, TLS<br/>SQLi, XSS, SSRF, fallos de auth"]
+    A4["L4 Transporte - TCP, UDP<br/>SYN flood, escaneo de puertos"]
+    A3["L3 Red - IP, ICMP, BGP<br/>IP spoofing, secuestro de BGP, DoS"]
+    A2["L2 Enlace de datos - Ethernet, ARP<br/>ARP spoofing, MAC flooding, VLAN hopping"]
+    A1["L1 Física - Cables, RF<br/>Escuchas, implantes maliciosos, acceso a puertos"]
+    A7 --> A4 --> A3 --> A2 --> A1
+```
 
-#### **1.2 Capa 2: La capa de enlace de datos: el campo de batalla de la red local**
+**Capa 1 - Física.** El mundo de los cables, la fibra y los conmutadores. Para el hacker es el vector definitivo *si es alcanzable*: un tap de red sobre un tramo sin cifrar [^2], un implante barato dejado detrás de un firewall como punto de apoyo persistente de comando y control, o simplemente una laptop conectada a un conector activo en un vestíbulo. La respuesta del defensor es procedimental y física - salas cerradas, puertos deshabilitados, sellos a prueba de manipulaciones - respaldada técnicamente por el control de acceso a la red **IEEE 802.1X**, que obliga a cualquier dispositivo que se conecte físicamente a autenticarse antes de recibir una sola trama utilizable [^3].
 
-* **La visión del ingeniero de redes:** Este es el ámbito de las direcciones MAC, los conmutadores y las redes de área local (LAN). Los protocolos principales son Ethernet y **ARP (Protocolo de resolución de direcciones)**, que asigna direcciones IP (Capa 3) a direcciones MAC (Capa 2). [^4]. Esta capa es responsable de enviar tramas al dispositivo correcto en el *mismo* segmento de red local.
-* **La visión del hacker:** La capa 2 es un entorno rico para ataques porque fue diseñada con un modelo de confianza implícito.
-* **Suplantación/envenenamiento de ARP:** El atacante envía mensajes ARP falsificados a la LAN. Pueden decirle a la puerta de enlace de la red que la dirección MAC del atacante pertenece a la IP de la víctima y decirle a la víctima que la dirección MAC del atacante pertenece a la IP de la puerta de enlace. Esto coloca al atacante en medio de la conversación (**Man-in-the-Middle, MitM**), lo que le permite interceptar o modificar todo el tráfico de la víctima. [^5].
-* **MAC Flooding:** Un ataque contra un conmutador de red. El atacante envía una avalancha de tramas Ethernet con diferentes direcciones MAC de origen, llenando la tabla CAM (Memoria direccionable de contenido) del conmutador. Cuando la tabla está llena, el conmutador ya no puede reenviar tramas de manera inteligente a puertos específicos y entra en un modo de "apertura fallida" en el que actúa como un concentrador, transmitiendo todas las tramas a todos los puertos. Esto permite al atacante rastrear todo el tráfico en la red conmutada. [^6].
-* **Salto de VLAN:** ​​Un ataque en el que el atacante, conectado a una VLAN, obtiene acceso al tráfico de otra VLAN a la que no debería poder acceder. Esto a menudo se hace explotando puertos troncales mal configurados. [^7].
-* **La visión del defensor:** Los conmutadores ofrecen una serie de características de seguridad para combatir estos ataques:
-* **Seguridad de puerto:** Limita la cantidad de direcciones MAC que se pueden usar en un único puerto de switch y se puede configurar para permitir solo direcciones MAC específicas. [^8].
-* **DHCP Snooping:** Evita que servidores DHCP no autorizados se introduzcan en la red.
-* **Inspección dinámica de ARP (DAI):** Valida los paquetes ARP en una red, evitando la suplantación de ARP al comparar las solicitudes/respuestas de ARP con la tabla de vinculación de espionaje DHCP.
+**Capa 2 - Enlace de datos.** Direcciones MAC, conmutadores y **ARP**, el protocolo que asigna IP a MAC y que fue diseñado con confianza implícita [^4]. Esa confianza es la vulnerabilidad:
 
-#### **1.3 Capa 3: La capa de red: el tablero de ajedrez de enrutamiento**
+```mermaid
+sequenceDiagram
+    participant V as Víctima
+    participant A as Atacante
+    participant G as Puerta de enlace
+    Note over V,G: Antes - la Víctima llega directamente a la Puerta de enlace
+    A->>V: ARP falsificado - la Puerta de enlace está en mi MAC
+    A->>G: ARP falsificado - la Víctima está en mi MAC
+    Note over A: El Atacante está ahora en el medio
+    V->>A: tráfico destinado a la Puerta de enlace
+    A->>G: reenviado, tras leerlo o alterarlo
+    G-->>A: respuesta
+    A-->>V: reenviada de vuelta
+```
 
-* **La visión del ingeniero de redes:** Esta es la capa de direcciones IP y enrutamiento. Se trata de mover paquetes entre diferentes redes. Los enrutadores operan en esta capa y toman decisiones basadas en las direcciones IP de destino para reenviar paquetes hacia su destino final. Aquí existen protocolos como **ICMP** (para ping y traceroute) e IGMP. [^9].
-* **La visión del hacker:** Los ataques de capa 3 se centran en interrumpir el enrutamiento y falsificar la identidad.
-* **Suplantación de IP:** Un atacante crea paquetes IP con una dirección IP de origen falsificada. Esta es una técnica principal utilizada en ataques de **denegación de servicio (DoS)**. En un **ataque Smurf**, el atacante envía una gran cantidad de solicitudes de eco ICMP (pings) a la dirección de transmisión de la red, falsificando la IP de origen para que sea la IP de la víctima. Todos los hosts de la red responden a la víctima, abrumándola. [^10].
-* **Secuestro de ruta (secuestro de BGP):** Un ataque sofisticado en el que un atacante toma de forma ilegítima el control de grupos de direcciones IP corrompiendo las tablas de enrutamiento de Internet, específicamente aquellas mantenidas por el **Protocolo de puerta de enlace fronteriza (BGP)**. Esto se puede utilizar para redirigir el tráfico, lo que lo convierte en una poderosa herramienta para espionaje o ataques MitM a gran escala. [^11].
-* **La vista del defensor:** La defensa en esta capa se trata de filtrado y validación.
-* **Filtrado de entrada/salida:** Los firewalls deben configurarse para descartar paquetes entrantes de Internet que tengan una dirección IP de origen dentro de la red interna (filtrado de entrada). También deben configurarse para descartar paquetes salientes que no tengan una IP de origen desde dentro de la red interna (filtrado de salida). Esto ayuda a prevenir la suplantación de IP, como se documenta en BCP 38/RFC 2827. [^12].
-* **Listas de control de acceso (ACL):** Los enrutadores y firewalls utilizan ACL para permitir o denegar el tráfico según la IP, el puerto y el protocolo de origen/destino. Este es el componente fundamental del control de acceso a la red.
+Eso es **ARP spoofing**, y le entrega al atacante una posición de Man-in-the-Middle en el segmento local [^5]. Sus primos son el **MAC flooding** (desbordar la tabla CAM del conmutador hasta que falle en abierto y transmita todo como un concentrador [^6]) y el **VLAN hopping** (escapar de tu VLAN a través de un puerto troncal mal configurado [^7]). El arsenal del defensor aquí es la higiene del conmutador: **seguridad de puerto** para fijar MACs por puerto [^8], **DHCP snooping** para eliminar servidores DHCP no autorizados, e **inspección dinámica de ARP** para descartar ARP falsificado frente a una tabla de vinculación confiable.
 
-#### **1.4 Capa 4 - La capa de transporte: el contrato de conexión**
+**Capa 3 - Red.** Direcciones IP y enrutamiento. El **IP spoofing** falsifica una dirección de origen - el motor detrás del DoS reflejado, como el clásico ataque Smurf [^9] - y el **secuestro de BGP** corrompe las tablas de enrutamiento de internet para engullir tráfico al por mayor, una herramienta de nivel estado-nación para espionaje e interceptación masiva [^10]. El defensor filtra: el **filtrado de entrada/salida** según BCP 38 / RFC 2827 descarta paquetes cuya IP de origen es una mentira [^11], y las ACL imponen quién puede hablar con quién.
 
-* **La visión del ingeniero de redes:** Esta capa proporciona servicios de comunicación de host a host. Los dos protocolos más importantes son **TCP (Protocolo de control de transmisión)** y **UDP (Protocolo de datagramas de usuario)** [^13].
-* **TCP:** Entrega orientada a la conexión, confiable y ordenada. Establece una conexión mediante un **protocolo de enlace de tres vías (SYN, SYN-ACK, ACK)** y garantiza que todos los datos lleguen correctamente. Utilizado para HTTP, FTP, SMTP.
-* **UDP:** Sin conexión, poco confiable y desordenado. Es un protocolo de "disparar y olvidar" que es mucho más rápido pero no ofrece garantías de entrega. Utilizado para DNS, VoIP y juegos en línea.
-* **La visión del hacker:** Los ataques en esta capa a menudo se centran en el agotamiento de los recursos y el reconocimiento.
-* **TCP SYN Flood:** Un ataque DoS clásico. El atacante envía un gran volumen de paquetes TCP SYN al servidor víctima, falsificando la dirección IP de origen. El servidor responde con un SYN-ACK y asigna recursos para la nueva conexión, esperando el ACK final que nunca llega (porque la IP de origen era falsa). Esto deja una gran cantidad de conexiones entreabiertas, agotando la tabla de conexiones del servidor e impidiendo que los usuarios legítimos se conecten. [^14].
-* **Escaneo de puertos:** un atacante utiliza herramientas como **nmap** para enviar sondas a una variedad de puertos en un host de destino para descubrir qué servicios se están ejecutando. Un puerto "abierto" indica un servicio de escucha que podría ser un objetivo potencial de explotación. [^15].
-* **La visión del defensor:** Las defensas se centran en la gestión del estado y la detección de escaneo.
-* **Firewalls con estado:** Estos firewalls rastrean el estado de las conexiones TCP. Solo permitirán el paso de un paquete SYN-ACK si han visto un paquete SYN correspondiente, y solo permitirán un ACK si han visto un SYN-ACK. Esto los hace mucho más seguros que los filtros de paquetes sin estado.
-* **Cookies SYN:** Una técnica para mitigar las inundaciones SYN. En lugar de asignar recursos al recibir un SYN, el servidor codifica información sobre la conexión en el número de secuencia del paquete SYN-ACK y lo envía de vuelta. Solo asigna recursos cuando el cliente envía el ACK final que contiene la "cookie", lo que demuestra que es una fuente legítima. [^16].
-* **Sistemas de detección de intrusiones (IDS):** Se puede configurar un IDS para detectar y alertar sobre la actividad de escaneo de puertos, brindando a los defensores una advertencia temprana de un posible ataque.
+**Capa 4 - Transporte.** **TCP** (orientado a la conexión, protocolo de enlace de tres vías) y **UDP** (disparar y olvidar). El **SYN flood** agota la tabla de conexiones entreabiertas de un servidor con SYNs falsificados que nunca se completan [^12]; el **escaneo de puertos** con herramientas como `nmap` mapea la superficie de ataque en escucha [^13]. El defensor responde con **firewalls con estado** que solo dejan pasar un ACK para el que tienen un protocolo de enlace, y **cookies SYN** que no asignan estado hasta que el cliente demuestra ser real [^14].
 
----
+### Capítulo 2: Diseñar una red defendible
 
-### **Capítulo 2: Diseño de una arquitectura de red defendible**
+Una **red plana** - donde cada dispositivo puede alcanzar a todos los demás - es el paraíso del hacker. Compromete una impresora olvidada y podrás caminar hasta el controlador de dominio. Una red defendible es una red **segmentada** [^15].
 
-Una red plana, donde cada dispositivo puede comunicarse con todos los demás, es el paraíso de los piratas informáticos. Una vez que comprometen un único host de bajo valor (como una impresora o una estación de trabajo), pueden moverse fácilmente lateralmente hacia objetivos de alto valor como controladores de dominio o bases de datos. Una arquitectura defendible es una arquitectura segmentada. [^17].
+```mermaid
+flowchart LR
+    NET(["Internet"]) --> EFW["Firewall de borde / NGFW"]
+    EFW --> DMZ["DMZ<br/>web + proxy inverso"]
+    DMZ -->|"solo 443, hacia adentro"| APP["Nivel de aplicación<br/>lógica de negocio"]
+    APP -->|"solo puerto de BD"| DATA[("Nivel de datos<br/>bases de datos")]
+    EFW -. "denegar ruta directa" .-> DATA
+```
 
-#### **2.1 El principio de segmentación: construcción de muros internos**
+La segmentación - subredes, **VLANs** y una **DMZ** por niveles [^16] - convierte cada salto en un punto de estrangulamiento monitoreado. Es el privilegio mínimo expresado como topología: el servidor web no tiene por qué marcar al controlador de dominio, así que el firewall lo prohíbe, y un servidor web comprometido se encuentra en un callejón sin salida en lugar de en una autopista.
 
-* **La visión del ingeniero de redes:** La segmentación es la práctica de dividir una red en subredes más pequeñas y aisladas. Esto se logra usando:
-* **Subredes:** Dividir un bloque grande de direcciones IP en bloques más pequeños. Se requieren enrutadores para que el tráfico se mueva entre subredes.
-* **VLAN (LAN virtuales):** Una forma de crear redes lógicamente separadas en la misma infraestructura de conmutación física. Se puede configurar un conmutador para que los puertos de la VLAN 10 solo puedan comunicarse con otros puertos de la VLAN 10, incluso si están en conmutadores físicos diferentes. [^18].
-* **Arquitectura por niveles:** Un patrón de diseño clásico que separa la red según la función de la aplicación, creando a menudo una **DMZ (Zona Desmilitarizada)** para servicios orientados a Internet. [^19].
-* **Nivel web (DMZ):** El nivel más externo, al que se puede acceder desde Internet. Contiene servidores web y proxies inversos.
-* **Nivel de aplicación:** El nivel medio, al que se puede acceder únicamente desde el nivel web. Contiene los servidores de aplicaciones y la lógica empresarial.
-* **Nivel de datos:** El nivel más interno y protegido, al que solo se puede acceder desde el nivel de aplicación. Contiene las bases de datos.
-* **La visión del defensor:** La segmentación es la piedra angular de la **Defensa en profundidad**. Respalda directamente el principio de **privilegio mínimo** a nivel de red. Un servidor web no necesita comunicarse directamente con un controlador de dominio, por lo que las reglas del firewall deberían bloquear esa ruta de comunicación. Si el servidor web se ve comprometido, la capacidad del atacante para moverse lateralmente queda severamente restringida. El objetivo es hacer que cada paso para el atacante (desde la DMZ hasta el nivel de la aplicación, desde el nivel de la aplicación hasta el nivel de datos) sea un punto de estrangulamiento difícil y fuertemente monitoreado.
+La **microsegmentación** lleva esto a su fin lógico: un límite de política alrededor de *cada carga de trabajo*, no de cada zona. Dos máquinas virtuales en la misma subred no son confiables de forma implícita; cada flujo debe permitirse explícitamente. Ese principio - *nunca confiar, siempre verificar* - es la semilla de **Zero Trust**, y crece hasta convertirse en el tema completo del próximo volumen.
 
-#### **2.2 Microsegmentación y Confianza Cero**
+:::important[El primer relevo]
+La microsegmentación pregunta *"¿debería permitirse que estos dos principales se comuniquen?"* - y una vez que te tomas esa pregunta en serio, la dirección de red deja de ser una respuesta suficientemente buena. Necesitas verificar la **identidad**. Ahí es exactamente donde retoma el **[Volumen II](/posts/identity_and_access_in_depth/)**: la identidad como el nuevo perímetro.
+:::
 
-* **La visión del ingeniero de redes:** La microsegmentación es una evolución más granular de la segmentación. En lugar de segmentar por zonas grandes (VLAN), puede crear límites de seguridad alrededor de cargas de trabajo o aplicaciones individuales. En un entorno virtualizado o en la nube, esto a menudo se implementa con **redes definidas por software (SDN)** y firewalls virtuales.
-* **La visión del profesional de la ciberseguridad:** La microsegmentación es la máxima expresión de una arquitectura de red **Zero Trust**. El principio fundamental de Zero Trust es "nunca confiar, siempre verificar". Se supone que los atacantes ya están dentro de la red. [^20]. Por lo tanto, la comunicación entre dos máquinas virtuales, incluso si están en la misma subred, no es implícitamente confiable. Debe estar permitido explícitamente por una política de seguridad. Esto hace que el movimiento lateral sea extremadamente difícil para un atacante.
-* **La opinión del ingeniero de software:** Esto tiene implicaciones para los desarrolladores. Las aplicaciones deben diseñarse asumiendo que la conectividad de la red no está garantizada. Deben ser resistentes a los fallos de conexión y estar configurados con los mecanismos correctos de descubrimiento de servicios. Las **Políticas de red** de Kubernetes son un excelente ejemplo de cómo los desarrolladores definen reglas de microsegmentación en el código (YAML), especificando qué pods pueden comunicarse con qué otros pods. [^21].
+### Capítulo 3: Los guardianes - firewalls e IDS/IPS
 
----
+Un **firewall con estado** entiende el contexto de la conexión; un **firewall de próxima generación (NGFW)** va más allá con conciencia de aplicación (bloquear una app, permitir otra, ambas en el puerto 443), prevención de intrusiones integrada y fuentes de inteligencia de amenazas [^17]. Un **firewall de aplicaciones web (WAF)** opera en la Capa 7 para mitigar los ataques del OWASP Top 10 [^18].
 
-### **Capítulo 3: Controles básicos de seguridad de la red en detalle**
+:::warning[Un WAF es una red de seguridad, no una cura]
+Un WAF puede bloquear un ingenuo `OR 1=1`, pero la evasión de WAF es una disciplina madura - la codificación, la ofuscación y los trucos de mayúsculas eluden las firmas todos los días. La solución real para la inyección vive en el código (consultas parametrizadas), no en un filtro atornillado por delante. Trata al WAF como defensa en profundidad, nunca como la defensa.
+:::
 
-#### **3.1 El cortafuegos: el guardián de la red**
-
-* **Sin estado versus con estado:** Como se analizó en el Capítulo 1, un firewall con estado es muy superior ya que comprende el contexto de una conexión.
-* **Firewall de próxima generación (NGFW):** Un NGFW es un firewall de "inspección profunda de paquetes" que va más allá de la simple inspección de puerto/protocolo. Incluye características como:
-* **Conocimiento de la aplicación:** Puede identificar y controlar el tráfico según la aplicación (por ejemplo, bloquear Facebook pero permitir Salesforce), no solo el número de puerto (ya que muchas aplicaciones se ejecutan en el puerto 443). [^22].
-* **Prevención de intrusiones integrada (IPS):** Puede bloquear activamente el tráfico que coincida con firmas de ataques conocidas.
-* **Fuentes de inteligencia de amenazas:** Puede integrarse con servicios de inteligencia de amenazas basados ​​en la nube para bloquear el tráfico de direcciones IP o dominios maliciosos conocidos.
-* **Firewall de aplicaciones web (WAF):** Un WAF es un firewall especializado que opera en la Capa 7 (la Capa de Aplicación). Está diseñado para proteger aplicaciones web de ataques web comunes, como los que figuran en el Top 10 de OWASP. [^23].
-* **La opinión del desarrollador:** Un WAF es una capa crucial de defensa, pero no sustituye a la codificación segura. Es una red de seguridad. Un WAF podría bloquear un ataque básico de inyección SQL como `OR 1=1`, pero un atacante experto a menudo puede encontrar formas de eludir las reglas WAF mediante codificación, ofuscación o consultas más complejas. La defensa principal debe estar en el código mismo (mediante consultas parametrizadas).
-* **La visión del hacker:** La evasión WAF es una disciplina bien establecida. Los atacantes utilizan herramientas para sondear los WAF, identificar el proveedor y los conjuntos de reglas, y crear cargas útiles que sean sintácticamente válidas pero que no activen las firmas del WAF. [^24].
-
-#### **3.2 IDS/IPS: La Atalaya de la Red**
-
-* **Sistema de detección de intrusiones (IDS):** Un dispositivo de monitoreo pasivo. Analiza una copia del tráfico de la red y envía una alerta si detecta actividad sospechosa. No bloquea el tráfico.
-* **Sistema de prevención de intrusiones (IPS):** Un dispositivo activo en línea. Analiza el tráfico y puede bloquear o descartar activamente paquetes que coincidan con firmas maliciosas antes de que lleguen a su objetivo.
-* **Metodologías de detección:**
-* **Basado en firmas:** Funciona como software antivirus. Dispone de una base de datos de patrones de ataque conocidos ("firmas"). Esto es muy eficaz contra amenazas conocidas, pero no puede detectar nuevos ataques de "día cero".
-* **Basado en anomalías:** El sistema primero crea una línea base de cómo se ve el tráfico de red "normal". Luego alerta sobre cualquier actividad que se desvíe significativamente de esta línea de base. Esto puede detectar nuevos ataques, pero a menudo es propenso a una alta tasa de falsos positivos. [^25].
-* **La visión del hacker:** Las técnicas de evasión incluyen la fragmentación de paquetes, el uso de cifrado (un IDS/IPS no puede inspeccionar el tráfico cifrado a menos que realice un descifrado SSL/TLS, que es computacionalmente costoso) y la modificación de cargas útiles de ataque para evitar coincidencias con firmas conocidas.
+El **IDS** observa y alerta; el **IPS** se sitúa en línea y bloquea. Ambos detectan por **firma** (precisos contra amenazas conocidas, ciegos ante las nuevas) o por **anomalía** (pueden atrapar lo desconocido, te ahogan en falsos positivos) [^19]. Y ambos quedan sordos frente al tráfico cifrado a menos que pagues por el descifrado - un anticipo de por qué la *detección* finalmente tiene que salir del cable y trasladarse al endpoint, la historia del Volumen IV.
 
 ---
 
----
+## Parte II: Defensa en profundidad - y por qué es esta serie
 
-## **Parte II: La ciudadela del defensor - Estrategias para una defensa integral**
+La defensa en profundidad es el reconocimiento de que cualquier control *fallará*, así que construyes capas que cada una compra tiempo, visibilidad y otra oportunidad de detener al atacante [^20]. El castillo medieval es la analogía cansada pero perfecta: foso, muralla, arqueros, torreón, joyas de la corona y los guardias que lo mantienen todo unido.
 
-### **Capítulo 4: La filosofía de la defensa en profundidad**
+Aquí está la jugada que organiza toda esta serie: **cada capa del castillo es un volumen.**
 
-La defensa en profundidad es la filosofía central de la ciberseguridad moderna. Es el reconocimiento de que cualquier control de seguridad por sí solo puede fallar y fallará. El objetivo es crear una defensa redundante y en capas que brinde múltiples oportunidades para detectar, frenar y detener a un atacante. [^26].
+```mermaid
+mindmap
+  root((Seguridad en profundidad))
+    Vol I - Fundamentos
+      Segmentación de red
+      Perímetro y controles
+      Defensa en profundidad
+      Modelado de amenazas
+    Vol II - Identidad
+      La identidad es el perímetro
+      Zero Trust
+      Privilegio mínimo
+    Vol III - Criptografía
+      Confidencialidad e integridad
+      TLS y gestión de claves
+      Post-cuántica
+    Vol IV - Detección
+      Asumir la brecha
+      Detectar por comportamiento
+      Responder y aprender
+    Vol V - Nativo de la nube
+      Responsabilidad compartida
+      Shift-left
+      Confianza en la cadena de suministro
+```
 
-#### **4.1 Las capas de la ciudadela**
+* El **foso y la muralla exterior** son el perímetro de red y la segmentación - **este volumen**.
+* El **guardia en cada puerta** es la identidad y el acceso - **[Volumen II](/posts/identity_and_access_in_depth/)**.
+* Los **mensajes sellados** en los que confían los guardias son la criptografía - **[Volumen III](/posts/cryptography_engineering_in_depth/)**.
+* Los **arqueros que vigilan la brecha** son la detección y respuesta - **[Volumen IV](/posts/detection_and_response_in_depth/)**.
+* La **procedencia de las piedras mismas** es la seguridad de la cadena de suministro y nativa de la nube - **[Volumen V](/posts/cloud_native_and_supply_chain_security_in_depth/)**.
 
-El castillo medieval ofrece una analogía perfecta:
-
-1. **El Foso (Seguridad Perimetral):** Esta es la primera línea de defensa. Corresponde a enrutadores fronterizos y cortafuegos perimetrales. Su trabajo es mantener alejados a los atacantes oportunistas y poco sofisticados.
-2. **El muro exterior (seguridad de la red):** Una barrera más fuerte. Esto corresponde a la segmentación interna, IDS/IPS y listas de control de acceso sólidas. Está diseñado para contener amenazas que superan el perímetro.
-3. **Los arqueros en el muro (monitoreo y detección):** Estos son los centinelas. Esto corresponde al Centro de Operaciones de Seguridad (SOC), los sistemas SIEM y el análisis de registros. Están buscando activamente señales de un ataque.
-4. **The Inner Keep (Host & Endpoint Security):** Una fortaleza fuertemente fortificada. Esto corresponde a los controles de seguridad en los propios servidores y estaciones de trabajo: **Detección y respuesta de endpoints (EDR)**, firewalls basados ​​en host, antivirus y monitoreo de la integridad de los archivos.
-5. **Las joyas de la corona (seguridad de datos y aplicaciones):** El premio máximo, protegido por los controles más estrictos. Esto corresponde a un código de aplicación seguro, autenticación y autorización sólidas y cifrado de datos en reposo y en tránsito.
-6. **Los guardias (personas, procesos y políticas):** El elemento humano. Esto incluye capacitación en concientización sobre seguridad, planes de respuesta a incidentes y sólidos procedimientos de seguridad operativa.
-
-* **La visión del hacker:** Un atacante ve estas capas como una serie de obstáculos que debe superar. Su objetivo es encontrar el eslabón más débil de cada capa. Un firewall fuerte es inútil si un empleado hace clic en un enlace de phishing (sin pasar por el perímetro y las capas de red). Una aplicación segura es inútil si se ejecuta en un servidor sin parches que puede verse comprometido en la capa de host.
-
-### **Capítulo 5: Modelado de amenazas: pensar como un atacante**
-
-El modelado de amenazas es un proceso estructurado para identificar posibles amenazas y vulnerabilidades en un sistema *antes* de construirlo. Es una práctica de seguridad proactiva, no reactiva. [^27].
-
-#### **5.1 La metodología STRIDE**
-
-Desarrollado por Microsoft, STRIDE es un mnemotécnico para categorizar amenazas [^28]:
-
-* **S**poofing: Asumir ilegítimamente la identidad de otro usuario o componente.
-* *Defensa:* Autenticación fuerte (MFA), firmas digitales.
-* **T**ampering: Modificación no autorizada de datos, ya sea en tránsito o en reposo.
-* *Defensa:* Hashing, controles de acceso, cifrado de datos.
-* **R**repudio: Un usuario que niega haber realizado una acción cuando lo hizo.
-* *Defensa:* Registros de auditoría seguros, firmas digitales.
-* **Divulgación de información: exposición de información confidencial a personas no autorizadas.
-* *Defensa:* Cifrado, controles de acceso.
-* **D**denegación de servicio: Impedir que usuarios legítimos accedan al sistema.
-* *Defensa:* Limitación de velocidad, equilibrio de carga, arquitectura resistente.
-* **E**levación de privilegios: un usuario o componente obtiene permisos a los que no tiene derecho.
-* *Defensa:* Principio de privilegio mínimo, controles de autorización sólidos.
-
-#### **5.2 Un ejercicio práctico de modelado de amenazas**
-
-* **La opinión del ingeniero de software:** Imagine un punto final API simple para actualizar el perfil de un usuario: `PUT /api/users/{id}`. El equipo de desarrollo, junto con un profesional de seguridad, realizaría un modelo de amenaza.
-
-1. **Descomponga la aplicación:** Dibuje un diagrama de flujo de datos. El navegador del usuario envía una solicitud HTTPS a una puerta de enlace API, que la reenvía a un servicio de usuario, que luego actualiza una base de datos PostgreSQL.
-2. **Identificar amenazas usando STRIDE:**
-
-* **(Spoofing):** ¿Puede un usuario actualizar el perfil de otro usuario cambiando el `{id}` en la URL? (Este es un error de autorización clásico).
-* **(Manipulación):** ¿Puede un atacante en una posición MitM modificar los datos del perfil en tránsito? (Defensa: HTTPS/TLS evita esto).
-* **(Divulgación de información):** ¿La respuesta de la API filtra datos confidenciales, como el hash de la contraseña del usuario u otra PII?
-* **(Denegación de servicio):** ¿Puede un atacante inundar este punto final con una gran cantidad de solicitudes para saturar el servicio o la base de datos? (Defensa: Limitación de tarifas).
-* **(Elevación de privilegios):** ¿Existe una vulnerabilidad (por ejemplo, inyección SQL) en la lógica de actualización que permitiría a un atacante obtener privilegios de administrador?
-
-Este proceso transforma la seguridad de un concepto abstracto a una lista concreta de tareas de ingeniería y casos de prueba.
-
-### **Capítulo 6: El Centro de Operaciones de Seguridad (SOC): Visibilidad y Respuesta**
-
-Si la estrategia es la defensa en profundidad, el SOC es el centro de mando donde se ejecuta esa estrategia.
-
-#### **6.1 El núcleo del SOC: SIEM**
-
-* **Gestión de eventos e información de seguridad (SIEM):** Un SIEM es el sistema nervioso central de un SOC. Su trabajo es:
-
-1. **Registros agregados:** Recopile datos de registro de cientos o miles de fuentes (firewalls, servidores, aplicaciones, servicios en la nube, etc.).
-2. **Normalizar datos:** Analice estos formatos de registro dispares en un esquema común.
-3. **Correlacionar eventos:** Esta es la función clave. SIEM utiliza reglas de correlación para conectar eventos individuales, aparentemente inofensivos, de diferentes fuentes en un incidente de seguridad significativo.
-4. **Alertas:** Cuando se activa una regla de correlación, SIEM genera una alerta de alta fidelidad para que un analista de seguridad la investigue. [^29].
-
-* **La vista del desarrollador:** Los registros de su aplicación son una fuente de datos crítica para SIEM. Un buen registro es una característica de seguridad. Los registros deben estar estructurados (por ejemplo, JSON), contener contexto relevante (ID de usuario, IP de origen, ID de solicitud) y registrar eventos relevantes para la seguridad exitosos y fallidos (por ejemplo, inicios de sesión, cambios de contraseña, fallas de autorización).
-
-#### **6.2 El ciclo de vida de respuesta a incidentes**
-
-Cuando se confirma que una alerta es un incidente real, el SOC sigue un plan estructurado de respuesta a incidentes (IR), a menudo basado en un marco como el del NIST. [^30]:
-
-1. **Preparación:** El trabajo realizado *antes* de que ocurra un incidente (contar con planes, herramientas y personal capacitado).
-2. **Identificación:** Determinar si un evento es un incidente de seguridad.
-3. **Contención:** La prioridad inmediata es detener el sangrado. Esto podría implicar aislar un host comprometido de la red o deshabilitar una cuenta de usuario comprometida.
-4. **Erradicación:** Eliminar la amenaza del entorno (por ejemplo, eliminar malware, parchear la vulnerabilidad).
-5. **Recuperación:** Restaurar los sistemas a su funcionamiento normal.
-6. **Lecciones aprendidas:** Un análisis post mortem para determinar la causa raíz del incidente e identificar mejoras para evitar que vuelva a suceder.
+**La visión del hacker:** un atacante ve las capas como obstáculos y busca la costura más débil de cada una. Un firewall perfecto no vale nada si un empleado hace clic en un enlace de phishing; un código impecable no vale nada en un host sin parches. La profundidad importa precisamente porque el atacante solo necesita *una* ruta, y la profundidad es cómo te aseguras de que ningún fallo individual sea esa ruta.
 
 ---
 
----
+## Parte III: Modelado de amenazas - pensar como un atacante a propósito
 
-## **Parte III: El gambito del atacante - Metodologías ofensivas**
+El modelado de amenazas es una forma estructurada de encontrar las costuras débiles *antes* de construirlas [^21]. Es proactivo, barato y una de las actividades de seguridad de mayor apalancamiento que un equipo puede realizar. El mnemotécnico canónico es el **STRIDE** de Microsoft [^22].
 
-Para construir una defensa fuerte, debes entender la ofensiva. Esta parte analiza la mentalidad y la metodología del atacante, proporcionando el contexto para las medidas defensivas discutidas en otra parte.
+Considera un endpoint mundano: `PUT /api/users/{id}`. Dibuja primero su diagrama de flujo de datos, marcando el **límite de confianza** donde los datos cruzan desde el exterior hostil hacia tu infraestructura.
 
-### **Capítulo 7: La cadena de muerte cibernética: un plan para el ataque**
+```mermaid
+flowchart LR
+    U(["Usuario / Navegador"]) -->|HTTPS| GW["Puerta de enlace API"]
+    subgraph TB["Límite de confianza - tu infraestructura"]
+      GW --> SVC["Servicio de usuarios"]
+      SVC --> DB[("BD de usuarios")]
+    end
+```
 
-Desarrollada por Lockheed Martin, Cyber Kill Chain modela las etapas de un ciberataque típico. Los defensores pueden asignar sus controles a cada etapa, con el objetivo de romper la cadena lo antes posible. [^31].
+Ahora recorre STRIDE por cada elemento y flujo:
 
-1. **Reconocimiento:** El atacante recopila información sobre el objetivo.
+| Amenaza STRIDE | La pregunta que hacerle a este endpoint | Defensa principal |
+|---|---|---|
+| **S**poofing (Suplantación) | ¿Puede el usuario A cambiar `{id}` y editar el perfil del usuario B? | authN fuerte + authZ por objeto |
+| **T**ampering (Manipulación) | ¿Puede un MitM alterar el cuerpo en tránsito? | TLS (Volumen III) |
+| **R**epudiation (Repudio) | ¿Puede un usuario negar que hizo el cambio? | Registros de auditoría firmados e inmutables |
+| **I**nformation disclosure (Divulgación de información) | ¿La respuesta filtra PII o un hash de contraseña? | Minimizar la salida, cifrar en reposo |
+| **D**enial of service (Denegación de servicio) | ¿Puede un cliente inundarlo y agotar la BD? | Limitación de tasa, cuotas |
+| **E**levation of privilege (Elevación de privilegios) | ¿Hay una ruta de inyección hacia admin? | Consultas parametrizadas, privilegio mínimo |
 
-* **Reconocimiento pasivo:** Uso de información disponible públicamente (**OSINT** - Inteligencia de código abierto).
-* **Active Recon:** Sondear directamente la infraestructura del objetivo. Esto incluye escaneo de puertos (nmap), enumeración de DNS y uso de herramientas como Shodan para encontrar dispositivos con acceso a Internet.
+La mayoría de las brechas del mundo real comienzan en los dos extremos de esa tabla: **Suplantación** (autenticación rota) y **Elevación de privilegios**. El fallo web más común de todos, una **referencia directa a objetos insegura (IDOR)**, no es más que Suplantación disfrazada de URL - la app confía en un `{id}` proporcionado por el usuario sin comprobar que *este* usuario pueda tocar *ese* objeto [^23].
 
-2. **Armado:** El atacante crea una carga útil maliciosa para entregarla al objetivo.
-2. **Entrega:** Cómo se transmite la carga útil armada al objetivo. Los vectores comunes incluyen correos electrónicos de phishing o descargas no autorizadas.
-3. **Explotación:** La carga útil armada se activa, explotando una vulnerabilidad en el sistema del objetivo.
-4. **Instalación:** El atacante instala malware o un **troyano de acceso remoto (RAT)** en la máquina de la víctima para establecer un punto de apoyo.
-5. **Comando y control (C2):** El malware instalado "llama a casa" a un servidor C2 controlado por el atacante. Esto crea un canal persistente.
-6. **Acciones según los objetivos:** El atacante logra su objetivo final, como la filtración de datos o la implementación de ransomware.
+Enumerar amenazas es solo la mitad del trabajo; no puedes arreglarlo todo, así que las clasificas por **probabilidad × impacto** y gastas tu presupuesto donde el producto de ambas es más alto.
 
-### **Capítulo 8: Profundización en los vectores de explotación comunes**
+```mermaid
+quadrantChart
+    title Priorización de amenazas - Probabilidad vs. Impacto
+    x-axis Baja probabilidad --> Alta probabilidad
+    y-axis Bajo impacto --> Alto impacto
+    quadrant-1 "Crítico - arreglar ya"
+    quadrant-2 Planificar remediación
+    quadrant-3 Aceptar o monitorear
+    quadrant-4 Contener el radio de explosión
+    "Phishing hacia una red plana": [0.85, 0.9]
+    "VPN pública sin parches": [0.72, 0.95]
+    "Insider malicioso": [0.35, 0.7]
+    "Laptop perdida (cifrada)": [0.4, 0.18]
+    "DoS en el sitio de marketing": [0.62, 0.25]
+```
 
-#### **8.1 Vulnerabilidades de aplicaciones web más allá de lo básico**
+Aquí está la misma disciplina como un bucle repetible que puedes ejecutar en una reunión de diseño de una hora:
 
-* **Falsificación de solicitudes del lado del servidor (SSRF):** Una vulnerabilidad en la que un atacante puede obligar a una aplicación del lado del servidor a realizar solicitudes HTTP a un dominio arbitrario. En entornos de nube, esto se puede utilizar para acceder al servicio de metadatos del proveedor de la nube, que puede filtrar credenciales de seguridad temporales. [^32].
-* **La opinión del desarrollador:** Las vulnerabilidades SSRF surgen cuando una aplicación toma una URL proporcionada por el usuario y obtiene contenido de ella sin la validación adecuada. La defensa es mantener una lista estricta de dominios y protocolos permitidos que la aplicación puede solicitar.
-* **Deserialización insegura:** Esta vulnerabilidad se produce cuando una aplicación deserializa datos no confiables proporcionados por el usuario sin la validación adecuada. Un atacante puede crear un objeto serializado malicioso que, cuando se deserializa, puede conducir a la ejecución remota de código. [^33].
+:::steps
 
-#### **8.2 El elemento humano: ingeniería social**
+:::step[Descompón el sistema]{subtitle="Dibuja el diagrama de flujo de datos"}
+Mapea cada proceso, almacén de datos, entidad externa y flujo. Dibuja los **límites de confianza** explícitamente - son donde los ataques cruzan de lo no confiable a lo confiable, y donde se agruparán la mayoría de tus hallazgos. Si no puedes dibujarlo, no lo entiendes lo suficientemente bien como para asegurarlo.
+:::
 
-* **La visión del hacker:** El ser humano suele ser el eslabón más débil. La ingeniería social es el arte de manipular a las personas para que realicen acciones o divulguen información confidencial.
-* **Phishing:** Envío de correos electrónicos fraudulentos que parecen provenir de una fuente legítima para engañar a las víctimas para que revelen información confidencial o implementen malware. **Spear phishing** es una forma muy específica de phishing dirigida a un individuo u organización específica. [^34].
-* **Pretexto:** Crear un escenario inventado (un pretexto) para ganarse la confianza de la víctima.
-* **La visión del defensor:** La defensa contra la ingeniería social tiene varios niveles:
-* **Controles técnicos:** Puertas de enlace de correo electrónico que analizan en busca de enlaces y archivos adjuntos maliciosos.
-* **Capacitación de usuarios:** La defensa más crítica. Capacitación periódica en concientización sobre seguridad.
-* **Process:** Requiere la aprobación de varias personas para acciones sensibles.
+:::step[Enumera amenazas con STRIDE]{subtitle="Sé sistemático, no ingenioso"}
+Recorre Suplantación, Manipulación, Repudio, Divulgación de información, Denegación de servicio y Elevación de privilegios por cada elemento. El sentido de un mnemotécnico es impedir que te saltes la categoría en la que preferirías no pensar.
+:::
 
-### **Capítulo 9: Post-Explotación - Vivir de la tierra**
+:::step[Clasifica por probabilidad e impacto]{subtitle="Gasta donde importa"}
+Ubica cada amenaza en la matriz de riesgo. Una amenaza catastrófica pero imposible y una trivial pero constante desperdician tu atención por igual. Financia primero el cuadrante superior derecho.
+:::
 
-Una vez que un atacante logra un punto de apoyo inicial, su trabajo apenas comienza. La siguiente fase consiste en ampliar su acceso y lograr sus objetivos sin ser detectado, un proceso detallado en marcos como MITRE ATT&CK. [^35].
+:::step[Mitiga, luego verifica]{subtitle="Convierte los hallazgos en pruebas"}
+Cada amenaza aceptada se convierte en una tarea de ingeniería *y* en un caso de prueba - una prueba de integración de authZ, una comprobación de límite de tasa, un objetivo de fuzzing. Un modelo de amenazas que no cambia el backlog fue teatro.
+:::
 
-* **Movimiento lateral:** El proceso de pasar de un host comprometido a otros hosts dentro de la misma red.
-* **La visión del hacker:** En un entorno Windows Active Directory, este es un proceso bien definido. El atacante volcará las credenciales de la memoria de la primera máquina (usando una herramienta como **Mimikatz** [^36]), buscando cuentas de administrador de dominio. Pueden utilizar técnicas como **Pass-the-Hash**, donde pueden autenticarse en otras máquinas utilizando el hash de contraseña de un usuario sin necesidad de la contraseña en texto plano.
-* **Persistencia:** Establecer una presencia a largo plazo en la red. Los atacantes crearán mecanismos para garantizar que puedan recuperar el acceso incluso si se parchea la vulnerabilidad inicial o se reinicia la máquina comprometida.
-* **Living Off the Land (LotL):** Una técnica clave para evadir la detección. En lugar de traer su propio malware personalizado, los atacantes utilizan herramientas legítimas que ya están presentes en el sistema de la víctima. Por ejemplo, usar **PowerShell** para secuencias de comandos o **PsExec** para la ejecución remota de comandos. [^37].
-* **La visión del defensor:** Detectar ataques de LotL es muy difícil. Aquí es donde las soluciones de **Detección y respuesta de endpoints (EDR)** son fundamentales. Un EDR utiliza análisis de comportamiento para señalar actividades sospechosas, como un documento de Word que genera un proceso de PowerShell que luego establece una conexión de red a una dirección IP sospechosa.
-
----
-
----
-
-## **Parte IV: La responsabilidad del constructor: seguridad por diseño**
-
-La seguridad no puede ser una idea de último momento. La forma más eficaz de crear sistemas seguros es integrar la seguridad en cada fase del ciclo de vida del desarrollo de software.
-
-### **Capítulo 10: El ciclo de vida de desarrollo de software seguro (SSDLC)**
-
-El SSDLC, a menudo llamado **"Shift Left"**, trata de adelantar las prácticas de seguridad (hacia la izquierda) en el cronograma de desarrollo. [^38].
-
-1. **Fase de requisitos:** Los requisitos de seguridad deben definirse junto con los requisitos funcionales.
-2. **Fase de diseño:** Aquí es donde ocurre el modelado de amenazas (Capítulo 5).
-3. **Fase de implementación (codificación):**
-
-* **La opinión del desarrollador:** Esto implica seguir las mejores prácticas de codificación segura para evitar vulnerabilidades comunes.
-* **Pruebas de seguridad de aplicaciones estáticas (SAST):** Las herramientas SAST analizan el código fuente de la aplicación sin ejecutarla, buscando posibles fallas de seguridad. [^39].
-
-4. **Fase de prueba:**
-
-* **Pruebas dinámicas de seguridad de aplicaciones (DAST):** Las herramientas DAST son probadores de "caja negra" que exploran la aplicación en ejecución en busca de vulnerabilidades.
-* **Pruebas de penetración:** Un proceso manual o semiautomático en el que los piratas informáticos éticos intentan explotar activamente las vulnerabilidades.
-
-5. **Fase de implementación y mantenimiento:** Esto implica proteger el entorno de producción, monitorear continuamente y tener un plan para parchear las vulnerabilidades.
-
-### **Capítulo 11: Seguridad de aplicaciones (AppSec) en profundidad**
-
-#### **11.1 Autenticación y autorización en detalle**
-
-* **Autenticación (¿Quién eres?):**
-* **Autenticación multifactor (MFA):** El control más eficaz para proteger cuentas. Requiere dos o más factores de verificación de diferentes categorías: algo que sabes (contraseña), algo que tienes (teléfono) o algo que eres [biométrico]([^40]).
-* **Autorización (¿Qué puedes hacer?):**
-* **La opinión del desarrollador:** Aquí es donde ocurren muchos errores críticos. Un defecto común se llama **Referencia directa a objetos inseguros (IDOR)**. Esto sucede cuando una aplicación utiliza un identificador proporcionado por el usuario para acceder a un recurso sin realizar una verificación de autorización. [^41]. La solución es verificar siempre que el usuario actualmente autenticado tenga permiso para acceder al recurso solicitado.
-
-#### **11.2 Criptografía para desarrolladores: las reglas cardinales**
-
-* **Regla 1: Nunca lances tu propia criptografía.** La criptografía es increíblemente difícil de hacer bien. Utilice siempre bibliotecas estándar bien examinadas [por ejemplo, Tink de Google, Libsodium]([^42]).
-* **Regla 2: Utilice algoritmos estándar y potentes.** Para el hash de contraseñas, utilice un algoritmo moderno y lento como **Argon2** [^43]. Para cifrado simétrico, utilice **AES-256-GCM**. Para cifrado asimétrico, utilice **RSA-4096** o criptografía de curva elíptica.
-* **Regla 3: La gestión de claves lo es todo.** La seguridad de un sistema criptográfico depende enteramente del secreto de las claves. Utilice un sistema de administración de claves (KMS) dedicado o un módulo de seguridad de hardware (HSM) para almacenar y administrar claves criptográficas. [^44].
-
-#### **11.3 Seguridad de la cadena de suministro: la nueva frontera**
-
-* **La visión del ingeniero de software:** Las aplicaciones modernas se ensamblan a partir de cientos de dependencias de código abierto. Una vulnerabilidad en solo una de esas dependencias se convierte en una vulnerabilidad en su aplicación. Este es un ataque a la cadena de suministro.
-* **Log4Shell (Ejemplo):** La vulnerabilidad Log4j fue un ejemplo catastrófico. Una biblioteca de registro única y ubicua tenía una vulnerabilidad crítica de ejecución remota de código, lo que hacía que millones de aplicaciones fueran instantáneamente vulnerables. [^45].
-* **Defensas:**
-* **Lista de materiales de software (SBoM):** Mantenga un inventario completo de todas las dependencias en su aplicación. [^46].
-* **Análisis de vulnerabilidades:** Utilice herramientas como **Snyk, Dependabot o Trivy** para escanear continuamente sus dependencias en busca de vulnerabilidades conocidas.
-
-### **Capítulo 12: Proteger la pila moderna nativa de la nube**
-
-#### **12.1 Seguridad del contenedor**
-
-* **Imágenes base seguras:** Comience con imágenes base mínimas y confiables (p. ej.,`distroless`o`alpine`) para reducir la superficie de ataque [^47].
-* **No ejecutar como raíz:** De forma predeterminada, los contenedores se ejecutan como raíz. `root` usuario. Utilice el `USER` instrucción en su Dockerfile para ejecutar la aplicación como usuario sin privilegios.
-* **Escaneo de imágenes:** Integre herramientas como Trivy o Clair en su proceso de CI/CD para escanear las imágenes de su contenedor en busca de vulnerabilidades conocidas antes de enviarlas a un registro.
-
-#### **12.2 Seguridad de Kubernetes**
-
-Kubernetes es un sistema potente pero complejo con una gran superficie de ataque.
-
-* **Control de acceso basado en roles (RBAC):** Utilice RBAC para aplicar el principio de privilegio mínimo tanto para los usuarios como para las cuentas de servicio dentro del clúster. [^48].
-* **Políticas de red:** De forma predeterminada, todos los pods de un clúster pueden comunicarse con todos los demás pods. Debes implementar `NetworkPolicy` recursos para restringir la comunicación basándose en una postura de "denegación por defecto".
-* **Gestión de secretos:** No almacene secretos como texto sin formato en ConfigMaps. Utilice el objeto Kubernetes Secrets integrado, pero para mayor seguridad, intégrelo con un administrador de secretos externo como HashiCorp Vault. [^49].
-* **Estándares de seguridad de pods:** Utilice los estándares de seguridad de pods para evitar que los pods se ejecuten con configuraciones peligrosas, como ejecutarse como root o acceder a la red del host. [^50].
-
-#### **12.3 Seguridad de infraestructura como código (IaC)**
-
-* **La vista del desarrollador:** Las herramientas de IaC como Terraform le permiten definir su infraestructura en código. Este código se puede escanear en busca de configuraciones incorrectas *antes* de implementarlo.
-* **Análisis estático para IaC:** Utilice herramientas como **Checkov** o **tfsec** en su canal de CI/CD para escanear su código Terraform en busca de problemas de seguridad comunes, como la creación de un depósito S3 de acceso público o un grupo de seguridad que permita SSH desde todo Internet (`0.0.0.0/0`) [^51].
+:::
 
 ---
 
-## **Conclusión: La Síntesis de Disciplinas**
+## Parte IV: El método del atacante
 
-Este viaje de tres volúmenes nos ha llevado desde los fundamentos del desarrollo backend hasta las complejidades de los sistemas distribuidos y, finalmente, hasta la disciplina integral de la arquitectura de seguridad. La lección definitiva es que no se trata de campos separados. Un ingeniero de software que no comprenda las redes y la seguridad creará aplicaciones frágiles y vulnerables. Un ingeniero de redes que no comprende las aplicaciones que se ejecutan en su red no puede protegerla de manera efectiva. Un profesional de seguridad que no comprenda el desarrollo y las operaciones no puede brindar una orientación eficaz. El ingeniero de sistemas moderno, en el sentido más estricto, debe ser un erudito. Deben poder razonar sobre el sistema en cada capa de abstracción, desde el paquete de red hasta la lógica de la aplicación, desde la regla del firewall hasta la configuración del contenedor. Deben pensar como constructores, defensores y rompedores simultáneamente. La seguridad no es un producto o una característica; es una propiedad de un sistema bien diseñado. Es un proceso continuo de diseño, defensa y adaptación frente a un panorama de amenazas en constante evolución. El enfoque holístico y de principios que se detalla en este trabajo no es solo una metodología: es el requisito fundamental para construir los sistemas resilientes y confiables de los que depende nuestro mundo digital.
+Para romper la cadena primero debes verla. La **Cyber Kill Chain** de Lockheed Martin modela una intrusión típica como siete etapas; el objetivo del defensor es romperla lo *más temprano* posible, porque el costo de remediación sube en cada paso [^24].
+
+```mermaid
+flowchart LR
+    R["1. Reconocimiento"] --> W["2. Armado"] --> D["3. Entrega"] --> X["4. Explotación"] --> N["5. Instalación"] --> C["6. C2"] --> O["7. Acciones sobre objetivos"]
+```
+
+El reconocimiento mezcla **OSINT pasivo** con sondeo **activo** (escaneos de puertos, enumeración de DNS, barridos de Shodan). El armado y la entrega construyen y envían la carga útil - abrumadoramente por **phishing**, todavía la vía de entrada número uno:
+
+```mermaid
+pie showData
+    title Cómo consiguen los atacantes su primer punto de apoyo
+    "Phishing e ingeniería social" : 36
+    "Credenciales robadas o débiles" : 27
+    "Vulnerabilidad pública sin parchear" : 21
+    "Configuración incorrecta" : 10
+    "Cadena de suministro / terceros" : 6
+```
+
+Tras la **explotación** y la **instalación**, el atacante "llama a casa" por un canal **C2** y comienza las **acciones sobre objetivos**. Después del punto de apoyo, la técnica se desplaza hacia mantenerse en silencio:
+
+* **Movimiento lateral** - saltar del primer host hacia las joyas de la corona. En un dominio Windows esto significa volcar credenciales de la memoria y reutilizarlas, a menudo mediante **Pass-the-Hash**, sin necesidad de contraseña en texto plano.
+* **Persistencia** - sobrevivir a reinicios y parches con un punto de apoyo que vuelve a crecer.
+* **Living off the Land (LotL)** - evitar por completo el malware personalizado; usar `PowerShell`, `PsExec` y otras herramientas ya confiables en la máquina, de modo que nada parezca fuera de lugar.
+
+:::caution[Por qué el perímetro por sí solo nunca puede ganar]
+LotL es la razón por la que los muros del Volumen I son necesarios pero no suficientes. Un atacante que usa solo herramientas de sistema legítimas y firmadas no arroja ninguna firma que un firewall o antivirus pueda coincidir. Atraparlo requiere observar el *comportamiento* - un documento de Word que genera PowerShell que abre un socket de red - que es el dominio del **[Volumen IV](/posts/detection_and_response_in_depth/)** y su mapa del comportamiento del atacante, **MITRE ATT&CK**. La prevención asume que puedes mantenerlos afuera. La detección asume que no pudiste.
+:::
 
 ---
 
+## Parte V: Seguridad por diseño
+
+La vulnerabilidad más barata es la que nunca se escribió. **Desplazarse a la izquierda (shift left)** significa mover la seguridad más temprano en el ciclo de vida, donde una corrección cuesta una revisión de código en lugar de un incidente [^25].
+
+```mermaid
+flowchart LR
+    RQ["Requisitos<br/>historias de seguridad"] --> DS["Diseño<br/>modelado de amenazas"]
+    DS --> IM["Implementación<br/>codificación segura, SAST"]
+    IM --> TS["Pruebas<br/>DAST, pen test"]
+    TS --> DP["Despliegue<br/>escaneo IaC, gestión de secretos"]
+    DP --> OP["Operación<br/>monitorear, responder"]
+    OP -->|"las lecciones retroalimentan"| RQ
+```
+
+Bajo el pipeline se asienta un puñado de principios que preceden a la nube y le sobrevivirán - las reglas de diseño atemporales articuladas por Saltzer y Schroeder [^26]:
+
+* **Privilegio mínimo** - cada principal recibe el mínimo acceso que necesita, y nada más.
+* **Valores predeterminados a prueba de fallos** - denegar por defecto; conceder por excepción.
+* **Mediación completa** - comprobar cada acceso, cada vez, no solo el primero.
+* **Economía de mecanismo** - mantener las partes críticas para la seguridad lo bastante pequeñas para auditarlas.
+* **Defensa en profundidad** - el hilo conductor de toda esta serie.
+
+Estas son las constantes. Los *detalles* de cómo los satisfaces son donde vive el resto de la serie, y el Volumen I deliberadamente entrega cada uno en lugar de duplicarlo:
+
+* Autenticación, autorización, gestión de sesiones y secretos - **[Volumen II](/posts/identity_and_access_in_depth/)**.
+* "Nunca inventes tu propia criptografía", cómo funciona TLS realmente y cómo gestionar claves - **[Volumen III](/posts/cryptography_engineering_in_depth/)**.
+* El SOC, SIEM/SOAR, la caza de amenazas y el ciclo de vida de respuesta a incidentes que ejecutas cuando un control falla - **[Volumen IV](/posts/detection_and_response_in_depth/)**.
+* Endurecimiento de contenedores y Kubernetes, escaneo de IaC, SBOMs y defensa de la cadena de suministro de dependencias (recuerda **Log4Shell** [^27]) - **[Volumen V](/posts/cloud_native_and_supply_chain_security_in_depth/)**.
+
+:::tip[El modelo mental a llevar contigo]
+Lee cada volumen posterior como una respuesta más profunda a una pregunta planteada aquí. El Volumen I pregunta *"¿cómo mantenemos al atacante afuera y lo ralentizamos?"* - y cada respuesta acaba admitiendo su propio límite, que es la pregunta con la que abre el siguiente volumen. Esa cadena de límites honestos es la serie.
+:::
+
 ---
 
-## **Referencias**
+## Conclusión y el camino por delante
 
-[^1]: [Cloudflare - ¿Qué es el modelo OSI?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
-[^2]: [Krebs, B. (2012) - La creciente amenaza de pequeños y silenciosos grifos de red](https://krebsonsecurity.com/2012/03/the-growing-threat-from-tiny-silent-network-taps/)
-[^3]: [Cisco - ¿Qué es 802.1X?](https://www.cisco.com/c/en/us/products/security/what-is-802-1x.html)
-[^4]: [Microsoft (2021) - Protocolo de resolución de direcciones](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/network-subsystem/address-resolution-protocol)
-[^5]: [OWASP - Suplantación del protocolo de resolución de direcciones](https://owasp.org/www-community/attacks/ARP_Spoofing)
-[^6]: [Imperva - Inundación MAC](https://www.imperva.com/learn/application-security/mac-flooding/)
-[^7]: [Cisco - Ataque de salto de VLAN](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/15-02SG/configuration/guide/config/dhcp.html#wp1102555)
-[^8]: [GeeksforGeeks (2023) - Seguridad Portuaria en Redes Informáticas](https://www.geeksforgeeks.org/port-security-in-computer-networks/)
-[^9]: [Cloudflare - ¿Qué es el Protocolo de Internet?](https://www.cloudflare.com/learning/network-layer/internet-protocol/)
-[^10]: [Cloudflare - Ataque DDoS Pitufo](https://www.cloudflare.com/learning/ddos/smurf-ddos-attack/)
-[^11]: [Cloudflare - ¿Qué es el secuestro de BGP?](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/)
-[^12]: [IETF (2000) - RFC 2827: Filtrado de ingreso a la red: Derrotar ataques de denegación de servicio que emplean suplantación de dirección de origen IP](https://datatracker.ietf.org/doc/html/rfc2827)
-[^13]: [IETF (1981) - RFC 793: Protocolo de control de transmisión](https://datatracker.ietf.org/doc/html/rfc793)
-[^14]: [Cloudflare - Ataque de inundación SYN](https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/)
-[^15]: [Nmap - Sitio oficial del proyecto Nmap](https://nmap.org/)
-[^16]: [Wikipedia - Cookies SINC](https://en.wikipedia.org/wiki/SYN_cookies)
-[^17]: [SANS Institute (2016) - Implementación de Segmentación de Red](https://www.sans.org/white-papers/37232/)
-[^18]: [IETF (2003) - RFC 3069: Agregación de VLAN para una asignación eficiente de direcciones](https://datatracker.ietf.org/doc/html/rfc3069)
-[^19]: [Palo Alto Networks - ¿Qué es una DMZ?](https://www.paloaltonetworks.com/cyberpedia/what-is-a-dmz)
-[^20]: [NIST (2020) - SP 800-207: Arquitectura de confianza cero](https://csrc.nist.gov/publications/detail/sp/800-207/final)
-[^21]: [Kubernetes - Políticas de Red](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-[^22]: [Palo Alto Networks - ¿Qué es un firewall de próxima generación (NGFW)?](https://www.paloaltonetworks.com/cyberpedia/what-is-a-next-generation-firewall-ngfw)
-[^23]: [OWASP - Top 10 de OWASP](https://owasp.org/www-project-top-ten/)
-[^24]: [OWASP - Técnicas de Evasión WAF](https://owasp.org/www-community/attacks/WAF_Evasion_Techniques)
-[^25]: [SANS Institute (2001) - Comprensión de los sistemas de detección de intrusiones](https://www.sans.org/white-papers/27/)
-[^26]: [NSA (2021) - Defensa en profundidad](https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csg-defense-in-depth-20210225.pdf)
-[^27]: [OWASP - Modelado de amenazas](https://owasp.org/www-community/Threat_Modeling)
-[^28]: [Microsoft (2022) - El modelo de amenaza STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
-[^29]: [Splunk - ¿Qué es SIEM?](https://www.splunk.com/en_us/data-insider/what-is-siem.html)
-[^30]: [NIST (2012) - SP 800-61 Rev. 2: Guía de manejo de incidentes de seguridad informática](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
-[^31]: [Lockheed Martin - La cadena de muerte cibernética](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
-[^32]: [OWASP - Falsificación de solicitudes del lado del servidor](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery)
-[^33]: [OWASP - A08:2021 – Fallos de integridad de datos y software (relacionados con la deserialización insegura)](https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/)
-[^34]: [CISA - Evitar ataques de ingeniería social y phishing](https://www.cisa.gov/uscert/ncas/tips/ST04-014)
-[^35]: [MITRE - Marco ATT&CK](https://attack.mitre.org/)
-[^36]: [Depy, B. - mimikatz](https://github.com/gentilkiwi/mimikatz)
-[^37]: [Microsoft (2022) - Vivir de la tierra](https://www.microsoft.com/en-us/security/blog/2022/05/26/living-off-the-land-a-technical-and-strategic-overview-of-lolbins/)
-[^38]: [OWASP - Desplazamiento a la izquierda](https://owasp.org/www-community/Shift_Left)
-[^39]: [OWASP - Pruebas de seguridad de aplicaciones estáticas (SAST)](https://owasp.org/www-community/Static_Application_Security_Testing_(SAST))
-[^40]: [NIST (2017) - SP 800-63B: Directrices de identidad digital: autenticación y gestión del ciclo de vida](https://pages.nist.gov/800-63-3/sp800-63b.html)
-[^41]: [OWASP - A01:2021 – Control de acceso roto (relacionado con IDOR)](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
-[^42]: [Google - Biblioteca criptográfica Tink](https://developers.google.com/tink)
-[^43]: [La función de hash de contraseñas de Argon2](https://www.password-hashing.net/)
-[^44]: [AWS - ¿Qué es un Servicio de Gestión de Claves?](https://aws.amazon.com/kms/what-is-kms/)
-[^45]: [CISA - Guía de vulnerabilidad de Apache Log4j](https://www.cisa.gov/uscert/apache-log4j-vulnerability-guidance)
-[^46]: [NTIA - Lista de materiales de software (SBOM)](https://www.ntia.gov/SBOM)
-[^47]: [GoogleCloudPlatform - Imágenes Docker sin distribución](https://github.com/GoogleCloudPlatform/distroless)
-[^48]: [Kubernetes - Usando la autorización RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-[^49]: [HashiCorp - Bóveda](https://www.vaultproject.io/)
-[^50]: [Kubernetes - Estándares de seguridad del pod](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
-[^51]: [Bridgecrew - Chequeov](https://www.checkov.io/)
+Empezamos en la capa física - un cable, un conmutador, una respuesta ARP falsificada - y ascendimos hasta una reunión de diseño donde cuatro ingenieros discuten sobre un diagrama de flujo de datos. En el camino construimos las defensas exteriores: una red segmentada y defendible; controles en capas que asumen el fallo mutuo; una forma repetible de encontrar costuras débiles antes de que lo haga un atacante; y un modelo lúcido de cómo opera realmente ese atacante.
+
+```mermaid
+graph LR
+    I["Vol I<br/>Fundamentos y redes"] --> II["Vol II<br/>Identidad y Zero Trust"] --> III["Vol III<br/>Criptografía"] --> IV["Vol IV<br/>Detección y respuesta"] --> V["Vol V<br/>Nativo de la nube y cadena de suministro"]
+```
+
+El ingeniero de sistemas moderno debe ser un erudito - razonando sobre el paquete y la lógica de la aplicación, la regla del firewall y el manifiesto del contenedor, pensando como constructor, defensor y rompedor a la vez. La seguridad no es una función que añades. Es una propiedad de un sistema diseñado, en cada capa, para sobrevivir al fallo de la capa contigua.
+
+En este volumen construimos muros. Pero en el momento en que las laptops se van a casa, los servidores se mudan al centro de datos de otro y las APIs llaman a APIs a través de la internet abierta, el muro deja de describir la realidad. El "adentro" que protegías se disuelve en un enjambre de principales - personas, servicios, dispositivos, cargas de trabajo - cada uno pidiendo hacer algo, cada uno necesitando demostrar quién es y qué puede tocar.
+
+Ahí es donde comienza el **[Volumen II - Identidad, acceso y la frontera de Zero Trust](/posts/identity_and_access_in_depth/)**. **La identidad es el nuevo perímetro**, y cada solicitud es un cruce fronterizo. Nos vemos allí.
+
+---
+
+## Referencias
+
+[^1]: [Cloudflare - What is the OSI Model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+[^2]: [Krebs, B. (2012) - The Growing Threat From Tiny, Silent Network Taps](https://krebsonsecurity.com/2012/03/the-growing-threat-from-tiny-silent-network-taps/)
+[^3]: [Cisco - What Is 802.1X?](https://www.cisco.com/c/en/us/products/security/what-is-802-1x.html)
+[^4]: [Microsoft (2021) - Address Resolution Protocol](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/network-subsystem/address-resolution-protocol)
+[^5]: [OWASP - Address Resolution Protocol Spoofing](https://owasp.org/www-community/attacks/ARP_Spoofing)
+[^6]: [Imperva - MAC Flooding](https://www.imperva.com/learn/application-security/mac-flooding/)
+[^7]: [Cisco - VLAN Hopping Attack](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst4500/12-2/15-02SG/configuration/guide/config/dhcp.html)
+[^8]: [GeeksforGeeks (2023) - Port Security in Computer Networks](https://www.geeksforgeeks.org/port-security-in-computer-networks/)
+[^9]: [Cloudflare - Smurf DDoS Attack](https://www.cloudflare.com/learning/ddos/smurf-ddos-attack/)
+[^10]: [Cloudflare - What is BGP hijacking?](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/)
+[^11]: [IETF (2000) - RFC 2827: Network Ingress Filtering](https://datatracker.ietf.org/doc/html/rfc2827)
+[^12]: [Cloudflare - SYN Flood Attack](https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/)
+[^13]: [Nmap - Official Nmap Project Site](https://nmap.org/)
+[^14]: [Wikipedia - SYN cookies](https://en.wikipedia.org/wiki/SYN_cookies)
+[^15]: [SANS Institute (2016) - Implementing Network Segmentation](https://www.sans.org/white-papers/37232/)
+[^16]: [Palo Alto Networks - What is a DMZ?](https://www.paloaltonetworks.com/cyberpedia/what-is-a-dmz)
+[^17]: [Palo Alto Networks - What is a Next-Generation Firewall (NGFW)?](https://www.paloaltonetworks.com/cyberpedia/what-is-a-next-generation-firewall-ngfw)
+[^18]: [OWASP - OWASP Top 10](https://owasp.org/www-project-top-ten/)
+[^19]: [SANS Institute (2001) - Understanding Intrusion Detection Systems](https://www.sans.org/white-papers/27/)
+[^20]: [NSA (2021) - Defense in Depth](https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csg-defense-in-depth-20210225.pdf)
+[^21]: [OWASP - Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
+[^22]: [Microsoft (2022) - The STRIDE Threat Model](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
+[^23]: [OWASP - A01:2021 Broken Access Control (IDOR)](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+[^24]: [Lockheed Martin - The Cyber Kill Chain](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
+[^25]: [OWASP - Shift Left](https://owasp.org/www-community/Shift_Left)
+[^26]: [Saltzer & Schroeder (1975) - The Protection of Information in Computer Systems](https://www.cs.virginia.edu/~evans/cs551/saltzer/)
+[^27]: [CISA - Apache Log4j Vulnerability Guidance](https://www.cisa.gov/uscert/apache-log4j-vulnerability-guidance)
+</content>
+</invoke>

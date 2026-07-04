@@ -92,9 +92,6 @@ const bannerOffset =
       window.__lang = lang;
     </script>
 
-    <!-- Mermaid Support -->
-    <script is:inline src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-
     <title>{pageTitle}</title>
 
     <meta charset="UTF-8" />
@@ -216,7 +213,13 @@ const bannerOffset =
 	'banner-height-home': `${BANNER_HEIGHT_HOME}vh`,
 	'banner-height': `${BANNER_HEIGHT}vh`,
 }}>
-@import "tailwindcss";
+/* Use @reference (not @import) so this scoped block can use @apply / theme
+   tokens WITHOUT emitting a second copy of Tailwind's utilities. The second
+   copy lacked this file's `@custom-variant dark` definition, so every `dark:`
+   utility it generated fell back to `@media (prefers-color-scheme: dark)` —
+   which fired on an OS-dark system even when the user picked the site's light
+   theme, painting titles/sidebars white-on-white. */
+@reference "tailwindcss";
 @layer components {
     .rtl-font {
         font-family: 'Tajawal', 'Cairo', sans-serif !important;
@@ -311,34 +314,6 @@ const bannerOffset =
     setHue(getHue());
   }
 
-  function initMermaid() {
-    // @ts-ignore
-    const mermaidElements = document.querySelectorAll('code.language-mermaid');
-    if (mermaidElements.length === 0) return;
-
-    mermaidElements.forEach((el) => {
-      const pre = el.parentElement;
-      if (!pre) return;
-
-      const div = document.createElement('div');
-      div.className = 'mermaid';
-      div.textContent = el.textContent;
-
-      pre.replaceWith(div);
-    });
-
-    // @ts-ignore
-    if (window.mermaid) {
-      // @ts-ignore
-      window.mermaid.initialize({
-        startOnLoad: false,
-        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
-      });
-      // @ts-ignore
-      window.mermaid.init();
-    }
-  }
-
   function initCustomScrollbar() {
     const bodyElement = document.querySelector("body");
     if (!bodyElement) return;
@@ -424,12 +399,10 @@ const bannerOffset =
     if ("requestIdleCallback" in window) {
       window.requestIdleCallback(() => {
           initCustomScrollbar();
-          initMermaid();
       });
     } else {
       setTimeout(() => {
           initCustomScrollbar();
-          initMermaid();
       }, 0);
     }
     showBanner();
@@ -458,7 +431,6 @@ const bannerOffset =
     });
     window.swup.hooks.on("content:replace", () => {
         initCustomScrollbar();
-        initMermaid();
     });
     window.swup.hooks.on("visit:start", (visit: { to: { url: string } }) => {
       const bodyElement = document.querySelector("body");

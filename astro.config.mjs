@@ -24,6 +24,7 @@ import { InteractiveComponent } from "./src/plugins/rehype-component-interactive
 import { StepsComponent, StepComponent } from "./src/plugins/rehype-component-steps.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
+import { remarkLocalizePostLinks } from "./src/plugins/remark-localize-post-links.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
@@ -116,6 +117,7 @@ export default defineConfig({
 		remarkPlugins: [
 			remarkMath,
 			remarkReadingTime,
+			remarkLocalizePostLinks,
 			remarkMermaid,
 			remarkExcerpt,
 			remarkGithubAdmonitionsToDirectives,

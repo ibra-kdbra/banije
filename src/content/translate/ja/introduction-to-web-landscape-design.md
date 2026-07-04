@@ -74,16 +74,16 @@ originalSlug: "introduction-to-web-landscape-design"
 
 ```html title="index.html"
  <!DOCTYPE html>
- <html lan g="ja">
+ <html lang="ja">
  <head>
- <meta charse t="UTF-8">
+ <meta charset="UTF-8">
  <title>ウェブデザインの例</title>
- <link re l="stylesheet" hre f="styles.css">
+ <link rel="stylesheet" href="styles.css">
  </head>
  <body>
  <h1>こんにちは、ウェブ デザインです!</h1>
  <p>これは単純な Web ページ構造です。</p>
- <script sr c="script.js"></script>
+ <script src="script.js"></script>
  </body>
  </html>
 ```
