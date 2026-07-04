@@ -100,7 +100,7 @@ Intentaba optimizar un recurso que estaba fundamentalmente saturado. Los servido
 
 ## Acto IV: Evaluación de alternativas con presupuesto ajustado
 
-Ante las velocidades inutilizables de las opciones públicas, busqué alternativas comerciales, considerando específicamente un proxy privado dedicado por $2.50 al mes. Esperaba que proporcionara un túnel ligero a nivel de aplicación para mis herramientas de desarrollo.
+Ante las velocidades inutilizables de las opciones públicas, busqué alternativas comerciales, considerando específicamente un proxy privado dedicado por \$2.50 al mes. Esperaba que proporcionara un túnel ligero a nivel de aplicación para mis herramientas de desarrollo.
 
 Antes de comprometerme, me di cuenta de que había dos limitaciones importantes:
 
@@ -112,16 +112,16 @@ Antes de comprometerme, me di cuenta de que había dos limitaciones importantes:
 
 ## Acto V: Implementación de un plan personalizado económico
 
-Para encontrar un punto medio entre una reputación de IP limpia, un acceso fiable y un límite financiero estricto, busqué planes flexibles y me decidí por un nivel de "Construye tu propio plan" a través de Windscribe. Permite a los usuarios comprar acceso a ubicaciones de servidor específicas individualmente por $1 cada una, con un requisito de compra mínima de $3.
+Para encontrar un punto medio entre una reputación de IP limpia, un acceso fiable y un límite financiero estricto, busqué planes flexibles y me decidí por un nivel de "Construye tu propio plan" a través de Windscribe. Permite a los usuarios comprar acceso a ubicaciones de servidor específicas individualmente por \$1 cada una, con un requisito de compra mínima de \$3.
 
 Preparé una configuración básica:
 
-* Acceso a servidor Premium para el primer nodo de `<region>` necesario: $1.00
-* Acceso a servidor Premium para el segundo nodo de `<region>` necesario: $1.00
-* Datos ilimitados y mejora del perfil de seguridad: $1.00
-* **Coste total: $3.00**
+* Acceso a servidor Premium para el primer nodo de `<region>` necesario: \$1.00
+* Acceso a servidor Premium para el segundo nodo de `<region>` necesario: \$1.00
+* Datos ilimitados y mejora del perfil de seguridad: \$1.00
+* **Coste total: \$3.00**
 
-Esto encajaba cómodamente dentro del presupuesto, dejando un saldo seguro de $4.75 en la tarjeta mientras desbloqueaba el acceso sin restricciones a líneas de enrutamiento de grado comercial para consumidores.
+Esto encajaba cómodamente dentro del presupuesto, dejando un saldo seguro de \$4.75 en la tarjeta mientras desbloqueaba el acceso sin restricciones a líneas de enrutamiento de grado comercial para consumidores.
 
 ---
 

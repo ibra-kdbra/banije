@@ -48,7 +48,7 @@ Kurulum ve kullanım`smartctl`sağlık kontrolü yapmak için:
 
 Bölüm tablosu dahil tüm verileri silmek için:
 ```bash
-sudo dd i f=/dev/zero o f=/dev/sdb b s=1M coun t=10
+sudo dd if=/dev/zero of=/dev/sdb bs=1M count=10
 ```
 -`i f=/dev/zero`: Giriş dosyası`/dev/zero`(sıfırlanmış baytlar üretir). 
 -`o f=/dev/sdb`: Çıkış dosyası flash sürücüdür. 

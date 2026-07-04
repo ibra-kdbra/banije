@@ -122,14 +122,14 @@ quadrantChart
     quadrant-1 Bien defendido
     quadrant-2 Sobre-invertido
     quadrant-3 Brechas de baja prioridad
-    quadrant-4 PELIGRO - Común y no detectado
-    Phishing (T1566): [0.9, 0.7]
-    Cuentas Válidas (T1078): [0.85, 0.35]
-    PowerShell (T1059): [0.8, 0.8]
-    Tarea Programada (T1053): [0.5, 0.6]
-    Volcado de Credenciales (T1003): [0.7, 0.75]
-    Abuso de API en Nube (T1078.004): [0.6, 0.25]
-    Proxy Rundll32 (T1218): [0.3, 0.45]
+    quadrant-4 "PELIGRO - Común y no detectado"
+    "Phishing (T1566)": [0.9, 0.7]
+    "Cuentas Válidas (T1078)": [0.85, 0.35]
+    "PowerShell (T1059)": [0.8, 0.8]
+    "Tarea Programada (T1053)": [0.5, 0.6]
+    "Volcado de Credenciales (T1003)": [0.7, 0.75]
+    "Abuso de API en Nube (T1078.004)": [0.6, 0.25]
+    "Proxy Rundll32 (T1218)": [0.3, 0.45]
 ```
 
 El cuadrante 4, **técnicas comunes con cobertura débil**, es tu backlog priorizado. Así es como un equipo azul pequeño asigna un esfuerzo finito: defiende lo que los atacantes hacen realmente y aún no detectas, antes de perseguir técnicas exóticas que nadie usa contra ti.

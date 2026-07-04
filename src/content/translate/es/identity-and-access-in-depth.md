@@ -49,7 +49,7 @@ Cada esquema de autenticación se reduce a combinaciones de tres factores clási
 quadrantChart
     title Resistencia al Phishing vs. Fricción del Usuario en Métodos de Auth
     x-axis Baja fricción --> Alta fricción
-    y-axis Débil (Phishable) --> Fuerte (Resistente al Phishing)
+    y-axis "Débil (Phishable)" --> "Fuerte (Resistente al Phishing)"
     quadrant-1 Estándar de Oro
     quadrant-2 Seguro pero complicado
     quadrant-3 Legado - Retirar
@@ -58,7 +58,7 @@ quadrantChart
     SMS OTP: [0.35, 0.22]
     TOTP App: [0.45, 0.40]
     Push Approve: [0.25, 0.35]
-    Passkey (FIDO2): [0.20, 0.92]
+    "Passkey (FIDO2)": [0.20, 0.92]
     Hardware Key: [0.55, 0.95]
 ```
 

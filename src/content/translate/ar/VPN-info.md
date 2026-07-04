@@ -229,11 +229,11 @@ draft: false
 
 ```mermaid
 graph LR
-  User[VPN User] --> Gateway{VPN Gateway}
-  Gateway --> |Finance Group| FinSrv[Finance Servers]
-  Gateway --> |Dev Group| DevSrv[Development Servers]
-  Gateway --> |HR Group| HRSrv[HR Platform]
-  Gateway -.-> |Denied| SecVault[Security Vault]
+  User[مستخدم VPN] --> Gateway{بوابة VPN}
+  Gateway --> |مجموعة المالية| FinSrv[خوادم المالية]
+  Gateway --> |مجموعة التطوير| DevSrv[خوادم التطوير]
+  Gateway --> |مجموعة الموارد البشرية| HRSrv[منصة الموارد البشرية]
+  Gateway -.-> |مرفوض| SecVault[خزنة الأمان]
 ```
 
 ### 10.1 تنفيذ RBAC (التحكم في الوصول على أساس الدور)

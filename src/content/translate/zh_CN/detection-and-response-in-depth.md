@@ -123,13 +123,13 @@ quadrantChart
     quadrant-2 过度投入
     quadrant-3 低优先级缺口
     quadrant-4 危险 - 高频且未检测
-    Phishing (T1566): [0.9, 0.7]
-    Valid Accounts (T1078): [0.85, 0.35]
-    PowerShell (T1059): [0.8, 0.8]
-    Scheduled Task (T1053): [0.5, 0.6]
-    Credential Dumping (T1003): [0.7, 0.75]
-    Cloud API Abuse (T1078.004): [0.6, 0.25]
-    Rundll32 Proxy (T1218): [0.3, 0.45]
+    "Phishing (T1566)": [0.9, 0.7]
+    "Valid Accounts (T1078)": [0.85, 0.35]
+    "PowerShell (T1059)": [0.8, 0.8]
+    "Scheduled Task (T1053)": [0.5, 0.6]
+    "Credential Dumping (T1003)": [0.7, 0.75]
+    "Cloud API Abuse (T1078.004)": [0.6, 0.25]
+    "Rundll32 Proxy (T1218)": [0.3, 0.45]
 ```
 
 第四象限（**覆盖率薄弱的高频技术**）是你的优先积压项。这就是小型蓝队分配有限精力的方法：在追求无人使用的奇特技术之前，先防御攻击者实际正在做且你尚未捕捉到的行为。

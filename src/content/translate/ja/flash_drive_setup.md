@@ -61,7 +61,7 @@ sudo fdisk -l
  パーティション テーブルを含むすべてのデータを消去するには、次の手順を実行します。
 
 ```bash
-sudo dd i f=/dev/zero o f=/dev/sdb b s=1M coun t=10
+sudo dd if=/dev/zero of=/dev/sdb bs=1M count=10
 ```
 
 -`i f=/dev/zero`: 入力ファイルは`/dev/zero`(ゼロ化されたバイトが生成されます)。

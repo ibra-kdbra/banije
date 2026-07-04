@@ -396,13 +396,13 @@ La creación de instancias del sistema de archivos requiere un ajuste de paráme
 
 ```bash
 # EXT4 con optimizaciones de rendimiento
-mkfs.ext4 -O extensión,uninit_bg,dir_index,ext_attr -E lazy_itable_ini t=0,packed_group s=1 /dev/sda1
+mkfs.ext4 -O extent,uninit_bg,dir_index,ext_attr -E lazy_itable_init=0,packed_groups=1 /dev/sda1
 
 # Btrfs con compresión y RAID
-mkfs.btrfs --data raid1 --metadata raid1 --compres s=zstd /dev/sda2 /dev/sdb2
+mkfs.btrfs --data raid1 --metadata raid1 --compress=zstd /dev/sda2 /dev/sdb2
 
 # XFS con funciones de integridad
-mkfs.xfs -l versión=2,tamaño=32m -i att r=2,maxpc t=5 /dev/sda3
+mkfs.xfs -l version=2,size=32m -i attr=2,maxpct=5 /dev/sda3
 ```
 
 :::

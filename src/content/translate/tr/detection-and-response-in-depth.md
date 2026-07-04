@@ -62,7 +62,7 @@ mindmap
       Ayrıcalık atamaları
     Bulut
       CloudTrail / denetim günlükleri
-      Kontrol düzlemi (Control-plane) API çağrıları
+      Kontrol düzlemi API çağrıları (Control-plane)
       Yapılandırma değişiklikleri
     Uygulama
       Web sunucusu + WAF günlükleri
@@ -123,13 +123,13 @@ quadrantChart
     quadrant-2 Fazla Yatırım Yapılan
     quadrant-3 Düşük Öncelikli Boşluklar
     quadrant-4 TEHLİKE - Yaygın & Tespit Edilemeyen
-    Kimlik Avı (T1566): [0.9, 0.7]
-    Geçerli Hesaplar (T1078): [0.85, 0.35]
-    PowerShell (T1059): [0.8, 0.8]
-    Zamanlanmış Görev (T1053): [0.5, 0.6]
-    Kimlik Bilgisi Dökümü (T1003): [0.7, 0.75]
-    Bulut API İstismarı (T1078.004): [0.6, 0.25]
-    Rundll32 Proxy (T1218): [0.3, 0.45]
+    "Kimlik Avı (T1566)": [0.9, 0.7]
+    "Geçerli Hesaplar (T1078)": [0.85, 0.35]
+    "PowerShell (T1059)": [0.8, 0.8]
+    "Zamanlanmış Görev (T1053)": [0.5, 0.6]
+    "Kimlik Bilgisi Dökümü (T1003)": [0.7, 0.75]
+    "Bulut API İstismarı (T1078.004)": [0.6, 0.25]
+    "Rundll32 Proxy (T1218)": [0.3, 0.45]
 ```
 
 4. çeyrek, **zayıf kapsama sahip yaygın teknikler**, önceliklendirilmiş iş listenizdir. Küçük bir mavi takım sınırlı çabasını böyle dağıtır: egzotik tekniklerin peşinden koşmadan önce, saldırganların fiilen yaptığı ve sizin henüz yakalayamadığınız şeyleri savunun.

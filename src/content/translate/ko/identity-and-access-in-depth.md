@@ -49,7 +49,7 @@ series:
 quadrantChart
     title Phishing Resistance vs. User Friction of Auth Methods
     x-axis Low Friction --> High Friction
-    y-axis Weak (Phishable) --> Strong (Phish-Resistant)
+    y-axis "Weak (Phishable)" --> "Strong (Phish-Resistant)"
     quadrant-1 Gold Standard
     quadrant-2 Secure but Clunky
     quadrant-3 Legacy - Retire
@@ -58,7 +58,7 @@ quadrantChart
     SMS OTP: [0.35, 0.22]
     TOTP App: [0.45, 0.40]
     Push Approve: [0.25, 0.35]
-    Passkey (FIDO2): [0.20, 0.92]
+    "Passkey (FIDO2)": [0.20, 0.92]
     Hardware Key: [0.55, 0.95]
 ```
 

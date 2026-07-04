@@ -100,7 +100,7 @@ Temelde aşırı yüklenmiş bir kaynağı optimize etmeye çalışıyordum. Üc
 
 ## 4. Perde: Sıkı Bir Bütçeyle Alternatifleri Değerlendirme
 
-Kullanılamaz genel hızlarla karşı karşıya kalınca, ticari alternatifleri araştırdım ve özellikle ayda 2,50$ karşılığında özel bir proxy düşündüm. Geliştirme araçlarım için hafif, uygulama düzeyinde bir tünel sağlayacağını umuyordum.
+Kullanılamaz genel hızlarla karşı karşıya kalınca, ticari alternatifleri araştırdım ve özellikle ayda 2,50\$ karşılığında özel bir proxy düşündüm. Geliştirme araçlarım için hafif, uygulama düzeyinde bir tünel sağlayacağını umuyordum.
 
 Onay vermeden önce iki büyük kısıtlamanın olduğunu fark ettim:
 
@@ -112,16 +112,16 @@ Onay vermeden önce iki büyük kısıtlamanın olduğunu fark ettim:
 
 ## 5. Perde: Bütçe Dostu Özel Bir Plan Uygulama
 
-Temiz IP itibarı, güvenilir erişim ve katı bir finansal limit arasında orta yolu bulmak için esnek planlara göz attım ve Windscribe aracılığıyla özel bir "Build-A-Plan" katmanında karar kıldım. Bu, kullanıcıların 3$ minimum satın alma şartıyla, belirli sunucu konumlarına 1$ karşılığında ayrı ayrı erişim satın almalarına olanak tanıyor.
+Temiz IP itibarı, güvenilir erişim ve katı bir finansal limit arasında orta yolu bulmak için esnek planlara göz attım ve Windscribe aracılığıyla özel bir "Build-A-Plan" katmanında karar kıldım. Bu, kullanıcıların 3\$ minimum satın alma şartıyla, belirli sunucu konumlarına 1\$ karşılığında ayrı ayrı erişim satın almalarına olanak tanıyor.
 
 Temel bir yapılandırma hazırladım:
 
-* İlk gereken `<region>` düğümü için Premium Sunucu Erişimi: $1.00
-* İkinci gereken `<region>` düğümü için Premium Sunucu Erişimi: $1.00
-* Sınırsız Veri ve Güvenlik Profili Yükseltmesi: $1.00
-* **Toplam Maliyet: $3.00**
+* İlk gereken `<region>` düğümü için Premium Sunucu Erişimi: \$1.00
+* İkinci gereken `<region>` düğümü için Premium Sunucu Erişimi: \$1.00
+* Sınırsız Veri ve Güvenlik Profili Yükseltmesi: \$1.00
+* **Toplam Maliyet: \$3.00**
 
-Bu, bütçenin içinde rahatça kaldı ve kartta güvenli bir $4.75 bakiye bırakırken, ticari tüketici sınıfı yönlendirme hatlarına kısıtlanmamış erişim sağladı.
+Bu, bütçenin içinde rahatça kaldı ve kartta güvenli bir \$4.75 bakiye bırakırken, ticari tüketici sınıfı yönlendirme hatlarına kısıtlanmamış erişim sağladı.
 
 ---
 

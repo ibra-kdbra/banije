@@ -47,19 +47,19 @@ series:
 
 ```mermaid
 quadrantChart
-    title Phishing Resistance vs. User Friction of Auth Methods
-    x-axis Low Friction --> High Friction
-    y-axis Weak (Phishable) --> Strong (Phish-Resistant)
-    quadrant-1 Gold Standard
-    quadrant-2 Secure but Clunky
-    quadrant-3 Legacy - Retire
-    quadrant-4 Convenient but Risky
-    Password only: [0.15, 0.08]
-    SMS OTP: [0.35, 0.22]
-    TOTP App: [0.45, 0.40]
-    Push Approve: [0.25, 0.35]
-    Passkey (FIDO2): [0.20, 0.92]
-    Hardware Key: [0.55, 0.95]
+    title مقاومة التصيد مقابل احتكاك المستخدم لطرق المصادقة
+    x-axis احتكاك منخفض --> احتكاك مرتفع
+    y-axis "ضعيفة (قابلة للتصيد)" --> "قوية (مقاومة للتصيد)"
+    quadrant-1 المعيار الذهبي
+    quadrant-2 آمنة لكن مرهقة
+    quadrant-3 قديمة للإيقاف
+    quadrant-4 مريحة لكن محفوفة بالمخاطر
+    "كلمة المرور فقط": [0.15, 0.08]
+    "رمز OTP عبر SMS": [0.35, 0.22]
+    "تطبيق TOTP": [0.45, 0.40]
+    "موافقة عبر Push": [0.25, 0.35]
+    "مفتاح مرور (FIDO2)": [0.20, 0.92]
+    "مفتاح عتادي": [0.55, 0.95]
 ```
 
 الدرس المستفاد من المخطط: **رموز OTP عبر الرسائل القصيرة هي MFA، لكنها ضعيفة.** إنها تقاوم إعادة استخدام كلمة المرور ولكنها لا تقاوم وكيل تصيد في الوقت الفعلي أو تبديل شريحة الهاتف. فقط بيانات اعتماد **FIDO2 / WebAuthn**، حيث لا يغادر المفتاح الخاص جهاز المصادقة ويكون التوقيع مرتبطاً مشفراً بالأصل (Origin)، هي حقيقياً *مقاومة للتصيد* [^2].
@@ -104,25 +104,25 @@ $$
 
 ```mermaid
 sequenceDiagram
-    participant U as User
-    participant B as Browser (WebAuthn)
-    participant A as Authenticator
-    participant RP as Relying Party (Server)
+    participant U as المستخدم
+    participant B as المتصفح (WebAuthn)
+    participant A as جهاز المصادقة
+    participant RP as الطرف المعتمد (الخادم)
 
-    Note over U,RP: Registration
-    RP->>B: challenge + rp.id + user.id
-    B->>A: create credential for rp.id
-    A->>A: generate keypair, store private key
-    A-->>B: public key + attestation + credentialId
-    B-->>RP: store public key against user
+    Note over U,RP: التسجيل
+    RP->>B: تحدي + rp.id + user.id
+    B->>A: إنشاء بيانات اعتماد لـ rp.id
+    A->>A: توليد زوج المفاتيح، تخزين المفتاح الخاص
+    A-->>B: المفتاح العام + شهادة الإثبات + credentialId
+    B-->>RP: تخزين المفتاح العام مقابل المستخدم
 
-    Note over U,RP: Authentication
-    RP->>B: challenge (random nonce)
-    B->>A: sign challenge (bound to origin)
-    A->>U: verify presence (touch / biometric)
-    A-->>B: signature over challenge
-    B-->>RP: assertion
-    RP->>RP: verify signature with stored public key
+    Note over U,RP: المصادقة
+    RP->>B: تحدي (رقم عشوائي nonce)
+    B->>A: توقيع التحدي (مرتبط بالأصل)
+    A->>U: التحقق من الحضور (لمسة / خاصية حيوية)
+    A-->>B: توقيع على التحدي
+    B-->>RP: تأكيد
+    RP->>RP: التحقق من التوقيع بالمفتاح العام المخزن
 ```
 
 السحر يكمن في سطر واحد: **التوقيع مرتبط بالأصل (`rp.id`)**. لا يمكن لموقع تصيد على `paypa1.com` أن يجعل جهاز المصادقة ينتج تأكيداً صالحاً لـ `paypal.com`، لأن المتصفح يرفض إرساله. هذا يلغي الفئة الكاملة لتصيد بيانات الاعتماد من خلال التصميم، وليس من خلال يقظة المستخدم [^2].
@@ -139,25 +139,25 @@ sequenceDiagram
 
 ```mermaid
 mindmap
-  root((Access Control))
+  root((التحكم في الوصول))
     DAC
-      Owner grants access
-      Unix file permissions
+      المالك يمنح الوصول
+      صلاحيات ملفات Unix
     MAC
-      System enforces labels
-      SELinux / classified systems
+      النظام يفرض التصنيفات
+      SELinux / أنظمة مصنّفة
     RBAC
-      Users to Roles
-      Roles to Permissions
-      Coarse-grained
+      المستخدمون إلى الأدوار
+      الأدوار إلى الصلاحيات
+      خشن التفصيل
     ABAC
-      Policy over attributes
-      subject / resource / action / context
-      Fine-grained, dynamic
+      سياسة على السمات
+      الفاعل / المورد / الإجراء / السياق
+      دقيق التفصيل، ديناميكي
     ReBAC
-      Graph of relationships
-      "is owner of", "is member of"
-      Google Zanzibar model
+      رسم بياني للعلاقات
+      "مالك لـ"، "عضو في"
+      نموذج Google Zanzibar
 ```
 
 **RBAC (القائم على الأدوار)** هو المكان الذي تعيش فيه معظم المؤسسات: المستخدم لديه أدوار، والأدوار تجمع الصلاحيات. من السهل فهمه وتدقيقه. نمط فشله هو **انفجار الأدوار (Role explosion)**؛ فعندما يتحول "محرر لمنطقة الاتحاد الأوروبي في مشروع المالية خلال ساعات العمل" إلى دور خاص به، سيكون لديك الآلاف منها ولن يفهم أحد هذا الرسم البياني.
@@ -193,9 +193,9 @@ GET /api/invoices/1044   ->  200 OK  (someone else's invoice!)
 
 ```mermaid
 xychart-beta
-    title "Privilege Creep - Granted vs. Actually Used Permissions"
-    x-axis [Month1, Month3, Month6, Month9, Month12]
-    y-axis "Permission Count" 0 --> 120
+    title "زحف الصلاحيات - الممنوحة مقابل المستخدمة فعلياً"
+    x-axis ["الشهر 1", "الشهر 3", "الشهر 6", "الشهر 9", "الشهر 12"]
+    y-axis "عدد الصلاحيات" 0 --> 120
     bar [20, 45, 70, 95, 115]
     line [18, 30, 34, 38, 40]
 ```
@@ -221,22 +221,22 @@ xychart-beta
 
 ```mermaid
 sequenceDiagram
-    participant U as User
-    participant App as Client App
-    participant AS as Authorization Server
-    participant API as Resource Server
+    participant U as المستخدم
+    participant App as تطبيق العميل
+    participant AS as خادم التخويل
+    participant API as خادم الموارد
 
-    App->>App: generate code_verifier + code_challenge (S256)
+    App->>App: توليد code_verifier + code_challenge (S256)
     App->>AS: /authorize?code_challenge=...&scope=openid
-    AS->>U: login + consent
-    U->>AS: authenticate (MFA)
-    AS-->>App: authorization code (short-lived, single-use)
-    App->>AS: /token (code + code_verifier)
-    AS->>AS: verify SHA256(verifier) == challenge
+    AS->>U: تسجيل الدخول + الموافقة
+    U->>AS: المصادقة (MFA)
+    AS-->>App: كود التخويل (قصير العمر، أحادي الاستخدام)
+    App->>AS: /token (الكود + code_verifier)
+    AS->>AS: التحقق SHA256(verifier) == challenge
     AS-->>App: access_token + id_token + refresh_token
-    App->>API: request + Bearer access_token
-    API->>API: validate signature, aud, exp, scope
-    API-->>App: protected resource
+    App->>API: طلب + Bearer access_token
+    API->>API: التحقق من التوقيع، aud، exp، scope
+    API-->>App: مورد محمي
 ```
 
 **لماذا PKCE (مفتاح الإثبات لتبادل الكود)؟** بدونه، يمكن للمهاجم الذي يعترض كود التخويل (عبر تطبيق ضار مسجل على نفس مخطط URI) استرداده. يربط PKCE الكود بسر (`code_verifier`) لا يعرفه إلا العميل الشرعي، لذا يصبح الكود المسروق عديم الفائدة. تجعل **OAuth 2.1** استخدام PKCE إلزامياً لجميع العملاء وتزيل تماماً أنواع المنح *الضمنية* و*كلمة المرور* الخطيرة [^9].
@@ -290,11 +290,11 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    RootCA["Root CA<br/>(offline, air-gapped)"] -->|signs| IntCA["Intermediate CA"]
-    IntCA -->|signs| Leaf1["service-a.internal<br/>leaf cert"]
-    IntCA -->|signs| Leaf2["service-b.internal<br/>leaf cert"]
-    Leaf1 -.->|mTLS handshake| Leaf2
-    Verify{"Verifier checks:<br/>signature chain +<br/>validity dates +<br/>revocation (OCSP/CRL) +<br/>hostname match"}
+    RootCA["الجذر CA<br/>(غير متصل، معزول هوائياً)"] -->|يوقّع| IntCA["CA وسيط"]
+    IntCA -->|يوقّع| Leaf1["service-a.internal<br/>شهادة طرفية"]
+    IntCA -->|يوقّع| Leaf2["service-b.internal<br/>شهادة طرفية"]
+    Leaf1 -.->|مصافحة mTLS| Leaf2
+    Verify{"يتحقق المُحقق من:<br/>سلسلة التوقيع +<br/>تواريخ الصلاحية +<br/>الإبطال (OCSP/CRL) +<br/>مطابقة اسم المضيف"}
     Leaf2 --> Verify
     style RootCA fill:#7c2d12,color:#fff
     style IntCA fill:#9a3412,color:#fff
@@ -352,17 +352,17 @@ Git *لا ينسى أبداً*. السر الذي يُلتزم به مرة وا�
 
 ```mermaid
 flowchart LR
-    subgraph Signals["Trust Signals"]
-        ID[Identity + MFA]
-        DEV[Device posture]
-        CTX[Context: geo, time, risk]
+    subgraph Signals["إشارات الثقة"]
+        ID[الهوية + MFA]
+        DEV[وضعية الجهاز]
+        CTX["السياق: الموقع، الوقت، المخاطر"]
     end
-    User([User / Workload]) -->|request| PEP[Policy Enforcement Point]
-    PEP -->|"can this principal<br/>do this now?"| PDP{{Policy Decision Point / Engine}}
+    User(["المستخدم / حمل العمل"]) -->|طلب| PEP[نقطة إنفاذ السياسة]
+    PEP -->|"هل يمكن لهذا المسؤول<br/>فعل هذا الآن؟"| PDP{{"نقطة قرار السياسة / المحرك"}}
     Signals --> PDP
-    PDP -->|allow / deny / step-up| PEP
-    PEP -->|allowed + encrypted mTLS| Resource[(Protected Resource)]
-    PEP -.->|log every decision| SIEM[SIEM / Audit]
+    PDP -->|"سماح / رفض / تصعيد"| PEP
+    PEP -->|"مسموح + mTLS مشفّر"| Resource[(مورد محمي)]
+    PEP -.->|تسجيل كل قرار| SIEM["SIEM / تدقيق"]
     style PDP fill:#1e3a8a,color:#fff
     style PEP fill:#065f46,color:#fff
 ```
@@ -371,12 +371,12 @@ flowchart LR
 
 ```mermaid
 pie showData
-    title "Zero Trust Investment by Pillar (illustrative maturity spend)"
-    "Identity" : 30
-    "Devices" : 20
-    "Networks" : 15
-    "Applications & Workloads" : 20
-    "Data" : 15
+    title "استثمار الثقة الصفرية حسب الركيزة (إنفاق نضج توضيحي)"
+    "الهوية" : 30
+    "الأجهزة" : 20
+    "الشبكات" : 15
+    "التطبيقات وأحمال العمل" : 20
+    "البيانات" : 15
 ```
 
 لاحظ أن **الهوية تأخذ الشريحة الأكبر**، وهذا ليس صدفة. بمجرد أن الشبكة لا تمنح أي ثقة، تصبح الهوية هي طائرة التحكم الأساسية. كل شيء في هذا المجلد، من عوامل، ورموز، ومحركات سياسات، وهوية الآلة، يوجد في خدمة جعل طائرة التحكم تلك جديرة بالثقة.

@@ -49,7 +49,7 @@ series:
 quadrantChart
     title 認證方式的釣魚防禦能力 vs. 使用者摩擦力
     x-axis 低摩擦力 --> 高摩擦力
-    y-axis 弱 (易受釣魚) --> 強 (抗釣魚)
+    y-axis "弱 (易受釣魚)" --> "強 (抗釣魚)"
     quadrant-1 黃金標準
     quadrant-2 安全但笨重
     quadrant-3 遺留技術 - 應淘汰
@@ -58,7 +58,7 @@ quadrantChart
     SMS OTP: [0.35, 0.22]
     TOTP App: [0.45, 0.40]
     Push Approve: [0.25, 0.35]
-    Passkey (FIDO2): [0.20, 0.92]
+    "Passkey (FIDO2)": [0.20, 0.92]
     Hardware Key: [0.55, 0.95]
 ```
 
@@ -194,7 +194,7 @@ GET /api/invoices/1044   ->  200 OK  (別人的發票！)
 ```mermaid
 xychart-beta
     title "權限蔓延 - 已授予 vs. 實際使用權限"
-    x-axis [第1個月, 第3個月, 第6個月, 第9個月, 第12個月]
+    x-axis ["第1個月", "第3個月", "第6個月", "第9個月", "第12個月"]
     y-axis "權限數量" 0 --> 120
     bar [20, 45, 70, 95, 115]
     line [18, 30, 34, 38, 40]

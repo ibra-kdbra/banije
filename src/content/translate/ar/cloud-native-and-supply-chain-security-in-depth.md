@@ -27,24 +27,24 @@ series:
 
 ```mermaid
 mindmap
-  root((Cloud-Native Security))
-    Shared Responsibility
-      Cloud secures OF the cloud
-      You secure IN the cloud
-    Workloads
-      Container hardening
-      Kubernetes controls
-      Runtime security
-    Infrastructure as Code
-      Scan before apply
-      Immutable + declarative
-    The Pipeline
-      DevSecOps / shift-left
-      CI/CD as attack surface
-    Supply Chain
-      Dependencies + SBOM
-      Provenance + SLSA
-      Artifact signing
+  root((أمن السحابة الأصيلة))
+    المسؤولية المشتركة
+      السحابة تؤمّن بنية السحابة
+      أنت تؤمّن ما بداخل السحابة
+    أحمال العمل
+      تعزيز الحاويات
+      ضوابط Kubernetes
+      أمن وقت التشغيل
+    البنية التحتية كتعليمات برمجية
+      الفحص قبل التطبيق
+      غير قابلة للتغيير وتصريحية
+    خط الأنابيب
+      DevSecOps / التحول لليسار
+      CI/CD كسطح هجوم
+    سلسلة التوريد
+      التبعيات + SBOM
+      المنشأ + SLSA
+      توقيع المصنوعات
 ```
 
 ---
@@ -55,24 +55,24 @@ mindmap
 
 ```mermaid
 flowchart TD
-    subgraph OnPrem["On-Premises"]
+    subgraph OnPrem["داخل المؤسسة (On-Premises)"]
         direction TB
-        O["YOU own everything<br/>data → app → runtime → OS → network → physical"]
+        O["أنت تملك كل شيء<br/>البيانات → التطبيق → وقت التشغيل → نظام التشغيل → الشبكة → المادي"]
     end
     subgraph IaaS["IaaS (EC2)"]
         direction TB
-        I1["YOU: data, app, runtime, OS config, patching"]
-        I2["CLOUD: virtualization, hardware, physical"]
+        I1["أنت: البيانات، التطبيق، وقت التشغيل، إعداد نظام التشغيل، الترقيع"]
+        I2["السحابة: المحاكاة الافتراضية، العتاد، المادي"]
     end
-    subgraph PaaS["PaaS / Containers"]
+    subgraph PaaS["PaaS / حاويات"]
         direction TB
-        P1["YOU: data, app code, IAM config"]
-        P2["CLOUD: runtime, OS, hardware"]
+        P1["أنت: البيانات، كود التطبيق، إعداد IAM"]
+        P2["السحابة: وقت التشغيل، نظام التشغيل، العتاد"]
     end
     subgraph SaaS["SaaS"]
         direction TB
-        S1["YOU: data + access config ONLY"]
-        S2["CLOUD: nearly everything else"]
+        S1["أنت: البيانات وإعداد الوصول فقط"]
+        S2["السحابة: كل شيء آخر تقريبًا"]
     end
     style O fill:#7c2d12,color:#fff
     style S1 fill:#065f46,color:#fff
@@ -92,16 +92,16 @@ flowchart TD
 
 ```mermaid
 graph TD
-    subgraph Build["Build-time"]
-        IMG[Base image<br/>use minimal/distroless] --> SCAN[Scan for CVEs<br/>Trivy / Grype]
-        SCAN --> NOROOT[Non-root USER<br/>drop capabilities]
+    subgraph Build["وقت البناء"]
+        IMG["صورة أساسية<br/>استخدم minimal/distroless"] --> SCAN["افحص ثغرات CVE<br/>Trivy / Grype"]
+        SCAN --> NOROOT["مستخدم USER غير جذري<br/>إسقاط الصلاحيات"]
     end
     subgraph Registry
-        SIGN[Sign image<br/>Cosign/Sigstore] --> ADMIT[Admission control<br/>only signed images run]
+        SIGN["وقّع الصورة<br/>Cosign/Sigstore"] --> ADMIT["التحكم بالقبول<br/>تشغيل الصور الموقّعة فقط"]
     end
     subgraph Runtime
-        RO[Read-only root FS] --> SECCOMP[seccomp + AppArmor<br/>restrict syscalls]
-        SECCOMP --> RT[Runtime detection<br/>Falco]
+        RO["نظام ملفات جذري للقراءة فقط"] --> SECCOMP["seccomp + AppArmor<br/>تقييد استدعاءات النظام"]
+        SECCOMP --> RT["كشف وقت التشغيل<br/>Falco"]
     end
     Build --> Registry --> Runtime
     style IMG fill:#1e3a8a,color:#fff
@@ -125,10 +125,10 @@ Kubernetes هو نظام تشغيل موزع للحاويات، وأمانه م�
 
 ```mermaid
 graph TD
-    CODE["<b>Code</b><br/>your app - AppSec (Vol III)"]
-    CONTAINER["<b>Container</b><br/>image + runtime (Ch.1)"]
-    CLUSTER["<b>Cluster</b><br/>RBAC, network policy, API server"]
-    CLOUD["<b>Cloud</b><br/>IAM, node, control plane"]
+    CODE["<b>التعليمات البرمجية</b><br/>تطبيقك - AppSec (المجلد الثالث)"]
+    CONTAINER["<b>الحاوية</b><br/>الصورة + وقت التشغيل (الفصل الأول)"]
+    CLUSTER["<b>العنقود</b><br/>RBAC، سياسة الشبكة، خادم API"]
+    CLOUD["<b>السحابة</b><br/>IAM، العقدة، طائرة التحكم"]
     CLOUD --> CLUSTER --> CONTAINER --> CODE
     style CLOUD fill:#1e3a8a,color:#fff
     style CODE fill:#065f46,color:#fff
@@ -172,11 +172,11 @@ graph TD
 
 ```mermaid
 flowchart LR
-    DEV[Developer writes<br/>Terraform] --> PR[Pull Request]
-    PR --> SCAN{IaC Scanners<br/>Checkov / tfsec / Trivy}
-    SCAN -->|"public S3? open SG?<br/>unencrypted volume?"| FAIL[Block PR ❌]
-    SCAN -->|clean| PLAN[terraform plan]
-    PLAN --> REVIEW[Human review + drift check]
+    DEV["يكتب المطور<br/>Terraform"] --> PR["طلب سحب"]
+    PR --> SCAN{"فاحصات IaC<br/>Checkov / tfsec / Trivy"}
+    SCAN -->|"S3 عامة؟ SG مفتوحة؟<br/>وحدة تخزين غير مشفرة؟"| FAIL["احظر طلب السحب ❌"]
+    SCAN -->|"نظيف"| PLAN[terraform plan]
+    PLAN --> REVIEW["مراجعة بشرية + فحص الانجراف"]
     REVIEW --> APPLY[terraform apply ✅]
     style SCAN fill:#1e3a8a,color:#fff
     style FAIL fill:#7c2d12,color:#fff
@@ -186,9 +186,9 @@ flowchart LR
 
 ```mermaid
 xychart-beta
-    title "Relative Cost to Fix a Flaw by Stage Discovered"
-    x-axis ["Design", "Code / IaC", "Build / CI", "Test / QA", "Production"]
-    y-axis "Relative Cost" 0 --> 100
+    title "التكلفة النسبية لإصلاح ثغرة حسب مرحلة اكتشافها"
+    x-axis ["التصميم", "الكود / IaC", "البناء / CI", "الاختبار / QA", "الإنتاج"]
+    y-axis "التكلفة النسبية" 0 --> 100
     bar [1, 5, 10, 25, 90]
 ```
 
@@ -206,11 +206,11 @@ xychart-beta
 
 ```mermaid
 pie showData
-    title "Composition of a Typical Modern Application"
-    "Your first-party code" : 5
-    "Direct dependencies" : 15
-    "Transitive dependencies (deps of deps)" : 65
-    "Base image / OS packages" : 15
+    title "تركيبة تطبيق حديث نموذجي"
+    "كودك الخاص (first-party)" : 5
+    "التبعيات المباشرة" : 15
+    "التبعيات العابرة (تبعيات التبعيات)" : 65
+    "الصورة الأساسية / حزم نظام التشغيل" : 15
 ```
 
 هذه الشريحة "العابرة" الضخمة هي بيت القصيد: أنت `اخترت` تبعياتك المباشرة الـ 15، لكنك ورثت المئات التي لم تسمع عنها قط، أي واحدة منها يمكن أن تنهي أمنك.
@@ -221,10 +221,10 @@ pie showData
 
 ```mermaid
 graph LR
-    A[Attacker] -->|"compromise a<br/>trusted upstream"| U[Dependency / Build System]
-    U -->|"pulled by CI,<br/>signed, shipped"| V1[Victim 1]
-    U --> V2[Victim 2]
-    U --> V3[Victim 3 ... 18,000]
+    A["المهاجم"] -->|"اختراق مصدر<br/>أعلى موثوق"| U["تبعية / نظام بناء"]
+    U -->|"يُسحب بواسطة CI،<br/>موقّع، مُشحن"| V1["الضحية 1"]
+    U --> V2["الضحية 2"]
+    U --> V3["الضحية 3 ... 18,000"]
     style A fill:#7c2d12,color:#fff
     style U fill:#9a3412,color:#fff
 ```
@@ -245,13 +245,13 @@ graph LR
 
 ```mermaid
 flowchart LR
-    SRC[Signed commit<br/>+ branch protection] --> DEP[Dependency scan<br/>+ pin versions + SBOM]
-    DEP --> BUILD[Isolated, ephemeral<br/>build - SLSA provenance]
-    BUILD --> SAST[SAST + secret scan]
-    SAST --> ART[Sign artifact<br/>Cosign]
-    ART --> IMGSCAN[Image CVE scan]
-    IMGSCAN --> ADMIT[Admission control:<br/>verify signature + policy]
-    ADMIT --> RUN[Runtime security<br/>Falco]
+    SRC["commit موقّع<br/>+ حماية الفرع"] --> DEP["فحص التبعيات<br/>+ تثبيت الإصدارات + SBOM"]
+    DEP --> BUILD["بناء معزول، سريع الزوال<br/>- منشأ SLSA"]
+    BUILD --> SAST["SAST + فحص الأسرار"]
+    SAST --> ART["وقّع المصنوعة<br/>Cosign"]
+    ART --> IMGSCAN["فحص ثغرات CVE للصورة"]
+    IMGSCAN --> ADMIT["التحكم بالقبول:<br/>تحقق من التوقيع + السياسة"]
+    ADMIT --> RUN["أمن وقت التشغيل<br/>Falco"]
     style BUILD fill:#1e3a8a,color:#fff
     style ADMIT fill:#065f46,color:#fff
 ```
@@ -268,15 +268,15 @@ flowchart LR
 
 ```mermaid
 graph LR
-    subgraph loop["The DevSecOps Loop"]
+    subgraph loop["حلقة DevSecOps"]
         direction LR
-        PLAN[Plan<br/>threat model] --> CODE2[Code<br/>secure patterns + SAST in IDE]
-        CODE2 --> BUILD2[Build<br/>dep scan + SBOM]
-        BUILD2 --> TEST2[Test<br/>DAST + IaC scan]
-        TEST2 --> RELEASE[Release<br/>sign + verify]
-        RELEASE --> DEPLOY[Deploy<br/>admission policy]
-        DEPLOY --> OPERATE[Operate<br/>runtime security]
-        OPERATE --> MONITOR[Monitor<br/>SIEM + detection]
+        PLAN["التخطيط<br/>نمذجة التهديدات"] --> CODE2["الترميز<br/>أنماط آمنة + SAST في IDE"]
+        CODE2 --> BUILD2["البناء<br/>فحص التبعيات + SBOM"]
+        BUILD2 --> TEST2["الاختبار<br/>DAST + فحص IaC"]
+        TEST2 --> RELEASE["الإصدار<br/>توقيع + تحقق"]
+        RELEASE --> DEPLOY["النشر<br/>سياسة القبول"]
+        DEPLOY --> OPERATE["التشغيل<br/>أمن وقت التشغيل"]
+        OPERATE --> MONITOR["المراقبة<br/>SIEM + الكشف"]
         MONITOR --> PLAN
     end
     style PLAN fill:#1e3a8a,color:#fff
@@ -301,27 +301,27 @@ graph LR
 
 ```mermaid
 mindmap
-  root((Security in Depth))
-    Vol I - Foundations
-      Network segmentation
-      Defense-in-depth
-      Threat modeling
-    Vol II - Identity
-      "Identity is the perimeter"
-      Zero Trust
-      Least privilege
-    Vol III - Cryptography
-      Confidentiality + integrity
-      Key management
-      Post-quantum
-    Vol IV - Detection
-      Assume breach
-      Detect on behavior
-      Respond + learn
-    Vol V - Cloud-Native
-      Shared responsibility
-      Shift-left
-      Supply chain trust
+  root((الأمن في العمق))
+    المجلد الأول - الأساسيات
+      تجزئة الشبكة
+      الدفاع في العمق
+      نمذجة التهديدات
+    المجلد الثاني - الهوية
+      "الهوية هي المحيط"
+      الثقة الصفرية
+      أقل الامتيازات
+    المجلد الثالث - التشفير
+      السرية + النزاهة
+      إدارة المفاتيح
+      ما بعد الكم
+    المجلد الرابع - الكشف
+      افتراض الاختراق
+      الكشف بناءً على السلوك
+      الاستجابة + التعلم
+    المجلد الخامس - السحابة الأصيلة
+      المسؤولية المشتركة
+      التحول لليسار
+      الثقة في سلسلة التوريد
 ```
 
 جدار الحماية يفترض أن الشبكة قد تُخترق، لذا الهوية تتحقق من كل طلب. الهوية تفترض أن بيانات الاعتماد قد تُسرق، لذا التشفير يجعل الجلسة غير قابلة للتزوير وسرية أمامية. التشفير يفترض أن نقطة النهاية لا تزال ممكنة الامتلاك، لذا الكشف يراقب السلوك الذي يفضحها. الكشف يفترض أن حمل العمل نفسه قد يُسمم، لذا سلسلة التوريد تثبت أن ما نشحنه هو ما بنيناه. لا يثق أي من هذه الضوابط بالآخرين ليكونوا مثاليين، وذلك `عدم الثقة، المصمم في البنية،` هو الفن بأكمله.

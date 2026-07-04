@@ -49,7 +49,7 @@ Her kimlik doğrulama şeması, üç klasik faktörün ve iki modern eklemenin k
 quadrantChart
     title Kimlik Doğrulama Yöntemlerinin Oltalama Direnci ve Kullanıcı Zorluğu
     x-axis Düşük Zorluk --> Yüksek Zorluk
-    y-axis Zayıf (Oltalanabilir) --> Güçlü (Oltalanamaz)
+    y-axis "Zayıf (Oltalanabilir)" --> "Güçlü (Oltalanamaz)"
     quadrant-1 Altın Standart
     quadrant-2 Güvenli ama Hantal
     quadrant-3 Eski - Kullanımdan Kaldır
@@ -58,7 +58,7 @@ quadrantChart
     SMS OTP: [0.35, 0.22]
     TOTP App: [0.45, 0.40]
     Push Approve: [0.25, 0.35]
-    Passkey (FIDO2): [0.20, 0.92]
+    "Passkey (FIDO2)": [0.20, 0.92]
     Hardware Key: [0.55, 0.95]
 ```
 
