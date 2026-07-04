@@ -78,25 +78,6 @@ export const arabicTagMap: Record<string, string> = {
   VSCode: "VSCode",
 };
 
-export const arabicCategoryMap: Record<string, string> = {
-  "Financial Market": "السوق المالية",
-  "Artificial Intelligence": "الذكاء الصنعي",
-  Engineering: "الهندسة",
-  Guide: "دليل",
-  Tutorial: "دروس تعليمية",
-  "Advanced Programming": "برمجة متقدمة",
-  "Backend Development": "تطوير الخلفية",
-  "Version Control": "إدارة النسخ",
-  "Software Development": "تطوير البرمجيات",
-  Cybersecurity: "الأمن السيبراني",
-  Mathematics: "الرياضيات",
-  "Network Engineering": "هندسة الشبكات",
-};
-
 export function translateArabicTag(tag: string): string {
   return arabicTagMap[tag.trim()] || tag;
-}
-
-export function translateArabicCategory(category: string): string {
-  return arabicCategoryMap[category.trim()] || category;
 }
