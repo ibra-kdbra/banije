@@ -1,5 +1,11 @@
 @reference "tailwindcss";
 
+/* Match main.css: scope `dark:` to the site's `.dark` class instead of the
+   `@media (prefers-color-scheme: dark)` default. Without this, `@apply dark:*`
+   below (e.g. .steps-title, copy button) fired on OS-dark systems even in the
+   site's light theme, producing white-on-white text. */
+@custom-variant dark (&:is(.dark *));
+
 .custom-md {
   h1 {
     @apply text-3xl;
@@ -145,9 +151,144 @@
     margin: 1em 0;
   }
 
-  .mermaid {
-    @apply flex justify-center my-4;
-    direction: ltr !important;
+  /* ------------------------------------------------------------------ */
+  /*  Mermaid diagrams — zoomable, pan/zoom shell (see scripts/mermaid)  */
+  /* ------------------------------------------------------------------ */
+
+  .mermaid-diagram {
+    @apply my-6;
+    /* Force LTR geometry + Latin metrics even inside an RTL (Arabic) page,
+       otherwise the diagram's layout overflows and overlaps ("bloated"). */
+    direction: ltr;
+    text-align: initial;
+  }
+  /* Keep the structural SVG laid out LTR (stable geometry) ... */
+  .mermaid-diagram foreignObject,
+  .mermaid-diagram g {
+    direction: ltr;
+  }
+  /* ... but let each *label* choose its own base direction from its own text
+     (unicode-bidi: plaintext = the CSS equivalent of dir="auto"), so Arabic
+     labels read right-to-left and Latin/numeric ones stay left-to-right. */
+  .mermaid-diagram foreignObject div,
+  .mermaid-diagram .nodeLabel,
+  .mermaid-diagram .edgeLabel,
+  .mermaid-diagram .label,
+  .mermaid-diagram span.nodeLabel,
+  .mermaid-diagram text,
+  .mermaid-diagram tspan {
+    unicode-bidi: plaintext;
+  }
+
+  /* Hidden raw source; also the fallback if JS never runs. */
+  .mermaid-src {
+    @apply hidden;
+  }
+
+  .mermaid-zoom {
+    @apply relative overflow-hidden;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--line-divider);
+    background-color: var(--card-bg);
+    /* faint dot grid, tinted with the theme's own divider color */
+    background-image: radial-gradient(
+      var(--line-color) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+    background-position: -1px -1px;
+  }
+
+  .mermaid-stage {
+    @apply flex items-center justify-center;
+    /* JS sets an aspect-adaptive height inline; this is the pre-JS fallback. */
+    height: clamp(16rem, 46vh, 32rem);
+    padding: 1rem;
+    cursor: grab;
+    touch-action: none;
+    overflow: hidden;
+  }
+  .mermaid-stage.is-grabbing {
+    cursor: grabbing;
+  }
+
+  .mermaid-canvas {
+    @apply flex items-center justify-center;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  /* Smooth button/wheel zoom, but stay instant while dragging. */
+  .mermaid-stage:not(.is-grabbing) .mermaid-canvas {
+    transition: transform 0.15s ease-out;
+  }
+  .mermaid-canvas svg {
+    display: block;
+    user-select: none;
+  }
+
+  /* Toolbar — a solid float panel matching the site's other floating panels.
+     Always visible (discoverable on touch), lifts subtly on hover. */
+  .mermaid-zoom-toolbar {
+    @apply absolute flex items-center gap-0.5 p-1;
+    inset-inline-end: 0.6rem;
+    inset-block-start: 0.6rem;
+    direction: ltr;
+    border-radius: 9999px;
+    background: var(--float-panel-bg);
+    border: 1px solid var(--line-divider);
+    box-shadow: 0 4px 16px -6px rgba(0, 0, 0, 0.3);
+    opacity: 0.72;
+    transition:
+      opacity 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .mermaid-zoom:hover .mermaid-zoom-toolbar,
+  .mermaid-zoom:focus-within .mermaid-zoom-toolbar,
+  .mermaid-stage.is-zoomed + .mermaid-zoom-toolbar {
+    opacity: 1;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.38);
+  }
+
+  .mermaid-toolbar-sep {
+    width: 1px;
+    align-self: stretch;
+    margin: 0.15rem 0.15rem;
+    background: var(--line-divider);
+  }
+
+  .mermaid-zoom-toolbar button {
+    @apply flex items-center justify-center h-8 w-8 rounded-full cursor-pointer;
+    color: var(--btn-content);
+    background: transparent;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      transform 0.1s ease;
+  }
+  .mermaid-zoom-toolbar button:hover {
+    background: var(--btn-plain-bg-hover);
+    color: var(--primary);
+  }
+  .mermaid-zoom-toolbar button:active {
+    transform: scale(0.9);
+    background: var(--btn-plain-bg-active);
+  }
+
+  .mermaid-error {
+    @apply flex flex-col gap-2 p-4;
+    border-radius: var(--radius-large);
+    border: 1px solid oklch(0.6 0.18 25 / 0.4);
+    background: oklch(0.6 0.18 25 / 0.08);
+  }
+  .mermaid-error-title {
+    @apply text-sm font-semibold;
+    color: oklch(0.6 0.2 25);
+  }
+  .mermaid-error pre {
+    @apply text-xs overflow-x-auto m-0 p-0 bg-transparent;
+    direction: ltr;
   }
 
   /* Hide the auto-generated "Footnotes" header from remark-gfm */
@@ -158,124 +299,282 @@
 
   /* Timeline / Steps component styling */
   .steps-timeline {
-    @apply relative my-10 pl-4;
+    @apply relative my-10 ps-4;
   }
 
+  /* Native <details>. The disclosure triangle is removed; open/close visuals
+     are driven purely by the [open] attribute — no JavaScript.
+     All offsets use logical properties (ps/pe, start, border-inline-start) so
+     the whole timeline mirrors correctly on RTL (Arabic) pages. */
   .steps-item {
-    @apply relative pl-8 pb-8 transition-all duration-300;
-
-    &::before {
-      content: "";
-      @apply absolute left-[9px] top-[1.75rem] bottom-0 transition-all duration-300;
-      border-left: 2px dashed rgba(255, 255, 255, 0.12);
-    }
-
-    &:last-child {
-      @apply pb-0 mb-0;
-      &::before {
-        @apply hidden;
-      }
-    }
+    @apply relative ps-8 pb-8 transition-all duration-300;
+  }
+  .steps-item::before {
+    content: "";
+    @apply absolute start-[9px] top-[1.75rem] bottom-0 transition-all duration-300;
+    border-inline-start: 2px dashed var(--line-color);
+  }
+  .steps-item:last-child {
+    @apply pb-0 mb-0;
+  }
+  .steps-item:last-child::before {
+    @apply hidden;
   }
 
+  /* <summary> = header */
   .steps-header {
     @apply flex items-center justify-between cursor-pointer py-2 px-3 -mx-3 rounded-xl select-none transition-all duration-200;
-    
-    &:hover {
-      background: var(--btn-plain-bg-hover);
-      
-      .steps-marker {
-        @apply border-[var(--primary)] scale-110 shadow-lg shadow-[var(--primary)]/20;
-      }
-      
-      .steps-title {
-        @apply text-[var(--primary)];
-      }
-    }
+    list-style: none;
+  }
+  .steps-header::-webkit-details-marker {
+    display: none;
+  }
+  .steps-header:hover {
+    background: var(--btn-plain-bg-hover);
+  }
+  .steps-header:hover .steps-marker {
+    @apply border-[var(--primary)] scale-110 shadow-lg shadow-[var(--primary)]/20;
+  }
+  .steps-header:hover .steps-title {
+    @apply text-[var(--primary)];
+  }
+  /* keyboard focus ring (native summary is focusable) */
+  .steps-header:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 
   .steps-marker {
-    @apply absolute left-0 top-[0.6rem] w-5 h-5 rounded-full border-2 border-white/20 dark:border-white/15 bg-[var(--card-bg)] transition-all duration-300 z-10 flex items-center justify-center;
+    @apply absolute start-0 top-[0.6rem] w-5 h-5 rounded-full border-2 bg-[var(--card-bg)] transition-all duration-300 z-10 flex items-center justify-center;
+    border-color: var(--line-divider);
   }
-
   .steps-marker-inner {
-    @apply w-1.5 h-1.5 rounded-full bg-white/30 dark:bg-white/20 transition-all duration-300;
+    @apply w-1.5 h-1.5 rounded-full transition-all duration-300;
+    background: var(--btn-content);
+    opacity: 0.55;
   }
 
-  .steps-item.open {
-    &::before {
-      border-left-style: solid;
-      border-left-color: var(--primary);
-      opacity: 0.6;
-    }
-
-    .steps-marker {
-      @apply border-[var(--primary)] bg-[var(--primary)] shadow-lg shadow-[var(--primary)]/30 scale-110;
-    }
-    
-    .steps-marker-inner {
-      @apply bg-white scale-125;
-    }
-
-    .steps-chevron {
-      @apply rotate-180 text-[var(--primary)];
-    }
-    
-    .steps-title {
-      @apply text-[var(--primary)] font-extrabold;
-    }
+  /* ---- open state (native [open] attribute) ---- */
+  .steps-item[open]::before {
+    border-inline-start-style: solid;
+    border-inline-start-color: var(--primary);
+    opacity: 0.6;
   }
-
-  .steps-title-group {
-    @apply flex flex-col flex-1 pr-4;
+  .steps-item[open] > .steps-header .steps-marker {
+    @apply border-[var(--primary)] bg-[var(--primary)] shadow-lg shadow-[var(--primary)]/30 scale-110;
   }
-
-  .steps-title {
-    @apply font-bold text-[1.2rem] text-black/90 dark:text-white/90 leading-snug transition-colors duration-200;
+  .steps-item[open] > .steps-header .steps-marker-inner {
+    @apply scale-125;
+    background: #fff;
+    opacity: 1;
   }
-
-  .steps-subtitle {
-    @apply text-xs font-semibold tracking-wider uppercase text-black/40 dark:text-white/40 mt-1 transition-colors duration-200;
+  .steps-item[open] > .steps-header .steps-chevron {
+    @apply rotate-180 text-[var(--primary)];
   }
-
-  .steps-item.open .steps-subtitle {
+  .steps-item[open] > .steps-header .steps-title {
+    @apply text-[var(--primary)] font-extrabold;
+  }
+  .steps-item[open] > .steps-header .steps-subtitle {
     @apply text-[var(--primary)] opacity-80;
   }
 
+  .steps-title-group {
+    @apply flex flex-col flex-1 pe-4;
+  }
+  .steps-title {
+    @apply font-bold text-[1.2rem] text-black/90 dark:text-white/90 leading-snug transition-colors duration-200;
+  }
+  .steps-subtitle {
+    @apply text-xs font-semibold tracking-wider uppercase text-black/40 dark:text-white/40 mt-1 transition-colors duration-200;
+  }
   .steps-chevron {
-    @apply text-black/30 dark:text-white/30 transition-all duration-300 mr-2 flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/5 dark:hover:bg-white/5;
-  }
-
-  /* Smooth height transition wrapper */
-  .steps-body-wrapper {
-    @apply grid transition-all duration-300 ease-in-out;
-    grid-template-rows: 0fr;
-    opacity: 0;
-  }
-
-  .steps-item.open .steps-body-wrapper {
-    grid-template-rows: 1fr;
-    @apply opacity-100;
-  }
-
-  .steps-body-inner {
-    @apply overflow-hidden min-h-0;
+    @apply text-black/30 dark:text-white/30 transition-all duration-300 me-2 flex items-center justify-center w-8 h-8 rounded-full;
   }
 
   .steps-body {
-    @apply text-black/70 dark:text-white/70 text-[0.975rem] leading-relaxed pt-3 pb-2 pr-2 transition-all duration-300 transform -translate-y-2;
-    
-    /* Elegant line indicator on the left of content */
-    border-left: 2px solid rgba(255, 255, 255, 0.05);
-    @apply pl-4 ml-1;
-    
-    strong {
-      @apply text-black/90 dark:text-white/90 font-semibold;
-    }
+    @apply text-black/70 dark:text-white/70 text-[0.975rem] leading-relaxed pt-3 pb-2 pe-2 ps-4 ms-1;
+    border-inline-start: 2px solid var(--primary);
+  }
+  .steps-body strong {
+    @apply text-black/90 dark:text-white/90 font-semibold;
   }
 
-  .steps-item.open .steps-body {
-    @apply translate-y-0;
-    border-left-color: var(--primary);
+  /* Reveal animation on open — pure CSS, plays as the content renders. */
+  .steps-item[open] > .steps-body {
+    animation: steps-reveal 0.28s ease;
   }
+  @keyframes steps-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .steps-item[open] > .steps-body {
+      animation: none;
+    }
+  }
+}
+
+/* ==================================================================== */
+/*  Mermaid fullscreen lightbox — mounted on <body>, so it lives at the  */
+/*  top level (outside .custom-md) and is always LTR.                    */
+/* ==================================================================== */
+
+body.mermaid-lightbox-open {
+  overflow: hidden;
+}
+
+.mermaid-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: ltr;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: color-mix(in oklch, var(--page-bg, #0b0b0d) 82%, transparent);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+.mermaid-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mermaid-lightbox-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+.mermaid-lightbox-stage.is-grabbing {
+  cursor: grabbing;
+}
+
+.mermaid-lightbox-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+}
+.mermaid-lightbox-stage:not(.is-grabbing) .mermaid-lightbox-content {
+  transition: transform 0.13s ease-out;
+}
+.mermaid-lightbox-content svg {
+  display: block;
+  user-select: none;
+}
+.mermaid-lightbox-content foreignObject,
+.mermaid-lightbox-content g {
+  direction: ltr;
+}
+.mermaid-lightbox-content foreignObject div,
+.mermaid-lightbox-content .nodeLabel,
+.mermaid-lightbox-content .edgeLabel,
+.mermaid-lightbox-content .label,
+.mermaid-lightbox-content span.nodeLabel,
+.mermaid-lightbox-content text,
+.mermaid-lightbox-content tspan {
+  unicode-bidi: plaintext;
+}
+
+.mermaid-lightbox-close {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2rem);
+  inset-inline-end: clamp(1rem, 3vw, 2rem);
+  /* Above the pan/zoom stage, otherwise the stage (painted later in DOM order,
+     with touch-action:none) sits on top of the button and swallows taps. */
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(2.75rem, 10vw, 3.25rem);
+  width: clamp(2.75rem, 10vw, 3.25rem);
+  border-radius: 9999px;
+  cursor: pointer;
+  color: var(--btn-content);
+  background: var(--float-panel-bg);
+  border: 1px solid var(--line-divider);
+  box-shadow: 0 4px 16px -6px rgba(0, 0, 0, 0.3);
+  /* Instant tap on touch devices: no 300ms delay, no double-tap zoom, no
+     grey tap flash. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.13s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.mermaid-lightbox-close:hover {
+  color: var(--primary);
+  background: var(--btn-plain-bg-hover);
+  transform: scale(1.06);
+}
+.mermaid-lightbox-close:active {
+  transform: scale(0.88);
+}
+@media (hover: none) {
+  /* On touch, :active is the only feedback — make it read clearly. */
+  .mermaid-lightbox-close:active {
+    background: var(--btn-plain-bg-active);
+    color: var(--primary);
+  }
+}
+
+/* Self-contained (the .mermaid-zoom-toolbar base lives inside .custom-md and
+   would not reach this body-level element). */
+.mermaid-lightbox-toolbar {
+  position: absolute;
+  bottom: clamp(1rem, 4vw, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3; /* above the pan/zoom stage, same reason as the close button */
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 9999px;
+  direction: ltr;
+  background: var(--float-panel-bg);
+  border: 1px solid var(--line-divider);
+  box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.4);
+}
+.mermaid-lightbox-toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: var(--btn-content);
+  background: transparent;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+.mermaid-lightbox-toolbar button:hover {
+  background: var(--btn-plain-bg-hover);
+  color: var(--primary);
+}
+.mermaid-lightbox-toolbar button:active {
+  transform: scale(0.9);
 }
