@@ -399,24 +399,28 @@
     @apply text-black/90 dark:text-white/90 font-semibold;
   }
 
-  /* Reveal animation on open — pure CSS, plays as the content renders. */
+  /* Reveal animation on open — pure CSS, plays as the content renders.
+     The @keyframes lives at the top level (just below): a nested @keyframes
+     inside a style rule is invalid CSS and the minifier rejects it. */
   .steps-item[open] > .steps-body {
     animation: steps-reveal 0.28s ease;
-  }
-  @keyframes steps-reveal {
-    from {
-      opacity: 0;
-      transform: translateY(-6px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
   @media (prefers-reduced-motion: reduce) {
     .steps-item[open] > .steps-body {
       animation: none;
     }
+  }
+}
+
+/* Steps reveal keyframes — must be top-level, not nested inside .custom-md. */
+@keyframes steps-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
