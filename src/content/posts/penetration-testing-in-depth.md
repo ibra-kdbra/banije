@@ -87,18 +87,17 @@ The success and legality of any penetration test depend entirely on the pre-enga
 
 Assessments are categorized based on the amount of preliminary information provided to the testing team:
 
-```
-+-------------------------------------------------------------------------------+
-|                             PENETRATION TESTING MODELS                        |
-+-------------------+---------------------------+-------------------------------+
-| Black Box         | Gray Box                  | White Box                     |
-| (Zero Knowledge)  | (Partial Knowledge)       | (Full Knowledge)              |
-+-------------------+---------------------------+-------------------------------+
-| • Target domain   | • Standard user account   | • Full source code access     |
-|   or IP list only | • API documentation       | • Network architecture maps   |
-| • Simulates an    | • Network diagram subset  | • Cloud IAM configurations    |
-|   external threat | • Maximizes cost-to-value | • White-hat developer access  |
-+-------------------+---------------------------+-------------------------------+
+```mermaid
+graph LR
+    subgraph BlackBox [Black Box: Zero Knowledge]
+        B1["Target IP/Domain List Only"] --> B2["Simulates External Unauthenticated Adversary"]
+    end
+    subgraph GrayBox [Gray Box: Partial Knowledge]
+        G1["Standard User Account & API Specs"] --> G2["Simulates Malicious Insider / Compromised Tenant"]
+    end
+    subgraph WhiteBox [White Box: Full Knowledge]
+        W1["Full Source Code, IAM & Architecture"] --> W2["Comprehensive Code Audit & White-Hat Review"]
+    end
 ```
 
 :::important[Rules of Engagement (RoE) Requirements]
@@ -160,23 +159,30 @@ graph TD
 
 Active reconnaissance interacts directly with network services to identify open ports, service versions, and protocol configurations.
 
-#### Port Scanning Architecture
+#### Port Scanning Protocol State Machines
 
 At the transport layer, port scanners determine service states by analyzing TCP state machines:
 
-```
-1. TCP SYN (Half-Open) Scan:
-   Tester  ──────────[ SYN (Seq=x) ]──────────>  Target (Port 443)
-   Tester  <───────[ SYN-ACK (Seq=y) ]─────────  Target [Port Open]
-   Tester  ──────────[ RST (Seq=x+1) ]─────────> Target [Teardown Connection]
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tester as Scanner (Tester)
+    participant OpenTarget as Target: Port 443 (Open)
+    participant ClosedTarget as Target: Port 2222 (Closed)
+    participant FilteredTarget as Target: Port 3389 (Filtered)
 
-2. Closed Port Response:
-   Tester  ──────────[ SYN (Seq=x) ]──────────>  Target (Port 2222)
-   Tester  <────────[ RST-ACK ]───────────────  Target [Port Closed]
+    Note over Tester,OpenTarget: 1. TCP SYN Half-Open Scan
+    Tester->>OpenTarget: TCP SYN (Seq=x)
+    OpenTarget-->>Tester: TCP SYN-ACK (Seq=y, Ack=x+1)
+    Tester->>OpenTarget: TCP RST (Seq=x+1) [Teardown Handshake]
 
-3. Filtered Port (Firewall Drop):
-   Tester  ──────────[ SYN (Seq=x) ]──────────>  Target (Port 3389)
-   Tester  <───────────[ No Response / ICMP Unreachable ]─────────── Target [Filtered]
+    Note over Tester,ClosedTarget: 2. Closed Port Handling
+    Tester->>ClosedTarget: TCP SYN (Seq=x)
+    ClosedTarget-->>Tester: TCP RST-ACK
+
+    Note over Tester,FilteredTarget: 3. Filtered State (Firewall Drop)
+    Tester->>FilteredTarget: TCP SYN (Seq=x)
+    FilteredTarget--xTester: Packet Dropped / No Response
 ```
 
 - **TCP SYN Scan (`-sS`):** Sends a SYN packet. If SYN-ACK is returned, the port is open; the scanner immediately sends a RST packet to tear down the half-open handshake, avoiding full socket allocation in application logs.
@@ -189,22 +195,14 @@ At the transport layer, port scanners determine service states by analyzing TCP 
 
 Once open services are catalogued, the assessment transitions from discovery to vulnerability analysis. This step determines whether discovered software versions or configurations contain known security defects (CVEs), architectural weaknesses, or logic bugs.
 
-```
-       Identified Service Footprint
-                    │
-                    ▼
-     ┌──────────────────────────────┐
-     │  Vulnerability Classification │
-     └──────┬────────────────┬──────┘
-            │                │
-     Known CVEs        Misconfigurations & Logic Flaws
-     (NVD / ExploitDB) (Manual Verification)
-            │                │
-            └───────┬────────┘
-                    │
-                    ▼
-       Attack Surface Graphing
-       (Prioritized Exploitation Paths)
+```mermaid
+graph TD
+    A["Identified Service Footprint & Port Maps"] --> B["Vulnerability Analysis Layer"]
+    B --> C["Known CVE Database Matching (NVD / ExploitDB)"]
+    B --> D["Architectural Misconfigurations & Logic Flaws"]
+    C --> E["Attack Surface Graph Construction"]
+    D --> E
+    E --> F["Prioritized Exploitation Paths & Threat Proofs"]
 ```
 
 ### 5.1 Automated Vulnerability Scanning vs. Manual Verification
@@ -224,6 +222,8 @@ A professional penetration test uses automated scanning solely for baseline disc
 ## 6.0 Network & Enterprise Infrastructure Testing
 
 In corporate networks, the primary target is frequently the enterprise identity provider—most commonly **Microsoft Active Directory (AD)** or hybrid **Entra ID (Azure AD)**. Penetration testing in enterprise network environments revolves around exploiting Kerberos protocol mechanics, misconfigured delegations, and structural privilege relationships.
+
+::interactive{id="ad-architecture" src="/images/posts/ad-network-architecture.png" data="src/data/interactive/ad_attack_paths.json" overview="Interactive map of an enterprise network infrastructure: explore key security boundaries, Active Directory identity hubs, application clusters, and telemetry collectors across the attack surface."}
 
 ```mermaid
 graph TD
@@ -273,11 +273,10 @@ Active Directory supports delegation, allowing services to impersonate users whe
 
 When testing isolated internal networks, testers establish secure tunnels through dual-homed compromised hosts to reach deeper network enclaves:
 
-```
-[ External Tester ] ───────> [ Compromised DMZ Host ] ───────> [ Internal Network (10.0.0.0/8) ]
-   (198.51.100.5)                 (Dual-Homed)                        (Domain Controllers,
-                               Eth0: 198.51.100.20                     Databases, File Shares)
-                               Eth1: 10.0.1.5
+```mermaid
+graph LR
+    Tester["External Tester<br/>198.51.100.5"] -->|"SOCKS5 SSH Tunnel / Chisel"| DMZ["Compromised DMZ Host<br/>Eth0: 198.51.100.20<br/>Eth1: 10.0.1.5"]
+    DMZ -->|"Pivoted Encrypted Traffic"| InternalNet["Internal Subnet (10.0.0.0/8)<br/>Domain Controllers, DBs, File Shares"]
 ```
 
 - **SOCKS5 Dynamic Port Forwarding (SSH):** Establishes an encrypted proxy tunnel routing arbitrary TCP traffic into the internal subnet:
@@ -371,14 +370,10 @@ JWTs are ubiquitously used for stateless authentication. Penetration testing eva
 
 Enterprise architectures have largely migrated to Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), and orchestrated Kubernetes clusters. Penetration testing in cloud environments focuses on IAM policy misconfigurations, metadata abuse, and container escape vectors.
 
-```
-       Cloud Penetration Testing Vectors
-                       │
-       ┌───────────────┴───────────────┐
-       ▼                               ▼
-  IAM Privilege Escalation      Kubernetes / Container Security
-  (AssumeRole, PassRole,        (Privileged Containers, Host Mounts,
-   Policy Attachment)            ServiceAccount Token Abuse)
+```mermaid
+graph TD
+    Cloud["Cloud Penetration Testing Assessment Vectors"] --> IAM["IAM Privilege Escalation & Policy Chains<br/>AssumeRole, PassRole, Policy Versions"]
+    Cloud --> K8s["Kubernetes & Container Security<br/>Privileged Flags, Host Sockets, RBAC Abuse"]
 ```
 
 ### 8.1 AWS IAM Privilege Escalation Chains
@@ -420,15 +415,10 @@ graph TD
 
 Once an initial foothold is secured on a host, post-exploitation determines the extent of access an attacker could achieve.
 
-```
-       Initial Foothold (Low Privilege)
-                     │
-       ┌─────────────┴─────────────┐
-       ▼                           ▼
-  Linux Escalation            Windows Escalation
-  • SUID/SGID Abuse           • Token Impersonation (SeImpersonate)
-  • Sudo Wildcard Flaws       • Unquoted Service Paths
-  • Cron / Systemd Hijack     • Credential Harvesting (LSASS/DPAPI)
+```mermaid
+graph TD
+    Foothold["Initial Compromise / Low-Privilege Foothold"] --> Linux["Linux Privilege Escalation<br/>SUID Binaries, Sudo Wildcards, Cron Hijacking"]
+    Foothold --> Win["Windows Privilege Escalation<br/>Token Impersonation, Unquoted Service Paths, LSASS"]
 ```
 
 ### 9.1 Linux Privilege Escalation Vectors
