@@ -102,25 +102,12 @@ $$S_B(M) = k_B \ln \Omega(M)$$
 
 where $k_B \approx 1.380649 \times 10^{-23} \text{ J}\cdot\text{K}^{-1}$ is Boltzmann's constant.
 
-```
-  Phase Space (Γ)
-  ┌─────────────────────────────────────────────────────────────┐
-  │                                                             │
-  │  ┌────────────┐                                             │
-  │  │  M_initial │                                             │
-  │  │ (Low S)    │                                             │
-  │  │  Ω_small   │                                             │
-  │  └──────┬─────┘                                             │
-  │         │                                                   │
-  │         │ Evolution under Liouville Dynamics                │
-  │         ▼                                                   │
-  │  ┌───────────────────────────────────────────────────────┐  │
-  │  │                   M_equilibrium                       │  │
-  │  │                     (High S)                          │  │
-  │  │                      Ω_max                            │  │
-  │  │                                                       │  │
-  │  └───────────────────────────────────────────────────────┘  │
-  └─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph PhaseSpace [Phase Space Dynamics in 6N Dimensions]
+        M0["Initial Macrostate M_0<br/>Low Entropy (S_0 = k_B ln Omega_small)<br/>Extremely Tiny Phase Space Volume"] -->|"Liouville Evolution along Geodesics"| M1["Intermediate Macrostate M_t<br/>Expanding Accessible Volume"]
+        M1 -->|"Combinatorial Inevitability"| MMax["Equilibrium Macrostate M_max<br/>Maximal Entropy (S_max = k_B ln Omega_max)<br/>Occupies Overwhelming Bulk of Phase Space (Omega_max ~ e^N)"]
+    end
 ```
 
 Because the equilibrium macrostate occupies an overwhelmingly dominant fraction of the available phase space volume ($\Omega_{\text{max}} / \Omega_{\text{initial}} \sim e^{N}$), a system prepared in an atypical, low-entropy configuration will, with statistical certainty, evolve toward states of vastly greater volume simply as a matter of combinatorial probability.
@@ -137,9 +124,14 @@ Boltzmann's statistical formulation met fierce theoretical challenges from his c
 
 If every microscopic trajectory has an exact time-reversed counterpart, how can entropy increase more often than it decreases?
 
-```
-Forward:  State A (Low S)  ═════[ Newton ]═════>  State B (High S)
-Reverse:  State B* (High S) ═════[ Newton ]═════>  State A* (Low S)
+```mermaid
+sequenceDiagram
+    participant StateA as State A (Low Entropy)
+    participant StateB as State B (High Entropy)
+    Note over StateA,StateB: Forward Trajectory: Deterministic Newton/Hamilton Evolution
+    StateA->>StateB: Natural Time Evolution (+t, +p_i)
+    Note over StateA,StateB: Time-Reversed State B* (Velocity Inversion: p_i -> -p_i)
+    StateB-->>StateA: Theoretical Reversed Trajectory (-t, -p_i)
 ```
 
 **Resolution:**
@@ -167,12 +159,15 @@ Philosopher of physics David Albert and cosmologist Sean Carroll formulate this 
 
 > **The Past Hypothesis:** The early universe, shortly after the Big Bang, began in a state of extraordinarily low gravitational and thermodynamic entropy.
 
-```
-       Big Bang                    Cosmic Expansion                Heat Death
-  (Low Gravitational S)       (Structure Formation & Stars)     (Maximum Entropy)
-      │                                   │                           │
-      ├───────────────────────────────────┼───────────────────────────┤
-    t = 0                               Now (~13.8 Gyr)           t -> ∞
+```mermaid
+timeline
+    title The Cosmological Entropic Evolution Timeline
+    t = 0 (Big Bang) : Ultralow Gravitational Entropy : Homogeneous Radiation Plasma (CMB)
+    t = 100 Myr - 1 Gyr : First Stars & Protogalaxies : Gravitational Clumping
+    t = 13.8 Gyr (Present) : Planetary Biospheres & Evolution : Local Free Energy Dissipation
+    t -> 10^14 yr : Degenerate Era : Stellar Burnout & White Dwarfs
+    t -> 10^100 yr : Black Hole Era : Supermassive Black Holes Maximizing S_BH
+    t -> ∞ : Dark Era : Complete Hawking Evaporation & Heat Death
 ```
 
 ### The Gravitational Paradox of the Early Universe
