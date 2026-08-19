@@ -20,10 +20,13 @@ In classical Newtonian mechanics, time was conceived as a cosmic clock ticking u
 
 Under this paradigm, every event in the cosmos shared a single, universal coordinate $t$. Two events occurring simultaneously for an observer on Earth were undeniably simultaneous for an observer orbiting Jupiter or traveling at arbitrary velocities across deep space.
 
-```
-Newtonian Time (Absolute 3D Space + 1D Universal Time):
-Universe(t_0) ──────> Universe(t_1) ──────> Universe(t_2) ──────> Universe(t_3)
-[Universal "Now" slices across all of space simultaneously]
+```mermaid
+graph LR
+    subgraph NewtonianAbsoluteTime [Newtonian Paradigm: 1D Absolute Time + Rigid 3D Space]
+        T0["Cosmic State t_0"] --> T1["Cosmic State t_1"]
+        T1 --> T2["Cosmic State t_2"]
+        T2 --> T3["Cosmic State t_3"]
+    end
 ```
 
 This comfortable architecture collapsed in 1905 when Albert Einstein resolved the conflict between Newtonian kinematics and Maxwell's electrodynamics. By accepting that **the speed of light in a vacuum ($c \approx 299,792,458 \text{ m/s}$) is invariant for all inertial observers**, Einstein demonstrated that time is neither absolute nor universal: **simultaneity is relative**.
@@ -44,20 +47,16 @@ $$ds^2 = \eta_{\mu\nu} dx^\mu dx^\nu = -c^2 dt^2 + dx^2 + dy^2 + dz^2$$
 
 While different observers in relative motion disagree on elapsed spatial distance $\Delta x$ and elapsed temporal interval $\Delta t$, all inertial observers compute the exact same invariant interval $ds^2$.
 
-```
-                       Time (ct)
-                           ▲
-                           │     / Future Light Cone
-                           │    /  (ds² < 0, Timelike)
-                           │   /
-                           │  /
-                           │ /
-      ─────────────────────┼─────────────────────► Space (x)
-                           │ \ (Present Event / Origin)
-                           │  \
-                           │   \
-                           │    \  Past Light Cone
-                           │     \ (ds² < 0, Timelike)
+```mermaid
+graph TD
+    subgraph MinkowskiCone [Minkowski Spacetime Light Cone Structure]
+        FLC["Future Light Cone<br/>(ds² < 0, Timelike Future: v < c)"]
+        Origin["Present Event / Origin (x=0, t=0)"]
+        PLC["Past Light Cone<br/>(ds² < 0, Timelike Past: v < c)"]
+        Elsewhere["Elsewhere Domain: Causally Disconnected (ds² > 0, Spacelike)"]
+    end
+    PLC --> Origin
+    Origin --> FLC
 ```
 
 ### 2.2 Causal Classification of Intervals
@@ -130,18 +129,11 @@ $$d\tau = \sqrt{1 - \frac{2GM}{r c^2}} \, dt = \sqrt{1 - \frac{r_s}{r}} \, dt$$
 
 where $r_s = \frac{2GM}{c^2}$ is the Schwarzschild radius (event horizon).
 
-```
- Gravitational Potential Well
- 
-  Far Observer (r -> ∞): Clock ticks at rate 1.000000000x  [dt]
-         │
-         │  Weaker Gravitational Potential
-         ▼
-  Earth Surface (r = R_E): Clock ticks at (1 - 6.96 x 10^-10)x [dτ_Earth]
-         │
-         │  Intense Gravitational Curvature
-         ▼
-  Near Black Hole Horizon (r -> r_s): Clock ticks at dτ -> 0  [Frozen relative to infinity]
+```mermaid
+graph TD
+    A["Observer at Spatial Infinity (r -> ∞)<br/>Weakest Gravity, Flat Metric: dτ = dt (Baseline Rate: 1.000x)"] -->|"Decreasing Radial Distance r"| B["GPS Orbit (r = 26,560 km)<br/>Gravitational Blueshift dominates: +45.9 μs/day"]
+    B -->|"Entering Deep Terrestrial Well"| C["Earth Surface (r = 6,371 km)<br/>dτ = dt * √(1 - 2GM/rc²) (Slowed by 6.96 x 10^-10)"]
+    C -->|"Approaching Event Horizon"| D["Near Black Hole Horizon (r -> r_s)<br/>Asymptotic Infinite Redshift: dτ -> 0 (Clocks Freeze)"]
 ```
 
 :::tip[Empirical Verification]
@@ -184,17 +176,14 @@ For Observer A, the alien invasion fleet has already launched. For Observer B, t
 
 This leads inexorably to **Eternalism**, commonly known as the **Block Universe**:
 
-```
-                  ┌─────────────────────────────────────────────────┐
-                  │                 THE 4D BLOCK                    │
-                  │                                                 │
-                  │    PAST                PRESENT           FUTURE │
-                  │  (Big Bang)            (Earth)        (Heat Death)
-                  │                                                 │
-                  │   ★ ───────> ★ ─────────> ★ ─────────> ★        │
-                  │   (All events exist statically in spacetime)   │
-                  │                                                 │
-                  └─────────────────────────────────────────────────┘
+```mermaid
+graph LR
+    subgraph BlockUniverse [The 4D Relativistic Block Universe (Eternalism)]
+        Past["Past: Big Bang / CMB Epoch<br/>(Fixed Coordinates)"]
+        Present["Present: Earth / Conscious Now<br/>(Observer Worldline Point)"]
+        Future["Future: Cosmic Degeneracy & Heat Death<br/>(Equally Real Geometry)"]
+    end
+    Past ==> Present ==> Future
 ```
 
 In the Block Universe model:
