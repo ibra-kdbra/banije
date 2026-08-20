@@ -102,11 +102,13 @@ graph LR
 
 :::important[Rules of Engagement (RoE) Requirements]
 A comprehensive Rules of Engagement document must explicitly define:
+
 - **Explicit In-Scope Targets:** Exact FQDNs, CIDR blocks, API endpoints, and physical locations.
 - **Explicit Out-of-Scope Targets:** Third-party cloud infrastructure (e.g., non-dedicated SaaS), shared hosting tenants, critical production databases, and physical branch offices.
 - **Prohibited Techniques:** Explicit restrictions regarding Distributed Denial of Service (DDoS), destructive malware, physical entry, or social engineering targeting non-consenting personnel.
 - **Deconfliction Procedures:** A shared secure communication channel (e.g., Signal or dedicated PGP-encrypted mail) to immediately verify whether observed alerts in the Security Operations Center (SOC) are simulated pentest traffic or a legitimate cyberattack.
 - **Emergency Stop Protocols:** Immediate halt procedures if testing impacts system availability, disrupts business operations, or uncovers an active, third-party intrusion.
+
 :::
 
 ---
@@ -137,6 +139,7 @@ graph TD
 
 1. **Certificate Transparency (CT) Log Analysis:**
    Modern SSL/TLS certificates issued by public Certificate Authorities must be logged in public, append-only CT logs. Querying these logs reveals subdomains, internal hostnames, and newly deployed staging environments:
+
    ```bash
    # Query crt.sh API for subdomains
    curl -s "https://crt.sh/?q=%25.example.com&output=json" | jq -r '.[].name_value' | sort -u
@@ -144,6 +147,7 @@ graph TD
 
 2. **ASN and IP Space Discovery:**
    Identifying an organization's Autonomous System Number (ASN) allows mapping of all announced IP prefixes owned by the company:
+
    ```bash
    # Query BGP routing tables for an organization's ASN
    whois -h whois.radb.net -- '-i origin AS13335' | grep -Eo "([0-9.]+){4}/[0-9]+"
@@ -280,9 +284,11 @@ graph LR
 ```
 
 - **SOCKS5 Dynamic Port Forwarding (SSH):** Establishes an encrypted proxy tunnel routing arbitrary TCP traffic into the internal subnet:
+
   ```bash
   ssh -D 1080 -q -C -N user@dmz-host.example.com
   ```
+
 - **Reverse TCP Tunneling (Chisel / WireGuard):** Used when outbound firewalls block incoming connections but permit outbound HTTP/HTTPS/WebSocket traffic.
 
 ---
@@ -345,12 +351,15 @@ graph LR
 In cloud environments (AWS, GCP, Azure), attackers leverage SSRF to query internal Cloud Instance Metadata Services (IMDS) at the non-routable link-local address `169.254.169.254`, extracting temporary IAM credentials, service account tokens, and environment secrets.
 
 **Remediation:**
+
 1. Enforce **AWS IMDSv2**, which requires session-oriented token handshakes via HTTP `PUT` headers that SSRF payloads cannot easily forge:
+
    ```bash
    # IMDSv2 requires token generation
    TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
    curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/
    ```
+
 2. Implement strict URL destination whitelists at the application layer, resolving DNS records and blocking loopback (`127.0.0.0/8`), link-local (`169.254.0.0/16`), and private RFC 1918 addresses before dispatching HTTP requests.
 
 ### 7.3 JSON Web Token (JWT) Implementation Vulnerabilities
@@ -360,6 +369,7 @@ JWTs are ubiquitously used for stateless authentication. Penetration testing eva
 1. **The `none` Algorithm Attack:** Modifying the header `{"alg": "none", "typ": "JWT"}` and stripping the signature bytes. If the backend fails to enforce a cryptographic algorithm whitelist, it accepts unsigned arbitrary claims.
 2. **Algorithm Key Confusion (RS256 to HS256):** When a server expects an asymmetric RSA signature (RS256 using a private key to sign and a public key to verify), an attacker converts the header to HS256 (HMAC with SHA-256) and signs the token using the server's publicly accessible RSA public key as the HMAC shared secret.
 3. **Weak HMAC Secrets:** Symmetric HMAC keys with low entropy can be cracked offline at billions of guesses per second using Hashcat:
+
    ```bash
    hashcat -m 16500 jwt.txt /usr/share/wordlists/rockyou.txt
    ```
@@ -404,6 +414,7 @@ graph TD
 2. **Dangerous Linux Capabilities:** Capabilities such as `CAP_SYS_ADMIN`, `CAP_SYS_PTRACE`, or `CAP_NET_ADMIN` enable kernel module loading, memory tracing, or traffic manipulation across the host namespace.
 3. **Mounted Docker Sockets (`/var/run/docker.sock`):** If the host Docker daemon socket is mounted into a container, the container can instruct the daemon to launch a sibling container with full host root filesystem access.
 4. **Kubernetes Service Account Tokens:** Pods automatically mount a service account token at `/var/run/secrets/kubernetes.io/serviceaccount/token`. Testers query the Kubernetes API server to audit Role-Based Access Control (RBAC) permissions:
+
    ```bash
    # Check Kubernetes API permissions
    kubectl auth can-i --list --token=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
@@ -424,10 +435,12 @@ graph TD
 ### 9.1 Linux Privilege Escalation Vectors
 
 1. **SUID Binaries with GTFOBins Functions:** Executables with the SUID bit set (`chmod u+s`) execute with the permissions of the file owner (typically `root`). If standard system utilities (such as `find`, `vim`, or `nmap`) carry SUID bits, they can be abused to spawn a root shell:
+
    ```bash
    # Find SUID binaries on the filesystem
    find / -perm -u=s -type f 2>/dev/null
    ```
+
 2. **Sudoers Misconfigurations:** Over-permissive `/etc/sudoers` entries granting passwordless execution (`NOPASSWD:`) of interpreters or scripts that allow arbitrary sub-process spawning.
 3. **Systemd Service / Cron Hijacking:** Writable systemd unit files or cron scripts that execute periodically as `root`.
 
@@ -440,7 +453,7 @@ graph TD
    - `C:\Program.exe`
    - `C:\Program Files\Vendor.exe`
    - `C:\Program Files\Vendor App\service.exe`
-   
+
    If an unprivileged user has write permissions to `C:\`, placing an executable named `Program.exe` results in arbitrary code execution as `SYSTEM` upon service reboot.
 
 ---
@@ -536,7 +549,7 @@ By mapping offensive actions to the **MITRE ATT&CK** matrix, organizations estab
 
 Penetration testing is not a superficial checkmark for compliance audits; it is an indispensable engineering discipline that provides empirical, ground-truth verification of an organization's defensive architecture.
 
-### Core Principles for Technical Practitioners:
+### Core Principles for Technical Practitioners
 
 1. **Never Rely on Assumptions:** A firewall rule, an IAM boundary, or an authentication check must be experimentally validated under adversarial conditions.
 2. **Think in Graphs, Not Lists:** Attackers do not target vulnerabilities in isolation; they traverse interconnected trust graphs across networks, identities, and applications.
