@@ -49,9 +49,14 @@ $$\frac{d (-p_i)}{d(-t)} = \dot{p}_i = -\frac{\partial H}{\partial q_i}$$
 
 The trajectories are invariant under time reversal. If a state trajectory $\gamma(t) = (q(t), p(t))$ is dynamically permissible over $t \in [0, T]$, then the time-reversed trajectory $\mathcal{T}\gamma(t) = (q(T-t), -p(T-t))$ is equally valid under the exact same Hamiltonian.
 
-```
-Forward Trajectory:   (q_0, +p_0) ----[ H ]----> (q_1, +p_1)
-Time-Reversed State:  (q_1, -p_1) ----[ H ]----> (q_0, -p_0)
+```mermaid
+graph LR
+    subgraph ForwardPath ["Forward Phase Trajectory (+t)"]
+        F0["State (q₀, +p₀)"] -->|"Hamiltonian Flow H(q, p)"| F1["State (q₁, +p₁)"]
+    end
+    subgraph ReversedPath ["Time-Reversed Trajectory (-t)"]
+        R1["State (q₁, -p₁)"] -->|"Velocity Inversion (p → -p)"| R0["State (q₀, -p₀)"]
+    end
 ```
 
 :::note[Core Principle]
@@ -77,9 +82,9 @@ For any spontaneous process in an isolated system, the total thermodynamic entro
 
 Sir Arthur Eddington coined the term **The Arrow of Time** in his 1928 Gifford Lectures, asserting that the entropy gradient is the single physical property that draws a distinction between future and past on the macroscopic scale.
 
-```
-       Low Entropy (Past)  ───────────>  High Entropy (Future)
-           [Ordered]                         [Disordered / Probable]
+```mermaid
+graph LR
+    Low["Low Entropy (Past)<br/>Highly Ordered & Atypical Macrostate"] -->|"Thermodynamic Arrow (ΔS ≥ 0)"| High["High Entropy (Future)<br/>Disordered & High-Probability Equilibrium"]
 ```
 
 ---
