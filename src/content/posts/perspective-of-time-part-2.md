@@ -178,12 +178,13 @@ This leads inexorably to **Eternalism**, commonly known as the **Block Universe*
 
 ```mermaid
 graph LR
-    subgraph BlockUniverse [The 4D Relativistic Block Universe (Eternalism)]
+    subgraph BlockUniverse ["The 4D Relativistic Block Universe (Eternalism)"]
         Past["Past: Big Bang / CMB Epoch<br/>(Fixed Coordinates)"]
         Present["Present: Earth / Conscious Now<br/>(Observer Worldline Point)"]
         Future["Future: Cosmic Degeneracy & Heat Death<br/>(Equally Real Geometry)"]
+        Past --> Present
+        Present --> Future
     end
-    Past ==> Present ==> Future
 ```
 
 In the Block Universe model:
