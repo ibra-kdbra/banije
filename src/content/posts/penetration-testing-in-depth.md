@@ -225,7 +225,7 @@ A professional penetration test uses automated scanning solely for baseline disc
 
 ## 6.0 Network & Enterprise Infrastructure Testing
 
-In corporate networks, the primary target is frequently the enterprise identity provider—most commonly **Microsoft Active Directory (AD)** or hybrid **Entra ID (Azure AD)**. Penetration testing in enterprise network environments revolves around exploiting Kerberos protocol mechanics, misconfigured delegations, and structural privilege relationships.
+In corporate networks, the primary target is frequently the enterprise identity provider, most commonly **Microsoft Active Directory (AD)** or hybrid **Entra ID (Azure AD)**. Penetration testing in enterprise network environments revolves around exploiting Kerberos protocol mechanics, misconfigured delegations, and structural privilege relationships.
 
 ::interactive{id="ad-architecture" src="/images/posts/ad-network-architecture.png" data="src/data/interactive/ad_attack_paths.json" overview="Interactive map of an enterprise network infrastructure: explore key security boundaries, Active Directory identity hubs, application clusters, and telemetry collectors across the attack surface."}
 
