@@ -2,7 +2,7 @@
 title: "Penetration Testing in Depth: Modern Methodologies, Offensive Operations & Enterprise Defense"
 published: 2026-08-19
 description: "A comprehensive, technical deep dive into penetration testing and adversarial security assessments: covering PTES, NIST SP 800-115, OSINT reconnaissance, Active Directory attack paths, web & API vulnerabilities, cloud environments, and remediation engineering."
-image: "/images/posts/penetration_testing_in_depth.png"
+image: "/images/posts/penetration_testing_in_depth.webp"
 tags: [Security, Penetration Testing, Offensive Security, Red Team, Vulnerability Assessment, Web Security, Network Security, Cloud Security]
 category: "Systems & Security"
 draft: false
