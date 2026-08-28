@@ -15,7 +15,7 @@ series:
 
 Time is the most familiar yet most elusive dimension of physical reality. In everyday experience, the flow of time appears self-evident: coffee cools, eggs break, memories accumulate from the past rather than the future, and we age along a strictly monotonic trajectory. We remember yesterday, but we remember nothing of tomorrow.
 
-Yet, when we look under the hood of fundamental physical laws -- from Newtonian mechanics and Maxwell's electrodynamics to General Relativity and the Schrödinger equation -- we encounter an astonishing paradox: **the fundamental laws of physics are invariant under time reversal ($t \to -t$).**
+Yet, when we look under the hood of fundamental physical laws (from Newtonian mechanics and Maxwell's electrodynamics to General Relativity and the Schrödinger equation), we encounter an astonishing paradox: **the fundamental laws of physics are invariant under time reversal ($t \to -t$).**
 
 $$\mathcal{L}(t) = \mathcal{L}(-t)$$
 
@@ -148,7 +148,7 @@ In 1890, Henri Poincaré proved that any bounded, conservative dynamical system 
 
 $$\tau_{\text{Poincaré}} \sim \exp(\mathcal{O}(N))$$
 
-For a macroscopic quantity of gas ($N \sim 10^{23}$ particles), $\tau_{\text{Poincaré}} \sim 10^{10^{23}}$ years—a duration that dwarfs the current age of our universe ($\approx 13.8 \times 10^9$ years) by unfathomable orders of magnitude.
+For a macroscopic quantity of gas ($N \sim 10^{23}$ particles), $\tau_{\text{Poincaré}} \sim 10^{10^{23}}$ years, a duration that dwarfs the current age of our universe ($\approx 13.8 \times 10^9$ years) by unfathomable orders of magnitude.
 
 :::tip[Takeaway]
 While Poincaré recurrence is mathematically guaranteed in closed, finite systems over astronomical timescales, it is empirically irrelevant on cosmological time scales.
