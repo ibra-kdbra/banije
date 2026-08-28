@@ -2,7 +2,7 @@
 title: "Perspectives on Time, Vol. II - Spacetime, Relativity, and the Block Universe"
 published: 2026-08-19
 description: "The second volume of the Perspectives on Time series. An investigation into relativistic physics: from the collapse of Newtonian absolute simultaneity and Minkowski spacetime geometry to gravitational time dilation, the Rietdijk-Putnam argument, and the four-dimensional Block Universe."
-image: "/images/posts/perspective-of-time-vol-2.png"
+image: "/images/posts/perspective-of-time-vol-2.webp"
 tags: [Physics, Relativity, Spacetime, Philosophy, Cosmology, General Relativity]
 category: "Physics & Philosophy"
 draft: false
