@@ -16,7 +16,7 @@ series:
 In classical Newtonian mechanics, time was conceived as a cosmic clock ticking uniformly and inexorably across the universe, independent of any observer or physical matter:
 
 > *"Absolute, true, and mathematical time, in and of itself and of its own nature, without reference to anything external, flows uniformly."*
-> -- Sir Isaac Newton, *Philosophiae Naturalis Principia Mathematica* (1687)
+> - Sir Isaac Newton, *Philosophiae Naturalis Principia Mathematica* (1687)
 
 Under this paradigm, every event in the cosmos shared a single, universal coordinate $t$. Two events occurring simultaneously for an observer on Earth were undeniably simultaneous for an observer orbiting Jupiter or traveling at arbitrary velocities across deep space.
 
@@ -144,7 +144,7 @@ Gravitational time dilation is not an abstract theory; modern technological syst
 
 ## 5.0 Philosophical Implications: The 4D Block Universe
 
-The relativity of simultaneity undermines **Presentism**—the philosophical intuition that only the instantaneous three-dimensional "Now" is real, while the past has vanished and the future is unwritten.
+The relativity of simultaneity undermines **Presentism**, the philosophical intuition that only the instantaneous three-dimensional "Now" is real, while the past has vanished and the future is unwritten.
 
 ### 5.1 The Rietdijk-Putnam Argument & The Andromeda Paradox
 
