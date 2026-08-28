@@ -2,7 +2,7 @@
 title: "Perspectives on Time, Vol. I - The Arrow, Entropy, and Fundamental Asymmetry"
 published: 2026-08-18
 description: "The first installment of the Perspectives on Time series. An investigation into the nature of time: from classical Newtonian determinism and microscopic time-reversibility to Boltzmann's statistical entropy, Loschmidt's paradox, and the cosmological Past Hypothesis."
-image: "/images/posts/perspective-of-time-vol-1.png"
+image: "/images/posts/perspective-of-time-vol-1.webp"
 tags: [Physics, Philosophy, Thermodynamics, Entropy, Cosmology]
 category: "Physics & Philosophy"
 draft: false
