@@ -1,0 +1,44 @@
+[
+  {
+    "id": "dmz-gateway",
+    "label": "DMZ Perimeter Gateway",
+    "info": "The DMZ perimeter gateway filters inbound traffic, hosts load balancers and reverse proxies, and isolates external connections from the corporate network. Attackers target exposed web applications and SSL-VPN vulnerabilities here to gain initial access.",
+    "x": 30, "y": 20, "w": 45, "h": 7
+  },
+  {
+    "id": "dc-hub",
+    "label": "Active Directory Domain Controller Hub",
+    "info": "The Tier-0 identity core managing Kerberos authentication, LDAP policies, and domain trusts. Target for Kerberoasting, AS-REP Roasting, and Golden Ticket generation upon credential compromise.",
+    "x": 35, "y": 41, "w": 30, "h": 16
+  },
+  {
+    "id": "admin-workstations",
+    "label": "Secure Administrative Workstations",
+    "info": "Privileged Access Workstations (PAWs) with hardware MFA. If administrators log into lower-tier systems from these machines, their cached Kerberos credentials in LSASS can be harvested by attackers.",
+    "x": 72, "y": 38, "w": 23, "h": 20
+  },
+  {
+    "id": "app-cluster",
+    "label": "Application Servers Cluster",
+    "info": "Tier-1 microservices and internal web applications. Often run under custom service accounts with registered Service Principal Names (SPNs), making them prime targets for Kerberoasting ticket cracking.",
+    "x": 23, "y": 64, "w": 26, "h": 20
+  },
+  {
+    "id": "db-cluster",
+    "label": "Database Storage Cluster",
+    "info": "High-value business data repository (MSSQL/MySQL). Accessed through database links or service delegation. Unconstrained delegation on application servers can expose this tier to unauthorized impersonation.",
+    "x": 53, "y": 64, "w": 26, "h": 20
+  },
+  {
+    "id": "siem-soc",
+    "label": "SIEM & Security Telemetry (SOC)",
+    "info": "Aggregates audit events (Sysmon, Event ID 4624/4625, NetFlow). Blue teams rely on these telemetry pipelines for detecting lateral movement, pass-the-hash techniques, and anomalous LDAP queries.",
+    "x": 5, "y": 67, "w": 15, "h": 15
+  },
+  {
+    "id": "vpn-gateway",
+    "label": "Secure VPN Gateway",
+    "info": "Remote access ingress point. Weak password policies, absence of multi-factor authentication, or session hijacking can allow external adversaries to tunnel directly into internal subnets.",
+    "x": 83, "y": 69, "w": 12, "h": 12
+  }
+]
